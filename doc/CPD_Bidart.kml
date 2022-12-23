@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>CPD_Bidart.kml</name>
+	<ScreenOverlay>
+		<name>SCEC Logo</name>
+		<Icon>
+			<href>https://www.scec.org/themes/scec/logo.png</href>
+		</Icon>
+		<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+		<screenXY x="0.01" y="0.99" xunits="fraction" yunits="fraction"/>
+		<rotationXY x="0.5" y="0.5" xunits="fraction" yunits="fraction"/>
+		<size x="-1" y="-1" xunits="pixels" yunits="pixels"/>
+	</ScreenOverlay>
+	<Style id="chron_norm">
+ 	<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/ltblu-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/ltblu-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="chron_high">
+ 	<LabelStyle>
+			<scale>1.1</scale>
+		</LabelStyle>
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/ltblu-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/ltblu-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="chron_style">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#chron_norm</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#chron_high</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+	<name>Bidart Fan-1</name>
+	<description><![CDATA[
+<html>
+<style>
+body {
+width: 510px;
+}
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color:#dddddd;
+}
+</style>
+<body>
+<a href="http://scec.org"><img src="https://files.scec.org/s3fs-public/SCEC_Traditional_Logo_Red.png"></a><br />
+<h2>SCEC Community Paleoseismic Database</h2><br />
+<b>Chronology Site Data/Metadata</b><br /><br />
+<table>
+  <tr>
+    <td><b>ID</b></td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><b>Site Name</b></td>
+    <td>Bidart Fan</td>
+  </tr>
+  <tr>
+    <td><b>Reference(s)</b></td>
+    <td> Akciz and others (2010)</td>
+  </tr>
+  <tr>
+    <td><b>CFM Fault Name</b></td>
+    <td> San Andreas</td>
+  </tr>
+  <tr>
+    <td><b>CFM Fault Section</b></td>
+    <td> Carrizo</td>
+  </tr>
+  <tr>
+    <td><b>CFM Avg Strike/Dip</b></td>
+    <td>119 / 87</td>
+  </tr>
+  <tr>
+    <td><b>CFM Slip Sense</b></td>
+    <td> RLSS</td>
+  </tr>
+  <tr>
+    <td><b>Data Type</b></td>
+    <td> EQ age</td>
+  </tr>
+  <tr>
+    <td><b>Num Events</b></td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td><b>Age Type/Lab</b></td>
+    <td> 14C /  UCI Keck</td>
+  </tr>
+  <tr>
+    <td><b>Num Samples</b></td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <td><b>Uncalibrated 14C Data</b></td>
+    <td><a href="https://www.scec.org/research/cxm">Download</a></td>
+  </tr>
+</table>
+<br /><b>Original and Updated Event Ages</b><br /><br />
+<table style="width: 500px">
+  <tr>
+    <td><b>Software/CalibCurve</b></td>
+    <td> Oxcal v4.1.3 /  IntCal04</td>
+    <td> Oxcal4.4 /  IntCal20</td>
+  </tr>
+  <tr>
+    <td><b>OxCal Script</b></td>
+    <td><a href="https://www.scec.org/research/cxm">Download</a></td>
+    <td><a href="https://www.scec.org/research/cxm">Download</a></td>
+  </tr>
+  <tr>
+    <td><b>Event 1 Name &amp; Age Range</b></td>
+    <td> A) 1857-1857</td>
+    <td> A) 1857-1857</td>
+  </tr>
+  <tr>
+    <td><b>Event 2 Name &amp; Age Range</b></td>
+    <td> B) 1631-1823</td>
+    <td> B) 1632-1824</td>
+  </tr>
+  <tr>
+    <td><b>Event 3 Name &amp; Age Range</b></td>
+    <td> C) 1580-1640</td>
+    <td> C) 1585-1640</td>
+  </tr>
+  <tr>
+    <td><b>Event 4 Name &amp; Age Range</b></td>
+    <td> D) 1510-1612</td>
+    <td> D) 1515-1614</td>
+  </tr>
+  <tr>
+    <td><b>Event 5 Name &amp; Age Range</b></td>
+    <td> E) 1450-1475</td>
+    <td> E) 1455-1485</td>
+  </tr>
+  <tr>
+    <td><b>Event 6 Name &amp; Age Range</b></td>
+    <td> F) 1360-1452</td>
+    <td> F) 1364-1456</td>
+  </tr>
+</table>
+<br /><br />
+<a href="https://www.scec.org/research/cfm">CPD Homepage</a><br />
+<a href="https://www.scec.org/research/cfm-viewer/">CPD Viewer, Search, and Download Tool</a><br />
+<a href="https://www.scec.org">SCEC Homepage</a><br />
+<br /><br />
+</body>
+</html>
+]]>
+	</description>
+		<styleUrl>#chron_style</styleUrl>
+		<Point>
+		<coordinates>-119.78871,35.23428</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
