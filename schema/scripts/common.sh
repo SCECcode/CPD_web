@@ -1,12 +1,8 @@
 #####  processing schema/data
-#####  cp target_data's  doc/target.csv here
+#####  cp target_data's  target.csv here
 #####  unmark the data type at the bottom
 #####
 #####    ./extract-csv.sh
-#####        mv *.csv to  schema/data/target
-#####    ./convert-shp.sh
-#####        mv *.sql to  schema/sql/target
-#####    ./create-csv.sh
 #####        mv *.csv to  schema/data/target
 #####    ./create-sql.sh
 #####        mv *.sql to  schema/sql/target

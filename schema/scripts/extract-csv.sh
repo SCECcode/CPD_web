@@ -11,40 +11,36 @@
 rm -f *.csv
 #in2csv --sheet "${EXCEL_NM_SHEET}" ${EXCEL_NM_FILE} | csvcut -c 1-26 > ${EXCEL_NM}_raw.csv
 
-cat ${CFMPATH}doc/${EXCEL_NM}.csv | csvcut -c 1-26 > ${EXCEL_NM}_raw.csv
-exit
-
-grep ",,,,,,,,$"  ${EXCEL_NM}_raw.csv > skip_subtitles
-grep -vf skip_subtitles ${EXCEL_NM}_raw.csv |sed "s/  / /g" | sed "s/, E/,E/"  > ${EXCEL_NM}.csv
+cat ${CPDPATH}/${EXCEL_NM}.csv | csvcut -c 1-26 > ${EXCEL_NM}_raw.csv
+cat ${EXCEL_NM}_raw.csv |sed "s/  / /g" | sed "s/, E/,E/"  > ${EXCEL_NM}.csv
 csvcut -n ${EXCEL_NM}.csv > ${EXCEL_NM}_column_labels
 
-#name,abb >> Fault Name
-csvcut -c "12" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-name
-"> fault_tb.csv 
+#sid,whatever
+csvcut -c "3,18" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
+sid,whatever
+"> test_tb.csv 
 
-#name,abb >> Fault Zone/Region
-csvcut -c "6,7" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-name,abb
-"> zone_tb.csv
+#sid,name >> SlipRateID,FaultName
+csvcut -c "3,5" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
+sid,name
+"> slip_site_fault_tb.csv 
 
-#name,abb >> Fault Section
-csvcut -c "9,10" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-name,abb
-"> section_tb.csv
+#sid,name >> SlipRateID,SiteName
+csvcut -c "3,7" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
+sid,name
+"> slip_site_name_tb.csv 
 
-#name,abb >> Fault Area/Major Fault System
-csvcut -c "3,4" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
-name,abb
-"> area_tb.csv
+#sid,min,max >> SlipRateID,LowRate,HighRate
+csvcut -c "3,11,12" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
+sid,min,max
+"> slip_site_rate_tb.csv
 
-#name,area,aabb,zone,zabb,section,sabb,fault
-# 'CFM5.2 Fault Object Name','Fault Area/Major Fault System','Code','Fault Zone/Region','Code_2','Fault Section','Code_3','Fault Name','Code_4'
-csvcut -c "1,3,4,6,7,9,10,12" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
-name,area,aabb,zone,zabb,section,sabb,fault
-"> object_tb_head.csv
+#sid,x,y >> SlipRateID,X,Y
+csvcut -c "3,1,2" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
+sid,x,y
+"> slip_site_loc_tb.csv
 
-#name,
-csvcut -c "1,14,15,16,17,18,19,20,21,22,23,24,25,26" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
-name,Alternative,Source/Author,Last Update,Descriptor,Avg Strike,Avg Dip,Area [km^2],Exposure,Slip Sense,ID Comments,USGS ID,Fault Strand/Model Description,References
-"> object_tb_base.csv 
+# SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
+csvcut -c "3,1,2,5,7,11,12,6,8,20,21,22,23,24,25" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
+SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
+"> slip_site_tb.csv 
