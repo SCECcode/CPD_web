@@ -23,24 +23,24 @@ sid,whatever
 #sid,name >> SlipRateID,FaultName
 csvcut -c "3,5" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
 sid,name
-"> slip_site_fault_tb.csv 
+"> slipid_fault_tb.csv 
 
 #sid,name >> SlipRateID,SiteName
 csvcut -c "3,7" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
 sid,name
-"> slip_site_name_tb.csv 
+"> slipid_name_tb.csv 
 
 #sid,min,max >> SlipRateID,LowRate,HighRate
 csvcut -c "3,11,12" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
 sid,min,max
-"> slip_site_rate_tb.csv
+"> slipid_rate_tb.csv
 
 #sid,x,y >> SlipRateID,X,Y
 csvcut -c "3,1,2" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
 sid,x,y
-"> slip_site_loc_tb.csv
+"> slipid_loc_tb.csv
 
 # SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
 csvcut -c "3,1,2,5,7,11,12,6,8,20,21,22,23,24,25" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
 SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
-"> slip_site_tb.csv 
+"> sliprate_site_tb.csv 
