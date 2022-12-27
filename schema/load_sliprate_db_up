@@ -1,0 +1,23 @@
+#!/bin/bash
+
+dropdb --if-exists CPD_sliprate_db 
+createdb CPD_sliprate_db
+
+psql postgresql://postgres:example@localhost/CPD_sliprate_db << AAA
+
+  CREATE EXTENSION postgis;
+  SELECT PostGIS_Version();
+
+  \i '/home/postgres/CPD/schema/sql/sliprate1/setup_schema.sql';
+  \i '/home/postgres/CPD/schema/sql/uptures6/setup_sliprate_tb.sql';
+
+  DROP ROLE webonly;
+  CREATE ROLE webonly WITH LOGIN PASSWORD 'scec';
+  GRANT SELECT ON ALL TABLES IN SCHEMA public TO webonly;
+  REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+
+  \dp
+  \q
+
+AAA
+
