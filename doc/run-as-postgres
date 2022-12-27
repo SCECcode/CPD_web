@@ -1,0 +1,15 @@
+set -e
+
+# Perform all actions as $POSTGRES_USER
+export PGUSER="$POSTGRES_USER"
+export PGDATA="$POSTGRES_DATA"
+export PGDB="$POSTGRES_DB"
+
+# Carve out db space
+initdb $POSTGRES_DB
+
+# Start PostgreSQL server
+pg_ctl -D $POSTGRES_DB -l /home/postgres/logfile start
+
+/app/schema/load_db_setup
+/app/schema/load_sliprate_db_up

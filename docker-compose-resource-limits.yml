@@ -1,0 +1,16 @@
+version: '2.2'
+
+services:
+
+  db:
+    mem_limit: 5g
+    cpus: 3
+
+  web:
+    mem_limit: 5g
+    cpus: 3
+
+  altweb:
+     mem_limit: 5g
+     cpus: 3
+

@@ -1,0 +1,18 @@
+FROM mdillon/postgis:10-alpine
+ENV POSTGRES_USER postgres
+ENV POSTGRES_DB cpd_db
+ENV POSTGRES_DATA /home/postgres/CPD
+
+WORKDIR /app
+
+COPY . /app
+
+RUN mkdir /home/postgres
+RUN chown postgres /home/postgres
+RUN su postgres -c /app/doc/run-as-postgres
+
+RUN echo "host all  all    0.0.0.0/0  trust" >> /home/postgres/CPD/pg_hba.conf
+
+# RUN su postgres -c "pg_ctl -D /home/postgres/CPD -l /home/postgres/logfile start"
+
+

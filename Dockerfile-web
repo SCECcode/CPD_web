@@ -1,0 +1,15 @@
+FROM amazonlinux
+
+WORKDIR /app
+
+COPY . /app
+
+RUN yum install -y httpd && \
+	amazon-linux-extras install -y php7.2 && \
+	yum install -y php php-pgsql 
+
+COPY ./doc/cpd.conf /etc/httpd/conf.d/
+COPY ./custom-php.ini /etc/php.d/custom-php.ini
+
+CMD ["apachectl", "-D", "FOREGROUND"]
+
