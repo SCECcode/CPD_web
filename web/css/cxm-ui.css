@@ -314,31 +314,31 @@ th {
     border-radius: 4px;
 }
 
-.cfm-control-colors-list {
+.cxm-control-colors-list {
     display: none;
 }
 
-.cfm-control-colors-expanded .cfm-control-colors-list {
+.cxm-control-colors-expanded .cxm-control-colors-list {
     display: block;
     position: relative;
 }
 
-.cfm-control-colors-selector {
+.cxm-control-colors-selector {
     margin-top: 2px;
     position: relative;
 }
 
-.cfm-control-colors label {
+.cxm-control-colors label {
     display: block;
 }
 
-.cfm-control-colors-base {
+.cxm-control-colors-base {
     margin-left: 10px;
     text-align: left;
     border: 2px solid transparent;
 }
 
-.cfm-control-download-expanded {
+.cxm-control-download-expanded {
     overflow: hidden;
     position: absolute;
     right: 10px;
@@ -351,26 +351,26 @@ th {
     border-radius: 4px;
 }
 
-.cfm-control-download-list {
+.cxm-control-download-list {
     display: none;
 }
 
-.cfm-control-download-expanded .cfm-control-download-list {
+.cxm-control-download-expanded .cxm-control-download-list {
     display: block;
     position: relative;
 }
 
-.cfm-control-download-selector {
+.cxm-control-download-selector {
     margin-top: 2px;
     position: relative;
     top: 1px;
 }
 
-.cfm-control-download label {
+.cxm-control-download label {
     display: block;
 }
 
-.cfm-control-download-base {
+.cxm-control-download-base {
     margin-left: 10px;
     text-align: left;
     border: 2px solid transparent;
@@ -402,7 +402,7 @@ div.mapData {
     font-weight: bold;
 }
 
-.cfm-small-btn {
+.cxm-small-btn {
           background: transparent;
           color: #011638;
           border: none;
@@ -410,7 +410,7 @@ div.mapData {
           padding: 0rem 0.2rem 0rem 0.3rem;
           }
 
-.cfm-small-btn:hover, .cfm-small-btn:active, .cfm-small-btn:focus, .cfm-small-btn:checked {
+.cxm-small-btn:hover, .cxm-small-btn:active, .cxm-small-btn:focus, .cxm-small-btn:checked {
           color: #DC3545;
           outline:0 !important;
           border: none;
@@ -418,11 +418,11 @@ div.mapData {
           display: inline-block;
           }
 
-.cfm-small-btn:disabled {
+.cxm-small-btn:disabled {
           color: white;
           }
 
-.cfm-small-no-btn {
+.cxm-small-no-btn {
           background: transparent;
           color: #011638;
           border: none;
@@ -430,7 +430,7 @@ div.mapData {
           padding: 0rem 0.2rem 0rem 0.3rem;
           }
 
-.cfm-small-no-btn:hover, .cfm-small-no-btn:active .cfm-small-no-btn:checked {
+.cxm-small-no-btn:hover, .cxm-small-no-btn:active .cxm-small-no-btn:checked {
 	 color: #DC3545;
          outline:0 !important;
          border: none;
@@ -438,7 +438,7 @@ div.mapData {
          display: inline-block;
          }
 
-.cfm-small-no-btn:focus {
+.cxm-small-no-btn:focus {
          color: #011638;
          outline:0 !important;
          border: none;
@@ -454,12 +454,12 @@ div.button-container button {
     /*font-size: 1em;*/
 }
 
-.cfm-table {
+.cxm-table {
     max-height: 576px;
     overflow: auto;
 }
 
-.cfm-top-btn {
+.cxm-top-btn {
     background: #D5D5D5;
     padding: 1px 3px;
     border: 2px solid #D5D5D5;
@@ -469,7 +469,7 @@ div.button-container button {
     display: inline-block;
 }
 
-.cfm-btn {
+.cxm-btn {
     background: white;
     border: 0px solid #D5D5D5;
     color: #011638;
@@ -479,11 +479,11 @@ div.button-container button {
 }
 
 
-.cfm-btn:disabled {
+.cxm-btn:disabled {
     color: white;
 }
 
-.cfm-div {
+.cxm-div {
     position: relative;
     left: 10px;
     width: 90%;
@@ -705,7 +705,7 @@ table tr td label {
     max-width: 269px;
 }
 
-.cfm-input-group {
+.cxm-input-group {
     max-width: 400px;
     padding: 0;
 }
@@ -726,13 +726,13 @@ table tr td label {
     position: relative;
 }
 
-.info-page-container.guide .cfm-interface img {
+.info-page-container.guide .cxm-interface img {
    border: 1px solid #ddd;
     max-width: 630px;
     width: 100%;
 }
 
-.info-page-container.guide .cfm-perspective-view {
+.info-page-container.guide .cxm-perspective-view {
     max-width: 550px;
 }
 
@@ -769,7 +769,7 @@ div.guide ul {
     max-width:100px;
 }
 
-#metadata-viewer .cfm-btn {
+#metadata-viewer .cxm-btn {
     background-color: inherit;
     padding: 0;
 }
