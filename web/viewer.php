@@ -336,148 +336,130 @@ $cpd_sliprate = new CPD_SLIPRATE();
       </div> <!-- cpd-controls-container -->
     </div> <!-- top-control -->
 
-XXX
+    <div id="mapDataBig" class="row mapData">
+      <div id="infoData" class="col-5 button-container d-flex flex-column pr-0" style="overflow:hidden">
+        <div id="searchResult" style="overflow:hidden; display:" class="mb-1"></div>
+        <div id="geoSearchByObjGidResult" style="display:none"></div>
+        <div id="phpResponseTxt"></div>
+      </div>
 
-    <div class="row mapData">
-<!-- NO NEED FOR THIS ??
-        <div class="col-5 button-container d-flex flex-column cpd-search-result-container pr-1" style="overflow:hidden;">
-            <div id="searchResult" class="mb-1" style="display:none">
-            </div>
+      <div id="top-map" class="col-7 pl-1">
+        <div class="w-100 mb-1" id='CPD_plot'
+             style="position:relative;border:solid 1px #ced4da; height:576px;">
         </div>
---->
-        <div class="col-12 map-container">
-
-            <div class="row" >
-
-                <div class="col" id='CGM_plot'
-                        style="position:relative;border:solid 1px #ced4da; height:500px;">
-                    <div  id='wait-spinner' style="">
-                        <div class="d-flex justify-content-center" >
-                          <div class="spinner-border text-light" role="status">
-                            <span class="sr-only">Loading...</span>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+      </div>
     </div>
-    <div class="row mt-1">
-        <div class="col-12" style="padding-right:0px">
-            <div id="metadata-viewer-container" style="border:solid 1px #ced4da; overflow-x:hidden">
-                <table id="metadata-viewer">
-                    <thead>
-                      <tr>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr id="placeholder-row">
-                          <td colspan="11">Metadata for selected piont will appear here. </td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+    <div id="top-select" class="row mb-2">
+      <div class="col-12">
+        <div id="metadata-viewer-container" style="border:solid 1px #ced4da;overflow-x:hidden">
+            <table id="metadata-viewer">
+              <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Fault<span id='sortCol_1' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Area<span id='sortCol_2' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Zone<span id='sortCol_3' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(4,'a')">Section<span id='sortCol_4' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(5,'a')">Last<br>Update<span id='sortCol_5' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')">Avg<br>Strike<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')">Avg<br>Dip<span id='sortCol_7' class="fas fa-angle-down"></span></th>
+                <th class="hoverColor" onClick="sortMetadataTableByRow(8,'n')">Area<br>(km<sup>2</sup>)<span id='sortCol_8' class="fas fa-angle-down"></span></th>
+                <th><div class="row" style="display:flex; justify-content:center;">
+          <div class="btn-group download-now">
+              <button id="plot3d-all" type="button" 
+                      title="Plots the selected faults in an interactive 3D environment" 
+                      class="btn btn-dark dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false" disabled>
+                                    Plot3d<span id="plot-counter"></span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <button class="dropdown-item" type="button" value="native"
+                      onclick="executePlot3d(this.value);">Native
+                  </button>
+                  <button class="dropdown-item" type="button" value="500m"
+                      onclick="executePlot3d(this.value);">500m
+                  </button>
+                  <button class="dropdown-item" type="button" value="1000m"
+                      onclick="executePlot3d(this.value);">1000m
+                  </button>
+                  <button class="dropdown-item" type="button" value="2000m"
+                      onclick="executePlot3d(this.value);">2000m
+                  </button>
+               </div>
+             </div>
+             &nbsp
+             <div class="btn-group download-now">
+                <button id="download-all" type="button" 
+                        title="Download options for the selected fault objects" 
+                        class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" disabled>
+                                    Download<span id="download-counter"></span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button" value="meta"
+                            onclick="executeDownload(this.value);">Metadata
+                    </button>
+                    <button class="dropdown-item" type="button" value="native"
+                            onclick="executeDownload(this.value);">Native + Metadata
+                    </button>
+                    <button class="dropdown-item" type="button" value="500m"
+                            onclick="executeDownload(this.value);">500m + Metadata
+                    </button>
+                    <button class="dropdown-item" type="button" value="1000m"
+                            onclick="executeDownload(this.value);">1000m + Metadata
+                    </button>
+                    <button class="dropdown-item" type="button" value="2000m"
+                            onclick="executeDownload(this.value);">2000m + Metadata
+                    </button>
+                    <button class="dropdown-item" type="button" value="all"
+                            onclick="executeDownload(this.value);">All of the Above
+                    </button>
                 </div>
+              </div>
+              &nbsp
+            </div> 
+         </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="placeholder-row">
+               <td colspan="10">Metadata for selected faults will appear here. </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     </div>
+    </div> <!-- top-select -->
+</div> <!-- main -->
+
+<!--Modal: Model (modalkmlselect) -->
+<div class="modal" id="modalkmlselect" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-small" id="modalkmlselectDialog" role="document">
+
+    <!--Content-->
+    <div class="modal-content" id="modalkmlselectContent">
+      <!--Body-->
+      <div class="modal-body" id="modalkmlselectBody">
+        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
+          <div class="col-12" id="kmlselectTable-container" style="font-size:14pt"></div>
         </div>
-    </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
+      </div>
+
+    </div> <!--Content-->
+  </div>
+</div> <!--Modal: modalkmlselect-->
+
+
 </div>
+</body>
+</html>
 
-<!--Modal: Name Azimuth  -->
-<div class="modal" id="modalazimuth" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" id="modalazimuthDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalazimuthContent">
-      <!--Body-->
-      <div class="modal-body" id="modalazimuthBody">
-        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
-         <p> Talk about what is this azimuth about...</p>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
-      </div>
-
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: Name-->
-
-
-<!--Modal: Name TS(time series)-->
-<div class="modal" id="modalTS" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="modalTS" aria-hidden="true">
-  <div class="modal-dialog modal-full" id="modalTSDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalTSContent">
-      <!--Header-->
-      <div class="modal-header">
-        <button id="viewTSTogglebtn" class="btn btn-outline-primary btn-sm" type="button" onclick="toggleTSview()">Switch Frame Type</button>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body" id="modalTSBody">
-        <div id="iframe-container" class="row col-12" style="overflow:hidden;">
-          <iframe id="viewTSIfram" title="SCEC CGM Time series viewer" src="" onload="setIframHeight(this.id)" height="10" width="100%" allowfullscreen></iframe>
-        </div>
-        <div id="paramsTS" value="" style="display:none"></div>
-      </div>
-
-      <div class="modal-footer justify-content-center" id="modalTSFooter">
-        <button id="viewTSClosebtn" class="btn btn-outline-primary btn-sm" data-dismiss="modal">Close</button>
-        <button id="viewTSRefreshbtn" class="btn btn-outline-primary btn-sm" type="button" onclick="refreshTSview()">Reset</button>
-        <button id="viewTSMovebtn" class="btn btn-outline-primary btn-sm" type="button" onclick="moveTSview()">New Window</button>
-        <button id="viewTSWarnbtn" class="btn btn-outline-primary btn-sm" style="display:none" data-toggle="modal" data-target="#modalwarnTS"></button>
-<!-- Plotly's toImage does not work for surface-contour plot -->
-        <button id="viewTSSavebtn" class="btn btn-outline-primary btn-sm" type="button" onclick="saveTSview()">Save Image</button>
-        <button id="viewTSHelpbtn" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalinfoTS" onclick="$('#modalTS').modal('hide');">Help</button>
-      </div> <!-- footer -->
-
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: Name-->
-
-<!--Modal: ModelType -->
-<div class="modal" id="modalinfoTS" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xlg" id="modalinfoTSDialog" role="document">
-    <!--Content-->
-    <div class="modal-content" id="modalinfoTSContent">
-      <!--Body-->
-      <div class="modal-body" id="modalinfoTSBody">
-        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
-          <div class="col-12" id="infoTSTable-container"></div>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal" onclick="$('#modalTS').modal('show');"
->Close</button>
-      </div>
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: Name-->
-
-<!--Modal: ModelType -->
-<div class="modal" id="modalwarnTS" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" id="modalwarnTSDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalwarnTSContent">
-      <!--Body-->
-      <div class="modal-body" id="modalwarnTSBody">
-        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
-          <div class="col-12" id="warnTSTable-container"></div>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
-      </div>
-
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: Name-->
-
-
-<!-- -->
+<!--XXX -->
     <script type="text/javascript">
             cpd_gnss_station_data = <?php print $cpd_gnss->getAllStationData()->outputJSON(); ?>;
             cpd_insar_track_data = <?php print $cpd_insar->getAllTrackData()->outputJSON(); ?>;
