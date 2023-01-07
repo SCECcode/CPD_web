@@ -74,6 +74,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_leaflet.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_misc_util.js?v=1"></script>
+    <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
 
    <!-- pixi pixiOverlay -->
     <script type="text/javascript" src="js/vendor/pixi.js"></script>
