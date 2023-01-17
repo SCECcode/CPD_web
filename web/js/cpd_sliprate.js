@@ -4,91 +4,50 @@
 
 var CPD_SLIPRATE = new function () {
 
-// local memeber data,
-
-    this.cgm_vector_max = -1;
-    this.cgm_vector_min = 0;
-    this.cgm_vector_loc = 0;
-
-    this.cgm_select_gid = [];
-
-    // cgm_layers <= all marker layers for the stations/survey
-    //               this is setup once from viewer.php
-    this.cgm_layers = new L.FeatureGroup();
-
-    // cgm_vectors <= all all velocity vectors in polyline layer -- linked to cgm_layers
-    this.cgm_vectors = new L.FeatureGroup();
-    this.cgm_vector_scale = new L.FeatureGroup();
-
-    // select_result <<= some of selected from cgm_layers
+    // searching mode, would show all active layers with 
+    //    selected ones in highlights
+    // non-searching mode, would be showing all layers
     this.searching = false;
-    this.search_result = new L.FeatureGroup();
 
-    const cont_site=[];
-    const surv_site=[];
+    // all marker layers for each site, setup once from viewer.php
+    this.cpd_layers; // L.FeatureGroup();
 
-    const frameType = {
-        IGB14: 'igb14',
-        NAM14: 'nam14',
-        NAM17: 'nam17',
-        PCF14: 'pcf14',
-    };
+    // searched layers being actively looked at -- result of a search
+    this.cpd_active_layers= new L.FeatureGroup();
+    this.cpd_active_gid = [];
 
-    this.pointType = {
-        CONTINUOUS_GPS: 'continuous',
-        CAMPAIGN_GPS:  'campaign',
-        GRID: 'grid',
-    };
+    // selected some layers from active layers
+    // to be displayed at the metadata_table
+    this.cpd_selected_gid = [];
 
-    var cgm_colors = {
+    var site_colors = {
         normal: '#006E90',
         selected: '#B02E0C',
         abnormal: '#00FFFF',
     };
 
-    var cgm_marker_style = {
+    var site_marker_style = {
         normal: {
-            color: cgm_colors.normal,
-            fillColor: cgm_colors.normal,
+            color: site_colors.normal,
+            fillColor: site_colors.normal,
             fillOpacity: 0.5,
             radius: 3,
             riseOnHover: true,
             weight: 1,
         },
         selected: {
-            color: cgm_colors.selected,
-            fillColor: cgm_colors.selected,
+            color: site_colors.selected,
+            fillColor: site_colors.selected,
             fillOpacity: 1,
             radius: 3,
             riseOnHover: true,
             weight: 1,
         },
         hover: {
-            // color: cgm_colors.selected,
-            // fillColor: cgm_colors.selected,
             fillOpacity: 1,
             radius: 10,
             weight: 2,
         },
-    };
-
-    // vector = path + head
-    cgm_line_path_style = {};
-    cgm_line_head_pattern = {};
-    // just 1 set
-    cgm_scale_line_path_style = {weight: 2, color: "#ff0000"};
-    cgm_scale_line_head_pattern = {
-        offset: '100%',
-        repeat: 0,
-        symbol: L.Symbol.arrowHead({
-             pixelSize: 5,
-             polygon: false,
-             pathOptions: {
-                 stroke: true,
-                 color: "#ff0000",
-                 weight: 2
-             }
-        })
     };
 
     this.defaultMapView = {
@@ -98,338 +57,166 @@ var CPD_SLIPRATE = new function () {
     };
 
     this.searchType = {
-        vectorSlider: 'vectorslider',
+        faultName: 'faultname',
+        sitenNme: 'sitename',
         latlon: 'latlon',
-        stationName: 'stationname',
+        minrateSlider: 'minrateslider',
+        maxrateSlider: 'maxrateslider'
     };
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
-                        <td colspan="11">Metadata for selected points will appear here.</td>
+                        <td colspan="5">Metadata for selected points will appear here.</td>
                     </tr>`;
 
     this.activateData = function() {
-        activeProduct = Products.GNSS;
+        activeProduct = Products.SLIPRATE;
         this.showProduct();
         $("div.control-container").hide();
-        $("#cgm-controls-container").show();
+        $("#cpd-controls-container").show();
 
     };
 
-    this.upSelectCount = function(gid) {
-       let i=this.cgm_select_gid.indexOf(gid); 
+    this.upSelectedCount = function(gid) {
+       let i=this.cpd_selected_gid.indexOf(gid); 
        if(i != -1) {
          window.console.log("this is bad.. already in selected list "+gid);
          return;
        }
  
-       let tmp=this.cgm_select_gid.length;
+       let tmp=this.cpd_selected_gid.length;
        window.console.log("=====adding to list "+gid+" ("+tmp+")");
-       this.cgm_select_gid.push(gid);
-       updateDownloadCounter(this.cgm_select_gid.length);
+       this.cpd_selected_gid.push(gid);
+       updateDownloadCounter(this.cpd_selected_gid.length);
     };
 
-    this.downSelectCount = function(gid) {
-       if(this.cgm_select_gid.length == 0) { // just ignore..
+    this.downSelectedCount = function(gid) {
+       if(this.cpd_selected_gid.length == 0) { // just ignore..
          return;
        }
-       let i=this.cgm_select_gid.indexOf(gid); 
+       let i=this.cpd_selected_gid.indexOf(gid); 
        if(i == -1) {
          window.console.log("this is bad.. not in selected list "+gid);
          return;
        }
-       let tmp=this.cgm_select_gid.length;
-//       window.console.log("=====remove from list "+gid+"("+tmp+")");
-       this.cgm_select_gid.splice(i,1);
-       updateDownloadCounter(this.cgm_select_gid.length);
+       let tmp=this.cpd_selected_gid.length;
+       window.console.log("=====remove from list "+gid+"("+tmp+")");
+       this.cpd_selected_gid.splice(i,1);
+       updateDownloadCounter(this.cpd_selected_gid.length);
     };
 
-    this.zeroSelectCount = function() {
-        this.cgm_select_gid = [];
+    this.zeroSelectedCount = function() {
+        this.cpd_selected_gid = [];
         updateDownloadCounter(0);
     };
 
-    // generate vector scale, if here is existing one, remove and regenerate
-    this.generateVectorScale = function () {
-        // clear old set
-        this.cgm_vector_scale.eachLayer(function (layer) { viewermap.removeLayer(layer); });
 
-        let z=viewermap.getZoom();
-        // bounds of the visible map
-        let pbds=viewermap.getPixelBounds();
-        let pmin=pbds['min'];
-        let pmax=pbds['max'];
-
-        // scale bar height = 34 pixels
-        // vector bar target height = 34+17=51
-        let targetx=pmin['x']+10;
-        let targety=pmax['y']-51;
-        if(this.cgm_vector_loc == 0) {
-           targetx=pmin['x'];
-           targety=pmax['y']-40;
-           this.cgm_vector_loc=targety;
-        }
-
-        let start_latlng=viewermap.unproject([targetx,targety],z);
-
-        let o_latlng=viewermap.unproject([pmin['x'],pmax['y']],z);
-//window.console.log("origin >>"+pmin['x'],pmin['y']);
-//window.console.log("zoom >>"+z);
-//window.console.log("start_latlng>>",+start_latlng['lat'],start_latlng['lng']);
-//addMarkerLayer(start_latlng['lat'], start_latlng['lng']);
-//L.circleMarker([o_latlng['lat'], o_latlng['lng']], {color:'#FF0000'}).addTo(viewermap);
-
-        let labelIcon = L.divIcon({ className: 'my-label', iconSize: [100, 30], iconAnchor: [-10, 20], html: `<span>20 mm/yr</span>` });
-        let mylabel=L.marker(start_latlng, {icon: labelIcon});
-
-        // 20mm 
-        let end_latlng = calculateEndVectorLatLng(start_latlng, 0.02, 0, 1000000);
-        let dist = calculateDistanceMeter(start_latlng, {'lat':end_latlng[0], 'lng':end_latlng[1]} );
-
-        //addMarkerLayer(start_latlng.lat, start_latlng.lng);
-        //addMarkerLayer(end_latlng[0],end_latlng[1]);
-        let line_latlons = [
-            [start_latlng.lat, start_latlng.lng],
-            end_latlng
-        ];
-        let polyline = L.polyline(line_latlons, cgm_scale_line_path_style);
-        let arrowHeadDecorator = L.polylineDecorator(polyline, {
-                patterns: [cgm_scale_line_head_pattern]
-        });
-
-        // if checked, add to the map
-        if ($("#cgm-model-vectors").prop('checked')) {
-            polyline.addTo(viewermap);
-            arrowHeadDecorator.addTo(viewermap);
-            mylabel.addTo(viewermap);
-        }
-        this.cgm_vector_scale = new L.FeatureGroup([polyline, arrowHeadDecorator,mylabel]);
-    }
-
-
+// cpd_sliprate_site_data is from viewer.php, which is the JSON 
+// result from calling php getAllSiteData script
     this.generateLayers = function () {
+        this.cpd_layers = new L.FeatureGroup();
 
-        this.cgm_layers = new L.FeatureGroup();
-        this.cgm_vectors = new L.FeatureGroup();
+        for (const index in cpd_sliprate_site_data) {
+          if (cpd_sliprate_site_data.hasOwnProperty(index)) {
+                let gid = cpd_sliprate_site_data[index].gid;
+                let sliprate_id = cpd_sliprate_site_data[index].sliprate_id;
+                let x = parseFloat(cpd_sliprate_site_data[index].x);
+                let y = parseFloat(cpd_sliprate_site_data[index].y);
+                let fault_name = cpd_sliprate_site_data[index].fault_name;
+                let site_name = cpd_sliprate_site_data[index].site_name;
+                let low_rate = parseFloat(cpd_sliprate_site_data[index].low_rate);
+                let high_rate = parseFloat(cpd_sliprate_site_data[index].high_rate);
+                let state = cpd_sliprate_site_data[index].state;
+                let data_type = cpd_sliprate_site_data[index].data_type;
+                let q_bin_min = parseFloat(cpd_sliprate_site_data[index].q_bin_min);
+                let q_bin_max = parseFloat(cpd_sliprate_site_data[index].q_bin_max);
+                let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x_2014_dip);
+                let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x_2014_rake);
+                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
+                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
+                let reference = cpd_sliprate_site_data[index].reference;
 
-        for (const index in cgm_gnss_station_data) {
-            if (cgm_gnss_station_data.hasOwnProperty(index)) {
-                let lat = parseFloat(cgm_gnss_station_data[index].ref_north_latitude);
-                let lon = parseFloat(cgm_gnss_station_data[index].ref_east_longitude);
-                let vel_north = parseFloat(cgm_gnss_station_data[index].ref_velocity_north);
-                let vel_east = parseFloat(cgm_gnss_station_data[index].ref_velocity_east);
-                let vel_up = parseFloat(cgm_gnss_station_data[index].ref_velocity_up);
-                let vel_north_mm = (vel_north*1000).toFixed(3);
-                let vel_east_mm = (vel_east*1000).toFixed(3);
-                let vel_up_mm = (vel_up*1000).toFixed(3);
-//sqrt("Vel E"^2 + "Vel N"^2)
-                let horizontalVelocity = (Math.sqrt(Math.pow(vel_north_mm, 2) + Math.pow(vel_east_mm, 2))).toFixed(3);
-//atan2("Vel E","Vel N")*180/pi
-                let azimuth = (Math.atan2(vel_east_mm,vel_north_mm) * 180 / Math.PI).toFixed(3);
-                let verticalVelocity = vel_up_mm;
-                let station_id = cgm_gnss_station_data[index].station_id;
-                let station_type = cgm_gnss_station_data[index].station_type;
-                let gid = cgm_gnss_station_data[index].gid;
+                let marker = L.circleMarker([y, x], site_marker_style.normal);
 
-                while (lon < -180) {
-                    lon += 360;
-                }
-                while (lon > 180) {
-                    lon -= 360;
-                }
-
-                let marker = L.circleMarker([lat, lon], cgm_marker_style.normal);
-
-                // generate vectors
-                let start_latlng = marker.getLatLng();
-                // in meter
-                let end_latlng = calculateEndVectorLatLng(start_latlng, vel_north, vel_east, 1000000);
-                let dist_m = calculateDistanceMeter(start_latlng, {'lat':end_latlng[0], 'lng':end_latlng[1]} );
-                let dist = dist_m/1000;
-
-                if (CGM_GNSS.cgm_vector_max == -1) {
-                  CGM_GNSS.cgm_vector_max=dist;
-                  CGM_GNSS.cgm_vector_min=dist;
-                }
-                if (dist > CGM_GNSS.cgm_vector_max) {
-                   CGM_GNSS.cgm_vector_max = dist;
-                }
-                if (dist < CGM_GNSS.cgm_vector_min) {
-                   CGM_GNSS.cgm_vector_min = dist;
-                }
-
-                // save the dist into cgm_gnss_station_data
-                cgm_gnss_station_data[index].vector_dist=dist;
-
-                let station_info = `station id: ${station_id}, vel: ${horizontalVelocity} mm/yr`;
-                marker.bindTooltip(station_info).openTooltip();
-
-                let line_latlons = [
-                    [start_latlng.lat, start_latlng.lng],
-                    end_latlng
-                ];
-
-                let new_color= makeRGB(dist, CGM_GNSS.cgm_vector_max, CGM_GNSS.cgm_vector_min );
-
-                // vector's polyline
-                cgm_line_path_style = {
-                    normal: {weight: 1, color: new_color },
-                    hover:  {weight: 1, color: cgm_colors.selected },
-                    selected: {weight: 1, color: cgm_colors.selected }
-                                      };
-                // vector's arrowhead
-                cgm_line_head_pattern = {
-                    normal : { offset: '100%',
-                               repeat: 0,
-                               symbol: L.Symbol.arrowHead({
-                                   pixelSize: 5,
-                                   polygon: false,
-                                   pathOptions: {
-                                      stroke: true,
-                                      color: new_color,
-                                      weight: 1
-                                   }
-                               })
-                             },
-                   hover : { offset: '100%',
-                             repeat: 0,
-                             symbol: L.Symbol.arrowHead({
-                                 pixelSize: 10,
-                                 polygon: false,
-                                 pathOptions: {
-                                    stroke: true,
-                                    color: cgm_colors.selected,
-                                    weight: 1
-                                 }
-                             })
-                           },
-                   selected : { offset: '100%',
-                             repeat: 0,
-                             symbol: L.Symbol.arrowHead({
-                                 pixelSize: 5,
-                                 polygon: false,
-                                 pathOptions: {
-                                    stroke: true,
-                                    color: cgm_colors.selected,
-                                    weight: 1
-                                 }
-                             })
-                           },
-                };
-
-
-                let polyline = L.polyline(line_latlons, cgm_line_path_style.normal);
-                var arrowHeadDecorator = L.polylineDecorator(polyline, {
-                    patterns: [cgm_line_head_pattern.normal]
-                });
+                let site_info = `site name: ${site_name}`;
+                marker.bindTooltip(site_info).openTooltip();
 
                 marker.scec_properties = {
-                    station_id: station_id,
-                    horizontalVelocity: horizontalVelocity,
-                    verticalVelocity: verticalVelocity,
-                    azimuth: azimuth,
-                    vel_east: vel_east_mm,
-                    vel_north: vel_north_mm,
-                    vector_dist: cgm_gnss_station_data[index].vector_dist,
-                    vector_dist_path_style: cgm_line_path_style,
-                    vector_dist_head_pattern: cgm_line_head_pattern,
-                    type: station_type,
                     gid: gid,
-                    selected: false,
+                    sliprate_id: sliprate_id,
+                    x: x,
+                    y: y,
+                    fault_name: fault_name,
+                    site_name: site_name,
+                    low_rate: low_rate,
+                    high_rate: high_rate,
+                    reference: reference,
+                    active: true,
+                    selected: false
+      
                 };
 
-                // marker.scec_properties.vector = new L.FeatureGroup([polyline, arrowHeadDecorator]);
-                marker.scec_properties.vector = new L.FeatureGroup();
-                marker.scec_properties.vector.addLayer(polyline);
-                marker.scec_properties.vector.addLayer(arrowHeadDecorator);
-                marker.scec_properties.vectorArrowHead = arrowHeadDecorator;
-
-                this.cgm_vectors.addLayer(marker.scec_properties.vector);
-                this.cgm_layers.addLayer(marker);
+                this.cpd_layers.push(marker);
+                this.cpd_active_layers.push(marker);
+                this.cpd_active_gid.push(gid);
             }
         }
-window.console.log("MAX found is "+ CGM_GNSS.cgm_vector_max);
-window.console.log("MIN found is "+ CGM_GNSS.cgm_vector_min);
 
-        this.generateVectorScale();
-
-        this.cgm_layers.on('click', function(event) {
-            if(activeProduct == Products.GNSS) { 
-window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.station_id);
-               CGM_GNSS.toggleStationSelected(event.layer, true);
+        this.cpd_layers.on('click', function(event) {
+            if(activeProduct == Products.SLIPRATE) { 
+window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.sliprate_id);
+               CPD_SLIPRATE.toggleSiteSelected(event.layer, true);
             }
-
         });
 
-        this.cgm_layers.on('mouseover', function(event) {
+        this.cpd_layers.on('mouseover', function(event) {
             let layer = event.layer;
-            layer.setRadius(cgm_marker_style.hover.radius);
-            layer.scec_properties.vector.setStyle(layer.scec_properties.vector_dist_path_style.hover);
-            layer.scec_properties.vectorArrowHead.setPatterns([layer.scec_properties.vector_dist_head_pattern.hover]);
+            layer.setRadius(site_marker_style.hover.radius);
         });
 
-
-        this.cgm_layers.on('mouseout', function(event) {
+        this.cpd_layers.on('mouseout', function(event) {
             let layer = event.layer;
-            layer.setRadius(cgm_marker_style.normal.radius);
-
-            if (layer.scec_properties.selected) {
-                layer.scec_properties.vector.setStyle(layer.scec_properties.vector_dist_path_style.selected);
-                layer.scec_properties.vectorArrowHead.setPatterns([layer.scec_properties.vector_dist_head_pattern.selected]);
-                } else {
-                    layer.scec_properties.vector.setStyle(layer.scec_properties.vector_dist_path_style.normal);
-                    layer.scec_properties.vectorArrowHead.setPatterns([layer.scec_properties.vector_dist_head_pattern.normal]);
-            }
-
+            layer.setRadius(site_marker_style.normal.radius);
         });
 
     };
 
-    //
-    this.toggleStationSelected = function(layer, clickFromMap=false) {
+// select from currently active sites
+    this.toggleSiteSelected = function(layer, clickFromMap=false) {
         if (typeof layer.scec_properties.selected === 'undefined') {
             layer.scec_properties.selected = true;
         } else {
             layer.scec_properties.selected = !layer.scec_properties.selected;
         }
-
         if (layer.scec_properties.selected) {
-            this.selectStationByLayer(layer, clickFromMap);
-            // if this station is not in search result, should add it in 
-            let i=this.search_result.getLayerId(layer);
-            if(!containsLayer(this.search_result,layer)) {
-                let tmp=this.search_result;
-                this.search_result.addLayer(layer);
-            }
+            this.selectSiteByLayer(layer, clickFromMap);
         } else {
-            this.unselectStationByLayer(layer);
+            this.unselectSiteByLayer(layer);
         }
-
-       return layer.scec_properties.selected;
+        return layer.scec_properties.selected;
     };
 
-    this.toggleStationSelectedByGid = function(gid) {
+    this.toggleSiteSelectedByGid = function(gid) {
         let layer = this.getLayerByGid(gid);
-        return this.toggleStationSelected(layer, false);
+        return this.toggleSiteSelected(layer, false);
     };
 
-    this.selectStationByLayer = function (layer, moveTableRow=false) {
-window.console.log("HERE.. selectStationByLayer..");
+    this.selectSiteByLayer = function (layer, moveTableRow=false) {
+window.console.log("HERE.. selectSiteByLayer..");
         layer.scec_properties.selected = true;
-        layer.setStyle(cgm_marker_style.selected);
-        layer.scec_properties.vector.setStyle(layer.scec_properties.vector_dist_path_style.selected);
-        layer.scec_properties.vectorArrowHead.setPatterns([layer.scec_properties.vector_dist_head_pattern.selected]);
+        layer.setStyle(site_marker_style.selected);
         let gid = layer.scec_properties.gid;
 
-        let $row = $(`tr[data-point-gid='${gid}'`);
+        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         let rowHTML = "";
         if ($row.length == 0) {
            this.addToResultsTable(layer);
         }
 
-        $row = $(`tr[data-point-gid='${gid}'`);
+        $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         $row.addClass('row-selected');
 
-        let $glyphElem = $row.find('span.cgm-data-row');
+// this is the selected table
+        let $glyphElem = $row.find('span.cpd-data-row');
         $glyphElem.removeClass('glyphicon-unchecked').addClass('glyphicon-check');
 
         this.upSelectCount(gid);
@@ -438,133 +225,94 @@ window.console.log("HERE.. selectStationByLayer..");
         if (moveTableRow) {
             let $rowHTML = $row.prop('outerHTML');
             $row.remove();
-            $("#metadata-viewer.gnss tbody").prepend($rowHTML);
+            $("#metadata-viewer.sliprate tbody").prepend($rowHTML);
         }
     };
 
-    this.unselectStationByLayer = function (layer) {
+    this.unselectSiteByLayer = function (layer) {
         layer.scec_properties.selected = false;
-        layer.setStyle(cgm_marker_style.normal);
-
-        layer.scec_properties.vector.setStyle(layer.scec_properties.vector_dist_path_style.normal);
-        layer.scec_properties.vectorArrowHead.setPatterns([layer.scec_properties.vector_dist_head_pattern.normal]);
+        layer.setStyle(site_marker_style.normal);
 
         let gid = layer.scec_properties.gid;
 
-        let $row = $(`tr[data-point-gid='${gid}'`);
+        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         $row.removeClass('row-selected');
-        let $glyphElem = $row.find('span.cgm-data-row');
+        let $glyphElem = $row.find('span.sliprate-data-row');
         $glyphElem.addClass('glyphicon-unchecked').removeClass('glyphicon-check');
 
         this.downSelectCount(gid);
     };
 
-    // this.showStationByLayer = function(layer) {
-    //
-    // };
-    //
-    // this.showStationByGid = function (gid) {
-    //     let layer = this.getLayerByGid(gid);
-    //     this.selectStationByLayer(layer);
-    // };
-
-    this.showStationsByLayers = function(layers) {
+//???
+    this.showSitesByLayers = function(layers) {
         viewermap.addLayer(layers);
-        var cgm_object = this;
-/** ???
-        this.search_result.eachLayer(function(layer){
-            cgm_object.addToResultsTable(layer);
-        });
-**/
     };
 
-
-    // this.hideStationByGid = function (gid) {
-    //    let layer = this.getLayerByGid(gid);
-    //    this.unselectStationByLayer(layer);
-    // };
-
-
+// selectAll button - toggle
     this.toggleSelectAll = function() {
-        var cgm_object = this;
+        var sliprate_object = this;
 
-        let $selectAllButton = $("#cgm-allBtn span");
+        let $selectAllButton = $("#cpd-allBtn span");
         if (!$selectAllButton.hasClass('glyphicon-check')) {
-            this.search_result.eachLayer(function(layer){
-                cgm_object.selectStationByLayer(layer);
+            this.cpd_active_layers.eachLayer(function(layer){
+                sliprate_object.selectSiteByLayer(layer);
             });
             $selectAllButton.addClass('glyphicon-check').removeClass('glyphicon-unchecked');
         } else {
-            this.unselectAll();
-
+            this.clearSelectAll();
         }
     };
 
-    this.unselectAll = function() {
-        var cgm_object = this;
-
-        let $selectAllButton = $("#cgm-allBtn span");
-        this.search_result.eachLayer(function(layer){
-            cgm_object.unselectStationByLayer(layer);
-        });
-        $("#cgm-allBtn span").removeClass('glyphicon-check').addClass('glyphicon-unchecked');
+// selectAll button  - clear
+    this.clearSelectAll = function() {
+        this.clearAllSelections();
+        let $selectAllButton = $("#cpd-allBtn span");
+        $selectAllButton.removeClass('glyphicon-check').addClass('glyphicon-unchecked');
     };
 
-    // unselect every layer
+// unselect every active layer
     this.clearAllSelections = function() {
-        var cgm_object = this;
-        this.cgm_layers.eachLayer(function(layer){
-            if (layer.scec_properties.selected) {
-                cgm_object.unselectStationByLayer(layer);
-            }
+        var sliprate_object = this;
+        this.cpd_active_layers.eachLayer(function(layer){
+            sliprate_object.unselectSiteByLayer(layer);
         });
-        $("#metadata-viewer.gnss tr.row-selected button span.glyphicon.glyphicon-check").removeClass('glyphicon-check').addClass('glyphicon-unchecked');
-        $("#metadata-viewer.gnss tr.row-selected").removeClass('row-selected');
+        $("#metadata-viewer.sliprate tr.row-selected button span.glyphicon.glyphicon-check").removeClass('glyphicon-check').addClass('glyphicon-unchecked');
+        $("#metadata-viewer.sliprate tr.row-selected").removeClass('row-selected');
     };
 
-
-
+// search for a layer from master list by gid
     this.getLayerByGid = function(gid) {
         let foundLayer = false;
-        this.cgm_layers.eachLayer(function(layer){
+        let cnt=cpd_layers.length;
+        for(let i=0; i<cnt; i++) {
+          let layer=cpd_layers[i];
           if (layer.hasOwnProperty("scec_properties")) {
              if (gid == layer.scec_properties.gid) {
                  foundLayer = layer;
              }
           }
-       });
-       return foundLayer;
+        }
+        return foundLayer;
     };
 
-
-
     this.addToResultsTable = function(layer) {
-        let $table = $("#metadata-viewer.gnss tbody");
+        let $table = $("#metadata-viewer.sliprate tbody");
         let gid = layer.scec_properties.gid;
-
-        if ($(`tr[data-point-gid='${gid}'`).length > 0) {
+        if ($(`tr[sliprate-data-point-gid='${gid}'`).length > 0) {
             return;
         }
-
         let html = generateTableRow(layer);
-
         $table.find("tr#placeholder-row").remove();
         $table.prepend(html);
     };
 
     this.removeFromResultsTable = function (gid) {
-        $(`#metadata-viewer tbody tr[data-point-gid='${gid}']`).remove();
+        $(`#metadata-viewer tbody tr[sliprate-data-point-gid='${gid}']`).remove();
     };
-
-    this.executePlotTS = function(downloadURL, fType) {
-      showTSview(downloadURL,Products.GNSS,fType);
-      showPlotTSWarning()
-
-    }
 
     this.downloadURLsAsZip = function(ftype) {
         var nzip=new JSZip();
-        var layers=CGM_GNSS.search_result.getLayers();
+        var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
         let timestamp=$.now();
       
         var cnt=layers.length;
@@ -575,26 +323,8 @@ window.console.log("HERE.. selectStationByLayer..");
             continue;
           }
       
-          if(ftype == frameType.IGB14 || ftype == "all") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.station_id,frameType.IGB14);
-            let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
-            let promise = $.get(downloadURL);
-            nzip.file(dname,promise);
-          }
-          if(ftype == frameType.NAM14 || ftype == "all") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.station_id,frameType.NAM14);
-            let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
-            let promise = $.get(downloadURL);
-            nzip.file(dname,promise);
-          }
-          if(ftype == frameType.NAM17 || ftype == "all") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.station_id,frameType.NAM14);
-            let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
-            let promise = $.get(downloadURL);
-            nzip.file(dname,promise);
-          }
-          if(ftype == frameType.PCF14 || ftype == "all") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.station_id,frameType.PCF14);
+          if(ftype == "all") {
+            let downloadURL = getDataDownloadURL(layer.scec_properties.sliprate_id);
             let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
             let promise = $.get(downloadURL);
             nzip.file(dname,promise);
@@ -602,7 +332,7 @@ window.console.log("HERE.. selectStationByLayer..");
         }
       
       
-        var zipfname="CGM_GNSS_"+timestamp+".zip"; 
+        var zipfname="CPD_SLIPRATE_"+timestamp+".zip"; 
         nzip.generateAsync({type:"blob"}).then(function (content) {
           // see FileSaver.js
           saveAs(content, zipfname);
@@ -613,29 +343,19 @@ var generateTableRow = function(layer) {
         let $table = $("#metadata-viewer");
         let html = "";
 
-        let coordinates = layer.getLatLng();
-        coordinates = {lat: parseFloat(coordinates.lat).toFixed(2), lng: parseFloat(coordinates.lng).toFixed(2) };
+        html += `<tr sliprate-data-point-gid="${layer.scec_properties.gid}">`;
 
-        let downloadURL1 = getDataDownloadURL(layer.scec_properties.station_id,frameType.IGB14);
-        let downloadURL2 = getDataDownloadURL(layer.scec_properties.station_id,frameType.NAM14);
-        let downloadURL3 = getDataDownloadURL(layer.scec_properties.station_id,frameType.NAM17);
-        let downloadURL4 = getDataDownloadURL(layer.scec_properties.station_id,frameType.PCF14);
-
-        html += `<tr data-point-gid="${layer.scec_properties.gid}">`;
-        html += `<td style="width:25px" class="cgm-data-click button-container"> <button class="btn btn-sm cxm-small-btn" id="" title="highlight the station" onclick=''>
-            <span class="cgm-data-row glyphicon glyphicon-unchecked"></span>
+        html += `<td style="width:25px" class="cpd-data-click button-container"> <button class="btn btn-sm cxm-small-btn" id="" title="highlight the sliprate site" onclick=''>
+            <span class="cpd-data-row glyphicon glyphicon-unchecked"></span>
         </button></td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.station_id}</td>`;
-        html += `<td class="cgm-data-click">${coordinates.lat}</td>`;
-        html += `<td class="cgm-data-click">${coordinates.lng}</td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.type} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.vel_east} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.vel_north} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.horizontalVelocity}</td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.azimuth}</td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.verticalVelocity}</td>`;
-        html += `<td class="text-center">`;
-        html += `<button class=\"btn btn-xs\" title=\"show time series\" onclick=CGM_GNSS.executePlotTS([\"${downloadURL1}\",\"${downloadURL2}\",\"${downloadURL3}\",\"${downloadURL4}\"],[\"igb14\",\"nam14\",\"nam17\",\"pcf14\"])>plotTS&nbsp<span class=\"far fa-chart-line\"></span></button>`;
+
+        html += `<td class="cgm-data-click">${layer.scec_properties.site_name}</td>`;
+        html += `<td class="cgm-data-click">${layer.scec_properties.fault_name}</td>`;
+        html += `<td class="cgm-data-click">${layer.scec_properties.x} </td>`;
+        html += `<td class="cgm-data-click">${layer.scec_properties.y} </td>`;
+        html += `<td class="cgm-data-click">${layer.scec_properties.low_rate} </td>`;
+        html += `<td class="cgm-data-click">${layer.scec_properties.high_rate}</td>`;
+
         html += `</tr>`;
 
         return html;
@@ -643,34 +363,40 @@ var generateTableRow = function(layer) {
 
     this.showSearch = function (type) {
         const $all_search_controls = $("#cgm-controls-container ul li");
+        $all_search_controls.hide();
         switch (type) {
-            case this.searchType.vectorSlider:
-                $all_search_controls.hide();
-                $("#cgm-vector-slider").show();
+            case this.searchType.faultName:
+                $("#cpd-fault-name").show();
                 break;
-            case this.searchType.stationName:
-                $all_search_controls.hide();
-                $("#cgm-station-name").show();
+            case this.searchType.siteName:
+                $("#cpd-site-name").show();
                 break;
             case this.searchType.latlon:
-                $all_search_controls.hide();
-                $("#cgm-latlon").show();
+                $("#cpd-latlon").show();
                 drawRectangle();
                 break;
+            case this.searchType.minrateSlider:
+                $("#cpd-minrate-slider").show();
+                break;
+            case this.searchType.maxrateSlider:
+                $("#cpd-maxrate-slider").show();
+                break;
             default:
-                $all_search_controls.hide();
+                // no action
         }
+        $all_search_controls.hide();
     };
 
     this.showProduct = function () {
 
 window.console.log("SHOW product");
-        let $cgm_model_checkbox = $("#cgm-model");
+        let $_model_checkbox = $("#cgm-model");
 
+XXX ???
         if (this.searching) {
-            this.search_result.addTo(viewermap);
+            this.cpd_active_layers.addTo(viewermap);
         } else {
-            this.cgm_layers.addTo(viewermap);
+            this.cpd_layers.addTo(viewermap);
         }
 
         if (!$cgm_model_checkbox.prop('checked')) {
@@ -979,65 +705,43 @@ window.console.log("DONE with BoxSearch..");
 
         // private function
        var generateResultsTable = function (results) {
-
 window.console.log("generateResultsTable..");
-
             var html = "";
             html+=`
 <thead>
 <tr>
-                         <th class="text-center button-container" style="width:2rem">
-                             <button id="cgm-allBtn" class="btn btn-sm cxm-small-btn" title="select all visible stations" onclick="CGM_GNSS.toggleSelectAll();">
-                             <span class="glyphicon glyphicon-unchecked"></span>
-                             </button>
-                         </th>
-                         <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Station&nbsp<span id='sortCol_1' class="fas fa-angle-down"></span><br>Name</th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'n')">Lat&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'n')">Lon&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
-                        <th style="width:6rem">Type</th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')">East Vel&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')">North Vel&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')">Horizontal&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span><br>Vel (mm/yr)</th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(8,'n')">Azimuth&nbsp<span id='sortCol_8' class="fas fa-angle-down"></span></th>
-                        <th class="hoverColor" onClick="sortMetadataTableByRow(9,'n')">Vertical Vel&nbsp<span id='sortCol_9' class="fas fa-angle-down"></span><br>(mm/yr)</th>
-
-<!-- 
-<button id="infoBtn" class="btn cgm-small-btn" data-toggle="modal" data-target="#modalazimuth"><span class="fas fa-info-circle"></span> 
--->
-
-                        <th style="width:20%;"><div class="col text-center">
+        <th class="text-center button-container" style="width:2rem">
+            <button id="cgm-allBtn" class="btn btn-sm cxm-small-btn" title="select all visible stations" onclick="CGM_GNSS.toggleSelectAll();">
+              <span class="glyphicon glyphicon-unchecked"></span>
+            </button>
+        </th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Site Name&nbsp<span id='sortCol_1' class="fas fa-angle-down"></span><br>Name</th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'n')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'n')">X&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')">Y&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
+        <th style="width:6rem">Type</th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')">Low Rate&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')">High Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+        <th style="width:20%;"><div class="col text-center">
 <!--download all -->
-                            <div class="btn-group download-now">
-                                <button id="download-all" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false" disabled>
-                                    DOWNLOAD&nbsp<span id="download-counter"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" type="button" value="igb14"
-                                            onclick="CGM_GNSS.downloadURLsAsZip(this.value);">igb14
-                                    </button>
-                                    <button class="dropdown-item" type="button" value="nam14"
-                                            onclick="CGM_GNSS.downloadURLsAsZip(this.value);">nam14
-                                    </button>
-                                    <button class="dropdown-item" type="button" value="nam17"
-                                            onclick="CGM_GNSS.downloadURLsAsZip(this.value);">nam17
-                                    </button>
-                                    <button class="dropdown-item" type="button" value="pcf14"
-                                            onclick="CGM_GNSS.downloadURLsAsZip(this.value);">pcf14
-                                    </button>
-                                    <button class="dropdown-item" type="button" value="all"
-                                          onclick="CGM_GNSS.downloadURLsAsZip(this.value);">All of the Above
-                                    </button>
-                                </div>
-                            </div>
-                        </th>
+                <div class="btn-group download-now">
+                    <button id="download-all" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" disabled>
+                            DOWNLOAD&nbsp<span id="download-counter"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                       <button class="dropdown-item" type="button" value="all"
+                               onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">All of the Above
+                       </button>
+                    </div>
+                </div>
+        </th>
 </tr>
 </thead>
 <tbody>`;
 
             for (let i = 0; i < results.length; i++) {
                 html += generateTableRow(results[i]);
-                // CGM_GNSS.selectStationByLayer(results[i]);
             }
             if (results.length == 0) {
                 html += tablePlaceholderRow;
