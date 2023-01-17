@@ -9,14 +9,55 @@ class SLIPRATE extends SpatialData
     if (!$this->connection) { die('Could not connect'); }
   }
 
-  public function search($type, $criteria)
+// 
+  public function search($type, $criteria="")
   {
-    // TODO: Implement search() method.
+    if (!is_array($criteria)) {
+      $criteria = array($criteria);
+    }
+    $query = "";
+    $error = false;
+
+    switch ($type) {
+      case "location":
+        return $this;
+        break;
+      case "latlon":
+        if (count($criteria) !== 4) {
+          $error = true;
+        }
+
+        $criteria = array_map("floatVal", $criteria);
+        list($firstlat, $firstlon, $secondlat, $secondlon) = $criteria;
+
+        $minlon = $firstlon;
+        $maxlon = $secondlon;
+        if($firstlon > $secondlon) {
+          $minlon = $secondlon;
+          $maxlon = $firstlon;
+        }
+
+        $minlat = $firstlat;
+        $maxlat = $secondlat;
+        if($firstlat > $secondlat) {
+          $minlat = $secondlat;
+          $maxlat = $firstlat;
+        }
+        return $this;
+        break;
+
+      }
+      $this->php_result = "BAD";
+      return $this;
+  }
+
+  public function getStationCount()
+  {
   }
 
   public function getAllStationData()
   {
-    $query = "SELECT sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_db LIMIT 10";
+    $query = "SELECT sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_db";
 
     $result = pg_query($this->connection, $query);
 
