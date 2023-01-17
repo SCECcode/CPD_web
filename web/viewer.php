@@ -101,7 +101,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
         $(document).on("tableLoadCompleted", function () {
             tableLoadCompleted = true;
 
-            var $download_queue_table = $('#metadata-viewer');
+            var $download_queue_table = $('#metadata-sliprate-viewer');
             $download_queue_table.floatThead({
                 scrollContainer: function ($table) {
                     return $table.closest('div#metadata-viewer-container');
@@ -352,86 +352,18 @@ $cpd_sliprate = new CPD_SLIPRATE();
     </div>
 
     <div id="top-select" class="row mb-2">
-      <div class="col-12">
-        <div id="metadata-viewer-container" style="border:solid 1px #ced4da;overflow-x:hidden">
+      <div class="col-12" style="padding-right:0px">
+         <div id="metadata-viewer-container" style="border:solid 1px #ced4da;overflow-x:hidden">
             <table id="metadata-viewer">
               <thead>
-              <tr>
-                <th>&nbsp;</th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Fault<span id='sortCol_1' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Area<span id='sortCol_2' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Zone<span id='sortCol_3' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(4,'a')">Section<span id='sortCol_4' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(5,'a')">Last<br>Update<span id='sortCol_5' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')">Avg<br>Strike<span id='sortCol_6' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')">Avg<br>Dip<span id='sortCol_7' class="fas fa-angle-down"></span></th>
-                <th class="hoverColor" onClick="sortMetadataTableByRow(8,'n')">Area<br>(km<sup>2</sup>)<span id='sortCol_8' class="fas fa-angle-down"></span></th>
-                <th><div class="row" style="display:flex; justify-content:center;">
-          <div class="btn-group download-now">
-              <button id="plot3d-all" type="button" 
-                      title="Plots the selected faults in an interactive 3D environment" 
-                      class="btn btn-dark dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false" disabled>
-                                    Plot3d<span id="plot-counter"></span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                  <button class="dropdown-item" type="button" value="native"
-                      onclick="executePlot3d(this.value);">Native
-                  </button>
-                  <button class="dropdown-item" type="button" value="500m"
-                      onclick="executePlot3d(this.value);">500m
-                  </button>
-                  <button class="dropdown-item" type="button" value="1000m"
-                      onclick="executePlot3d(this.value);">1000m
-                  </button>
-                  <button class="dropdown-item" type="button" value="2000m"
-                      onclick="executePlot3d(this.value);">2000m
-                  </button>
-               </div>
-             </div>
-             &nbsp
-             <div class="btn-group download-now">
-                <button id="download-all" type="button" 
-                        title="Download options for the selected fault objects" 
-                        class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" disabled>
-                                    Download<span id="download-counter"></span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <button class="dropdown-item" type="button" value="meta"
-                            onclick="executeDownload(this.value);">Metadata
-                    </button>
-                    <button class="dropdown-item" type="button" value="native"
-                            onclick="executeDownload(this.value);">Native + Metadata
-                    </button>
-                    <button class="dropdown-item" type="button" value="500m"
-                            onclick="executeDownload(this.value);">500m + Metadata
-                    </button>
-                    <button class="dropdown-item" type="button" value="1000m"
-                            onclick="executeDownload(this.value);">1000m + Metadata
-                    </button>
-                    <button class="dropdown-item" type="button" value="2000m"
-                            onclick="executeDownload(this.value);">2000m + Metadata
-                    </button>
-                    <button class="dropdown-item" type="button" value="all"
-                            onclick="executeDownload(this.value);">All of the Above
-                    </button>
-                </div>
-              </div>
-              &nbsp
-            </div> 
-         </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr id="placeholder-row">
-               <td colspan="10">Metadata for selected faults will appear here. </td>
-            </tr>
-          </tbody>
-        </table>
+              </thead>    
+              <tbody>
+                <tr id="placeholder-row">
+                  <td colspan="6">Metadata for selected sliprate site will appear here. </td>
+                </tr>
+            </table>
+         </div>
       </div>
-     </div>
     </div> <!-- top-select -->
 </div> <!-- main -->
 
@@ -459,11 +391,9 @@ $cpd_sliprate = new CPD_SLIPRATE();
 </div>
 </body>
 </html>
-
 <!--XXX -->
     <script type="text/javascript">
-            cpd_gnss_station_data = <?php print $cpd_gnss->getAllStationData()->outputJSON(); ?>;
-            cpd_insar_track_data = <?php print $cpd_insar->getAllTrackData()->outputJSON(); ?>;
+            cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>
 </html>

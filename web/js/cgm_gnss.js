@@ -1,4 +1,4 @@
-/***
+***
    cgm_gnss.js
 ***/
 
@@ -538,7 +538,9 @@ window.console.log("HERE.. selectStationByLayer..");
 
 
     this.addToResultsTable = function(layer) {
+
         let $table = $("#metadata-viewer.gnss tbody");
+
         let gid = layer.scec_properties.gid;
 
         if ($(`tr[data-point-gid='${gid}'`).length > 0) {
