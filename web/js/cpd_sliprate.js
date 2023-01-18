@@ -65,7 +65,7 @@ var CPD_SLIPRATE = new function () {
     };
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
-                        <td colspan="5">Metadata for selected points will appear here.</td>
+                        <td colspan="5">Metadata for selected sliprate sites will appear here.</td>
                     </tr>`;
 
     this.activateData = function() {
@@ -83,8 +83,7 @@ var CPD_SLIPRATE = new function () {
          return;
        }
  
-       let tmp=this.cpd_selected_gid.length;
-       window.console.log("=====adding to list "+gid+" ("+tmp+")");
+       window.console.log("=====adding to list "+gid);
        this.cpd_selected_gid.push(gid);
        updateDownloadCounter(this.cpd_selected_gid.length);
     };
@@ -98,8 +97,7 @@ var CPD_SLIPRATE = new function () {
          window.console.log("this is bad.. not in selected list "+gid);
          return;
        }
-       let tmp=this.cpd_selected_gid.length;
-       window.console.log("=====remove from list "+gid+"("+tmp+")");
+       window.console.log("=====remove from list "+gid);
        this.cpd_selected_gid.splice(i,1);
        updateDownloadCounter(this.cpd_selected_gid.length);
     };
@@ -206,6 +204,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         layer.setStyle(site_marker_style.selected);
         let gid = layer.scec_properties.gid;
 
+// ResultsTable is the metadata-viewer
         let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         let rowHTML = "";
         if ($row.length == 0) {

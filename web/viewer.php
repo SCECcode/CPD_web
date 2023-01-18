@@ -101,7 +101,15 @@ $cpd_sliprate = new CPD_SLIPRATE();
         $(document).on("tableLoadCompleted", function () {
             tableLoadCompleted = true;
 
-            var $download_queue_table = $('#metadata-sliprate-viewer');
+            var $table = $('div.cpd-table table');
+            $table.floatThead({
+                autoReflow: true,
+                scrollContainer: function ($table) {
+                    return $table.closest('div.cpd-table');
+                }
+            });
+
+            var $download_queue_table = $('#metadata-viewer');
             $download_queue_table.floatThead({
                 scrollContainer: function ($table) {
                     return $table.closest('div#metadata-viewer-container');
