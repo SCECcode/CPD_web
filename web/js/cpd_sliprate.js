@@ -391,7 +391,6 @@ var generateTableRow = function(layer) {
 window.console.log("SHOW product");
         let $_model_checkbox = $("#cgm-model");
 
-XXX ???
         if (this.searching) {
             this.cpd_active_layers.addTo(viewermap);
         } else {

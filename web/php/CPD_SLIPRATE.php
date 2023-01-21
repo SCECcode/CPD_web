@@ -9,9 +9,56 @@ class SLIPRATE extends SpatialData
     if (!$this->connection) { die('Could not connect'); }
   }
 
-  public function search($type, $criteria)
+//$query = "SELECT gid, EventTime, EventID, Lon, Lat, Depth, Mag 
+// FROM EQ_hauksson_tb WHERE ST_INTERSECTS(ST_MakeEnvelope( $1, $2, $3, $4, 4326),
+// EQ_tb.geom)";
+//$data = array($swlon, $swlat, $nelon, $nelat);
+//$result = pg_query_params($dbconn, $query, $data);
+
+
+  public function search($type, $criteria="")
   {
-    // TODO: Implement search() method.
+    if (!is_array($criteria)) {
+      $criteria = array($criteria);
+    }
+    $query = "";
+    $error = false;
+
+    switch ($type) {
+      case "location":
+        return $this;
+        break;
+      case "latlon":
+        if (count($criteria) !== 4) {
+          $error = true;
+        }
+
+        $criteria = array_map("floatVal", $criteria);
+        list($firstlat, $firstlon, $secondlat, $secondlon) = $criteria;
+
+        $minlon = $firstlon;
+        $maxlon = $secondlon;
+        if($firstlon > $secondlon) {
+          $minlon = $secondlon;
+          $maxlon = $firstlon;
+        }
+
+        $minlat = $firstlat;
+        $maxlat = $secondlat;
+        if($firstlat > $secondlat) {
+          $minlat = $secondlat;
+          $maxlat = $firstlat;
+        }
+        return $this;
+        break;
+
+      }
+      $this->php_result = "BAD";
+      return $this;
+  }
+
+  public function getStationCount()
+  {
   }
 
   public function getAllStationData()
