@@ -10,6 +10,7 @@ psql postgresql://postgres:example@localhost/CPD_sliprate_db << AAA
 
   \i '/home/postgres/CPD/schema/sql/sliprate1/setup_schema.sql';
   \i '/home/postgres/CPD/schema/sql/sliprate1/setup_sliprate_tb.sql';
+  \i '/home/postgres/CPD/schema/sql/sliprate1/linkup_traces.sql';
 
   DROP ROLE webonly;
   CREATE ROLE webonly WITH LOGIN PASSWORD 'scec';
