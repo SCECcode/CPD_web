@@ -9,28 +9,27 @@ class SLIPRATE extends SpatialData
     if (!$this->connection) { die('Could not connect'); }
   }
 
-//$query = "SELECT gid, EventTime, EventID, Lon, Lat, Depth, Mag 
-// FROM EQ_hauksson_tb WHERE ST_INTERSECTS(ST_MakeEnvelope( $1, $2, $3, $4, 4326),
-// EQ_tb.geom)";
-//$data = array($swlon, $swlat, $nelon, $nelat);
-//$result = pg_query_params($dbconn, $query, $data);
-
-
   public function search($type, $criteria="")
   {
-    if (!is_array($criteria)) {
-      $criteria = array($criteria);
-    }
     $query = "";
-    $error = false;
 
     switch ($type) {
-      case "location":
-        return $this;
+      case "faultname":
+        break;
+      case "sitename":
+        break;
+      case "minrateslider":
+        break;
+      case "maxrateslider":
         break;
       case "latlon":
+        if (!is_array($criteria)) {
+         $criteria = array($criteria);
+        }
+
         if (count($criteria) !== 4) {
-          $error = true;
+          $this->php_result = "BAD";
+          return $this;
         }
 
         $criteria = array_map("floatVal", $criteria);
@@ -49,6 +48,18 @@ class SLIPRATE extends SpatialData
           $minlat = $secondlat;
           $maxlat = $firstlat;
         }
+
+        $query = "SELECT gid FROM sliprate_db WHERE ST_INTERSECTS(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_db.geom)";
+        $data = array($minlon, $minlat, $maxlon, $maxlat);
+        $result = pg_query_params($dbconn, $query, $data);
+
+        $sliprate_data = array();
+
+        while($row = pg_fetch_object($result)) {
+          $sliprate_data[] = $row;
+        }
+
+        $this->php_result = $sliprate_data;
         return $this;
         break;
 

@@ -242,11 +242,6 @@ window.console.log("HERE.. selectSiteByLayer..");
         this.downSelectCount(gid);
     };
 
-//???
-    this.showSitesByLayers = function(layers) {
-        viewermap.addLayer(layers);
-    };
-
 // selectAll button - toggle
     this.toggleSelectAll = function() {
         var sliprate_object = this;
@@ -388,17 +383,17 @@ var generateTableRow = function(layer) {
 
     this.showProduct = function () {
 
-window.console.log("SHOW product");
-        let $_model_checkbox = $("#cgm-model");
+        let $cpd_site_sliprate = $("#cpd-site-sliprate");
 
+        if (!$cpd_site_sliprate.prop('checked')) {
+            $cpd_site_sliprate.prop('checked', true);
+        }
+
+window.console.log("SHOW product");
         if (this.searching) {
             this.cpd_active_layers.addTo(viewermap);
         } else {
             this.cpd_layers.addTo(viewermap);
-        }
-
-        if (!$cgm_model_checkbox.prop('checked')) {
-            $cgm_model_checkbox.prop('checked', true);
         }
 
         if (currentLayerName != 'shaded relief') {
@@ -410,50 +405,52 @@ window.console.log("SHOW product");
 
     
     this.hideProduct = function () {
-        let $cgm_model_checkbox = $("#cgm-model");
-        if ($cgm_model_checkbox.prop('checked')) {
-            $cgm_model_checkbox.prop('checked', false);
-        }
-window.console.log("Hide product, GNSS");
-        if (CGM_GNSS.searching) {
-            CGM_GNSS.search_result.remove();
-        } else {
-            this.cgm_layers.remove();
+        let $cpd_site_sliprate = $("#cpd-site-sliprate");
+        if ($cpd_site_sliprate.prop('checked')) {
+            $cpd_site_sliprate.prop('checked', false);
         }
 
+        if (CPD_SLIPRATE.searching) {
+            this.cpd_active_layers.remove();
+        } else {
+            this.cpd_layers.remove();
+        }
     };
 
 // reset everything
     this.reset = function() {
-window.console.log("gnss calling --->> reset");
+window.console.log("sliprate calling --->> reset");
         $("#wait-spinner").hide();
         this.zeroSelectCount();
         this.showSearch('none');
         this.searching = false;
-        this.search_result.removeLayer();
-        this.search_result = new L.FeatureGroup();
+        this.cpd_active_layers.removeLayer();
+        this.cpd_active_layers = new L.FeatureGroup();
+        this.cpd_active_gid=[];
 
-        this.hideVectors();
         this.showProduct();
 
         remove_bounding_rectangle_layer();
         this.replaceResultsTableBody([]);
         skipRectangle();
         viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
-        $("#cgm-controls-container input, #cgm-controls-container select").val("");
+        $("#cpd-controls-container input, #cpd-controls-container select").val("");
 
-        this.resetVectorSlider();
+        this.resetMinRateSlider();
+        this.resetMaxRateSlider();
         this.clearAllSelections();
     };
 
 // reset just the search only
     this.resetSearch = function (){
-window.console.log("gnss calling --->> resetSearch.");
+window.console.log("sliprate calling --->> resetSearch.");
         $("#wait-spinner").hide();
-        viewermap.removeLayer(this.search_result);
+        viewermap.removeLayer(this.cpd_active_layers);
         this.searching = false;
-        this.search_result.removeLayer();
-        this.search_result = new L.FeatureGroup();
+
+        this.cpd_active_layers.removeLayer();
+        this.cpd_active_layers = new L.FeatureGroup();
+        this.cpd_active_gid=[];
 
         this.replaceResultsTableBody([]);
         skipRectangle();
@@ -466,32 +463,27 @@ window.console.log("gnss calling --->> resetSearch.");
 // a complete fresh search
     this.freshSearch = function (){
 
-window.console.log(">>> calling freshSearch..");
-        $("#cgm-controls-container input").val("");
-        this.resetVectorSlider();
+window.console.log("sliprate --- calling freshSearch..");
+        $("#cpd-controls-container input").val("");
+        this.resetMinRateSlider();
+        this.resetMaxRateSlider();
         this.resetSearch();
 
-        if ($("#cgm-model-vectors").prop('checked')) {
-          this.showVectors();
-          } else {
-            this.hideVectors();
-        }
-
-        // show GNSS product
-        if ($("#cgm-model").prop('checked')) {
+        // show sliprate product
+        if ($("#cpd-site-sliprate").prop('checked')) {
           this.showProduct();
           } else {
           this.hideProduct();
         }
 
-        // show InSAR product
-        if ($("#cgm-model-insar").prop('checked')) {
-          CGM_INSAR.showProduct();
+        // show chrono product
+        if ($("#cpd-site-chronology").prop('checked')) {
+          CPD_CHRONOLOGY.showProduct();
           } else {
-          CGM_INSAR.hideProduct();
+          CPD_CHRONOLOGY.hideProduct();
         }
 
-        if ($("#cgm-model-cfm").prop('checked')) {
+        if ($("#cpd-model-cfm").prop('checked')) {
           CXM.showCFMFaults(viewermap);
           } else {
           CXM.hideCFMFaults(viewermap);
@@ -499,6 +491,7 @@ window.console.log(">>> calling freshSearch..");
     };
 
 
+XXX
     this.getMarkerByStationId = function (station_id) {
         for (const index in cgm_gnss_station_data) {
             if (cgm_gnss_station_data[index].station_id == station_id) {
