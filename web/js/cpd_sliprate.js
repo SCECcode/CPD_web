@@ -58,7 +58,7 @@ var CPD_SLIPRATE = new function () {
 
     this.searchType = {
         faultName: 'faultname',
-        sitenNme: 'sitename',
+        siteName: 'sitename',
         latlon: 'latlon',
         minrateSlider: 'minrateslider',
         maxrateSlider: 'maxrateslider'
@@ -343,12 +343,12 @@ var generateTableRow = function(layer) {
             <span class="cpd-data-row glyphicon glyphicon-unchecked"></span>
         </button></td>`;
 
-        html += `<td class="cgm-data-click">${layer.scec_properties.site_name}</td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.fault_name}</td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.x} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.y} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.low_rate} </td>`;
-        html += `<td class="cgm-data-click">${layer.scec_properties.high_rate}</td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.site_name}</td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.fault_name}</td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.x} </td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.y} </td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.low_rate} </td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.high_rate}</td>`;
 
         html += `</tr>`;
 
@@ -356,7 +356,7 @@ var generateTableRow = function(layer) {
     };
 
     this.showSearch = function (type) {
-        const $all_search_controls = $("#cgm-controls-container ul li");
+        const $all_search_controls = $("#cpd-controls-container ul li");
         $all_search_controls.hide();
         switch (type) {
             case this.searchType.faultName:
@@ -491,211 +491,150 @@ window.console.log("sliprate --- calling freshSearch..");
     };
 
 
-XXX
-    this.getMarkerByStationId = function (station_id) {
-        for (const index in cgm_gnss_station_data) {
-            if (cgm_gnss_station_data[index].station_id == station_id) {
-                return cgm_gnss_station_data[index];
+    this.getMarkerBySiteId = function (site_id) {
+        for (const index in cpd_sliprate_site_data) {
+            if (cpd_sliprate_site_data[index].sliprate_id == site_id) {
+                return cpd_sliprate_site_data[index];
             }
         }
 
         return [];
     };
 
+    this.calculateDistanceMeter = function (start_latlng, end_latlng) {
+        let start_lat = start_latlng.lat;
+        let start_lng = start_latlng.lng;
+        let end_lat = end_latlng.lat;
+        let end_lng = end_latlng.lng;
 
-    this.showVectors = function () {
-        if (this.searching) {
-            this.search_result.eachLayer(function (layer) {
-                viewermap.addLayer(layer.scec_properties.vector);
-            });
-        } else {
-            this.cgm_layers.eachLayer(function (layer) {
-                viewermap.addLayer(layer.scec_properties.vector);
-            });
-        }
-        this.cgm_vector_scale.eachLayer(function (layer) {
-            viewermap.addLayer(layer);
-        });
-    };
+        // from http://www.movable-type.co.uk/scripts/latlong.html
+        const R = 6371e3; // metres
+        const theta1 = start_lat * Math.PI/180; // φ, λ in radians
+        const theta2 = end_lat * Math.PI/180;   
+        const deltaTheta = (end_lat-start_lat) * Math.PI/180;
+        const deltaLamda = (end_lng-start_lng) * Math.PI/180;
 
-
-    this.updateVectors = function() {
-        this.cgm_vectors.eachLayer(function(layer) {
-            viewermap.removeLayer(layer);
-        });
-
-        this.showVectors();
-    };
-
-    this.hideVectors = function() {
-
-        if (this.searching) {
-            this.search_result.eachLayer(function(layer){
-                viewermap.removeLayer(layer.scec_properties.vector);
-            });
-        } else {
-            this.cgm_vectors.eachLayer(function(layer) {
-                viewermap.removeLayer(layer);
-            });
-        }
-
-        this.cgm_vector_scale.eachLayer(function (layer) {
-            viewermap.removeLayer(layer);
-        });
-
-        if ($("#cgm-model-vectors").prop('checked')) {
-            $("#cgm-model-vectors").prop('checked', false);
-        }
-    };
-
-        var calculateEndVectorLatLng = function (start_latlng, vel_north, vel_east, scaling_factor) {
-            // see https://stackoverflow.com/questions/7477003/calculating-new-longitude-latitude-from-old-n-meters
-            let dy = vel_north * scaling_factor;
-            let dx = vel_east * scaling_factor;
-            let r_earth = 6371e3; // metres
-            let pi = Math.PI;
-
-            let start_lat = start_latlng.lat;
-            let start_lng = start_latlng.lng;
-            let end_lat = start_lat + (dy / r_earth) * (180 / pi);
-            let end_lng = start_lng + (dx / r_earth) * (180 / pi) / Math.cos(start_lat * pi / 180);
-
-//calculateDistanceMeter({'lat':50.03, 'lng':-5.5 }, {'lat':58.5, 'lng':-3.04} );
-//let d= calculateDistanceMeter({'lat':start_lat,'lng':start_lng}, {'lat':end_lat, 'lng':end_lng} );
-
-            return [end_lat, end_lng];
-        };
-
-        var calculateDistanceMeter = function (start_latlng, end_latlng) {
-             let start_lat = start_latlng.lat;
-             let start_lng = start_latlng.lng;
-             let end_lat = end_latlng.lat;
-             let end_lng = end_latlng.lng;
-
-             // from http://www.movable-type.co.uk/scripts/latlong.html
-             const R = 6371e3; // metres
-             const theta1 = start_lat * Math.PI/180; // φ, λ in radians
-             const theta2 = end_lat * Math.PI/180;   
-             const deltaTheta = (end_lat-start_lat) * Math.PI/180;
-             const deltaLamda = (end_lng-start_lng) * Math.PI/180;
-
-             const a = Math.sin(deltaTheta/2) * Math.sin(deltaTheta/2) +
+        const a = Math.sin(deltaTheta/2) * Math.sin(deltaTheta/2) +
                        Math.cos(theta1) * Math.cos(theta2) *
                        Math.sin(deltaLamda/2) * Math.sin(deltaLamda/2);
-             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-             var d = R * c; // in metres
-             return d;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // in metres
+        return d;
+    }
+
+    this.search = function (type, criteria) {
+window.console.log("sliprate --->> calling search.. <<----");
+        let results = [];
+        switch (type) {
+            case CPD_SLIPRATE.searchType.maxrateSlider:
+                {
+                }
+                break;
+            case CPD_SLIPRATE.searchType.minrateSlider:
+                {
+                }
+                break;
+            case CPD_SLIPRATE.searchType.faultName:
+                {
+                }
+                break;
+            case CPD_SLIPRATE.searchType.siteName:
+                {
+                }
+                break;
+            case CGM_GNSS.searchType.latlon:
+                {
+                $("#cpd-firstLatTxt").val(criteria[0]);
+                $("#cpd-firstLonTxt").val(criteria[1]);
+                $("#cpd-secondLatTxt").val(criteria[2]);
+                $("#cpd-secondLonTxt").val(criteria[3]);
+                remove_bounding_rectangle_layer();
+                add_bounding_rectangle(criteria[0],criteria[1],criteria[2],criteria[3]);
+
+                var let new_active_layers = new L.FeatureGroup();
+                var new_active_gid=[];
+                var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
+                let cnt=this.cpd_active_gid.length();
+
+                let glist=XXX();
+
+                for(let i=0; i<cnt; i++) {
+                    let g=this.cpd_active_gid[i];
+                    if(g in glist) {
+                        let layer=layers[i];
+                        results.push(layer); 
+                    }
+                }
+                }
+                return results;
+                break;
         }
+    };
 
-        this.search = function (type, criteria) {
-window.console.log("gnss --->> calling search.. <<----");
-            let results = [];
-            switch (type) {
-                case CGM_GNSS.searchType.vectorSlider:
-                    $("#cgm-minVectorSliderTxt").val(criteria[0]);
-                    $("#cgm-maxVectorSliderTxt").val(criteria[1]);
-                    this.cgm_layers.eachLayer(function (layer) {
-                        if (layer.scec_properties.vector_dist > criteria[0]
-                             && layer.scec_properties.vector_dist < criteria[1]){
-                            results.push(layer);
-                        }
-                    });
+XXX
+    this.searchBox = function (type, criteria) {
+window.console.log("sliprate --->> calling searchBox");
+        this.hideProduct();
+        this.resetSearch();
 
-                    break;
-                case CGM_GNSS.searchType.stationName:
-                    this.cgm_layers.eachLayer(function (layer) {
-                        // if (layer.scec_properties.station_id.toLowerCase() == criteria.toLowerCase()) {
-                        if (layer.scec_properties.station_id.toLowerCase().indexOf(criteria.toLowerCase()) > -1){
-                            results.push(layer);
-                        }
-                    });
-                    break;
+        this.searching = true;
+        let results = this.search(type, criteria);
 
-                case CGM_GNSS.searchType.latlon:
-                    $("#cgm-firstLatTxt").val(criteria[0]);
-                    $("#cgm-firstLonTxt").val(criteria[1]);
-                    $("#cgm-secondLatTxt").val(criteria[2]);
-                    $("#cgm-secondLonTxt").val(criteria[3]);
-                    remove_bounding_rectangle_layer();
-                    add_bounding_rectangle(criteria[0],criteria[1],criteria[2],criteria[3]);
-                    this.cgm_layers.eachLayer(function(layer){
-                            let bounds = L.latLngBounds([criteria[0], criteria[1]], [criteria[2], criteria[3]]);
-                            if (bounds.contains(layer.getLatLng())) {
-                               results.push(layer);
-                            }
-                    });
-                    break;
+        if (results.length === 0) {
+            viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
+        } else {
+            let markerLocations = [];
+
+            for (let i = 0; i < results.length; i++) {
+                markerLocations.push(results[i].getLatLng());
+                this.search_result.addLayer(results[i]);
             }
 
-            results = results.sort(function(a,b){
-                a = a.scec_properties.station_id;
-                b = b.scec_properties.station_id;
-                return a.toLowerCase().localeCompare(b.toLowerCase());
-            });
-            return results;
-        };
+???
+            this.showSitesByLayers(this.search_result);
 
-        this.searchBox = function (type, criteria) {
-window.console.log("gnss --->> calling searchBox");
-            this.hideProduct();
-            this.resetSearch();
+            if( !modelVisible()) {
+                this.showProduct();
+            }
 
-            this.searching = true;
-            let results = this.search(type, criteria);
-
-            if (results.length === 0) {
-                viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
-            } else {
-                let markerLocations = [];
-
-                for (let i = 0; i < results.length; i++) {
-                    markerLocations.push(results[i].getLatLng());
-                    this.search_result.addLayer(results[i]);
-                }
-                this.showStationsByLayers(this.search_result);
-
-                // changed visible stations, so update vectors
-                if (vectorVisible()) {
-                    this.updateVectors();
-                }
-
-                if( !modelVisible()) {
-                    this.showProduct();
-                }
-
-                if (type == this.searchType.latlon) {
+            switch (type) {
+                case this.searchType.latlon:
+                    {
                     this.unselectAll();
                     markerLocations.push(L.latLng(criteria[0],criteria[1]));
                     markerLocations.push(L.latLng(criteria[2],criteria[3]));
+???
                     let bounds = L.latLngBounds(markerLocations);
                     viewermap.fitBounds(bounds, {maxZoom: 12});
                     setTimeout(skipRectangle, 500);
-
-                } else if (type == this.searchType.stationName) {
+                    } 
+                    break;
+                case this.searchType.siteName:
+                case this.searchType.faultName:
+                case this.searchType.minrateSlider:
+                case this.searchType.maxrateSlider:
+                    {
                     let bounds = L.latLngBounds(markerLocations);
                     viewermap.flyToBounds(bounds, {maxZoom: 12 });
-                } else { // vector slider.. similar to stationName
-                    let bounds = L.latLngBounds(markerLocations);
-                    viewermap.flyToBounds(bounds, {maxZoom: 12 });
-                }
-            }
+                    }
+                    break;
+            };
+        }
 
-            this.replaceResultsTableBody(results);
+    this.replaceResultsTableBody(results);
 window.console.log("DONE with BoxSearch..");
 
-            $("#wait-spinner").hide();
-        };
+        $("#wait-spinner").hide();
+    };
 
-        var vectorVisible = function (){
-            return $("#cgm-model-vectors").prop('checked');
-        };
+    // private function
+    var modelVisible = function (){
+???
+        return $("#cpd-sliprate-model").prop('checked');
+    };
 
-        var modelVisible = function (){
-            return $("#cgm-model").prop('checked');
-        };
-
-        // private function
-       var generateResultsTable = function (results) {
+    // private function
+    var generateResultsTable = function (results) {
 window.console.log("generateResultsTable..");
             var html = "";
             html+=`
@@ -815,13 +754,13 @@ http://geoweb.mit.edu/~floyd/scec/cgm/ts/TWMS.cgm.wmrss_igb14.pos
         this.setupCGMInterface = function() {
             var $download_queue_table = $('#metadata-viewer');
             var sz=0;
-            if(cgm_gnss_station_data != null) {
-                sz=cgm_gnss_station_data.length;
+            if(cpd_sliprate_site_data != null) {
+                sz=cpd_sliprate_site_data.length;
             }
 window.console.log("setupCGMInterface: retrieved stations "+sz);
 
             for (let i = 0; i < sz; i++) {
-                let item=cgm_gnss_station_data[i];
+                let item=cpd_sliprate_site_data[i];
                 if(item['station_type'] == "continuous") {
                     cont_site.push(item['station_id']);
                 }
@@ -854,7 +793,7 @@ window.console.log("setupCGMInterface: retrieved stations "+sz);
                  },
             });
 
-/* setup vector slider*/
+/* setup  slider*/
             $("#slider-vector-range").slider({ 
                       range:true, step:0.01, min:CGM_GNSS.cgm_vector_min, max:CGM_GNSS.cgm_vector_max, values:[CGM_GNSS.cgm_vector_min, CGM_GNSS.cgm_vector_max],
                   slide: function( event, ui ) {
@@ -879,15 +818,9 @@ window.console.log("setupCGMInterface: retrieved stations "+sz);
             $('#slider-vector-range').slider("option", "min", CGM_GNSS.cgm_vector_min);
             $('#slider-vector-range').slider("option", "max", CGM_GNSS.cgm_vector_max);
 
-            viewermap.on("zoomend dragend panend",function() {
-                 CGM_GNSS.generateVectorScale();
-            });
-
-
             $("#wait-spinner").hide();
         };
 
-        this.downloadHorizontalVelocities = function(gid_list) { // TODO };
     };
 
 }

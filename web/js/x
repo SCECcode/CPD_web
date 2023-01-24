@@ -1,0 +1,24 @@
+/* setup  slider*/
+        $("#slider-minrate-range").slider({ 
+                  range:true, step:0.01, min:CPD_SLIPRATE.cgm_minrate_min, max:CPD_SLIPRATE.cgm_minrate_max, values:[CPD_SLIPRATE.cgm_minrate_min, CPD_SLIPRATE.cgm_minrate_max],
+              slide: function( event, ui ) {
+                           $("#cpd-sliprate-minMinrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-sliprate-maxMinrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              change: function( event, ui ) {
+                           $("#cpd-sliprate-minMinrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-sliprate-maxMinrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              stop: function( event, ui ) {
+                           let searchType = CPD_SLIPRATE.searchType.minrateSlider;
+                           CPD_SLIPRATE.searchBox(searchType, ui.values);
+                     },
+              create: function() {
+                          $("#cpd-sliprate-minMinrateSliderTxt").val(CPD_SLIPRATE.cgm_minrate_min);
+                          $("#cpd-sliprate-maxMinrateSliderTxt").val(CPD_SLIPRATE.cgm_minrate_max);
+                    }
+        });
+        $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cgm_minrate_min);
+        $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cgm_minrate_max);
