@@ -542,7 +542,7 @@ window.console.log("sliprate --->> calling search.. <<----");
                 {
                 }
                 break;
-            case CGM_GNSS.searchType.latlon:
+            case CPD_SLIPRATE.searchType.latlon:
                 {
                 $("#cpd-firstLatTxt").val(criteria[0]);
                 $("#cpd-firstLonTxt").val(criteria[1]);
@@ -641,7 +641,7 @@ window.console.log("generateResultsTable..");
 <thead>
 <tr>
         <th class="text-center button-container" style="width:2rem">
-            <button id="cgm-allBtn" class="btn btn-sm cxm-small-btn" title="select all visible stations" onclick="CGM_GNSS.toggleSelectAll();">
+            <button id="cpd-allBtn" class="btn btn-sm cxm-small-btn" title="select all visible stations" onclick="CPD_SLIPRATE.toggleSelectAll();">
               <span class="glyphicon glyphicon-unchecked"></span>
             </button>
         </th>
@@ -685,7 +685,6 @@ window.console.log("changeResultsTableBody..");
             var html = "";
             for (let i = 0; i < results.length; i++) {
                 html += generateTableRow(results[i]);
-                // CGM_GNSS.selectStationByLayer(results[i]);
             }
             if (results.length == 0) {
                 html += tablePlaceholderRow;
@@ -704,20 +703,8 @@ window.console.log("changeResultsTableBody..");
             $("#metadata-viewer").html(generateResultsTable(results));
         };
 
-/******
-http://geoweb.mit.edu/~floyd/scec/cgm/ts/<cont_site>.cgm.wmrss_<frame>.pos
-http://geoweb.mit.edu/~floyd/scec/cgm/ts/<surv_site>.cgm.final_<frame>.pos
- 
-where <cont_site> is a four-character continuous site ID 
-from the attached cont_site.txt file, 
-
-<surv_site> is a four-character survey site ID from the
-     attached surv_site.txt file,
-<frame> is "igb14", "nam14", "nam17" or "pcf14".
-
-http://geoweb.mit.edu/~floyd/scec/cgm/ts/TWMS.cgm.wmrss_igb14.pos
-******/
         var getDataDownloadURL = function(station_id, frame)  {
+XXX ???
         if(cont_site.includes(station_id)) {
           let urlPrefix = "http://geoweb.mit.edu/~floyd/scec/cgm/ts/";
           let url=urlPrefix + station_id + ".cgm.wmrss_"+frame+".pos";
@@ -731,92 +718,113 @@ http://geoweb.mit.edu/~floyd/scec/cgm/ts/TWMS.cgm.wmrss_igb14.pos
                 return null;
         } 
 
-/*
-          let urlPrefix = "https://files.scec.org/s3fs-public/projects/cgm/1.0/time-series/pos/";
-          return urlPrefix + station_id + ".cgm.edits_nam08.pos";
-*/
         };
 
-        var resetVectorRangeColor = function (target_min, target_max){
-          let minRGB= makeRGB(target_min, CGM_GNSS.cgm_vector_max, CGM_GNSS.cgm_vector_min );
-          let maxRGB= makeRGB(target_max, CGM_GNSS.cgm_vector_max, CGM_GNSS.cgm_vector_min );
+        var resetMinrateRangeColor = function (target_min, target_max){
+          let minRGB= makeRGB(target_min, CPD_SLIPRATE.cpd_minrate_max, CPD_SLIPRATE.cpd_minrate_min );
+          let maxRGB= makeRGB(target_max, CPD_SLIPRATE.cpd_minrate_max, CPD_SLIPRATE.cpd_minrate_min );
           let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
-          $("#slider-vector-range .ui-slider-range" ).css( "background", myColor );
+          $("#slider-minrate-range .ui-slider-range" ).css( "background", myColor );
         }
 
-        this.resetVectorSlider = function () {
-          $("#slider-vector-range").slider('values', 
-                              [CGM_GNSS.cgm_vector_min, CGM_GNSS.cgm_vector_max]);
-          $("#cgm-minVectorSliderTxt").val(CGM_GNSS.cgm_vector_min);
-          $("#cgm-maxVectorSliderTxt").val(CGM_GNSS.cgm_vector_max);
+        this.resetMinrateSlider = function () {
+          $("#slider-minrate-range").slider('values', 
+                              [CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max]);
+          $("#cpd-minMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
+          $("#cpd-maxMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
         }
 
-        this.setupCGMInterface = function() {
+        var resetMaxrateRangeColor = function (target_min, target_max){
+          let minRGB= makeRGB(target_min, CPD_SLIPRATE.cpd_maxrate_max, CPD_SLIPRATE.cpd_maxrate_min );
+          let maxRGB= makeRGB(target_max, CPD_SLIPRATE.cpd_maxrate_max, CPD_SLIPRATE.cpd_maxrate_min );
+          let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
+          $("#slider-maxrate-range .ui-slider-range" ).css( "background", myColor );
+        }
+
+        this.resetMaxrateSlider = function () {
+          $("#slider-maxrate-range").slider('values', 
+                              [CPD_SLIPRATE.cpd_maxrate_min, CPD_SLIPRATE.cpd_maxrate_max]);
+          $("#cpd-minMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_maxrate_min);
+          $("#cpd-maxMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_maxrate_max);
+        }
+
+        this.setupCPDInterface = function() {
             var $download_queue_table = $('#metadata-viewer');
             var sz=0;
             if(cpd_sliprate_site_data != null) {
                 sz=cpd_sliprate_site_data.length;
             }
-window.console.log("setupCGMInterface: retrieved stations "+sz);
-
-            for (let i = 0; i < sz; i++) {
-                let item=cpd_sliprate_site_data[i];
-                if(item['station_type'] == "continuous") {
-                    cont_site.push(item['station_id']);
-                }
-                if(item['station_type'] == "surv") {
-                    surv_site.push(item['station_id']);
-                }
-            }
+window.console.log("setupCPDInterface: retrieved sites "+sz);
 
             this.activateData();
 
-            $("#cgm-controlers-container").css('display','');
-            $("#cgm-insar-controlers-container").css('display','none');
-
-//$("div.mapData div.map-container").removeClass("col-7 pr-0 pl-2").addClass("col-12").css('padding-left','30px');
+            $("#cpd-controlers-container").css('display','');
+            $("#cpd-sliprate-controlers-container").css('display','none');
 
             $("div.mapData div.map-container").css('padding-left','30px');
-            $("#CGM_plot").css('height','500px');
+            $("#CPD_plot").css('height','500px');
             viewermap.invalidateSize();
             viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
             $download_queue_table.floatThead('destroy');
 
             this.replaceResultsTable([]);
-            $download_queue_table.addClass('gnss');
-            $("#data-product-select").val("gnss");
+            $download_queue_table.addClass('sliprate');
+            $("#data-product-select").val("sliprate");
 
             $download_queue_table.floatThead({
-                 // floatTableClass: 'cgm-metadata-header',
                  scrollContainer: function ($table) {
                      return $table.closest('div#metadata-viewer-container');
                  },
             });
 
-/* setup  slider*/
-            $("#slider-vector-range").slider({ 
-                      range:true, step:0.01, min:CGM_GNSS.cgm_vector_min, max:CGM_GNSS.cgm_vector_max, values:[CGM_GNSS.cgm_vector_min, CGM_GNSS.cgm_vector_max],
-                  slide: function( event, ui ) {
-                               $("#cgm-minVectorSliderTxt").val(ui.values[0]);
-                               $("#cgm-maxVectorSliderTxt").val(ui.values[1]);
-                               resetVectorRangeColor(ui.values[0],ui.values[1]);
-                         },
-                  change: function( event, ui ) {
-                               $("#cgm-minVectorSliderTxt").val(ui.values[0]);
-                               $("#cgm-maxVectorSliderTxt").val(ui.values[1]);
-                               resetVectorRangeColor(ui.values[0],ui.values[1]);
-                         },
-                  stop: function( event, ui ) {
-                               let searchType = CGM_GNSS.searchType.vectorSlider;
-                               CGM_GNSS.searchBox(searchType, ui.values);
-                         },
-                  create: function() {
-                              $("#cgm-minVectorSliderTxt").val(CGM_GNSS.cgm_vector_min);
-                              $("#cgm-maxVectorSliderTxt").val(CGM_GNSS.cgm_vector_max);
-                        }
-            });
-            $('#slider-vector-range').slider("option", "min", CGM_GNSS.cgm_vector_min);
-            $('#slider-vector-range').slider("option", "max", CGM_GNSS.cgm_vector_max);
+/* setup  sliders */
+        $("#slider-minrate-range").slider({ 
+                  range:true, step:0.01, min:CPD_SLIPRATE.cpd_minrate_min, max:CPD_SLIPRATE.cpd_minrate_max, values:[CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max],
+              slide: function( event, ui ) {
+                           $("#cpd-minMinrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-maxMinrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              change: function( event, ui ) {
+                           $("#cpd-minMinrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-maxMinrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              stop: function( event, ui ) {
+                           let searchType = CPD_SLIPRATE.searchType.minrateSlider;
+                           CPD_SLIPRATE.searchBox(searchType, ui.values);
+                     },
+              create: function() {
+                          $("#cpd-minMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
+                          $("#cpd-maxMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
+                    }
+        });
+        $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cpd_minrate_min);
+        $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cpd_minrate_max);
+
+        $("#slider-minrate-range").slider({ 
+                  range:true, step:0.01, min:CPD_SLIPRATE.cpd_minrate_min, max:CPD_SLIPRATE.cpd_minrate_max, values:[CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max],
+              slide: function( event, ui ) {
+                           $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              change: function( event, ui ) {
+                           $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
+                           $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
+                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                     },
+              stop: function( event, ui ) {
+                           let searchType = CPD_SLIPRATE.searchType.minrateSlider;
+                           CPD_SLIPRATE.searchBox(searchType, ui.values);
+                     },
+              create: function() {
+                          $("#cpd-minMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
+                          $("#cpd-maxMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
+                    }
+        });
+        $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cpd_minrate_min);
+        $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cpd_minrate_max);
 
             $("#wait-spinner").hide();
         };
