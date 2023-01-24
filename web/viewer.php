@@ -241,7 +241,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                       <div class="col-8">
                         <div class="form-inline">
                           <input type="text"
-                              id="cpd-minminrateSliderTxt"
+                              id="cpd-minMinrateSliderTxt"
                               title="min minrate slider"
                               onfocus="this.value=''"
                               class="cpd-search-item form-control">
@@ -251,7 +251,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
 		            <div id="max-minrate-slider-handle" class="ui-slider-handle"></div>
                           </div>
                           <input type="text"
-                              id="cpd-maxminrateSliderTxt"
+                              id="cpd-maxMinrateSliderTxt"
                               title="max minrate slider"
                               onfocus="this.value=''"
                               class="cpd-search-item form-control">
@@ -270,7 +270,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                       <div class="col-8">
                         <div class="form-inline">
                           <input type="text"
-                              id="cpd-minmaxrateSliderTxt"
+                              id="cpd-minMaxrateSliderTxt"
                               title="min maxrate slider"
                               onfocus="this.value=''"
                               class="cpd-search-item form-control">
@@ -280,7 +280,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
 		            <div id="max-maxrate-slider-handle" class="ui-slider-handle"></div>
                           </div>
                           <input type="text"
-                              id="cpd-maxmaxrateSliderTxt"
+                              id="cpd-maxMaxrateSliderTxt"
                               title="max maxrate slider"
                               onfocus="this.value=''"
                               class="cpd-search-item form-control">
