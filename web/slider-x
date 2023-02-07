@@ -1,0 +1,28 @@
+                    <li id='cpd-maxrate-slider' class='navigationLi' style="display:none">
+                        <div id='cpd-maxrate-sliderMenu' class='menu'>
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Select a maximum slip rate range on the slider or enter the two boundaries</p>
+                                </div>
+                                <div class="col-8">
+                                   <div class="form-inline maxrate-slider-input-boxes">
+                                       <input type="text"
+                                              id="cpd-minMaxRateSliderTxt"
+                                              title="min Maximum Slip Rate slider"
+                                              onfocus="this.value=''"
+                                              class="cpd-search-item form-control">
+                                       <div class="col-5">
+                                         <div id="slider-maxrate-range" style="border:2px solid black"></div>
+		           <div id="min-maxrate-slider-handle" class="ui-slider-handle"></div>
+		           <div id="max-maxrate-slider-handle" class="ui-slider-handle"></div>
+                                       </div>
+                                       <input type="text"
+                                              id="cpd-maxMaxRateSliderTxt"
+                                              title="max Maximum Slip Rate slider"
+                                              onfocus="this.value=''"
+                                              class="cpd-search-item form-control">
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
