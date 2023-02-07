@@ -9,7 +9,8 @@ var CPD_SLIPRATE = new function () {
     // non-searching mode, would be showing all layers
     this.searching = false;
 
-    // all marker layers for each site, setup once from viewer.php
+    // complete sliprate layers, one marker layer for one site, 
+    // setup once from viewer.php
     this.cpd_layers; // L.FeatureGroup();
 
     // searched layers being actively looked at -- result of a search
@@ -159,19 +160,19 @@ var CPD_SLIPRATE = new function () {
             }
         }
 
-        this.cpd_layers.on('click', function(event) {
+        this.cpd_active_layers.on('click', function(event) {
             if(activeProduct == Products.SLIPRATE) { 
 window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.sliprate_id);
                CPD_SLIPRATE.toggleSiteSelected(event.layer, true);
             }
         });
 
-        this.cpd_layers.on('mouseover', function(event) {
+        this.cpd_active_layers.on('mouseover', function(event) {
             let layer = event.layer;
             layer.setRadius(site_marker_style.hover.radius);
         });
 
-        this.cpd_layers.on('mouseout', function(event) {
+        this.cpd_active_layers.on('mouseout', function(event) {
             let layer = event.layer;
             layer.setRadius(site_marker_style.normal.radius);
         });
@@ -556,7 +557,7 @@ window.console.log("sliprate --->> calling search.. <<----");
                 var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
                 let cnt=this.cpd_active_gid.length();
 
-                let glist=XXX();
+                let glist=_foo();
 
                 for(let i=0; i<cnt; i++) {
                     let g=this.cpd_active_gid[i];
@@ -571,7 +572,13 @@ window.console.log("sliprate --->> calling search.. <<----");
         }
     };
 
-XXX
+    // private function
+var _foo = function (){
+   var foolist=[];
+   foolist.push(1);
+   return foolist;
+}
+
     this.searchBox = function (type, criteria) {
 window.console.log("sliprate --->> calling searchBox");
         this.hideProduct();
@@ -590,7 +597,6 @@ window.console.log("sliprate --->> calling searchBox");
                 this.search_result.addLayer(results[i]);
             }
 
-???
             this.showSitesByLayers(this.search_result);
 
             if( !modelVisible()) {
@@ -603,7 +609,7 @@ window.console.log("sliprate --->> calling searchBox");
                     this.unselectAll();
                     markerLocations.push(L.latLng(criteria[0],criteria[1]));
                     markerLocations.push(L.latLng(criteria[2],criteria[3]));
-???
+
                     let bounds = L.latLngBounds(markerLocations);
                     viewermap.fitBounds(bounds, {maxZoom: 12});
                     setTimeout(skipRectangle, 500);
@@ -629,7 +635,6 @@ window.console.log("DONE with BoxSearch..");
 
     // private function
     var modelVisible = function (){
-???
         return $("#cpd-sliprate-model").prop('checked');
     };
 
@@ -704,20 +709,8 @@ window.console.log("changeResultsTableBody..");
         };
 
         var getDataDownloadURL = function(station_id, frame)  {
-XXX ???
-        if(cont_site.includes(station_id)) {
-          let urlPrefix = "http://geoweb.mit.edu/~floyd/scec/cgm/ts/";
-          let url=urlPrefix + station_id + ".cgm.wmrss_"+frame+".pos";
-          return url;
-          } else if (surv_site.includes(station_id)) {
-            let urlPrefix = "http://geoweb.mit.edu/~floyd/scec/cgm/ts/";
-            let url=urlPrefix + station_id + ".cgm.final_"+frame+".pos";
-            return url;
-            } else {
-                window.console.log("BAD station name..");
-                return null;
-        } 
-
+//??? XX
+            window.console.log("calling getDtaDownlaodURL.. TODO");
         };
 
         var resetMinrateRangeColor = function (target_min, target_max){
