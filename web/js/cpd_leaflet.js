@@ -2,14 +2,9 @@
    cfm_leaflet.js
 
 This is leaflet specific utilities
-
 ***/
 
 var init_map_zoom_level = 7;
-var seismicity_map_zoom_level = 9;
-
-var enable_seismicity=0; // retrieve local seismicity on zoom demand
-var fault_width_change=0;
 
 var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cfm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
 
@@ -26,6 +21,7 @@ var rectangle_options = {
               clickable: false
          }
 };
+
 var rectangleDrawer;
 var mymap, baseLayers, layerControl, currentLayer;
 var mylegend;
@@ -48,7 +44,6 @@ function refresh_map()
     } else {
       window.console.log("refresh_map: calling setView");
       viewermap.setView([34.3, -118.4], init_map_zoom_level);
-      
   }
 }
 
@@ -140,96 +135,28 @@ function setup_viewer()
 // ==> scalebar <==
   L.control.scale({metric: 'false', imperial:'false', position: 'bottomleft'}).addTo(mymap);
 
-/* ==> watermark <== 
-  L.Control.Watermark = L.Control.extend({
-    onAdd: function (map) {
-      var img=L.DomUtil.create('img');
-      img.src = './img/sceclogo_transparent.png';
-      img.style.width ='200px';
-      return img;
-    },
-    onRemove: function(map) {
-       // no-op
-    }
-  });
-  L.Control.watermark= function(opts) {
-     return new L.Control.Watermark(opts);
-  }
-  var myWatermark=L.Control.watermark({ position: 'topright' }).addTo(mymap);
-
-  to remove,
-  mymap.removeControl(myWatermark);
-*/
-
-//==> seismicity legend <==  
-  mylegend=L.control( {position:'bottomleft'});
-
-  mylegend.onAdd = function (map) {
-    this._div = L.DomUtil.create('div'); 
-    this.update();
-    return this._div;
-  };
-
-  mylegend.update = function (props, param=null) {
-     if(param == null) {
-       this._div.innerHTML="";
-       return;
-     }
-     this._div.innerHTML='<img src="./img/'+param+'" style="width:200px; margin-left:-5px;" >';
-  }
-
-  mylegend.addTo(mymap);
-  //mylegend.update({}, "cfm-viewer.png");
-  //to remove,
-  //mymap.removeControl(mylegend);
-
-
 // ==> mouse location popup <==
 //   var popup = L.popup();
-  // function onMapClick(e) {
-  //   if(!skipPopup) { // suppress if in latlon search ..
-  //     popup
-  //       .setLatLng(e.latlng)
-  //       .setContent("You clicked the map at " + e.latlng.toString())
-  //       .openOn(mymap);
-  //   }
-  // }
-  // mymap.on('click', onMapClick);
+// function onMapClick(e) {
+//   if(!skipPopup) { // suppress if in latlon search ..
+//     popup
+//       .setLatLng(e.latlng)
+//       .setContent("You clicked the map at " + e.latlng.toString())
+//       .openOn(mymap);
+//   }
+// }
+// mymap.on('click', onMapClick);
 
   function onMapMouseOver(e) {
     if(drawing_rectangle) {
       draw_at();
     }
   }
+
   mymap.on('mouseover', onMapMouseOver);
-
-  function onMapZoom(e) { // change fault weight
-    var zoom=mymap.getZoom();
-//window.console.log("map got zoomed..>>",zoom);
-    if( fault_width_change && zoom > default_zoom_threshold) {
-       change_fault_weight(default_weight); // change width to 2px
-//window.console.log("change weight back to"+default_weight);
-       fault_width_change=0;
-    }
-    if(zoom <= default_zoom_threshold) {
-//window.console.log("changing weight size.."+(default_weight/2 ));
-       change_fault_weight(default_weight/2); // half the width
-       fault_width_change=1;
-    } 
-
-  }
   mymap.on('zoomend dragend', onMapZoom);
 
 // ==> rectangle drawing control <==
-/*
-  var drawnItems = new L.FeatureGroup();
-  mymap.addLayer(drawnItems);
-  var drawControl = new L.Control.Draw({
-       draw: false,
-       edit: { featureGroup: drawnItems }
-  });
-  mymap.addControl(drawControl);
-*/
   rectangleDrawer = new L.Draw.Rectangle(mymap, rectangle_options);
   mymap.on(L.Draw.Event.CREATED, function (e) {
     var type = e.layerType,
@@ -246,7 +173,7 @@ function setup_viewer()
         mymap.addLayer(layer);
 // XX CHECK, the rectangle created on the mapview does not seem to 'confirm'
 // like hand inputed rectangle. Maybe some property needs to be set
-// For now, just make the rectangle to be redrawn
+// For now, just redraw the rectangle
         searchByLatlon(0);
     }
   });
@@ -279,85 +206,10 @@ function closeDetails(layer) {
    layer.closePopup();
 }
 
-function addGeoToMap(cfmTrace, mymap) {
-
-   var geoLayer=L.geoJSON(cfmTrace, {
-     filter: function (feature, layer) {
-            if (feature.properties) {
-                var tmp=feature.properties.show_on_map != undefined ? !feature.properties.show_on_map : true;
-                return tmp;
-            }
-            return false;
-     },
-     style: function(feature) {
-        var tmp=feature.properties.style;
-        if(feature.properties.style != undefined) {
-            return feature.properties.style;
-        } else {
-            return {color: "#0000ff", "weight":2}
-        }
-     },
-     onEachFeature: bindPopupEachFeature
-   }).addTo(mymap);
-   visibleFaults.addLayer(geoLayer);
-
-   // var layerPopup;
-   // geoLayer.on('mouseover', function(e){
-/* not used..
-    // array of array
-    var coordinates = e.layer.feature.geometry.coordinates;
-    // pick the middle one
-    var s=Math.floor((coordinates.length)/2);
-    var tmp_coords=coordinates[s][0];
-    var swapped_coordinates = [tmp_coords[1], tmp_coords[0]];  //Swap Lat and Lng
-*/
-// leaflet-popup-close-button -- location
-//     if (mymap && !skipPopup) {
-//        var tmp=e.layer.feature.properties;
-//        var level1=tmp.popupMainContent;
-// //       layerPopup = L.popup({ autoClose: false, closeOnClick: false })
-//        layerPopup = L.popup()
-//            .setLatLng(e.latlng)
-//            .setContent(level1)
-//            .openOn(mymap);
-//     }
-//   });
-/*** XXX
-  geoLayer.on('mouseout', function (e) {
-    window.console.log("moues out..layer#"+e.layer.feature.id)
-    if (layerPopup && mymap) {
-        mymap.closePopup(layerPopup);
-        layerPopup = null;
-    }
-  });
-***/
-
-    geoLayer.on('mouseover', function(e){
-        if (mymap && !drawing_rectangle) {
-            e.layer.setStyle({weight: 5});
-        }
-   });
-
-   geoLayer.on('mouseout', function(e){
-       if (mymap && !drawing_rectangle) {
-           e.layer.setStyle({weight: 2});
-       }
-   });
-
-// if doen=1, all traces are done, else 0
-  let done=addOne2GeoCounter();
-  return [geoLayer, done];
-}
-
-
-// binding the 'detail' fault content
+// binding the 'detail' to a layer
 function bindPopupEachFeature(feature, layer) {
     var popupContent="";
 
-    // if (feature.properties != undefined  && feature.properties.popupContent != undefined ) {
-    //   popupContent += feature.properties.popupContent;
-    // }
-    // layer.bindPopup(popupContent);
     layer.on({
         click: function(e) {
             let clickedFaultID = feature.id;
@@ -373,12 +225,6 @@ function unbindPopupEachFeature(layer) {
 }
 
 function addRectangleLayer(latA,lonA,latB,lonB) {
-/*
-  var pointA=L.point(latA,lonA);
-  var pointB=L.point(latB,lonB);
-  var bounds=L.latLngBounds(viewermap.containerPointToLatLng(pointA),
-                                  viewermap.containerPointToLatLng(pointB));
-*/
   var bounds = [[latA, lonA], [latB, lonB]];
   var layer=L.rectangle(bounds).addTo(viewermap);
   return layer;
@@ -388,24 +234,6 @@ function addRectangleLayer(latA,lonA,latB,lonB) {
 function makeRectangleLayer(latA,lonA,latB,lonB) {
   var bounds = [[latA, lonA], [latB, lonB]];
   var layer=L.rectangle(bounds);
-  return layer;
-}
-
-
-function makeLeafletMarker3(bounds,size) {
-  var leafIcon = L.icon({
-    iconUrl: 'img/star_icon.png',
-    iconSize:     [10, 10], 
-    iconAnchor:   [0, 0], 
-    popupAnchor:  [-3, -5] // point from which the popup should open relative to the iconAnchor
-  });
-  var myOptions = { icon : leafIcon};
-
-  var layer = L.marker(bounds, myOptions);
-  var icon = layer.options.icon;
-  var opt=icon.options;
-  icon.options.iconSize = [size,size];
-  layer.setIcon(icon);
   return layer;
 }
 
@@ -420,24 +248,6 @@ function makeLeafletMarker(bounds,cname,size) {
   layer.setIcon(icon);
   return layer;
 }
-
-function makeLeafletMarker2(bounds,size) {
-  
-  var myAwesomeIcon = L.divIcon({
-    html: '<i class="fas fa-sun fa-xs" aria-hidden="true"></i>',
-    iconSize: [size, size],
-    className: 'awesome-icon' 
-  }); 
-  var myOptions = { icon : myAwesomeIcon};
-  
-  var layer = L.marker(bounds, myOptions);
-  var icon = layer.options.icon;
-  var opt=icon.options; 
-  icon.options.iconSize = [size,size];
-  layer.setIcon(icon);
-  return layer;
-}
-
 
 // icon size 8 
 function addMarkerLayerGroup(latlng,description,sz) {
@@ -458,12 +268,9 @@ function addMarkerLayerGroup(latlng,description,sz) {
   return group;
 }
 
-
 function switchLayer(layerString) {
     mymap.removeLayer(currentLayer);
     mymap.addLayer(baseLayers[layerString]);
     currentLayer = baseLayers[layerString];
 
 }
-
-

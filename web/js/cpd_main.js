@@ -1,3 +1,18 @@
+/***
+   cpd_main.js
+***/
+
+var initial_page_load = true;
+
+const Products = {
+    SLIPRATE: 'sliprate',
+    CHRONOLOGY: 'chronology',
+};
+
+var activeProduct = Products.SLIPRATE;
+var cpd_sliprate_sites_data=null;
+var cpd_chronology_sites_data=null;
+
 var viewermap;
 
 jQuery(document).ready(function() {
@@ -32,32 +47,32 @@ jQuery(document).ready(function() {
      });
   });
 
-  $('.strike-item').on("focus", function() {
-     $('.strike-item').on("blur mouseout", function() {
-       $('.strike-item').off("mouseout");
-       $('.strike-item').off("blur");
+  $('.cpd-minrate-item').on("focus", function() {
+     $('.cpd-minrate-item').on("blur mouseout", function() {
+       $('.cpd-minrate-item').off("mouseout");
+       $('.cpd-minrate-item').off("blur");
        if( $(this).val() != '' ) {
-         setupSearchByStrike();
+         setupSearchByMinrate();
        }
        $(this).blur();
      });
   });
 
-  $('.dip-item').on("focus", function() {
-     $('.dip-item').on("blur mouseout", function() {
-       $('.dip-item').off("mouseout");
-       $('.dip-item').off("blur");
+  $('.cpd-maxrate-item').on("focus", function() {
+     $('.cpd-maxrate-item').on("blur mouseout", function() {
+       $('.cpd-maxrate-item').off("mouseout");
+       $('.cpd-maxrate-item').off("blur");
        if( $(this).val() != '' ) {
-         setupSearchByDip();
+         setupSearchByMaxrate();
        }
        $(this).blur();
      });
   });
 
-  $('.latlon-item').on("focus", function() {
-     $('.latlon-item').on("blur mouseout", function() {
-       $('.latlon-item').off("mouseout");
-       $('.latlon-item').off("blur");
+  $('.cpd-latlon-item').on("focus", function() {
+     $('.cpd-latlon-item').on("blur mouseout", function() {
+       $('.cpd-latlon-item').off("mouseout");
+       $('.cpd-latlon-item').off("blur");
        if( $(this).val() != '' ) {
          searchByLatlon(0);
        }
@@ -65,20 +80,22 @@ jQuery(document).ready(function() {
      });
   });
 
-  $("#search-filter-type").change(function () {
+  $("#cpd-search-type").change(function () {
       var funcToRun = $(this).val();
       if (funcToRun != "") {
           window[funcToRun]();
       }
   });
 
-  $("#search-filter-type").trigger("change");
+  $("#cpd-search-type").trigger("change");
+
+  $.event.trigger({ type: "page-ready", "message": "completed", });
 
 /** MAIN setup **/
-  getGeoTraceList();
-  getAllTraces();
-  setupSearch();
-  addDownloadSelect();
+// XXX
+//  SLIPRATE_XX setup_layers
+//  setupSearch();
+//  addDownloadSelect();
 
 }); // end of MAIN
 

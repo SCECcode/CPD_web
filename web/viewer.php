@@ -200,25 +200,25 @@ $cpd_sliprate = new CPD_SLIPRATE();
                                    id="cpd-firstLatTxt"
                                    title="first lat"
                                    onfocus="this.value=''"
-                                   class="cpd-search-item form-control">
+                                   class="cpd-latlon-item form-control">
                             <input type="text" 
                                    placeholder='Longitude' 
                                    id="cpd-firstLonTxt" 
                                    title="first lon"
                                    onfocus="this.value=''" 
-                                   class="cpd-search-item form-control">
+                                   class="cpd-latlon-item form-control">
                             <input type="text"
                                    id="cpd-secondLatTxt"
                                    title="second lat"
                                    placeholder='2nd Latitude'
                                    onfocus="this.value=''"
-                                   class="cpd-search-item form-control">
+                                   class="cpd-latlon-item form-control">
                             <input type="text"
                                    id="cpd-secondLonTxt"
                                    title="second lon"
                                    placeholder='2nd Longitude'
                                    onfocus="this.value=''"
-                                   class="cpd-search-item form-control">
+                                   class="cpd-latlon-item form-control">
                         </div>
                       </div>
                     </div>
@@ -238,7 +238,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                               id="cpd-minMinrateSliderTxt"
                               title="min minrate slider"
                               onfocus="this.value=''"
-                              class="cpd-search-item form-control">
+                              class="cpd-minrate-item form-control">
                           <div class="col-5">
                             <div id="slider-minrate-range" style="border:2px solid black"></div>
 		            <div id="min-minrate-slider-handle" class="ui-slider-handle"></div>
@@ -248,7 +248,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                               id="cpd-maxMinrateSliderTxt"
                               title="max minrate slider"
                               onfocus="this.value=''"
-                              class="cpd-search-item form-control">
+                              class="cpd-minrate-item form-control">
                         </div>
                       </div>
                     </div>
@@ -267,7 +267,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                               id="cpd-minMaxrateSliderTxt"
                               title="min maxrate slider"
                               onfocus="this.value=''"
-                              class="cpd-search-item form-control">
+                              class="cpd-maxrate-item form-control">
                           <div class="col-5">
                             <div id="slider-maxrate-range" style="border:2px solid black"></div>
 		            <div id="min-maxrate-slider-handle" class="ui-slider-handle"></div>
@@ -277,7 +277,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
                               id="cpd-maxMaxrateSliderTxt"
                               title="max maxrate slider"
                               onfocus="this.value=''"
-                              class="cpd-search-item form-control">
+                              class="cpd-maxrate-item form-control">
                         </div>
                       </div>
                     </div>
@@ -393,9 +393,9 @@ $cpd_sliprate = new CPD_SLIPRATE();
 </div>
 </body>
 </html>
-<!--XXX -->
+<!--call php directly-->
     <script type="text/javascript">
-            cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
+            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>
 </html>

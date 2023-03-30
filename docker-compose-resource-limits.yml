@@ -1,4 +1,4 @@
-version: '2.2'
+version: '1.0'
 
 services:
 
@@ -9,8 +9,3 @@ services:
   web:
     mem_limit: 5g
     cpus: 3
-
-  altweb:
-     mem_limit: 5g
-     cpus: 3
-
