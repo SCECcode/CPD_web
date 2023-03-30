@@ -76,15 +76,9 @@ $cpd_sliprate = new CPD_SLIPRATE();
     <script type="text/javascript" src="js/cxm_misc_util.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
 
-   <!-- pixi pixiOverlay -->
-    <script type="text/javascript" src="js/vendor/pixi.js"></script>
-    <script type="text/javascript" src="js/vendor/pixiOverlay/L.PixiOverlay.js"></script>
-    <script type="text/javascript" src="js/vendor/pixiOverlay/MarkerContainer.js"></script>
-    <script type="text/javascript" src="js/vendor/pixiOverlay/bezier-easing.js"></script>
-    <script type="text/javascript" src="js/cpd_pixi.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-495056-12"></script>
+-->
     <script type="text/javascript">
         $ = jQuery;
         var tableLoadCompleted = false;
