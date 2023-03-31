@@ -15,7 +15,7 @@ CREATE TABLE SLIPRATE_tb (
    x2014dip    float default 0, 
    x2014rake   float default 0,
    x2014rate   float default 0.0,
-   Reference   VARCHAR(100) NOT NULl
+   Reference   VARCHAR(200) NOT NULl
 );
 
 SELECT AddGeometryColumn('','sliprate_tb','geom','0','POINT',2);
