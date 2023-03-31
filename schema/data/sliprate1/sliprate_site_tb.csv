@@ -380,7 +380,7 @@ SR-0387,-116.367233777,33.4067747996,San Jacinto (Clark),Rockhouse Canyon,6.9,10
 SR-0388,-116.710967138,33.6129686941,San Jacinto (Anza),Hog Lake,5,35,CA,slip rate study,5,35,90,180,14,"Blisnuik and Rockwell (in prep; written communication, 2012)"
 SR-0389,-116.670781473,33.5877609037,San Jacinto (Anza),Anza,11.3,18.2,CA,slip rate study,5,35,90,180,14,Rockwell and others (1990)
 SR-0390,-116.670781473,33.5877609037,San Jacinto (Anza),Anza,9,23,CA,slip rate study,5,35,90,180,14,Rockwell and others (1990)
-SR-0391,-117.001854467,33.8205115692,San Jacinto (stepover),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,9999,geometry used for model caluclations
+SR-0391,-117.001854467,33.8205115692,San Jacinto (stepover),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,geometry used for model caluclations,QFFD
 SR-0392,-117.172508087,33.9685593157,San Jacinto (San Jacinto Valley),Quincy (placed onto hazard trace; site is actually to the east),12.8,18.3,CA,slip rate study,5,35,90,180,16,"Onderdonk et al., (2015) Lithosphere"
 SR-0393,-117.281839301,34.0599828018,San Jacinto (San Bernardino),Commercial Road,1.7,35,CA,slip rate study,5,35,90,180,6,Wesnousky and others (1991)
 SR-0394,-116.046004855,32.7942395334,Elsinore (Coyote Mountains),Coyote Mountains (general),1.37,2.55,CA,slip rate study,1,5,82,180,3,"Rockwell et al., (2017) Geomorphology"
@@ -471,7 +471,7 @@ SR-0478,-117.490999663,40.7672723856,Edna Mountain,approx centroid,0,0.2,NV,QFFD
 SR-0479,-115.150302856,36.2953392723,Eglington,Las Vegas Valley,0.15,0.18,NV,slip rate study,0,0.2,50,-90,0,Springer and Pigati (2020) Geology
 SR-0480,-117.93773239,37.8340970153,Emigrant Peak,dePolo and Anderson location,0.4,1.7,NV,dePolo and Anderson calibration rate,0.2,1,50,-90,0.99,dePolo and Anderson (2000)
 SR-0481,-118.241989182,40.8264617202,Eugene Mountains,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
-SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,not included in model
+SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
 SR-0483,-118.205257059,38.2626548052,Excelsior Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,90,0,0.13,QFFD
 SR-0484,-119.62761492,40.4372011447,Fox Range,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0485,-119.852183394,39.6738091704,Freds Mountain,Profile 4,0.013,0.15,NV,slip rate study,0,0.2,50,-90,0.13,Koehler (2019) Geomorphology
