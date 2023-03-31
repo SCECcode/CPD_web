@@ -471,7 +471,7 @@ SR-0478,-117.490999663,40.7672723856,Edna Mountain,approx centroid,0,0.2,NV,QFFD
 SR-0479,-115.150302856,36.2953392723,Eglington,Las Vegas Valley,0.15,0.18,NV,slip rate study,0,0.2,50,-90,0,Springer and Pigati (2020) Geology
 SR-0480,-117.93773239,37.8340970153,Emigrant Peak,dePolo and Anderson location,0.4,1.7,NV,dePolo and Anderson calibration rate,0.2,1,50,-90,0.99,dePolo and Anderson (2000)
 SR-0481,-118.241989182,40.8264617202,Eugene Mountains,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
-SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,not included in model,QFFD
 SR-0483,-118.205257059,38.2626548052,Excelsior Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,90,0,0.13,QFFD
 SR-0484,-119.62761492,40.4372011447,Fox Range,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0485,-119.852183394,39.6738091704,Freds Mountain,Profile 4,0.013,0.15,NV,slip rate study,0,0.2,50,-90,0.13,Koehler (2019) Geomorphology
