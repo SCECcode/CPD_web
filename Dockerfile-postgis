@@ -1,7 +1,7 @@
 FROM mdillon/postgis:10-alpine
-ENV POSTGRES_USER postgres
-ENV POSTGRES_DB cpd_db
-ENV POSTGRES_DATA /home/postgres/CPD
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_DB=cpd_db
+ENV POSTGRES_DATA=/home/postgres/CPD
 
 WORKDIR /app
 

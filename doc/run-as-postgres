@@ -6,10 +6,10 @@ export PGDATA="$POSTGRES_DATA"
 export PGDB="$POSTGRES_DB"
 
 # Carve out db space
-initdb $POSTGRES_DB
+initdb $PGDATA
 
 # Start PostgreSQL server
-pg_ctl -D $POSTGRES_DB -l /home/postgres/logfile start
+pg_ctl -D $PGDATA -l /home/postgres/logfile start
 
 /app/schema/load_db_setup
 /app/schema/load_sliprate_db_up

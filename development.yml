@@ -14,9 +14,3 @@ services:
     - ./custom-php.ini:/etc/php.d/custom-php.ini
    restart: unless-stopped
 
-  altweb:
-   volumes:
-    - ./:/app
-    - ./custom-php.ini:/etc/php.d/custom-php.ini
-   restart: unless-stopped
-
