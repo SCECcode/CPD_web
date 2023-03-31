@@ -6,7 +6,7 @@ SR-0004,-116.152947357,35.2668934362,Baker,approx centroid,0,0.2,CA,QFFD slip ra
 SR-0005,-123.056321237,39.5845264228,Bartlett Springs,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,4,QFFD
 SR-0006,-121.991280037,40.4424043916,Battle Creek,per Page and Renne (1994),0,0.5,CA,slip rate study,0.2,1,74,90,0.1,Page and Renne (1994)
 SR-0007,-124.402631059,40.4616206612,Bear River,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,60,90,0.01,QFFD
-SR-0008,-122.54190396,38.2690285042,Rodgers Creek - Healdsburg,Beebe Ranch,6.4,10.4,CA,slip rate study,5,35,90,180,0.01,Schwartz and others (1992); Budding and others (1991)
+SR-0008,-122.54190396,38.2690285042,Rodgers Creek-Healdsburg,Beebe Ranch,6.4,10.4,CA,slip rate study,5,35,90,180,0.01,Schwartz and others (1992); Budding and others (1991)
 SR-0009,-116.562202707,35.2505124676,Bicycle Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
 SR-0010,-124.109810062,41.1882920218,Big Lagoon,BM1,0.45,0.68,CA,slip rate study,0.2,1,35,90,1,McCrory (1996)
 SR-0011,-119.245594641,34.713385859,Big Pine (center),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,76,90,0.01,QFFD
@@ -19,10 +19,10 @@ SR-0017,-118.546044716,35.4311549295,Breckenridge,Oak Tree,0,0.2,CA,slip rate st
 SR-0018,-116.106685464,34.4415217636,Bullion Mountains,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.01,QFFD
 SR-0019,-116.398725406,34.0294160371,Burnt Mountain,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,67,180,0.6,QFFD
 SR-0020,-116.488827905,34.8953077295,Cady,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,0,0.6,QFFD
-SR-0021,-116.596793123,34.7532917621,Calico - Hidalgo,Sheep Creek Wash,1,1.8,CA,slip rate study,0.2,1,90,180,1.8,Oskin and others (2007)
-SR-0022,-116.596793123,34.7532917621,Calico - Hidalgo,Sheep Creek Wash,1.5,2.6,CA,slip rate study,1,5,90,180,1.8,Oskin and others (2007)
+SR-0021,-116.596793123,34.7532917621,Calico-Hidalgo,Sheep Creek Wash,1,1.8,CA,slip rate study,0.2,1,90,180,1.8,Oskin and others (2007)
+SR-0022,-116.596793123,34.7532917621,Calico-Hidalgo,Sheep Creek Wash,1.5,2.6,CA,slip rate study,1,5,90,180,1.8,Oskin and others (2007)
 SR-0023,-116.750699187,34.7113926653,Camp Rock,per Oskin and others (2008),0.8,2,CA,slip rate study,0.2,1,90,180,0.6,Oskin and others (2008)
-SR-0024,-121.919179373,41.6470105776,Cedar Mountain - Mahogany Mountain,south of Antelope Sink,0.2,1,CA,slip rate study,0.2,1,60,90,0.4,Bryant (1990a)
+SR-0024,-121.919179373,41.6470105776,Cedar Mountain-Mahogany Mountain,south of Antelope Sink,0.2,1,CA,slip rate study,0.2,1,60,90,0.4,Bryant (1990a)
 SR-0025,-119.57664591,33.9744673106,Channel Islands,approx centroid,1,5,CA,QFFD slip rate bin,1,5,20,90,1.5,QFFD
 SR-0026,-119.684524964,34.2019110305,Mid Channel,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,21,90,0.01,QFFD
 SR-0027,-117.664607099,33.9239177711,Chino,approx centroid,1,5,CA,QFFD slip rate bin,1,5,50,150,1,QFFD
@@ -73,11 +73,11 @@ SR-0072,-124.006255411,40.8058295052,Fickle Hill,per McCrory,0.8,1.2,CA,slip rat
 SR-0073,-118.396429655,37.4888928771,Fish Slough,per Bryant,0.2,1,CA,slip rate study,0.2,1,60,90,0.2,Bryant (1984); Bateman (1965)
 SR-0074,-120.44198068,41.4475647528,Fitzhugh Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,50,90,0.01,QFFD
 SR-0075,-117.49686522,34.0656266825,Fontana (seismicity),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,80,0,0.39,QFFD
-SR-0076,-123.924669399,40.1376537914,Garberville - Briceland,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,2.6,QFFD
+SR-0076,-123.924669399,40.1376537914,Garberville-Briceland,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,2.6,QFFD
 SR-0077,-116.630390637,35.2213687474,Garlic Springs,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.01,QFFD
-SR-0078,-121.565308326,41.7502716596,Gillem - Big Crack,per Bryant (1990),0.15,0.38,CA,slip rate study,0.2,1,60,90,0.4,Bryant (1990b)
+SR-0078,-121.565308326,41.7502716596,Gillem-Big Crack,per Bryant (1990),0.15,0.38,CA,slip rate study,0.2,1,60,90,0.4,Bryant (1990b)
 SR-0079,-116.83129349,35.3582826654,Goldstone Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.01,QFFD
-SR-0080,-117.182199857,35.065526948,Gravel Hills - Harper Lake,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.7,QFFD
+SR-0080,-117.182199857,35.065526948,Gravel Hills-Harper Lake,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.7,QFFD
 SR-0081,-122.290228065,39.4821243645,Great Valley 1,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,15,90,0.1,QFFD
 SR-0082,-120.701757383,36.7137293921,Great Valley 10 (Panoche),approx centroid,1,5,CA,QFFD slip rate bin,1,5,15,90,0.1,QFFD
 SR-0083,-120.550247433,36.5680336174,Great Valley 11,Great Valley 11,1,5,CA,QFFD slip rate bin,1,5,15,90,1.3,QFFD
@@ -89,7 +89,7 @@ SR-0088,-122.163007316,38.9034786481,Great Valley 3 (Mysterious Ridge),approx ce
 SR-0089,-121.933127285,38.7365593497,Great Valley 3a (Dunnigan Hills),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,20,90,7.6,QFFD
 SR-0090,-122.045514131,38.6098140586,Great Valley 4a (Trout Creek),approx centroid,1,5,CA,QFFD slip rate bin,1,5,20,90,0.4,QFFD
 SR-0091,-122.010309193,38.4046286783,Great Valley 4b (Gordon Valley),approx centroid,1,5,CA,QFFD slip rate bin,1,5,20,90,0.9,QFFD
-SR-0092,-121.904214498,38.1580935875,Great Valley 5 (Pittsburg - Kirby Hills),approx centroid,1,5,CA,QFFD slip rate bin,1,5,55,180,0.5,QFFD
+SR-0092,-121.904214498,38.1580935875,Great Valley 5 (Pittsburg-Kirby Hills),approx centroid,1,5,CA,QFFD slip rate bin,1,5,55,180,0.5,QFFD
 SR-0093,-121.630315482,38.0630995345,Great Valley 6 (Midland),near Webb Tract,0.2,0.6,CA,slip rate study,0.2,1,47,90,1,Unruh and Hitchcock (2009)
 SR-0094,-121.630315482,38.0630995345,Great Valley 6 (Midland),near Webb Tract,0.1,1.2,CA,slip rate study,0.2,1,47,90,1,Unruh and Hitchcock (2009)
 SR-0095,-121.287395652,37.5050708702,Great Valley 7 (Orestimba),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,20,90,1,QFFD
@@ -102,7 +102,7 @@ SR-0101,-119.063801851,37.8071703135,Hartley Springs,per Bursik and others (2003
 SR-0102,-121.446718595,40.9678382491,Hat Creek,per Page and Renne (1994),0.39,1,CA,slip rate study,0.2,1,60,90,0.6,Page and Renne (1994)
 SR-0103,-121.551122067,41.3415273402,Mayfield,per Sawyer and Page (1995),0.2,0.43,CA,slip rate study,0.2,1,60,90,0.6,Sawyer and Page (1995)
 SR-0104,-121.451847211,40.923950144,Hat Creek,Hat Creek basalt,1.8,3.1,CA,slip rate study,0.2,1,60,90,0.6,Blakeslee and Kattenhorn (2013) Geosphere; Turrin et al (2007) Quaternary Research
-SR-0105,-117.158810487,34.647442855,Helendale - Lockhart (south),per Oskin and others (2008),0.8,1.1,CA,slip rate study,0.2,1,90,180,0.6,Oskin and others (2008)
+SR-0105,-117.158810487,34.647442855,Helendale-Lockhart (south),per Oskin and others (2008),0.8,1.1,CA,slip rate study,0.2,1,90,180,0.6,Oskin and others (2008)
 SR-0106,-118.763,37.50661,Hilton Creek,Hilton Lakes,0.1,0.8,CA,slip rate study,1,5,50,90,1.5,Clarke and Gillespie (1993)
 SR-0107,-118.787907038,37.5625827071,Hilton Creek,McGee Creek MN1A,0.9,1.2,CA,slip rate study,1,5,50,90,1.5,Berry (1997)
 SR-0108,-118.787907038,37.5625827071,Hilton Creek,"McGee Creek ""Tahoe""",0.9,2,CA,slip rate study,1,5,50,90,1.5,Berry (1997); Clarke and Gillespie (1993)
@@ -117,11 +117,11 @@ SR-0116,-121.197184598,35.6555683226,Hosgri,San Simeon Terrace,8.6,11.2,CA,slip 
 SR-0117,-121.197184598,35.6555683226,Hosgri,Oso Terrace,0.7,2.6,CA,slip rate study,1,5,80,180,2.5,Hanson and Lettis (1994); Hall and others. (1994)
 SR-0118,-121.197184598,35.6555683226,Hosgri,Tripod Terrace,0.8,7.8,CA,slip rate study,1,5,80,180,2.5,Hanson and Lettis (1994); Hall and others. (1994)
 SR-0119,-121.197184598,35.6555683226,Hosgri,Airport Creek,0.9,3.4,CA,slip rate study,1,5,80,180,2.5,Hall and others (1994)
-SR-0120,-117.675860396,36.6129342836,Hunter Mountain - Saline Valley,Nelson Range Front,1.6,2,CA,slip rate study,1,5,90,30,3.5,Oswald and Wesnousky (2002)
-SR-0121,-117.644074462,36.5880921008,Hunter Mountain - Saline Valley,n/a,2.3,4.3,CA,slip rate study,1,5,90,30,3.5,Lee and others (2009)
-SR-0122,-117.553927742,36.5312534552,Hunter Mountain - Saline Valley,Grapevine Canyon,3.3,4,CA,slip rate study,1,5,90,30,3.5,Oswald and Wesnousky (2002)
-SR-0123,-122.27930438,38.6009077515,Hunting Creek - Berryessa,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,4,QFFD
-SR-0124,-115.355380427,32.6761808416,Imperial,US - Mexico Border,15,20,CA,slip rate study,5,35,82,180,35,Thomas and Rockwell (1996)
+SR-0120,-117.675860396,36.6129342836,Hunter Mountain-Saline Valley,Nelson Range Front,1.6,2,CA,slip rate study,1,5,90,30,3.5,Oswald and Wesnousky (2002)
+SR-0121,-117.644074462,36.5880921008,Hunter Mountain-Saline Valley,n/a,2.3,4.3,CA,slip rate study,1,5,90,30,3.5,Lee and others (2009)
+SR-0122,-117.553927742,36.5312534552,Hunter Mountain-Saline Valley,Grapevine Canyon,3.3,4,CA,slip rate study,1,5,90,30,3.5,Oswald and Wesnousky (2002)
+SR-0123,-122.27930438,38.6009077515,Hunting Creek-Berryessa,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,4,QFFD
+SR-0124,-115.355380427,32.6761808416,Imperial,US-Mexico Border,15,20,CA,slip rate study,5,35,82,180,35,Thomas and Rockwell (1996)
 SR-0125,-118.305413403,36.7839740916,Independence,Independence Creek,0.05,0.12,CA,slip rate study,0.2,1,50,90,0.1,Clark and others (1984)
 SR-0126,-118.307150603,36.7893035875,Independence,Independence Creek,0.07,0.16,CA,slip rate study,0,0.2,50,90,0.1,Clark and others (1984)
 SR-0127,-118.30652919,36.7873972627,Independence,Independence Creek,0.08,0.19,CA,slip rate study,0,0.2,50,90,0.1,Clark and others (1984)
@@ -136,7 +136,7 @@ SR-0135,-124.119636195,40.1630301152,King Range,approx centroid,0,0.2,CA,QFFD sl
 SR-0136,-120.255026775,35.2658180045,La Panza,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,51,135,0.01,QFFD
 SR-0137,-121.748651373,37.6491325048,Las Positas,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,45,0.39,QFFD
 SR-0138,-120.074318571,39.7665636738,Last Chance,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,50,90,0.01,QFFD
-SR-0139,-116.991561793,34.8004023563,Lenwood - Lockhart - Old Woman Springs,Northern site,0.6,1,CA,slip rate study,0.2,1,90,180,1,Oskin and others (2008)
+SR-0139,-116.991561793,34.8004023563,Lenwood-Lockhart-Old Woman Springs,Northern site,0.6,1,CA,slip rate study,0.2,1,90,180,1,Oskin and others (2008)
 SR-0140,-120.588444347,41.2061079354,Likely,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.3,QFFD
 SR-0141,-120.589065765,34.8554800176,Lions Head,per Clark (1990),0.012,0.017,CA,slip rate study,0,0.2,75,90,0.02,Clark (1990)
 SR-0142,-117.897610007,35.9202347642,Little Lake,Little Lake Narrows,0.7,1.3,CA,slip rate study,1,5,90,180,0.6,"Amos et al., (2013) GSAB"
@@ -144,7 +144,7 @@ SR-0143,-124.428808476,40.8866436958,Little Salmon (offshore),approx centroid,1,
 SR-0144,-124.184924566,40.6614420907,Little Salmon (onshore),"Sites 5, 6, 7",1.8,2.8,CA,slip rate study,1,5,30,90,4.5,"McCrory (1996, 2000)"
 SR-0145,-124.184924566,40.6614420907,Little Salmon (onshore),Site L2,2.5,6.7,CA,slip rate study,1,5,30,90,4.5,"Clarke and Carver (1992); McCrory (1996, 2000)"
 SR-0146,-119.862365907,34.5529288381,Santa Ynez (west),per Darrow and Sylvester,1.7,3.3,CA,slip rate study,1,5,30,90,0.39,Darrow and Sylvester (1984)
-SR-0147,-122.011489172,38.0339111953,Los Medanos - Roe Island,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,39,90,0.01,QFFD
+SR-0147,-122.011489172,38.0339111953,Los Medanos-Roe Island,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,39,90,0.01,QFFD
 SR-0148,-120.59879643,35.1911637852,Los Osos,Lopez reservoir,0,0.1,CA,slip rate study,0.2,1,45,90,0.39,Lettis and Hall (1994)
 SR-0149,-120.866964123,35.3023486484,Los Osos,Montana de Oro,0.2,0.4,CA,slip rate study,0.2,1,45,90,0.39,Lettis and Hall (1994)
 SR-0150,-116.19222985,34.789060235,Ludlow,per Oskin and others (2008),0.2,0.6,CA,slip rate study,0.2,1,90,180,0.3,Oskin and others (2008)
@@ -157,7 +157,7 @@ SR-0156,-118.764681173,34.0326765875,Malibu Coast,"per Treiman (1994), location 
 SR-0157,-118.70679811,34.0352681382,Malibu Coast,Marie Canyon,0.02,0.03,CA,slip rate study,0.2,1,75,30,0.3,Clarke and others (1984)
 SR-0158,-118.526214832,34.0305301941,Santa Monica,Potrero Canyon,0.2,1,CA,slip rate study,0.2,1,75,30,0.3,Dolan and others(2000)
 SR-0159,-118.860925611,34.0392648349,Malibu Coast,"per Treiman (1994), location approximate",0.2,0.8,CA,slip rate study,0.2,1,75,30,0.3,Treiman (1994)
-SR-0160,-116.448181414,35.0043835466,Manix - Afton Hills,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
+SR-0160,-116.448181414,35.0043835466,Manix-Afton Hills,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
 SR-0161,-124.089176439,40.9599236641,McKinleyville,"per Kelsey and Carver (1988), calculated by McCrory (2000).",0.4,0.6,CA,slip rate study,0,0.2,35,90,0.6,McCrory (2000)
 SR-0162,-124.107379868,40.979347474,McKinleyville,"per Carver and others (1986), calculated by McCrory (2000).",0.7,0.8,CA,slip rate study,0,0.2,35,90,0.6,McCrory (2000)
 SR-0163,-116.671656804,35.4915597779,McLean Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
@@ -168,22 +168,22 @@ SR-0167,-117.136792792,34.1184628497,"San Andreas (San Bernardino, south)",Plung
 SR-0168,-117.136792792,34.1184628497,"San Andreas (San Bernardino, south)",Plunge Creek,7,15.7,CA,slip rate study,5,35,76,180,2,McGill and others (2010); McGill and others (2012)
 SR-0169,-122.00509313,37.595858225,Hayward (south),Masonic Home,7.8,10.6,CA,slip rate study,5,35,90,180,0.1,Lienkaemper and Borchardt (1996)
 SR-0170,-116.887306833756,34.0222486880322,"San Andreas (San Bernardino, south)",Badger Canyon,8.3,16,CA,slip rate study,5,35,65,180,1.25,"McGill et al., (2021) Geosphere"
-SR-0171,-118.439598631,34.2959307471,Sierra Madre (San Fernando),Pacoima Wash - Lopez Cyn - Wilson Cyn,1.6,3,CA,slip rate study,1,5,55,90,1.25,"Lindvall and Rubin (2003/7?, FTR)"
+SR-0171,-118.439598631,34.2959307471,Sierra Madre (San Fernando),Pacoima Wash-Lopez Cyn-Wilson Cyn,1.6,3,CA,slip rate study,1,5,55,90,1.25,"Lindvall and Rubin (2003/7?, FTR)"
 SR-0173,-118.580944983,34.267038261,Northridge Hills,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,55,90,1.25,QFFD
-SR-0174,-119.89769,34.42981,Mission Ridge - Arroyo Parida - Santa Ana,Ellwood Beach,0.2,1,CA,slip rate study,0.2,1,70,90,0.9,Gurrola and Keller (2003)
-SR-0175,-119.300122729,34.4284722479,Mission Ridge - Arroyo Parida - Santa Ana,Ventura River faults/folds,0.4,1.6,CA,slip rate study,0.2,1,70,90,0.9,Rockwell and others (1984)
-SR-0176,-119.300122729,34.4284722479,Mission Ridge - Arroyo Parida - Santa Ana,Ventura River faults/folds,0.7,2.3,CA,slip rate study,0.2,1,70,90,0.9,Rockwell and others (1984)
+SR-0174,-119.89769,34.42981,Mission Ridge-Arroyo Parida-Santa Ana,Ellwood Beach,0.2,1,CA,slip rate study,0.2,1,70,90,0.9,Gurrola and Keller (2003)
+SR-0175,-119.300122729,34.4284722479,Mission Ridge-Arroyo Parida-Santa Ana,Ventura River faults/folds,0.4,1.6,CA,slip rate study,0.2,1,70,90,0.9,Rockwell and others (1984)
+SR-0176,-119.300122729,34.4284722479,Mission Ridge-Arroyo Parida-Santa Ana,Ventura River faults/folds,0.7,2.3,CA,slip rate study,0.2,1,70,90,0.9,Rockwell and others (1984)
 SR-0177,-120.580882238,39.7201616576,Mohawk Valley,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
 SR-0178,-119.113164816,37.9490397893,Mono Lake,Lee Vining,0.3,0.5,CA,slip rate study,0.2,1,50,90,0.9,Bryant (1984b)
 SR-0179,-119.178409214,38.0319336139,Mono Lake,Lundy Canyon,0.92,1.4,CA,slip rate study,0.2,1,50,90,0.9,Bryant (1984b)
 SR-0180,-122.314503955,37.4726542764,San Andreas (Peninsula),Filoli,13,21,CA,slip rate study,5,35,61,90,0.6,Hall and others (1999)
-SR-0181,-121.872016533,36.5951235407,Monterey Bay - Tularcitos,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,150,0.39,QFFD
+SR-0181,-121.872016533,36.5951235407,Monterey Bay-Tularcitos,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,150,0.39,QFFD
 SR-0182,-119.581226371,34.9567085484,Morales (east),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,32,90,0.01,QFFD
 SR-0183,-119.831286181,35.0601370435,Morales (west),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,32,90,0.01,QFFD
 SR-0184,-121.998073773,37.8487554462,Mount Diablo (north),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,40,90,2,QFFD
 SR-0185,-116.625712658,35.44337827,Nelson Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
-SR-0186,-118.027445162,33.6930312587,Newport - Inglewood,Huntington Beach,0.16,0.35,CA,slip rate study,1,5,88,180,1,Grant and others (1997)
-SR-0187,-118.365123589,34.006861472,Newport - Inglewood,Inglewood Oil Field (location approximate),0.2,0.7,CA,slip rate study,1,5,88,180,1,Freeman and others (1992)
+SR-0186,-118.027445162,33.6930312587,Newport-Inglewood,Huntington Beach,0.16,0.35,CA,slip rate study,1,5,88,180,1,Grant and others (1997)
+SR-0187,-118.365123589,34.006861472,Newport-Inglewood,Inglewood Oil Field (location approximate),0.2,0.7,CA,slip rate study,1,5,88,180,1,Freeman and others (1992)
 SR-0188,-119.775596521,34.3225420367,Pitas Point (upper),approx centroid,1,5,CA,QFFD slip rate bin,1,5,26,90,1,QFFD
 SR-0189,-117.196259616,34.4095512223,North Frontal (west),Ord Mountains,0.07,0.14,CA,slip rate study,0.2,1,49,90,0.1,Clark and others (1984)
 SR-0190,-117.046372742,34.4157291712,North Frontal (west),Grapevine Canyon,0.15,0.35,CA,slip rate study,0,0.2,49,90,0.1,Meisling (1984)
@@ -213,7 +213,7 @@ SR-0215,-117.207545682,36.055475973,Panamint Valley,Happy Canyon,2.6,4,CA,slip r
 SR-0216,-116.850425842,35.1616596057,Paradise,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
 SR-0217,-117.814507245,33.8250074893,Peralta Hills,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,50,90,0.39,QFFD
 SR-0218,-119.11379801,34.5772026203,Pine Mountain,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,45,90,0.01,QFFD
-SR-0219,-116.394361086,34.6720042335,Pisgah - Bullion Mountain - Mesquite Lake,per Oskin and others (2008),0.8,1.2,CA,slip rate study,0.2,1,90,180,1,Oskin and others (2008)
+SR-0219,-116.394361086,34.6720042335,Pisgah-Bullion Mountain-Mesquite Lake,per Oskin and others (2008),0.8,1.2,CA,slip rate study,0.2,1,90,180,1,Oskin and others (2008)
 SR-0220,-121.318152575,41.08540326,Pittville,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,60,90,0.39,QFFD
 SR-0221,-118.956693538,34.9329425442,Pleito,Tecuya fan,0.3,2,CA,slip rate study,1,5,46,90,2,Hall (1984)
 SR-0222,-118.949587548,34.9316936057,Pleito,Kink Canyon,1.3,1.4,CA,slip rate study,1,5,46,90,2,Hall (1984)
@@ -258,7 +258,7 @@ SR-0261,-119.013631366,34.42202344,San Cayetano,Timber Canyon,3.2,4,CA,slip rate
 SR-0262,-119.038563453,34.4234659113,San Cayetano,Mud Creek,1.8,2.8,CA,slip rate study,5,35,42,90,6,Rockwell (1988)
 SR-0263,-118.230224092,32.7435264312,San Clemente,approx centroid,1,5,CA,QFFD slip rate bin,1,5,88,180,1.8,QFFD
 SR-0264,-118.136392037,33.3509053387,San Diego Trough (north),San Gabriel Channel,1.2,1.8,CA,slip rate study,1,5,90,180,1.5,Ryan and others (2012)
-SR-0265,-116.801566826,33.9531378459,San Andreas (San Gorgonio Pass - Garnet Hill),Millard Canyon,1.9,5.3,CA,slip rate study,5,35,60,90,1.8,Heermance and Yule (2017) GRL
+SR-0265,-116.801566826,33.9531378459,San Andreas (San Gorgonio Pass-Garnet Hill),Millard Canyon,1.9,5.3,CA,slip rate study,5,35,60,90,1.8,Heermance and Yule (2017) GRL
 SR-0266,-122.512843103,37.5204783873,San Gregorio (north),Seal Cove,3.5,35,CA,slip rate study,5,35,90,180,7,Simpson and others (1997)
 SR-0267,-122.29397786,37.1285890172,San Gregorio (north),Ano Nuevo,3,9,CA,slip rate study,5,35,90,180,7,Weber (1995)
 SR-0268,-121.983838062,36.4864232296,San Gregorio (south),approx centroid,1,5,CA,QFFD slip rate bin,1,5,75,180,3,QFFD
@@ -267,7 +267,7 @@ SR-0270,-117.804298521,34.0621528276,San Jose,approx centroid,0.2,1,CA,QFFD slip
 SR-0271,-120.755899270858,35.1729522036338,San Luis Bay,Avila Beach,0.04,0.11,CA,slip rate study,0,0.2,90,90,0.1,Lettis and others (1994)
 SR-0272,-120.588470985,35.0718053123,San Luis Range (Oceano),Nipomo Mesa,0.05,0.18,CA,slip rate study,0,0.2,45,90,0.1,Lettis and others (1994)
 SR-0273,-118.563978115,33.7073593882,San Pedro Basin,approx centroid,1,5,CA,QFFD slip rate bin,1,5,88,180,1.5,QFFD
-SR-0274,-119.209170075,33.7939092654,Santa Cruz - San Clemente,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,135,1,QFFD
+SR-0274,-119.209170075,33.7939092654,Santa Cruz-San Clemente,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,135,1,QFFD
 SR-0275,-118.744350602,33.4282818786,Catalina,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,135,1,QFFD
 SR-0276,-119.869456772,34.0306493436,Santa Cruz Island,Christi Beach,0.1,0.2,CA,slip rate study,0.2,1,90,30,0.9,Pinter and others (1991)
 SR-0277,-119.869456772,34.0306493436,Santa Cruz Island,Christi Beach,0.7,1.1,CA,slip rate study,0.2,1,90,30,0.9,Pinter and others (1991)
@@ -282,11 +282,11 @@ SR-0285,-118.18753659,34.2104459489,Sierra Madre,Gould Mesa,1.2,3,CA,slip rate s
 SR-0286,-118.232873736,34.2386366009,Sierra Madre,Pickens Canyon,0.27,0.82,CA,slip rate study,1,5,53,90,2,"Burgette et al., (2020) EPSL"
 SR-0288,-118.25352806,34.2462242733,Sierra Madre,Dunsmore Canyon,0.6,3,CA,slip rate study,1,5,53,90,2,Crook and others (1987)
 SR-0289,-121.831471778,37.3221051085,Silver Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,75,180,0.1,QFFD
-SR-0290,-119.082413273,34.22464134,Simi - Santa Rosa,Springville,0.5,0.9,CA,slip rate study,0.2,1,60,30,0.7,Gonzales and Rockwell (1991)
+SR-0290,-119.082413273,34.22464134,Simi-Santa Rosa,Springville,0.5,0.9,CA,slip rate study,0.2,1,60,30,0.7,Gonzales and Rockwell (1991)
 SR-0291,-121.032907758,40.1123349211,Skinner Flat,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,45,0.01,QFFD
 SR-0292,-115.698413229,32.9268673556,Superstition Hills,Imler Road,2,6,CA,slip rate study,1,5,90,180,4,Hudnut and others (1989)
 SR-0293,-120.184672389,41.5684160571,Surprise Valley,per Personius and others (2009),0.5,0.7,CA,slip rate study,0.2,1,50,90,0.7,Personius and others (2009)
-SR-0294,-121.276852813,39.0935806751,Swain Ravine - Spenceville,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
+SR-0294,-121.276852813,39.0935806751,Swain Ravine-Spenceville,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
 SR-0295,-124.24063144,40.6765064757,Table Bluff,"TB3, TB4, TB6",0.3,0.5,CA,slip rate study,0.2,1,45,90,0.6,McCrory (1996)
 SR-0296,-124.274298131,40.6923727389,Table Bluff,per McCrory (1996),0.2,1,CA,slip rate study,0.2,1,45,90,0.6,McCrory (1996)
 SR-0297,-124.457850891,40.6978353908,Table Bluff,TB7,0.63,0.94,CA,slip rate study,0.2,1,45,90,0.6,McCrory (1996)
@@ -309,7 +309,7 @@ SR-0314,-118.294660615,37.3395450153,White Mountains,Redding Canyon,0.7,1,CA,sli
 SR-0315,-118.294660615,37.3395450153,White Mountains,Gunter/Redding composite slip rate (760 ka),0.9,1,CA,slip rate study,0.2,1,90,180,0.7,Kirby and others (2006)
 SR-0316,-118.311531285,37.4039306638,White Mountains,Silver Canyon,0.2,0.3,CA,slip rate study,0.2,1,90,180,0.7,Kirby and others (2006)
 SR-0318,-118.738104889,35.2074361962,White Wolf,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,75,60,0.39,QFFD
-SR-0319,-121.658741194,36.8604249369,Zayante - Vergeles,Elkhorn Valley,0.04,0.6,CA,slip rate study,0.2,1,30,150,0.1,Coppersmith (1979)
+SR-0319,-121.658741194,36.8604249369,Zayante-Vergeles,Elkhorn Valley,0.04,0.6,CA,slip rate study,0.2,1,30,150,0.1,Coppersmith (1979)
 SR-0320,-116.185460715,33.7380688086,San Andreas (Coachella),Indio,5,35,CA,slip rate study,5,35,90,180,20,Sieh (1986)
 SR-0321,-116.620689016,33.9424201977,San Andreas (Banning),Painted Springs,2.3,6.2,CA,slip rate study,5,35,58,180,10,"Gold et al., (2015) JSG"
 SR-0322,-117.424154148,34.2545101866,"San Andreas (San Bernardino, north)",Pitman Canyon,13,28,CA,slip rate study,5,35,90,180,19,McGill and others (2010)
@@ -330,7 +330,7 @@ SR-0336,-119.819869161,35.269870472,San Andreas (Carrizo),per Liu-Zeng and other
 SR-0337,-119.823631867,35.2734965843,San Andreas (Carrizo),Wallace Creek,31,36.8,CA,slip rate study,5,35,90,180,34,Sieh and Jahns (1984)
 SR-0338,-119.824345386,35.2741841521,San Andreas (Carrizo),Wallace Creek,35,37,CA,slip rate study,5,35,90,180,34,"Grant Ludwig et al., (2019) Earth and Space Science"
 SR-0339,-120.304442272,35.7562188339,San Andreas (Parkfield),Cholame Valley,23,29.6,CA,slip rate study,5,35,90,180,34,Sims (1987)
-SR-0340,-120.441318034,35.8880069853,San Andreas (Parkfield),Miller's Field / SWFZ,18.2,37.2,CA,slip rate study,5,35,90,180,34,Toke and others (2011)
+SR-0340,-120.441318034,35.8880069853,San Andreas (Parkfield),Miller's Field/SWFZ,18.2,37.2,CA,slip rate study,5,35,90,180,34,Toke and others (2011)
 SR-0341,-121.176891852,36.5834601674,San Andreas (Creeping),Melendy Ranch,18,22,CA,slip rate study,5,35,90,180,34,Perkins and others (1989)
 SR-0342,-121.673895772,36.9410018855,San Andreas (Santa Cruz Mountains),Arano Flat,20.5,24.5,CA,slip rate study,5,35,79,180,17,Fumal and others (2003)
 SR-0344,-123.675611485,38.9823859291,San Andreas (North Coast),Scaramella Ranch,23,28,CA,slip rate study,5,35,90,180,24,Prentice (1989)
@@ -380,21 +380,21 @@ SR-0387,-116.367233777,33.4067747996,San Jacinto (Clark),Rockhouse Canyon,6.9,10
 SR-0388,-116.710967138,33.6129686941,San Jacinto (Anza),Hog Lake,5,35,CA,slip rate study,5,35,90,180,14,"Blisnuik and Rockwell (in prep; written communication, 2012)"
 SR-0389,-116.670781473,33.5877609037,San Jacinto (Anza),Anza,11.3,18.2,CA,slip rate study,5,35,90,180,14,Rockwell and others (1990)
 SR-0390,-116.670781473,33.5877609037,San Jacinto (Anza),Anza,9,23,CA,slip rate study,5,35,90,180,14,Rockwell and others (1990)
-SR-0391,-117.001854467,33.8205115692,San Jacinto (stepover),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,geometry used for model caluclations,QFFD
+SR-0391,-117.001854467,33.8205115692,San Jacinto (stepover),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,9999,geometry used for model caluclations
 SR-0392,-117.172508087,33.9685593157,San Jacinto (San Jacinto Valley),Quincy (placed onto hazard trace; site is actually to the east),12.8,18.3,CA,slip rate study,5,35,90,180,16,"Onderdonk et al., (2015) Lithosphere"
 SR-0393,-117.281839301,34.0599828018,San Jacinto (San Bernardino),Commercial Road,1.7,35,CA,slip rate study,5,35,90,180,6,Wesnousky and others (1991)
 SR-0394,-116.046004855,32.7942395334,Elsinore (Coyote Mountains),Coyote Mountains (general),1.37,2.55,CA,slip rate study,1,5,82,180,3,"Rockwell et al., (2017) Geomorphology"
 SR-0395,-116.022435142,32.7852630084,Elsinore (Coyote Mountains),Alverson Canyon,1,1.5,CA,slip rate study,1,5,82,180,3,Fletcher and others (2011)
 SR-0396,-116.97311531,33.3353470651,Elsinore (Julian),Pauma Valley Shutter Ridge,2.4,6.8,CA,slip rate study,1,5,84,180,3,Vaughan and Rockwell (1986)
-SR-0397,-117.014517733,33.3675253663,Elsinore (Temecula),Strath terrace (Q6 - Q7),2.95,4.35,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
+SR-0397,-117.014517733,33.3675253663,Elsinore (Temecula),Strath terrace (Q6-Q7),2.95,4.35,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0398,-117.033935035,33.39566118,Elsinore (Temecula),Shoup beheaded (Q7),1.4,2.6,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0399,-117.033935035,33.39566118,Elsinore (Temecula),Magee North (Q6),1.2,3.8,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0400,-117.041010173,33.4056255716,Elsinore (Temecula),Watson (Q7),1.45,3.65,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
-SR-0401,-117.024974845,33.3834438752,Elsinore (Temecula),Lodge abandoned channel (Q6 - Q7),2.4,3.5,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
+SR-0401,-117.024974845,33.3834438752,Elsinore (Temecula),Lodge abandoned channel (Q6-Q7),2.4,3.5,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0402,-117.041010173,33.4056255716,Elsinore (Temecula),Watson (Q7),1.8,4.6,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0403,-117.038389304,33.4019347393,Elsinore (Temecula),Shoup beheaded (Q6),1.8,5.2,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
-SR-0404,-117.041010173,33.4056255716,Elsinore (Temecula),Watson stacked (Q4 - Q5)),2.3,6.9,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
-SR-0405,-117.041010173,33.4056255716,Elsinore (Temecula),Watson (Q5 - Q6)),3.2,6.6,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
+SR-0404,-117.041010173,33.4056255716,Elsinore (Temecula),Watson stacked (Q4-Q5)),2.3,6.9,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
+SR-0405,-117.041010173,33.4056255716,Elsinore (Temecula),Watson (Q5-Q6)),3.2,6.6,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0406,-117.033935035,33.39566118,Elsinore (Temecula),Magee North (Q5),1.65,10.35,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0407,-117.044154446,33.4100530012,Elsinore (Temecula),Water Tank Q7,1,4.9,CA,slip rate study,1,5,90,180,5,Vaughan and Rockwell (1986)
 SR-0408,-117.326825329,33.6484184142,Elsinore (stepover),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,5,QFFD
@@ -424,12 +424,12 @@ SR-0431,-119.599993673,38.8042097318,Double Spring Flat,approx centroid,0,0.2,NV
 SR-0432,-119.818858938,38.7782027818,Genoa (south),Woodfords,0.33,0.71,CA,slip rate study,1,5,50,90,2.61,"Ramelli et al., (1999) BSSA"
 SR-0433,-119.847615143,39.0110556893,Genoa (north),Jacks Valley-Walleys-Sturgis,2,3.33,NV,slip rate study,1,5,50,90,2.61,"Ramelli et al., (1999) BSSA"
 SR-0434,-119.84781096,38.8950181678,Genoa (south),Woodfords,0.33,0.71,CA,slip rate study,1,5,50,90,2.61,"Ramelli et al., (1999) BSSA"
-SR-0435,-114.351667795,39.9344125464,Antelope Range - Kingsley Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
+SR-0435,-114.351667795,39.9344125464,Antelope Range-Kingsley Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
 SR-0436,-116.626655952,36.7672429891,Bare Mountain,dePolo and Anderson location,0.006,0.02,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.01,dePolo and Anderson (2000) Basin Research; likely represents Anderson and Klinger (1996) BoR STR(?) study?
 SR-0437,-117.230062489,40.6307434528,Battle Mountain,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0438,-118.074761967,38.4168436906,Benton Spring (south),Mina1-BS,1.3,1.7,NV,slip rate study,0.2,1,90,180,0.5,"Angster et al., (2019) Geosphere"
 SR-0439,-116.412925368,40.7190507127,Beowawe,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
-SR-0440,-118.167862519,38.735578633,Bettles Well - Petrified Springs,PS,0.7,1,NV,slip rate study,0.2,1,90,180,1.3,"Angster et al., (2019) Geosphere"
+SR-0440,-118.167862519,38.735578633,Bettles Well-Petrified Springs,PS,0.7,1,NV,slip rate study,0.2,1,90,180,1.3,"Angster et al., (2019) Geosphere"
 SR-0441,-117.85109488,38.2949924609,Pilot Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,90,180,1.3,QFFD
 SR-0442,-114.946746131,35.9254419023,Black Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.13,QFFD
 SR-0443,-119.052088264,40.8463118697,Black Rock,Trench 1,0.16,0.22,NV,slip rate study,0,0.2,50,-90,0.25,Dodge (1982) thesis; Qfault page
@@ -457,7 +457,7 @@ SR-0464,-115.786626083,39.5609058439,Diamond Mountains,approx centroid,0,0.2,NV,
 SR-0465,-118.2019512,39.7103975291,Dixie Valley,The Bend,0.2,1,NV,slip rate study,0.2,1,50,-90,0.39,Bell and Katzer (1990) Geology
 SR-0466,-118.181672989,39.6508409287,Dixie Valley,dePolo and Anderson location,0.07,0.23,NV,dePolo and Anderson calibration rate,0.2,1,50,-90,0.39,dePolo and Anderson (2000)
 SR-0467,-114.767931457,37.622047698,Dry Lake,dePolo and Anderson location,0.005,0.014,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.01,dePolo and Anderson (2000) Basin Research
-SR-0468,-119.898652836,40.4010968241,Dry Valley - Smoke Creek Ranch,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
+SR-0468,-119.898652836,40.4010968241,Dry Valley-Smoke Creek Ranch,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0469,-119.944617305,41.0754838169,Duck Flat,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0470,-117.961484979,40.8095392774,Dunn Glenn,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0471,-118.310871011,41.7921742688,Eastern Bilk Creek Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
@@ -471,7 +471,7 @@ SR-0478,-117.490999663,40.7672723856,Edna Mountain,approx centroid,0,0.2,NV,QFFD
 SR-0479,-115.150302856,36.2953392723,Eglington,Las Vegas Valley,0.15,0.18,NV,slip rate study,0,0.2,50,-90,0,Springer and Pigati (2020) Geology
 SR-0480,-117.93773239,37.8340970153,Emigrant Peak,dePolo and Anderson location,0.4,1.7,NV,dePolo and Anderson calibration rate,0.2,1,50,-90,0.99,dePolo and Anderson (2000)
 SR-0481,-118.241989182,40.8264617202,Eugene Mountains,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
-SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-0482,-118.149542842,39.2044481171,Fairview,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-0483,-118.205257059,38.2626548052,Excelsior Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,90,0,0.13,QFFD
 SR-0484,-119.62761492,40.4372011447,Fox Range,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0485,-119.852183394,39.6738091704,Freds Mountain,Profile 4,0.013,0.15,NV,slip rate study,0,0.2,50,-90,0.13,Koehler (2019) Geomorphology
@@ -494,7 +494,7 @@ SR-0501,-118.550442993,41.2931948615,Jackson Mountains,Hobo Canyon,0.4,0.6,NV,sl
 SR-0502,-115.318943986,39.2967604405,Jakes Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
 SR-0503,-117.507120619,40.1439685425,Jersey Valley,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0504,-114.71048291,37.1402776213,Kane Spring Wash,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
-SR-0505,-116.353305433,38.2650954322,Kawich Range - Hot Creek Ranges,approx centroid,0.2,1,NV,dePolo empirically-derived slip rate,0.2,1,50,-90,0.26,dePolo (1998) thesis
+SR-0505,-116.353305433,38.2650954322,Kawich Range-Hot Creek Ranges,approx centroid,0.2,1,NV,dePolo empirically-derived slip rate,0.2,1,50,-90,0.26,dePolo (1998) thesis
 SR-0506,-116.354847402,38.8224677403,Little Fish Lake Valley,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0507,-119.836157473,39.2933405059,Mount Rose,Ophir Creek,1.1,3.8,NV,slip rate study,1,5,50,-90,0.26,QFFD archive page; 2014 Source Parameters page; Ramelli and dePolo (1997) FTR
 SR-0508,-119.875467166,39.2742205085,Little Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.26,QFFD
@@ -503,7 +503,7 @@ SR-0510,-117.578770703,38.0403996005,Lone Mountain,Q3b profile,0.27,0.47,NV,slip
 SR-0511,-117.571327369,38.0433804506,Lone Mountain,dePolo and Anderson location,0.09,0.21,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.2,dePolo and Anderson (2000) Basin Research
 SR-0512,-117.504291771,38.0681334821,Lone Mountain,Profile 2,0.6,0.8,NV,slip rate study,0,0.2,50,-90,0.2,"Lifton et al., (2014) Tectonics"
 SR-0513,-117.965395132,39.3908920393,Middlegate,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
-SR-0514,-118.125758274,41.1704526435,Montana Mountains - Desert Valley,Gabica Butte,0.14,0.16,NV,slip rate study,0,0.2,50,-90,0.13,"Personius et al., (2017) Geosphere"
+SR-0514,-118.125758274,41.1704526435,Montana Mountains-Desert Valley,Gabica Butte,0.14,0.16,NV,slip rate study,0,0.2,50,-90,0.13,"Personius et al., (2017) Geosphere"
 SR-0515,-117.828154244,38.3741704298,Monte Cristo Valley,approx T3 location,0.2,0.7,NV,slip rate study,0.2,1,90,180,0.4,"Bell et al., (1999; 2004) BSSA"
 SR-0516,-114.975571454,40.2956623193,Northern Butte Valley,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0517,-115.654621103,40.3027692482,Northern Huntington Valley,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
@@ -561,15 +561,15 @@ SR-0569,-115.915273073,36.250409971,West Spring Mountains,dePolo and Anderson lo
 SR-0570,-114.953491734,38.901410535,White River Valley,dePolo and Anderson location,0.02,0.05,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.06,dePolo and Anderson (2000)
 SR-0571,-114.50498455,32.4795867653,Algodones,Upper Mesa,0.07,0.3,AZ,slip rate study,0.2,1,50,-90,0.2,Woodward-McNeil and Associates (1974); QFFD archive report for Algodones fault zone
 SR-0572,-113.046742038,35.5368534201,Aubrey,approximate T-3,0.01,0.02,AZ,slip rate study,0,0.2,50,-90,0.02,Euge et al (1992) ADOT report
-SR-0573,-112.607676237,35.0395690092,Big Chino - Little Chino,Approx t-3,0.078,0.098,AZ,slip rate study,0,0.2,50,-90,0.11,Euge et al (1992) ADOT report
+SR-0573,-112.607676237,35.0395690092,Big Chino-Little Chino,Approx t-3,0.078,0.098,AZ,slip rate study,0,0.2,50,-90,0.11,Euge et al (1992) ADOT report
 SR-0574,-113.449477945,36.9473427804,Dutchman Draw,Joe Blake Hill,0.061,0.087,AZ,slip rate study,0,0.2,50,-90,0.1,Billingsley 1992 (offset)--USGS OFR; Wenrich et al 1995 (age)--(JGR paper)
 SR-0575,-113.2415315,36.6607334936,Hurricane (center),Moriah Knoll,0.16,0.25,AZ,slip rate study,0,0.2,50,-90,0.26,Amoroso et al (2004) BSSA
 SR-0576,-113.252361803,36.6138814214,Hurricane (center),Boulder Fan,0.06,0.31,AZ,slip rate study,0,0.2,50,-90,0.26,Amoroso et al (2004) BSSA
 SR-0577,-113.22052992,36.2107311059,Hurricane (south),northern southern piedmont (approx),0.078,0.12,AZ,slip rate study,0,0.2,50,-90,0.11,"Fenton et al., (2001) Geology"
 SR-0578,-113.218905867,36.2044583227,Hurricane (south),central alluvial fan of southern piedmont (approx),0.079,0.15,AZ,slip rate study,0,0.2,50,-90,0.11,"Fenton et al., (2001) Geology"
 SR-0579,-113.211929673,36.1547575699,Hurricane (south),approx Whitmore Dam alluvium,0.067,0.095,AZ,slip rate study,0,0.2,50,-90,0.11,"Fenton et al., (2001) Geology"
-SR-0580,-113.071087965,36.1617016954,Sevier - Toroweap,Prospect Cone,0.18,0.21,AZ,slip rate study,0,0.2,50,-90,0.05,"Fenton et al., (2001) Geology."
-SR-0581,-113.074806818,36.2392957969,Sevier - Toroweap,Vulcan's Throne North (site 11),0.06,0.084,AZ,slip rate study,0,0.2,50,-90,0.05,"Fenton et al., (2001) Geology"
+SR-0580,-113.071087965,36.1617016954,Sevier-Toroweap,Prospect Cone,0.18,0.21,AZ,slip rate study,0,0.2,50,-90,0.05,"Fenton et al., (2001) Geology."
+SR-0581,-113.074806818,36.2392957969,Sevier-Toroweap,Vulcan's Throne North (site 11),0.06,0.084,AZ,slip rate study,0,0.2,50,-90,0.05,"Fenton et al., (2001) Geology"
 SR-0582,-106.159354646,39.6821108725,Gore Range,South Rock Creek,0.075,0.23,CO,slip rate study,0,0.2,50,-90,0.05,Derouin (2014) BoR STR
 SR-0583,-105.510762997,37.7252922008,"Sangre de Cristo (Crestone, Blanca, Zapata, San Luis)",Morris Gulch,0.097,0.31,CO,slip rate study,0,0.2,50,-90,0.23,McCalpin (2006) Great Sand Dunes report
 SR-0584,-105.352775357,37.2514158852,"Sangre de Cristo (Crestone, Blanca, Zapata, San Luis)",Rito Seco,1.27,1.38,CO,slip rate study,0,0.2,50,-90,0.23,Kirkham and Rodgers (1981) initial report to CGS
@@ -626,7 +626,7 @@ SR-0634,-114.95628491,47.7020384856,Thompson Valley,Sears Gulch,0.04,0.086,MT,sl
 SR-0635,-105.941962386,33.0104225369,Alamogordo,Lab-1,0.09,0.14,NM,slip rate study,0,0.2,50,-90,0.14,"Koning and Pazaglia, (2002) NMBMG guidebook"
 SR-0636,-105.893260564,32.7193016059,Alamogordo,D-36,0.035,0.13,NM,slip rate study,0,0.2,50,-90,0.14,Konning and Pazzaglia (2002) NMBMG guidebook
 SR-0637,-105.929177619,32.8462744071,Alamogordo,M-19,0.3,0.6,NM,slip rate study,0,0.2,50,-90,0.14,Koning and Pazzaglia (2002) NMBMG field guide
-SR-0638,-106.845940708,35.3125892923,Jemez - San Ysidro (Calabacillas),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
+SR-0638,-106.845940708,35.3125892923,Jemez-San Ysidro (Calabacillas),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
 SR-0639,-106.448490386,36.195590287,Canones,approx centroid,0.2,1,NM,QFFD slip rate bin,0.2,1,50,-90,0.03,QFFD
 SR-0640,-106.779130743,35.0771377493,County Dump,Llano de Albuquerque,0.016,0.03,NM,slip rate study,0,0.2,50,-90,0.05,McCalpin et al (2006) NMBMG circular
 SR-0641,-106.684909464,35.2085001926,East Paradise,Arroyo de las Calabacillas,0.009,0.011,NM,slip rate study,0,0.2,50,-90,0.01,Personius and Mahan (2000) BSSA
@@ -634,8 +634,8 @@ SR-0642,-105.815183455,36.2561662961,Embudo,Pilar,0.04,0.16,NM,slip rate study,0
 SR-0643,-106.164200319,36.0408246889,Santa Clara,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,90,0,0.13,QFFD
 SR-0644,-106.792661684,36.355230375,Gallina,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
 SR-0645,-106.542300779,34.9358055626,Hubbell Spring,Hubbel Spring,0.03,0.08,NM,slip rate study,0,0.2,50,-90,0,Personius and Mahan (2003) BSSA
-SR-0646,-106.7571364,35.7407609196,Jemez - San Ysidro (Jemez),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
-SR-0647,-106.789520675,35.5676363834,Jemez - San Ysidro (San Ysidro),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
+SR-0646,-106.7571364,35.7407609196,Jemez-San Ysidro (Jemez),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
+SR-0647,-106.789520675,35.5676363834,Jemez-San Ysidro (San Ysidro),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
 SR-0648,-106.28108271,35.6464077465,La Bajada,Cochiti,0.071,0.089,NM,slip rate study,0,0.2,50,-90,0.1,Personius (unpublished offset measurement; see Qfaults + Source faults page) + age from Thompson et al (2006) USGS OFR
 SR-0649,-106.250831961,36.0822525723,La Canada del Amagre,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.02,QFFD
 SR-0650,-107.084585904,34.0255457939,La Jencia,Trench 1,0.55,0.67,NM,slip rate study,0,0.2,50,-90,0.03,Machette (1988) USGS Professional Paper 1440
@@ -654,7 +654,7 @@ SR-0662,-106.329386154,35.4670205184,San Francisco,approx centroid,0,0.2,NM,QFFD
 SR-0663,-106.266592869,35.9475794328,Sawyer Canyon,Chupaderos Canyon,0.017,0.03,NM,slip rate study,0,0.2,50,-90,0.03,"Gardner et al., (2003) Lettis consulting report to Los Alamos"
 SR-0664,-106.930094704,34.0231014561,Socorro Canyon,Socorro Canyon,0.025,0.045,NM,slip rate study,0,0.2,50,-90,0.04,Chamberlain and Harrison (1996) NMBMG guidebook abstract
 SR-0665,-105.565240298,36.7385617302,Sangre de Cristo (south),composite (centroid),0.03,0.06,NM,slip rate study,0,0.2,50,-90,0.17,Menges (1990) NMBMG field trip guidebook
-SR-0666,-106.226645782,35.2628721455,Tijeras - Canoncito,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,90,0,0.09,QFFD
+SR-0666,-106.226645782,35.2628721455,Tijeras-Canoncito,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,90,0,0.09,QFFD
 SR-0667,-106.761231066,35.4029974174,Zia,middle trench,0.055,0.1,NM,slip rate study,0,0.2,50,-90,0.05,McCalpin and Harrison (2001) FTR
 SR-0668,-120.297975423,42.0273993325,Goose Lake,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,58,90,0.1,QFFD
 SR-0669,-121.803833266,42.3780098952,Klamath Graben (east),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,60,90,0.39,QFFD
@@ -680,7 +680,7 @@ SR-0688,-118.761249102,41.8348830987,Steens (south),Bog Hot Valley,0.18,0.3,OR/N
 SR-0689,-118.536399031,42.561193135,Steens (center),southern section approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,50,-90,0.35,QFFD
 SR-0690,-118.387088344,42.8889804467,Steens (north),northern section approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.35,QFFD
 SR-0691,-118.375022802,42.509427471,Tule Springs Rims,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.13,QFFD
-SR-0692,-122.98498922,44.8205186733,Turner - Mill Creek,approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
+SR-0692,-122.98498922,44.8205186733,Turner-Mill Creek,approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
 SR-0693,-124.070208465,44.4027063567,Waldport,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,60,90,0.16,QFFD
 SR-0694,-119.681085046,41.9021039537,"Warner Valley (east, Coleman Valley)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.14,QFFD
 SR-0695,-119.513423425,42.8029959161,"Warner Valley (east, north)",approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.14,QFFD
@@ -704,7 +704,7 @@ SR-0713,-112.274001985,40.3005517542,Southern Oquirrh Mountains,"Mercur Canyon, 
 SR-0714,-112.238856836,40.5882215326,Oquirrh,approx centroid,0.05,0.4,UT,Utah hazard consensus rate,0.2,1,50,-90,0.26,Lund (2005) UGS Bulletin
 SR-0715,-112.280914129,40.3168886311,Southern Oquirrh Mountains,approx centroid,0.05,0.4,UT,Utah hazard consensus rate,0.2,1,50,-90,0.26,Lund (2005) UGS Bulletin
 SR-0716,-112.767682389,37.8682404486,Paragonah,approx centroid,0.2,1,UT,QFFD slip rate bin,0,0.2,50,-90,0.6,QFFD
-SR-0717,-112.330495022,37.7448400772,Sevier - Toroweap (north),Red Canyon,0.05,0.07,UT,slip rate study,0,0.2,50,-90,0.04,"Lund et al., (2008) UGS Special Study"
+SR-0717,-112.330495022,37.7448400772,Sevier-Toroweap (north),Red Canyon,0.05,0.07,UT,slip rate study,0,0.2,50,-90,0.04,"Lund et al., (2008) UGS Special Study"
 SR-0718,-112.682165517,40.4358775393,Stansbury,Antelope Canyon,0.1,0.16,UT,slip rate study,0.2,1,50,-90,0.52,"Swan et al., (2005) BRPSHSII"
 SR-0719,-111.112024444,40.1749692094,Strawberry,approx centroid,0.03,0.3,UT,Utah hazard consensus rate,0,0.2,50,-90,0.13,Lund (2005) UGS Bulletin
 SR-0720,-112.093645858,41.9313655024,West Cache (Clarkston),Winter Canyon,0.1,0.7,UT,slip rate study,0.2,1,50,-90,0.52,"Black et al., (2000) UGS Special Study; Lund (2005) UGS Bulletin"
@@ -715,8 +715,8 @@ SR-0724,-111.988384239,40.7387883477,West Valley,approx centroid,0.1,0.6,UT,Utah
 SR-0725,-122.07099653,48.9152217138,Boulder Creek (Kendall),"approx centroid (trench sites exist along this fault, but scarp profiles taken along length)",0.27,0.33,WA,slip rate study,0.2,1,60,90,0,"Sherrod et al., (2013) Geosphere"
 SR-0726,-122.191740428,48.3447345614,Devils Mountain,Springboard & Aplodonita trenches,0.13,0.14,WA,slip rate study,0,0.2,60,90,0.17,"Personius et al., (2014) Geosphere"
 SR-0727,-122.622516354,48.3602389029,Devils Mountain,approx Whidbey Fm,0.05,0.3,WA,slip rate study,0,0.2,60,90,0.17,"Johnson et al., (2001)"
-SR-0728,-119.254047235,46.152781906,Horse Heaven Hills - Wallula,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.04,QFFD
-SR-0729,-123.634900359,48.0702567748,Lake Creek - Boundary Creek - Sadie,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.5,QFFD
+SR-0728,-119.254047235,46.152781906,Horse Heaven Hills-Wallula,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.04,QFFD
+SR-0729,-123.634900359,48.0702567748,Lake Creek-Boundary Creek-Sadie,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.5,QFFD
 SR-0730,-120.578367791,46.3051515353,Toppenish Ridge (Mill Creek thrust),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.04,QFFD
 SR-0731,-118.665495006,45.9476065768,Wallula (southwest),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,60,90,0.05,QFFD
 SR-0733,-119.115429701,46.153902952,Wallula (northeast),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.05,QFFD
@@ -737,450 +737,450 @@ SR-0748,-110.697590602,44.0286206352,Teton,Steamboat,0.39,1.03,WY,slip rate stud
 SR-0749,-110.110512081,44.2467304731,Upper Yellowstone Valley (east),approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,50,-90,0.48,QFFD
 SR-0750,-110.128966779,44.1686432794,Upper Yellowstone Valley (west),approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,50,-90,0.48,QFFD
 SR-0751,-111.844724994,40.772700843,Wasatch (Foothills),Penrose Drive,0.5,0.9,UT,slip rate study,1,5,50,-90,1.697,DuRoss et al (2014) within DuRoss and Hylland (2014) UGS Special Study
-SR-0752,-118.213821841,38.5767218768,Gumdrop Hills,GDN/GDS,0.6,1.1,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Angster et al., (2019) Geosphere"
-SR-0753,-119.521051629,39.9420526311,Lake Range,Anaho Island,0.2,1.5,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Eisses et al., 2015 (Geosphere)"
-SR-0754,-119.430540905,39.6154586345,Olinghouse,B&W levee,0.27,0.31,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Briggs and Wesnousky (2005) BSSA
-SR-0755,-113.485482333,36.9595370679,Washington (Fort Pearce),Dutchman Draw,0.1,0.29,AZ,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Lund et al., (2015) UGS Special Study"
+SR-0752,-118.213821841,38.5767218768,Gumdrop Hills,GDN/GDS,0.6,1.1,NV,slip rate study,0,0.2,9999,9999,9999,"Angster et al., (2019) Geosphere"
+SR-0753,-119.521051629,39.9420526311,Lake Range,Anaho Island,0.2,1.5,NV,slip rate study,0,0.2,9999,9999,9999,"Eisses et al., 2015 (Geosphere)"
+SR-0754,-119.430540905,39.6154586345,Olinghouse,B&W levee,0.27,0.31,NV,slip rate study,0,0.2,9999,9999,9999,Briggs and Wesnousky (2005) BSSA
+SR-0755,-113.485482333,36.9595370679,Washington (Fort Pearce),Dutchman Draw,0.1,0.29,AZ,slip rate study,0,0.2,9999,9999,9999,"Lund et al., (2015) UGS Special Study"
 SR-0756,-103.176691856,38.4455716749,Cheraw,Haswell site,0.055,0.071,CO,slip rate study,0,0.2,60,-90,0.173,Ostenaa and Zellman (2018) CGS report
-SR-0757,-111.389089944,42.190423895,Western Bear Lake,Bloomington South,0.24,0.26,ID,slip rate study,0,0.2,not included in model,not included in model,not included in model,McCalpin (2003) UGS Miscellaneous Publication
-SR-0758,-114.517729236,43.8090725328,Boulder front,no name,0.2,0.25,ID,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Geomatrix Consultants, Inc. (1989) consultant report"
-SR-0759,-114.219733428,46.2162841966,Bitterroot,amalgamate numerous profile locations--can locate better later if needed,0.12,0.37,MT,slip rate study,0,0.2,not included in model,not included in model,not included in model,Stickney and Lonn (2018) MBMG report
-SR-0760,-116.058832124,37.199467984,Yucca - Boundary,dePolo and Anderson location,0.014,0.042,NV,dePolo and Anderson calibration rate,0,0.2,not included in model,not included in model,not included in model,dePolo and Anderson (2000) Basin Research
-SR-0761,-116.414504348,36.8497337954,Yucca Mountains (east),dePolo and Anderson location,0.0019,0.0041,NV,dePolo and Anderson calibration rate,0,0.2,not included in model,not included in model,not included in model,dePolo and Anderson (2000) Basin Research
+SR-0757,-111.389089944,42.190423895,Western Bear Lake,Bloomington South,0.24,0.26,ID,slip rate study,0,0.2,9999,9999,9999,McCalpin (2003) UGS Miscellaneous Publication
+SR-0758,-114.517729236,43.8090725328,Boulder front,no name,0.2,0.25,ID,slip rate study,0,0.2,9999,9999,9999,"Geomatrix Consultants, Inc. (1989) consultant report"
+SR-0759,-114.219733428,46.2162841966,Bitterroot,amalgamate numerous profile locations--can locate better later if needed,0.12,0.37,MT,slip rate study,0,0.2,9999,9999,9999,Stickney and Lonn (2018) MBMG report
+SR-0760,-116.058832124,37.199467984,Yucca-Boundary,dePolo and Anderson location,0.014,0.042,NV,dePolo and Anderson calibration rate,0,0.2,9999,9999,9999,dePolo and Anderson (2000) Basin Research
+SR-0761,-116.414504348,36.8497337954,Yucca Mountains (east),dePolo and Anderson location,0.0019,0.0041,NV,dePolo and Anderson calibration rate,0,0.2,9999,9999,9999,dePolo and Anderson (2000) Basin Research
 SR-0762,-116.516797751,36.8176068732,Yucca Mountains (west),dePolo and Anderson location,0.003,0.009,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.02,dePolo and Anderson (2000) Basin Research
-SR-0763,-116.590740532,39.2379271198,Northern Monitor Valley,Profile 1 (projected south),0.011,0.019,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
-SR-0764,-114.847713717,39.6787418115,Steptoe Valley (west),Profile 1,0.022,0.31,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
-SR-0765,-116.726717063,39.0500938222,Toquima Range,Profile 2,0.015,0.022,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
-SR-0766,-116.832584375,38.8561290425,Toquima Range,Profile 1,0,0.2,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
+SR-0763,-116.590740532,39.2379271198,Northern Monitor Valley,Profile 1 (projected south),0.011,0.019,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
+SR-0764,-114.847713717,39.6787418115,Steptoe Valley (west),Profile 1,0.022,0.31,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
+SR-0765,-116.726717063,39.0500938222,Toquima Range,Profile 2,0.015,0.022,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
+SR-0766,-116.832584375,38.8561290425,Toquima Range,Profile 1,0,0.2,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
 SR-0767,-116.318971135,39.1353341554,Antelope Range,dePolo and Anderson location,0.006,0.005,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.01,dePolo and Anderson (2000) Basin Research
 SR-0768,-116.183908442,39.3340484481,Antelope Range,Profile 2&3,0.076,0.11,NV,slip rate study,0,0.2,50,-90,0.01,Koehler and Wesnousky (2011) Geosphere
-SR-0769,-116.066186065,39.2628348434,Fish Creek Range,Profile 1,0.077,0.1,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
-SR-0770,-116.717835672,39.5254473475,Hickison Summit,Profile 3,0,0.2,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,Koehler and Wesnousky (2011) Geosphere
+SR-0769,-116.066186065,39.2628348434,Fish Creek Range,Profile 1,0.077,0.1,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
+SR-0770,-116.717835672,39.5254473475,Hickison Summit,Profile 3,0,0.2,NV,slip rate study,0,0.2,9999,9999,9999,Koehler and Wesnousky (2011) Geosphere
 SR-0771,-123.091812286,45.3381825743,Gales Creek (Chehalem Valley),approx fold location,0.5,0.75,OR,slip rate study,0,0.2,90,180,0.02,"Wells et al., (2020) Geosphere"
-SR-0772,-120.569811362,46.945797804,Manastash Ridge,Shushskin Canyon,0.16,0.18,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,Ladinsky (2012) thesis
-SR-0773,-120.520207392,46.9294970974,Manastash Ridge,"numerous, including Kittitas Road",0.05,0.11,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Bender et al., (2016) JGR"
-SR-0774,-120.51458583,46.9288805176,Manastash Ridge,Profile A,0.09,0.21,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Staisch et al., (2018) Tectonics"
-SR-0775,-120.460692317,46.8252148688,Uhtanum Ridge - Gable Mountain,Death Chute and others,0.02,0.04,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Bender et al., (2016) JGR"
-SR-0776,-120.459251557,46.8242198328,Uhtanum Ridge - Gable Mountain,Profile A and B,0.08,0.26,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Staisch et al., (2018) Tectonics"
-SR-0777,-123.163182632,47.4709165304,Canyon River - Price Lake (northeast),Approx midpoint between observation points/trenches,0.1,0.2,WA,slip rate study,0.2,1,not included in model,not included in model,not included in model,"Barnett et al., (2015) BSSA"
-SR-0778,-123.643594166,47.342584419,Canyon River,Wynoochee terraces,0.2,0.8,WA,slip rate study,0.2,1,not included in model,not included in model,not included in model,"Delano et al., (2017) Geology"
-SR-0779,-122.178054003,40.3190415582,Inks Creek - Hooker Dome,wind gap,0.1,0.3,CA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Angster et al., (2020) Geology"
-SR-0780,-122.23402594,40.1823973424,Red Bluff,Big Bend,0.4,0.8,CA,slip rate study,0.2,1,not included in model,not included in model,not included in model,Angster et al (2020) Geology
-SR-0781,-120.447850651,47.6234217116,Entiat,aggregate Swakane reach,0,0.2,WA,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Carlson et al., (2018) BSSA"
-SR-0782,-117.853553876,39.3524959098,Eastgate,Central Eastgate (CEG),0.12,0.2,NV,slip rate study,0.2,1,not included in model,not included in model,not included in model,Crone et al 2005 SIM 2893
+SR-0772,-120.569811362,46.945797804,Manastash Ridge,Shushskin Canyon,0.16,0.18,WA,slip rate study,0,0.2,9999,9999,9999,Ladinsky (2012) thesis
+SR-0773,-120.520207392,46.9294970974,Manastash Ridge,"numerous, including Kittitas Road",0.05,0.11,WA,slip rate study,0,0.2,9999,9999,9999,"Bender et al., (2016) JGR"
+SR-0774,-120.51458583,46.9288805176,Manastash Ridge,Profile A,0.09,0.21,WA,slip rate study,0,0.2,9999,9999,9999,"Staisch et al., (2018) Tectonics"
+SR-0775,-120.460692317,46.8252148688,Uhtanum Ridge-Gable Mountain,Death Chute and others,0.02,0.04,WA,slip rate study,0,0.2,9999,9999,9999,"Bender et al., (2016) JGR"
+SR-0776,-120.459251557,46.8242198328,Uhtanum Ridge-Gable Mountain,Profile A and B,0.08,0.26,WA,slip rate study,0,0.2,9999,9999,9999,"Staisch et al., (2018) Tectonics"
+SR-0777,-123.163182632,47.4709165304,Canyon River-Price Lake (northeast),Approx midpoint between observation points/trenches,0.1,0.2,WA,slip rate study,0.2,1,9999,9999,9999,"Barnett et al., (2015) BSSA"
+SR-0778,-123.643594166,47.342584419,Canyon River,Wynoochee terraces,0.2,0.8,WA,slip rate study,0.2,1,9999,9999,9999,"Delano et al., (2017) Geology"
+SR-0779,-122.178054003,40.3190415582,Inks Creek-Hooker Dome,wind gap,0.1,0.3,CA,slip rate study,0,0.2,9999,9999,9999,"Angster et al., (2020) Geology"
+SR-0780,-122.23402594,40.1823973424,Red Bluff,Big Bend,0.4,0.8,CA,slip rate study,0.2,1,9999,9999,9999,Angster et al (2020) Geology
+SR-0781,-120.447850651,47.6234217116,Entiat,aggregate Swakane reach,0,0.2,WA,slip rate study,0,0.2,9999,9999,9999,"Carlson et al., (2018) BSSA"
+SR-0782,-117.853553876,39.3524959098,Eastgate,Central Eastgate (CEG),0.12,0.2,NV,slip rate study,0.2,1,9999,9999,9999,Crone et al 2005 SIM 2893
 SR-0783,-121.86939291,37.7148560931,Mount Diablo (south),approx centroid,1,5,CA,QFFD slip rate bin,1,5,40,90,2,QFFD
 SR-0784,-117.509384526,33.0894313258,Carlsbad,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,37,90,0.25,QFFD
 SR-0785,-117.130264714,33.5553197092,Murrieta Hot Springs,approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,5,QFFD
-SR-0786,-116.826478779,34.1128395864,Lake Peak,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-0787,-124.009745399697,41.3894447666423,Lost Man,on land approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-0788,-123.961258116,41.4546215362,Surpur Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0789,-121.877569048,39.9234575753,Chico Monocline,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0790,-121.670056924,40.0077468452,Cohasset Ridge,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0791,-122.197785466,39.8604246064,Corning,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0792,-120.43387748,39.865174192,Grizzly Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0793,-117.549492978,35.6977568189,Paxton Ranch,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-0794,-121.857621398,36.2015601998,Pfieffer Point,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0795,-117.553084263,35.6319415063,Salt Wells Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0796,-123.877322352,39.6596221255,Noyo Basin,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-0797,-116.693856374,33.310450222,San Felipe,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0798,-118.37541913,38.0161661717,Volcanic Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0799,-111.910716107,41.3686805476,Ogden Valley North Fork,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0800,-112.091327839,41.7987560302,Wasatch (Collinston),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,not included in model,not included in model,not included in model,WGUEP (2016); Personius (1990); Hylland (2007)
-SR-0801,-111.88021367,39.3354853399,Wasatch (Fayette),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,not included in model,not included in model,not included in model,WGUEP (2015); Hylland (2007); Hylland and Machette (2008)
-SR-0802,-111.918236329,39.2280224916,Dover,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0803,-114.492429009,39.8203066522,Antelope Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0805,-117.213387192,39.7446790879,Ravenswood,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0806,-117.889684774,38.0807920167,Eastern Columbus Salt Marsh,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0807,-115.74943712,40.0192295349,Southern Huntington Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0808,-118.586856643,41.7347399612,Eastern Pine Forest Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0809,-118.225779104,39.1692848676,Western Fairview Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0810,-118.09361201,39.4458949675,Gold King,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0811,-119.047269815,40.2948786661,Sahwave Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0812,-114.875763791,36.8956039963,Wildcat Wash,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0813,-116.137387449,38.8196113621,Andesite Ridge (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0814,-116.528409581,38.0642470032,Stone Cabin Valley (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0815,-117.939197873,39.3824165292,Clan Alpine Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0816,-117.849233498,38.536648361,Cedar Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0817,-119.650965952,40.1645549874,Terraced Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0818,-118.576372373,39.3426706353,Fourmile Flat (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-0786,-116.826478779,34.1128395864,Lake Peak,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-0787,-124.009745399697,41.3894447666423,Lost Man,on land approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-0788,-123.961258116,41.4546215362,Surpur Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0789,-121.877569048,39.9234575753,Chico Monocline,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0790,-121.670056924,40.0077468452,Cohasset Ridge,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0791,-122.197785466,39.8604246064,Corning,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0792,-120.43387748,39.865174192,Grizzly Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0793,-117.549492978,35.6977568189,Paxton Ranch,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-0794,-121.857621398,36.2015601998,Pfieffer Point,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0795,-117.553084263,35.6319415063,Salt Wells Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0796,-123.877322352,39.6596221255,Noyo Basin,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-0797,-116.693856374,33.310450222,San Felipe,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0798,-118.37541913,38.0161661717,Volcanic Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0799,-111.910716107,41.3686805476,Ogden Valley North Fork,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0800,-112.091327839,41.7987560302,Wasatch (Collinston),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,9999,9999,9999,WGUEP (2016); Personius (1990); Hylland (2007)
+SR-0801,-111.88021367,39.3354853399,Wasatch (Fayette),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,9999,9999,9999,WGUEP (2015); Hylland (2007); Hylland and Machette (2008)
+SR-0802,-111.918236329,39.2280224916,Dover,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0803,-114.492429009,39.8203066522,Antelope Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0805,-117.213387192,39.7446790879,Ravenswood,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0806,-117.889684774,38.0807920167,Eastern Columbus Salt Marsh,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0807,-115.74943712,40.0192295349,Southern Huntington Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0808,-118.586856643,41.7347399612,Eastern Pine Forest Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0809,-118.225779104,39.1692848676,Western Fairview Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0810,-118.09361201,39.4458949675,Gold King,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0811,-119.047269815,40.2948786661,Sahwave Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0812,-114.875763791,36.8956039963,Wildcat Wash,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0813,-116.137387449,38.8196113621,Andesite Ridge (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0814,-116.528409581,38.0642470032,Stone Cabin Valley (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0815,-117.939197873,39.3824165292,Clan Alpine Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0816,-117.849233498,38.536648361,Cedar Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0817,-119.650965952,40.1645549874,Terraced Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0818,-118.576372373,39.3426706353,Fourmile Flat (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-0819,-114.517564761,39.0228410842,Southern Spring Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.13,QFFD
-SR-0820,-119.014207628,40.4883585048,The Lava Beds (west),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0821,-112.808020061,35.2598142627,Seligman,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0822,-113.428547621,36.7289167994,Sunshine,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0823,-113.207905771,36.5597518805,Uinkaret volcanic field,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0824,-105.897131409,38.2362686601,Villa Grove,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0825,-114.115061355,44.3013866811,Lone Pine,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0826,-112.288510432,44.6598123753,Lima Reservoir,approx centroid,0.2,1,MT,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-0820,-119.014207628,40.4883585048,The Lava Beds (west),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0821,-112.808020061,35.2598142627,Seligman,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0822,-113.428547621,36.7289167994,Sunshine,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0823,-113.207905771,36.5597518805,Uinkaret volcanic field,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0824,-105.897131409,38.2362686601,Villa Grove,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0825,-114.115061355,44.3013866811,Lone Pine,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0826,-112.288510432,44.6598123753,Lima Reservoir,approx centroid,0.2,1,MT,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-0827,-106.487057239,35.1001995386,Sandia,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,90,0,0.09,QFFD
-SR-0828,-106.507761519,35.2515591876,Rincon,approx centroid,0,0.23,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0829,-106.47031471,34.6717198269,Manzano,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0830,-106.526631666,32.0908822079,Artillery Range,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0831,-106.42687923,35.3419803281,Faults north of Placitas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0832,-106.857175674,33.7789042708,Mike Well - Bosque del Apache,approx centroid,0,0.23,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0833,-106.944823359,34.3457856028,Loma Blanca,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0834,-106.990663779,34.3604449108,Loma Pelada,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0835,-106.891493431,34.3292157932,Cliff,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0837,-119.814701208,41.6526550284,"Long Valley (north, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Personius et al., (2017) Geosphere"
-SR-0838,-107.229105565,32.7814616936,Derry Hills - Foothills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0839,-107.26251553,32.8611919,Red Hills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0840,-111.825167378,41.4011479761,Broadmouth Canyon - James Peak,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0841,-112.625574049,41.0711588964,Carrington,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0842,-112.660311899,41.847527745,Hansel Mountains (east side),approx centroid,0,0,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0843,-112.199015013,42.0176220692,Wasatch (Clarkston Mountain),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,not included in model,not included in model,not included in model,WGUEP (2016; Hylland (2007)
+SR-0828,-106.507761519,35.2515591876,Rincon,approx centroid,0,0.23,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0829,-106.47031471,34.6717198269,Manzano,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0830,-106.526631666,32.0908822079,Artillery Range,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0831,-106.42687923,35.3419803281,Faults north of Placitas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0832,-106.857175674,33.7789042708,Mike Well-Bosque del Apache,approx centroid,0,0.23,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0833,-106.944823359,34.3457856028,Loma Blanca,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0834,-106.990663779,34.3604449108,Loma Pelada,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0835,-106.891493431,34.3292157932,Cliff,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0837,-119.814701208,41.6526550284,"Long Valley (north, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,9999,9999,9999,"Personius et al., (2017) Geosphere"
+SR-0838,-107.229105565,32.7814616936,Derry Hills-Foothills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0839,-107.26251553,32.8611919,Red Hills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0840,-111.825167378,41.4011479761,Broadmouth Canyon-James Peak,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0841,-112.625574049,41.0711588964,Carrington,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0842,-112.660311899,41.847527745,Hansel Mountains (east side),approx centroid,0,0,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0843,-112.199015013,42.0176220692,Wasatch (Clarkston Mountain),approx centroid,0.01,0.1,UT,slip rate study,0,0.2,9999,9999,9999,WGUEP (2016; Hylland (2007)
 SR-0844,-110.356532475,44.2749490808,Buffalo Fork,approx centroid,0,0.2,WY,QFFD slip rate bin,0.2,1,50,-90,0.63,QFFD
-SR-0845,-105.634326873,37.06827055,Mesita,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0847,-108.148776723,38.4008504712,Roubideau Creek,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0848,-107.859673907,38.2469231439,Busted Boiler,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0849,-105.617892798,39.0045684414,East-Side Chase Gulch,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0850,-112.330816359,42.2986361108,Wasatch (Malad City),approx centroid,0.01,0.1,ID,slip rate study,0,0.2,not included in model,not included in model,not included in model,"WGUEP, 2016; Machette et al., (1992)"
-SR-0851,-112.545501334,42.0572180352,West Pocatello Valley,approx centroid,0,0.2,ID,slip rate study,0,0.2,not included in model,not included in model,not included in model,"QFFD; McCalpin et al., (1992) ID/UT Seismic Hazard Analysis"
-SR-0852,-112.605341768,42.083421356,Curlew Valley,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0853,-111.706669749,42.6349500239,East Gem Valley,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0854,-116.373990693,44.4286434513,Shirt Creek,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0855,-112.22191432,45.8476032584,Vendome,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0856,-111.76171756,46.6102474269,Spokane Hills,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0857,-111.436589939,46.242394961,Canyon Ferry (Toston),approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0858,-111.646331316,46.3948059778,Beaver Creek,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0859,-112.019231695,46.8749717271,Hilger,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0860,-111.969020168,46.0671724955,Boulder River valley western border,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0861,-110.584742137,41.1826730037,Hogsback,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0863,-110.814574775,44.8135320236,East Gallatin - Reese Creek,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0864,-108.256215089,43.3983261455,Stagner Creek,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0865,-107.466415425,42.353437585,South Granite Mountains,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0866,-115.487633197,37.3237343884,Tikaboo,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0867,-115.731217549,36.8168593699,Spotted Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0868,-115.318639889,36.5347960112,Sheep Range - East Desert Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0869,-114.902838858,36.679051412,Arrow Canyon Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0870,-115.06067355,36.9875860204,Sheep Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0871,-116.236634771,36.6913118418,Rock Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0872,-116.176508717,36.8001339135,Wahmonie,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0873,-117.589647655,37.6671332744,Clayton Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0874,-116.212286457,36.5333979283,West Specter Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0875,-114.823945617,37.8341334073,West Dry Lake,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0876,-115.060602453,37.6621860214,Six-mile Flat,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0877,-117.351707021,40.0611295213,Southeast Fish Creek Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-0845,-105.634326873,37.06827055,Mesita,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0847,-108.148776723,38.4008504712,Roubideau Creek,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0848,-107.859673907,38.2469231439,Busted Boiler,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0849,-105.617892798,39.0045684414,East-Side Chase Gulch,approx centroid,0,0.2,CO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0850,-112.330816359,42.2986361108,Wasatch (Malad City),approx centroid,0.01,0.1,ID,slip rate study,0,0.2,9999,9999,9999,"WGUEP, 2016; Machette et al., (1992)"
+SR-0851,-112.545501334,42.0572180352,West Pocatello Valley,approx centroid,0,0.2,ID,slip rate study,0,0.2,9999,9999,9999,"QFFD; McCalpin et al., (1992) ID/UT Seismic Hazard Analysis"
+SR-0852,-112.605341768,42.083421356,Curlew Valley,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0853,-111.706669749,42.6349500239,East Gem Valley,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0854,-116.373990693,44.4286434513,Shirt Creek,approx centroid,0,0.2,ID,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0855,-112.22191432,45.8476032584,Vendome,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0856,-111.76171756,46.6102474269,Spokane Hills,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0857,-111.436589939,46.242394961,Canyon Ferry (Toston),approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0858,-111.646331316,46.3948059778,Beaver Creek,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0859,-112.019231695,46.8749717271,Hilger,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0860,-111.969020168,46.0671724955,Boulder River valley western border,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0861,-110.584742137,41.1826730037,Hogsback,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0863,-110.814574775,44.8135320236,East Gallatin-Reese Creek,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0864,-108.256215089,43.3983261455,Stagner Creek,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0865,-107.466415425,42.353437585,South Granite Mountains,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0866,-115.487633197,37.3237343884,Tikaboo,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0867,-115.731217549,36.8168593699,Spotted Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0868,-115.318639889,36.5347960112,Sheep Range-East Desert Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0869,-114.902838858,36.679051412,Arrow Canyon Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0870,-115.06067355,36.9875860204,Sheep Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0871,-116.236634771,36.6913118418,Rock Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0872,-116.176508717,36.8001339135,Wahmonie,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0873,-117.589647655,37.6671332744,Clayton Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0874,-116.212286457,36.5333979283,West Specter Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0875,-114.823945617,37.8341334073,West Dry Lake,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0876,-115.060602453,37.6621860214,Six-mile Flat,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0877,-117.351707021,40.0611295213,Southeast Fish Creek Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-0878,-116.885000984,40.72251265,Sheep Creek Range (west),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.13,QFFD
-SR-0879,-116.306158794,40.2719744085,Pine Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0880,-117.810777861,39.7523111712,Eastern Dixie Valley (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0881,-117.316314655,39.8790950282,Red Buttes,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0882,-116.904764047,39.6454430033,Mount Callaghan,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0883,-116.343349322,39.7181355516,Western Roberts Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0884,-117.666498074,39.0778454733,Ione Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0885,-117.415348972,39.4086314827,Iron Mountain,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0886,-115.872231294,39.1727584787,Eastern Little Smoky Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0887,-114.76474025,39.1563950193,Steptoe (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0888,-115.591945979,39.4573620254,Newark Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0889,-119.43157045,38.6897734999,Wellington Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0890,-118.278972911,38.4874158805,Luning (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0891,-118.10804751,38.9472885079,Gabbs Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0892,-118.16908902,38.1481588962,Candelaria Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0893,-117.813417246,38.7241762887,Paradise Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0894,-117.157144814,38.2533380338,Midway Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0895,-116.947989231,38.3753021856,Mexican Butte,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0896,-116.604624205,38.2416837113,Stone Cabin Valley (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0897,-116.154942459,39.0866138672,Park Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0898,-116.164470623,37.9302786321,Western Reveille Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0899,-116.153971953,38.2641649929,Palisade Mesa,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0900,-115.962077296,38.8829542989,Big Sand Springs (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0901,-115.91414156,38.6926928095,Big Sand Springs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0902,-115.47330637,38.2390790997,Garden Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0903,-115.087220409,38.9147555977,Preston,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0904,-115.276280748,38.7361659052,The Cove,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0905,-115.207743142,38.1828679753,Murphy Meadows,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0906,-114.899954622,38.218345342,Silver King Pass,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0907,-114.362006187,38.9030504317,Wheeler Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0908,-114.141002234,38.7768510699,Southern Snake Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0909,-116.197124568,41.6307899339,Western Bull Run Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0910,-116.201919188,41.2938499011,Tuscarora,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0911,-115.506855698,41.0792780589,Peko Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0912,-115.066322991,41.8839280305,Oneil Basin (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0913,-115.197389811,41.7674566575,Oneil Basin (west),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0914,-114.768046242,41.6980954063,Contact (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0915,-114.629992661,41.5198577145,Thousand Springs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0916,-114.249382929,40.8211434177,Pilot Creek Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0917,-114.3014233,41.2747900319,Western Tecoma Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0918,-114.121811992,40.9749365719,Pilot Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0919,-119.0660384,40.3584386347,Bluewing Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0920,-118.729517277,40.1028573722,Trinity Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0921,-118.166790692,40.2148787571,Packard Flat (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0922,-119.719100451,39.4583159243,Reno (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0923,-119.356676745,39.3795724641,Carson Lineament,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0924,-119.33171505,39.1916317429,Pine Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0925,-119.214658068,39.8056590485,Little Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0926,-119.098609302,39.3789210938,Dead Camel Mountain (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0927,-119.175823211,39.2506569269,"Desert Mountains (west, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0928,-119.032475628,39.2400684368,"Desert Mountains (center, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0929,-118.945765232,39.210162037,"Desert Mountains (east, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0930,-118.73765487,39.5497302443,Sagouse,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0931,-115.378975438,40.0382625693,Maverick Springs Range (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0932,-115.375314514,40.189517113,Maverick Springs Range (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0933,-114.978631493,41.2256597713,Northern Snake Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0934,-117.969066723,37.6529114217,McAfee Canyon,approx centroid,0.2,1,NV,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-0935,-115.331867824,37.5950614982,Pahranagat Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0936,-118.604012176,38.8293501952,Agai Pah Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0937,-116.372160315,39.2597971391,Antelope Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0938,-116.140810014,37.4729245394,Belted Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0939,-116.005677213,38.6244793699,Big Sand Springs (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0940,-115.127316171,39.8327321698,Cherry Creek,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0941,-115.677126737,41.046129435,Coal Mine Canyon,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0942,-114.699674639,41.8106218531,Contact (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0943,-116.439369023,40.4745467014,Dry Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0944,-114.73859138,38.9938119589,Steptoe Valley (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0945,-118.27193835,39.7316099379,Eastern Carson Sink,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0946,-117.713900638,39.9338715,Eastern Dixie Valley (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0947,-118.116540692,40.5335950786,Eastern Humboldt Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0948,-118.332956143,41.3148171384,Eastern Jackson Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0949,-116.079288022,37.9405507659,Eastern Reveille Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0950,-115.8183072,38.5924782423,Echo Canyon,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0951,-118.027110437,38.804070264,Gabbs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0952,-119.035688185,39.6215280844,Hot Springs Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0953,-115.117341159,38.4825450554,White River Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0954,-116.065640192,36.1340146051,Pahrump,approx centroid,0,0.2,NV / CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0955,-111.517759176,40.9145441649,Main Canyon,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0956,-113.712471459,41.6697304192,Grouse Creek - Dove Creek Mountains (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0957,-113.663623954,41.7858138906,Grouse Creek - Dove Creek Mountains (north),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0958,-111.192568325,41.3656442659,Crawford Mountains - Saleratus Creek,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0959,-113.132658117,41.4760883149,Big Pass,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0960,-111.254683427,40.6813939349,East Kamas,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0961,-112.528847702,40.0304611333,Sheeprock,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0962,-112.219312626,40.0800756301,Topliff Hill,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0963,-111.853318436,40.3078936044,Utah Lakes,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0964,-113.421805692,39.7636489633,Fish Springs,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0965,-112.128114831,39.8749705578,East Tintic Mountains (northwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0966,-112.111334973,39.7053902567,East Tintic Mountains (southwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0967,-112.056756359,39.7093716393,East Tintic Mountains (southeast),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0968,-111.284403874,39.7303687591,Gooseberry Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0969,-114.006332946,39.2175971684,Snake Valley (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0970,-113.95299272,39.4481070245,Snake Valley (north),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0971,-113.428528279,39.2733354712,House Range,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0972,-112.937161388,39.5001697672,Drum Mountains (northwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0973,-112.917580937,39.2424563312,Drum Mountains (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0974,-112.865608793,39.4341222323,Drum Mountains (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0975,-112.037907945,39.3840622282,Little Valley (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0976,-112.119119221,39.4332327033,Little Valley (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0977,-112.028335005,39.0569930743,Maple Grove,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0978,-112.087399269,39.095843605,Scipio - Maple Grove - Pavant Range - Red Canyon,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0979,-111.658319616,39.5469526164,Gunnison,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0980,-113.081544461,38.8471584185,Cricket Mountains (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0981,-112.007336718,38.6983770929,Annabella Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0982,-113.41165081,38.0963920451,Wah Wah Mountains (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0983,-113.321034918,38.497765339,San Francisco Mountains (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0984,-113.271289875,38.0768953175,Black Mountains,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0985,-112.945422242,38.3168493536,Mineral Mountains,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0986,-112.565195076,38.3591976073,Beaver Basin (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0987,-112.803947557,38.3023654072,"Beaver Basin (intrabasin, west)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0988,-112.71537279,38.4309240499,"Beaver Basin (intrabasin, central)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0989,-112.684070692,38.4149522339,"Beaver Basin (intrabasin, east)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0990,-111.931580585,38.2451024722,Paunsaugunt,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0991,-111.524525815,38.3204028163,Thousand Lake,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0992,-113.749663235,37.3036174589,Gunlock,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0993,-113.488377829,37.7483182282,Antelope Range,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0994,-113.005109225,37.8157052694,Enoch Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0995,-112.923018001,37.9140509713,Red Hills,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0996,-111.907250343,39.9486812823,Goshen,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0998,-111.848026162,40.0895851175,North Genola,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-0999,-112.81019196,39.6078851175,Crater Bench,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1000,-113.453003672,36.4921594864,Main Street,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1001,-113.79308889,36.4622770524,Grand Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1002,-113.907820609,36.825733954,Mesquite,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1003,-114.021843063,36.9175859437,Littlefield Mesa,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1004,-114.699705782,36.0866118336,Mead Slope,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1005,-114.538760645,35.8947158612,Detrital Valley,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1006,-114.47209946,34.8329789011,Needles Graben,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1007,-109.509315323,34.3045889302,Concho,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1008,-109.246874078,34.2864535992,Coyote Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1009,-109.593391972,34.1966841423,Vernon,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1010,-109.04453982,32.798904401,Rimrock,approx centroid,0,0.2,NM / AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1011,-109.159136706,30.9486262563,Pitaycachi (north),approx centroid,0,0.2,MEXICO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1012,-109.160538787,30.4351399942,Pitaycachi (south),approx centroid,0,0.2,MEXICO,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1013,-109.35462837,31.4921299792,Pedrogosa,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1014,-109.508130414,31.6573133631,Swisshelm (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1015,-109.538426839,31.7699136878,Swisshelm (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1016,-110.21642377,31.4673495972,Huachuca,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1017,-110.780710839,31.9266220946,Santa Rita (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1018,-109.713854396,32.6074227084,Safford,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1019,-109.711573028,32.7724756019,Cactus Flats,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1020,-111.50300911,33.7093103616,Sugarloaf,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1021,-111.749452486,34.0155051136,Horseshoe,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1022,-111.82903357,33.80570278,Carefree,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1023,-111.885104809,34.5271001861,Verde,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1024,-112.536984904,34.668997231,Prescott Valley Grabens,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1025,-111.863886531,35.5849097088,Babbitt Lake,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1026,-111.823883439,35.1706830019,Metz Tank,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1027,-111.826319623,35.2340697186,Bellemont,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1028,-112.087592139,35.2312906456,Bill Williams,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1029,-111.351083237,35.6548437254,Black Point - Doney Mountain (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1030,-111.371740109,35.5833918307,Black Point - Doney Mountain (center),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1032,-111.610133932,35.6785879835,SP Crater,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1033,-111.661361183,35.6398435259,Cedar Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1034,-111.835320747,35.0469355618,Casner Cabin,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1035,-111.753582333,35.613242944,Cedar Ranch,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1036,-111.864025507,35.6693092037,Pearl Harbor,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1037,-111.28521797,35.2686886177,Rock House (northwest),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1038,-111.192189223,35.162390416,Rock House (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1039,-111.159579286,35.2308687037,Rock House (northeast),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1040,-111.466070963,35.8644581599,Cameron Graben,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1041,-111.013527318,31.72211995,Santa Rita (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1042,-111.536976831,35.737654171,Campbell Francis - Large Whiskers - Rimmy Jim,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1043,-112.367721858,35.5860436772,Cataract Creek,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1044,-111.409907201,35.4888861786,Black Point - Doney Mountain (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1045,-111.481137627,35.5613424808,Arrowhead - Citadel Ruins,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1046,-111.168614757,35.3684818636,Leupps,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1047,-111.087521287,41.0972351998,Porcupine Mountains,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1048,-116.140506443,42.7417961525,Owyhee Mountains - Halfway Gulch,approx centroid,0.39,1.54,ID,slip rate study,0,0.2,not included in model,not included in model,not included in model,Beukleman (1997) thesis
-SR-1049,-107.938276209,31.7349270466,Sierra Palomas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1050,-106.78473519,33.8508214818,Cemetery,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1051,-105.622546466,36.8623420359,Sunshine Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1052,-107.066969316,33.1092427347,"Jornada Draw (north,Engle Lake)",approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1053,-106.863464918,32.7171033789,Jornada Draw (south),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1054,-105.146097041,32.505204496,Guadalupe,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1055,-106.939269633,32.5577608477,East Tonuco,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1056,-106.903760042,32.2590933255,East Robledo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1057,-106.892276481,32.0604671896,Fitzgerald,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1058,-107.005094321,31.8804103183,East Potrillo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1059,-107.010846728,31.7911286328,Mount Riley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1060,-106.709695013,31.8206849081,Mastodon,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1061,-105.305844445,35.9686927197,Quebraditas - El Oro,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1062,-107.671020861,32.1618538937,West Florida Mountains,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1063,-107.074272457,32.4433842905,Ward Tank - Sierro Kemado - Hackler Tank,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1064,-107.246737443,32.5757084314,Sierra de las Uvas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1065,-107.928340498,32.6403255497,Blue Mountain,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1066,-108.916984948,31.9918650378,Washburn Ranch,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1067,-108.826533719,32.1781821687,Animas Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1068,-108.782091,32.1471682001,Pyramid Mountains (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1069,-108.575864104,32.4317662581,Gold Hill (north),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1070,-108.484913484,32.359070547,Gold Hill (south),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1071,-108.873641543,31.7151364666,Gray Ranch,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1072,-108.720145233,31.7118666078,Gillespie Mountain,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1073,-107.081963077,34.5404287132,Coyote Springs,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1074,-106.597452119,34.3710040085,Los Pinos,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1075,-106.33459324,34.5582062986,Mountainair (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1076,-107.676756856,33.9635264814,Very Large Array (west),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1077,-107.618781583,34.0038476258,Very Large Array (east),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1078,-107.743932448,34.1635180196,Datil (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1079,-107.17866274,33.5832496134,Black Hill,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1080,-107.286153814,33.6474229914,San Mateo Mountains (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1081,-108.100364789,34.4433631018,Hickman,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1082,-107.978980453,34.6690650633,Cebollita Mesa,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1083,-108.420628732,31.8363138515,Hachita Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1084,-107.057433552,32.7071693157,East Rincon Hills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1085,-106.442425479,35.5232013092,Cochiti Pueblo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1086,-106.356276645,32.2208377892,Hueco,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-0879,-116.306158794,40.2719744085,Pine Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0880,-117.810777861,39.7523111712,Eastern Dixie Valley (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0881,-117.316314655,39.8790950282,Red Buttes,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0882,-116.904764047,39.6454430033,Mount Callaghan,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0883,-116.343349322,39.7181355516,Western Roberts Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0884,-117.666498074,39.0778454733,Ione Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0885,-117.415348972,39.4086314827,Iron Mountain,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0886,-115.872231294,39.1727584787,Eastern Little Smoky Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0887,-114.76474025,39.1563950193,Steptoe (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0888,-115.591945979,39.4573620254,Newark Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0889,-119.43157045,38.6897734999,Wellington Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0890,-118.278972911,38.4874158805,Luning (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0891,-118.10804751,38.9472885079,Gabbs Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0892,-118.16908902,38.1481588962,Candelaria Hills (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0893,-117.813417246,38.7241762887,Paradise Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0894,-117.157144814,38.2533380338,Midway Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0895,-116.947989231,38.3753021856,Mexican Butte,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0896,-116.604624205,38.2416837113,Stone Cabin Valley (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0897,-116.154942459,39.0866138672,Park Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0898,-116.164470623,37.9302786321,Western Reveille Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0899,-116.153971953,38.2641649929,Palisade Mesa,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0900,-115.962077296,38.8829542989,Big Sand Springs (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0901,-115.91414156,38.6926928095,Big Sand Springs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0902,-115.47330637,38.2390790997,Garden Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0903,-115.087220409,38.9147555977,Preston,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0904,-115.276280748,38.7361659052,The Cove,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0905,-115.207743142,38.1828679753,Murphy Meadows,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0906,-114.899954622,38.218345342,Silver King Pass,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0907,-114.362006187,38.9030504317,Wheeler Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0908,-114.141002234,38.7768510699,Southern Snake Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0909,-116.197124568,41.6307899339,Western Bull Run Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0910,-116.201919188,41.2938499011,Tuscarora,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0911,-115.506855698,41.0792780589,Peko Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0912,-115.066322991,41.8839280305,Oneil Basin (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0913,-115.197389811,41.7674566575,Oneil Basin (west),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0914,-114.768046242,41.6980954063,Contact (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0915,-114.629992661,41.5198577145,Thousand Springs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0916,-114.249382929,40.8211434177,Pilot Creek Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0917,-114.3014233,41.2747900319,Western Tecoma Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0918,-114.121811992,40.9749365719,Pilot Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0919,-119.0660384,40.3584386347,Bluewing Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0920,-118.729517277,40.1028573722,Trinity Range (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0921,-118.166790692,40.2148787571,Packard Flat (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0922,-119.719100451,39.4583159243,Reno (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0923,-119.356676745,39.3795724641,Carson Lineament,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0924,-119.33171505,39.1916317429,Pine Mountains (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0925,-119.214658068,39.8056590485,Little Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0926,-119.098609302,39.3789210938,Dead Camel Mountain (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0927,-119.175823211,39.2506569269,"Desert Mountains (west, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0928,-119.032475628,39.2400684368,"Desert Mountains (center, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0929,-118.945765232,39.210162037,"Desert Mountains (east, unnamed)",approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0930,-118.73765487,39.5497302443,Sagouse,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0931,-115.378975438,40.0382625693,Maverick Springs Range (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0932,-115.375314514,40.189517113,Maverick Springs Range (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0933,-114.978631493,41.2256597713,Northern Snake Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0934,-117.969066723,37.6529114217,McAfee Canyon,approx centroid,0.2,1,NV,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-0935,-115.331867824,37.5950614982,Pahranagat Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0936,-118.604012176,38.8293501952,Agai Pah Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0937,-116.372160315,39.2597971391,Antelope Peak,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0938,-116.140810014,37.4729245394,Belted Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0939,-116.005677213,38.6244793699,Big Sand Springs (center),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0940,-115.127316171,39.8327321698,Cherry Creek,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0941,-115.677126737,41.046129435,Coal Mine Canyon,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0942,-114.699674639,41.8106218531,Contact (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0943,-116.439369023,40.4745467014,Dry Hills,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0944,-114.73859138,38.9938119589,Steptoe Valley (east),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0945,-118.27193835,39.7316099379,Eastern Carson Sink,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0946,-117.713900638,39.9338715,Eastern Dixie Valley (north),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0947,-118.116540692,40.5335950786,Eastern Humboldt Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0948,-118.332956143,41.3148171384,Eastern Jackson Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0949,-116.079288022,37.9405507659,Eastern Reveille Range,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0950,-115.8183072,38.5924782423,Echo Canyon,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0951,-118.027110437,38.804070264,Gabbs Valley,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0952,-119.035688185,39.6215280844,Hot Springs Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0953,-115.117341159,38.4825450554,White River Valley (unnamed),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0954,-116.065640192,36.1340146051,Pahrump,approx centroid,0,0.2,NV/CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0955,-111.517759176,40.9145441649,Main Canyon,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0956,-113.712471459,41.6697304192,Grouse Creek-Dove Creek Mountains (south),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0957,-113.663623954,41.7858138906,Grouse Creek-Dove Creek Mountains (north),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0958,-111.192568325,41.3656442659,Crawford Mountains-Saleratus Creek,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0959,-113.132658117,41.4760883149,Big Pass,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0960,-111.254683427,40.6813939349,East Kamas,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0961,-112.528847702,40.0304611333,Sheeprock,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0962,-112.219312626,40.0800756301,Topliff Hill,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0963,-111.853318436,40.3078936044,Utah Lakes,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0964,-113.421805692,39.7636489633,Fish Springs,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0965,-112.128114831,39.8749705578,East Tintic Mountains (northwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0966,-112.111334973,39.7053902567,East Tintic Mountains (southwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0967,-112.056756359,39.7093716393,East Tintic Mountains (southeast),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0968,-111.284403874,39.7303687591,Gooseberry Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0969,-114.006332946,39.2175971684,Snake Valley (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0970,-113.95299272,39.4481070245,Snake Valley (north),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0971,-113.428528279,39.2733354712,House Range,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0972,-112.937161388,39.5001697672,Drum Mountains (northwest),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0973,-112.917580937,39.2424563312,Drum Mountains (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0974,-112.865608793,39.4341222323,Drum Mountains (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0975,-112.037907945,39.3840622282,Little Valley (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0976,-112.119119221,39.4332327033,Little Valley (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0977,-112.028335005,39.0569930743,Maple Grove,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0978,-112.087399269,39.095843605,Scipio-Maple Grove-Pavant Range-Red Canyon,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0979,-111.658319616,39.5469526164,Gunnison,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0980,-113.081544461,38.8471584185,Cricket Mountains (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0981,-112.007336718,38.6983770929,Annabella Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0982,-113.41165081,38.0963920451,Wah Wah Mountains (south),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0983,-113.321034918,38.497765339,San Francisco Mountains (west),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0984,-113.271289875,38.0768953175,Black Mountains,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0985,-112.945422242,38.3168493536,Mineral Mountains,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0986,-112.565195076,38.3591976073,Beaver Basin (east),approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0987,-112.803947557,38.3023654072,"Beaver Basin (intrabasin, west)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0988,-112.71537279,38.4309240499,"Beaver Basin (intrabasin, central)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0989,-112.684070692,38.4149522339,"Beaver Basin (intrabasin, east)",approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0990,-111.931580585,38.2451024722,Paunsaugunt,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0991,-111.524525815,38.3204028163,Thousand Lake,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0992,-113.749663235,37.3036174589,Gunlock,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0993,-113.488377829,37.7483182282,Antelope Range,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0994,-113.005109225,37.8157052694,Enoch Graben,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0995,-112.923018001,37.9140509713,Red Hills,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0996,-111.907250343,39.9486812823,Goshen,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0998,-111.848026162,40.0895851175,North Genola,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-0999,-112.81019196,39.6078851175,Crater Bench,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1000,-113.453003672,36.4921594864,Main Street,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1001,-113.79308889,36.4622770524,Grand Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1002,-113.907820609,36.825733954,Mesquite,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1003,-114.021843063,36.9175859437,Littlefield Mesa,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1004,-114.699705782,36.0866118336,Mead Slope,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1005,-114.538760645,35.8947158612,Detrital Valley,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1006,-114.47209946,34.8329789011,Needles Graben,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1007,-109.509315323,34.3045889302,Concho,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1008,-109.246874078,34.2864535992,Coyote Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1009,-109.593391972,34.1966841423,Vernon,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1010,-109.04453982,32.798904401,Rimrock,approx centroid,0,0.2,NM/AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1011,-109.159136706,30.9486262563,Pitaycachi (north),approx centroid,0,0.2,MEXICO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1012,-109.160538787,30.4351399942,Pitaycachi (south),approx centroid,0,0.2,MEXICO,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1013,-109.35462837,31.4921299792,Pedrogosa,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1014,-109.508130414,31.6573133631,Swisshelm (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1015,-109.538426839,31.7699136878,Swisshelm (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1016,-110.21642377,31.4673495972,Huachuca,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1017,-110.780710839,31.9266220946,Santa Rita (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1018,-109.713854396,32.6074227084,Safford,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1019,-109.711573028,32.7724756019,Cactus Flats,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1020,-111.50300911,33.7093103616,Sugarloaf,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1021,-111.749452486,34.0155051136,Horseshoe,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1022,-111.82903357,33.80570278,Carefree,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1023,-111.885104809,34.5271001861,Verde,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1024,-112.536984904,34.668997231,Prescott Valley Grabens,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1025,-111.863886531,35.5849097088,Babbitt Lake,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1026,-111.823883439,35.1706830019,Metz Tank,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1027,-111.826319623,35.2340697186,Bellemont,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1028,-112.087592139,35.2312906456,Bill Williams,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1029,-111.351083237,35.6548437254,Black Point-Doney Mountain (north),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1030,-111.371740109,35.5833918307,Black Point-Doney Mountain (center),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1032,-111.610133932,35.6785879835,SP Crater,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1033,-111.661361183,35.6398435259,Cedar Wash,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1034,-111.835320747,35.0469355618,Casner Cabin,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1035,-111.753582333,35.613242944,Cedar Ranch,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1036,-111.864025507,35.6693092037,Pearl Harbor,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1037,-111.28521797,35.2686886177,Rock House (northwest),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1038,-111.192189223,35.162390416,Rock House (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1039,-111.159579286,35.2308687037,Rock House (northeast),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1040,-111.466070963,35.8644581599,Cameron Graben,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1041,-111.013527318,31.72211995,Santa Rita (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1042,-111.536976831,35.737654171,Campbell Francis-Large Whiskers-Rimmy Jim,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1043,-112.367721858,35.5860436772,Cataract Creek,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1044,-111.409907201,35.4888861786,Black Point-Doney Mountain (south),approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1045,-111.481137627,35.5613424808,Arrowhead-Citadel Ruins,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1046,-111.168614757,35.3684818636,Leupps,approx centroid,0,0.2,AZ,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1047,-111.087521287,41.0972351998,Porcupine Mountains,approx centroid,0,0.2,WY,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1048,-116.140506443,42.7417961525,Owyhee Mountains-Halfway Gulch,approx centroid,0.39,1.54,ID,slip rate study,0,0.2,9999,9999,9999,Beukleman (1997) thesis
+SR-1049,-107.938276209,31.7349270466,Sierra Palomas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1050,-106.78473519,33.8508214818,Cemetery,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1051,-105.622546466,36.8623420359,Sunshine Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1052,-107.066969316,33.1092427347,"Jornada Draw (north,Engle Lake)",approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1053,-106.863464918,32.7171033789,Jornada Draw (south),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1054,-105.146097041,32.505204496,Guadalupe,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1055,-106.939269633,32.5577608477,East Tonuco,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1056,-106.903760042,32.2590933255,East Robledo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1057,-106.892276481,32.0604671896,Fitzgerald,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1058,-107.005094321,31.8804103183,East Potrillo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1059,-107.010846728,31.7911286328,Mount Riley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1060,-106.709695013,31.8206849081,Mastodon,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1061,-105.305844445,35.9686927197,Quebraditas-El Oro,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1062,-107.671020861,32.1618538937,West Florida Mountains,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1063,-107.074272457,32.4433842905,Ward Tank-Sierro Kemado-Hackler Tank,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1064,-107.246737443,32.5757084314,Sierra de las Uvas,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1065,-107.928340498,32.6403255497,Blue Mountain,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1066,-108.916984948,31.9918650378,Washburn Ranch,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1067,-108.826533719,32.1781821687,Animas Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1068,-108.782091,32.1471682001,Pyramid Mountains (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1069,-108.575864104,32.4317662581,Gold Hill (north),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1070,-108.484913484,32.359070547,Gold Hill (south),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1071,-108.873641543,31.7151364666,Gray Ranch,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1072,-108.720145233,31.7118666078,Gillespie Mountain,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1073,-107.081963077,34.5404287132,Coyote Springs,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1074,-106.597452119,34.3710040085,Los Pinos,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1075,-106.33459324,34.5582062986,Mountainair (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1076,-107.676756856,33.9635264814,Very Large Array (west),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1077,-107.618781583,34.0038476258,Very Large Array (east),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1078,-107.743932448,34.1635180196,Datil (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1079,-107.17866274,33.5832496134,Black Hill,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1080,-107.286153814,33.6474229914,San Mateo Mountains (unnamed),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1081,-108.100364789,34.4433631018,Hickman,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1082,-107.978980453,34.6690650633,Cebollita Mesa,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1083,-108.420628732,31.8363138515,Hachita Valley,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1084,-107.057433552,32.7071693157,East Rincon Hills,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1085,-106.442425479,35.5232013092,Cochiti Pueblo,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1086,-106.356276645,32.2208377892,Hueco,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1087,-106.199471475,35.9566398812,Puye,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.04,QFFD
-SR-1088,-118.119464489,39.4051646206,Louderback Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1089,-118.562646706,43.6100108692,Harney,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1090,-121.987141481,44.0996546034,White Branch,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1091,-118.130187862,44.7081989987,Sumpter Valley,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1093,-123.000897032,45.4673735821,Beaverton,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1088,-118.119464489,39.4051646206,Louderback Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1089,-118.562646706,43.6100108692,Harney,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1090,-121.987141481,44.0996546034,White Branch,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1091,-118.130187862,44.7081989987,Sumpter Valley,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1093,-123.000897032,45.4673735821,Beaverton,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1094,-122.188717386,42.951972153,"Klamath Graben (west, center)",approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,50,-90,0.21,QFFD
 SR-1095,-120.737637937,43.4744173122,Southeast Newberry,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,50,-90,0.67,QFFD
 SR-1096,-121.286001781,43.5002337865,Southwest Newberry,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.67,QFFD
-SR-1097,-121.647046675,43.6653734221,La Pine Graben,approx centroid,0.2,0.24,OR,slip rate study,0,0.2,not included in model,not included in model,not included in model,Alexander (2020) thesis
-SR-1098,-121.726863608,45.5681275659,Blue Ridge - Gate Creek,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,Madin et al (2017) USGS Special Publication
-SR-1099,-121.710418618,45.245014502,Twin Lakes - Multorpor Mountain Graben,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1100,-117.970916102,44.8075160011,West Baker Valley (center),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1097,-121.647046675,43.6653734221,La Pine Graben,approx centroid,0.2,0.24,OR,slip rate study,0,0.2,9999,9999,9999,Alexander (2020) thesis
+SR-1098,-121.726863608,45.5681275659,Blue Ridge-Gate Creek,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,Madin et al (2017) USGS Special Publication
+SR-1099,-121.710418618,45.245014502,Twin Lakes-Multorpor Mountain Graben,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1100,-117.970916102,44.8075160011,West Baker Valley (center),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1102,-124.321556981,43.3070054503,South Slough,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,60,90,0.72,QFFD
-SR-1103,-124.376767996,43.2312821985,Pioneer,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-1103,-124.376767996,43.2312821985,Pioneer,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-1104,-122.257435801,43.202449181,"Klamath Graben (west, north)",approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,50,-90,0.21,QFFD
-SR-1105,-117.762140606,44.7550494217,West Baker Valley (southeast),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1105,-117.762140606,44.7550494217,West Baker Valley (southeast),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1106,-119.832260494,42.0329093036,"Warner Valley (west, Coleman Valley)",approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.14,QFFD
-SR-1108,-123.263510732,47.3918847317,Frigid Creek,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1109,-121.13123509,45.8485655495,Warwick,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1110,-123.409610766,47.3211796988,Canyon River - Price Lake (southwest),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1112,-124.115579561,47.1119192414,Saddle Hill (Langley Hill),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1113,-123.960425105,46.461640341,Willapa Bay (south),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1114,-123.981578272,46.6392667648,Willapa Bay (north),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1115,-119.948033166,47.7971659594,Spencer Canyon,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1116,-119.960886981,46.1513371682,Horse Heaven Hills,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1117,-122.985420936,47.1045301509,Olympia,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1118,-120.397494712,45.8218043594,Arlington - Shutler Butte,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1119,-122.68734777,48.8721583954,Birch Bay,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1120,-122.747274526,48.8044793007,Sandy Point,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1121,-122.696041003,48.9766054953,Drayton Harbor,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1122,-120.546712684,47.1079976396,Kittitas Valley,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1123,-119.832920474,41.4970706257,"Long Valley (center, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Personius et al., (2017) Geosphere"
-SR-1124,-119.795407812,41.4470599853,"Long Valley (south, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,not included in model,not included in model,not included in model,"Personius et al., (2017) Geosphere"
-SR-1125,-124.068154666,41.3780419948,Grogan fault,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1126,-115.859481187804,33.1760695590686,Extra,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1127,-122.320018275,38.2419550848,South Napa,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-1108,-123.263510732,47.3918847317,Frigid Creek,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1109,-121.13123509,45.8485655495,Warwick,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1110,-123.409610766,47.3211796988,Canyon River-Price Lake (southwest),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1112,-124.115579561,47.1119192414,Saddle Hill (Langley Hill),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1113,-123.960425105,46.461640341,Willapa Bay (south),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1114,-123.981578272,46.6392667648,Willapa Bay (north),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1115,-119.948033166,47.7971659594,Spencer Canyon,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1116,-119.960886981,46.1513371682,Horse Heaven Hills,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1117,-122.985420936,47.1045301509,Olympia,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1118,-120.397494712,45.8218043594,Arlington-Shutler Butte,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1119,-122.68734777,48.8721583954,Birch Bay,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1120,-122.747274526,48.8044793007,Sandy Point,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1121,-122.696041003,48.9766054953,Drayton Harbor,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1122,-120.546712684,47.1079976396,Kittitas Valley,approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1123,-119.832920474,41.4970706257,"Long Valley (center, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,9999,9999,9999,"Personius et al., (2017) Geosphere"
+SR-1124,-119.795407812,41.4470599853,"Long Valley (south, unnamed)",approx centroid,0.14,0.16,NV,slip rate study,0,0.2,9999,9999,9999,"Personius et al., (2017) Geosphere"
+SR-1125,-124.068154666,41.3780419948,Grogan fault,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1126,-115.859481187804,33.1760695590686,Extra,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1127,-122.320018275,38.2419550848,South Napa,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-1128,-122.138077373,40.4906903427,Bear Creek,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
-SR-1129,-120.832631896,40.6758720037,"Susanville - Eagle Lake (unnamed, proxy)",approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1130,-121.062810628,41.1465520415,"Big Valley (unnamed, proxy)",approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1131,-121.358124652,40.880734149,McArthur,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1132,-121.684483658,41.2533052318,Pondosa (proxy),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1133,-122.70629684,45.3445788311,Canby,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1134,-122.709257078,45.4857044708,Sylvain - Oatfield,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,60,90,0.12,QFFD
-SR-1135,-121.46345426,44.8470478414,Warm Springs,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1136,-118.089795293,45.4122204382,West Grand Ronde Valley,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1137,-117.919582559,45.4358148368,East Grand Ronde Valley,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1138,-113.117977180853,45.3687587727711,Polaris,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1129,-120.832631896,40.6758720037,"Susanville-Eagle Lake (unnamed, proxy)",approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1130,-121.062810628,41.1465520415,"Big Valley (unnamed, proxy)",approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1131,-121.358124652,40.880734149,McArthur,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1132,-121.684483658,41.2533052318,Pondosa (proxy),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1133,-122.70629684,45.3445788311,Canby,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1134,-122.709257078,45.4857044708,Sylvain-Oatfield,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,60,90,0.12,QFFD
+SR-1135,-121.46345426,44.8470478414,Warm Springs,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1136,-118.089795293,45.4122204382,West Grand Ronde Valley,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1137,-117.919582559,45.4358148368,East Grand Ronde Valley,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1138,-113.117977180853,45.3687587727711,Polaris,approx centroid,0,0.2,MT,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1139,-105.827930430891,31.3982727965802,Campo Grande,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.06,QFFD
 SR-1140,-105.913372643464,31.3857645675559,Acala,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.11,QFFD
 SR-1141,-105.809735375376,31.0895773143446,Amargosa,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.14,QFFD
 SR-1142,-105.392372597179,30.9443273629356,Caballo,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.14,QFFD
-SR-1143,-105.17882005526,30.9276117031918,West Eagle Mountains - Red Hills,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.02,QFFD
+SR-1143,-105.17882005526,30.9276117031918,West Eagle Mountains-Red Hills,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.02,QFFD
 SR-1144,-105.057750426452,30.76419079658,West Indio Mountains,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.06,QFFD
 SR-1145,-104.738907649066,30.6989575813794,West Lobo Valley,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.04,QFFD
-SR-1146,-104.813628470314,31.1159688871862,East Baylor Mountain - Carizzo Mountain,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
+SR-1146,-104.813628470314,31.1159688871862,East Baylor Mountain-Carizzo Mountain,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
 SR-1147,-104.867698903063,31.3701441043906,East Sierra Diablo,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
 SR-1148,-104.778904316111,31.5645984702602,West Delaware Mountains,approx centroid,0,0.2,TX,QFFD slip rate bin,0,0.2,50,-90,0.03,QFFD
 SR-1149,-123.111478092315,48.3741314656965,Utsalady Point (west),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,90,0,0.15,QFFD
 SR-1150,-123.253224627898,45.5717021710253,Gales Creek (Parsons Creek),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,90,180,0.02,QFFD
 SR-1151,-123.566229154084,40.3838366924209,Eaton Roughs,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
-SR-1152,-122.390426516147,38.8494906243492,Hunting Creek - Bartlett Springs (connector),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,4,QFFD
-SR-1153,-121.581412913656,37.7365698366131,Midway,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1154,-121.517984445526,37.7954134435217,West Tracy,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-1152,-122.390426516147,38.8494906243492,Hunting Creek-Bartlett Springs (connector),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,4,QFFD
+SR-1153,-121.581412913656,37.7365698366131,Midway,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1154,-121.517984445526,37.7954134435217,West Tracy,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-1155,-122.706245188754,37.8060413191488,Point Reyes (connector),approx centroid,0,0.2,CA,QFFD slip rate bin,0.2,1,53,90,0.1,QFFD
 SR-1156,-119.811798612326,35.6861399673955,Lost Hills,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,29,90,1,QFFD
 SR-1157,-118.289297074816,35.5278386006451,White Wolf (extension),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,75,60,0.39,QFFD
 SR-1158,-118.055365201568,35.7199715431499,Scodie Lineament (seismicity),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,68,0,0.01,QFFD
 SR-1159,-118.360659975147,35.7378750393502,Lake Isabella (seismicity),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,0,0.01,QFFD
 SR-1160,-118.030465848228,36.3611247752767,Sierra Nevada (north),approx centroid,1,5,CA,QFFD slip rate bin,1,5,50,-90,0.2,QFFD
-SR-1161,-119.47434785209,38.3331617761872,Sonora Basin,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1162,-119.576514417611,38.5753982956341,Slinkard Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1163,-119.167255710389,37.8691621484302,Silver Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1164,-118.548095117197,37.6374532558341,South Mono (proxy),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1161,-119.47434785209,38.3331617761872,Sonora Basin,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1162,-119.576514417611,38.5753982956341,Slinkard Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1163,-119.167255710389,37.8691621484302,Silver Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1164,-118.548095117197,37.6374532558341,South Mono (proxy),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1165,-118.378119108582,37.2625462126027,Owens Valley (Keough Hot Springs),approx centroid,1,5,CA,QFFD slip rate bin,1,5,50,-90,3,QFFD
-SR-1166,-118.356405872901,37.1214624549596,Independence (north),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-1166,-118.356405872901,37.1214624549596,Independence (north),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-1167,-120.530962633943,34.8826514489291,Casmalia,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,75,90,0.6,QFFD
 SR-1168,-120.776550788634,35.1249309991665,San Luis Range (Pecho),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,90,0.02,QFFD
 SR-1169,-120.702291866476,34.7315666212155,Hosgri (extension),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.6,QFFD
 SR-1170,-120.198674786115,34.7194986871632,Los Alamos,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,30,90,0.39,QFFD
 SR-1171,-117.957807053377,34.2486158639876,San Gabriel (extension),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,61,180,0.01,QFFD
-SR-1172,-117.926961032384,34.2181985770307,Clamshell - Sawpit,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,50,90,0.39,QFFD
+SR-1172,-117.926961032384,34.2181985770307,Clamshell-Sawpit,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,50,90,0.39,QFFD
 SR-1173,-124.728243991946,42.9367196384429,Cape Blanco Anticline,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,45,90,1.98,QFFD
 SR-1174,-122.210398044944,42.3519494450339,Sky Lakes,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,50,-90,0.37,QFFD
-SR-1175,-118.469314594626,42.0611405102708,East Pueblo Valley,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1175,-118.469314594626,42.0611405102708,East Pueblo Valley,approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1176,-110.798002691752,40.9886302632023,Bear River,approx centroid,0.2,1,UT,QFFD slip rate bin,0.2,1,60,90,0.01,QFFD
 SR-1177,-111.246523277412,39.3924183680659,Joes Valley,approx centroid,0,0.2,UT,QFFD slip rate bin,0,0.2,50,-90,0.26,QFFD
-SR-1178,-105.706395213555,35.8975349890203,Picuris - Pecos,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.07,QFFD
-SR-1179,-106.612266575181,35.5005565992596,San Felipe (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1180,-106.651171945604,34.6854570067399,Llano de Manzano (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1181,-106.865354212626,34.7941394068487,Llano de Albuquerque (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1178,-105.706395213555,35.8975349890203,Picuris-Pecos,approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,50,-90,0.07,QFFD
+SR-1179,-106.612266575181,35.5005565992596,San Felipe (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1180,-106.651171945604,34.6854570067399,Llano de Manzano (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1181,-106.865354212626,34.7941394068487,Llano de Albuquerque (proxy),approx centroid,0,0.2,NM,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1182,-116.51447495205,34.3812175287147,Johnson Valley (north),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
 SR-1183,-116.452382493333,34.33608124125,Kickapoo,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
-SR-1184,-116.397361214942,34.4211184376772,Emerson - Copper Mountain,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
+SR-1184,-116.397361214942,34.4211184376772,Emerson-Copper Mountain,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
 SR-1185,-116.668720414136,34.3317704851985,North Frontal (east),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,41,90,0.1,QFFD
-SR-1186,-116.758541973499,33.9933270175551,Cox Ranch,approx centroid,5,35,CA,QFFD slip rate bin,5,35,not included in model,not included in model,not included in model,QFFD
-SR-1187,-116.547023442098,34.0635385623279,Morongo Valley,approx centroid,5,35,CA,QFFD slip rate bin,5,35,not included in model,not included in model,not included in model,QFFD
+SR-1186,-116.758541973499,33.9933270175551,Cox Ranch,approx centroid,5,35,CA,QFFD slip rate bin,5,35,9999,9999,9999,QFFD
+SR-1187,-116.547023442098,34.0635385623279,Morongo Valley,approx centroid,5,35,CA,QFFD slip rate bin,5,35,9999,9999,9999,QFFD
 SR-1188,-116.73388927366,34.047600184935,Mission Creek,approx centroid,5,35,CA,QFFD slip rate bin,5,35,65,180,1.25,QFFD
 SR-1189,-116.715375759952,34.0528311048552,"Mill Creek (San Andreas, north branch)",approx centroid,5,35,CA,QFFD slip rate bin,5,35,76,180,2,QFFD
-SR-1190,-117.094163766338,34.018731790138,Crafton Hills,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1191,-117.12246956398,34.0445751525767,Reservoir Canyon,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1193,-117.736805612948,33.168344694501,Carlsbad Ridge,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1194,-117.918772036703,33.4180440193168,Lausuen Knoll,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1195,-117.615079575591,33.2333860403669,San Mateo,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
-SR-1196,-117.664288245025,33.3772645289248,Newport - Inglewood (offshore),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,1,QFFD
+SR-1190,-117.094163766338,34.018731790138,Crafton Hills,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1191,-117.12246956398,34.0445751525767,Reservoir Canyon,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1193,-117.736805612948,33.168344694501,Carlsbad Ridge,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1194,-117.918772036703,33.4180440193168,Lausuen Knoll,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1195,-117.615079575591,33.2333860403669,San Mateo,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
+SR-1196,-117.664288245025,33.3772645289248,Newport-Inglewood (offshore),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,1,QFFD
 SR-1197,-117.016373902834,31.8469402501843,San Diego Trough (south),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,2,QFFD
 SR-1198,-120.277675412469,34.629857165056,Santa Ynez River,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,70,45,0.39,QFFD
 SR-1199,-122.574251745225,38.3491055557506,Bennett Valley,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.01,QFFD
 SR-1200,-122.350872293912,38.3401329119382,West Napa,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,75,180,1,QFFD
 SR-1201,-122.169178453415,37.9799318531267,Franklin,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.01,QFFD
-SR-1202,-122.191640864332,38.0633101693667,Southampton,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,not included in model,not included in model,not included in model,QFFD
+SR-1202,-122.191640864332,38.0633101693667,Southampton,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,9999,9999,9999,QFFD
 SR-1203,-122.35973317135,37.4764637294204,Pilarcitos,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,81,180,0.01,QFFD
 SR-1204,-121.926030502203,37.5479531164453,Mission (connected),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.1,QFFD
 SR-1205,-120.20259166203,35.4523796249867,San Juan,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.01,QFFD
-SR-1206,-120.684445366076,35.3666719589782,Oceanic - West Huasna,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,58,135,0.39,QFFD
+SR-1206,-120.684445366076,35.3666719589782,Oceanic-West Huasna,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,58,135,0.39,QFFD
 SR-1207,-120.837225450391,35.1957976078107,Shoreline,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,0.1,QFFD
 SR-1208,-120.802081267393,35.1760021134865,San Luis Bay,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,90,0.1,QFFD
 SR-1209,-120.209021602174,33.9788045453785,Santa Rosa Island,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,30,1.5,QFFD
@@ -1189,14 +1189,14 @@ SR-1211,-119.707387735293,34.1853322246812,Channel Islands (ramp),approx centroi
 SR-1212,-119.945997244862,34.2966986450143,"Pitas Point (lower, west)",approx centroid,1,5,CA,QFFD slip rate bin,1,5,13,90,3,QFFD
 SR-1213,-119.972773678639,34.6082296202184,Los Alamos (extension),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,30,90,0.39,QFFD
 SR-1214,-119.182964667457,34.4176029321667,Sisar,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,29,90,0.3,QFFD
-SR-1215,-118.891441852127,33.9516283736754,Anacapa - Dume,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,45,60,0.39,QFFD
+SR-1215,-118.891441852127,33.9516283736754,Anacapa-Dume,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,45,60,0.39,QFFD
 SR-1216,-118.33451624912,34.0880450588799,North Salt Lake,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,54,90,0.01,QFFD
 SR-1217,-118.354469018886,34.0644701632197,San Vicente,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,66,90,0.01,QFFD
 SR-1218,-118.275740132597,34.1872907765091,Verdugo,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,55,90,0.39,QFFD
 SR-1219,-118.48608287792,34.2772088593366,Mission Hills,approx centroid,1,5,CA,QFFD slip rate bin,1,5,55,90,1.25,QFFD
-SR-1220,-117.893936231615,34.0614732823995,Walnut Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1220,-117.893936231615,34.0614732823995,Walnut Creek,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1221,-118.006498675976,33.8272352095437,Anaheim,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,71,90,0.15,QFFD
-SR-1224,-117.559587567844,34.1330768064931,Red Hill,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1224,-117.559587567844,34.1330768064931,Red Hill,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1225,-116.925190579893,33.9429642684493,San Gorgonio Pass,approx centroid,1,5,CA,QFFD slip rate bin,1,5,60,90,1.8,QFFD
 SR-1226,-116.718252830986,33.2783597188966,Earthquake Valley (north),approx centroid,1,5,CA,QFFD slip rate bin,1,5,90,180,2.5,QFFD
 SR-1227,-115.819466032769,32.9438280137695,San Jacinto (Superstition Mountain),approx centroid,5,35,CA,QFFD slip rate bin,5,35,90,180,7,QFFD
@@ -1204,7 +1204,7 @@ SR-1228,-116.628849528657,35.5939955957116,Garlock (east),approx centroid,0.2,1,
 SR-1229,-116.311695033722,34.6030639699089,Hector Mine,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.3,QFFD
 SR-1231,-117.887177834009,35.7340922610558,Sierra Nevada (south),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,50,-90,0.3,QFFD
 SR-1232,-117.703396729286,35.8364806295966,Airport Lake (south),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,50,-90,0.39,QFFD
-SR-1233,-119.271536278967,38.553331862521,Smith Valley (south),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1233,-119.271536278967,38.553331862521,Smith Valley (south),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1234,-122.480339476761,48.0301644534953,Southern Whidbey Island (middle),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.23,QFFD
 SR-1235,-122.400309607959,47.9961010551943,Southern Whidbey Island (north),approx centroid,0,0.2,WA,QFFD slip rate bin,0,0.2,60,90,0.23,QFFD
 SR-1236,-122.628767390417,47.601276013876,Seattle (middle),approx centroid,0.2,1,WA,QFFD slip rate bin,0.2,1,45,90,0,QFFD
@@ -1214,10 +1214,10 @@ SR-1239,-105.675023994576,31.2565992636796,Arroyo Diablo,approx centroid,0,0.2,C
 SR-1241,-118.703880243354,34.4284202797722,Del Valle,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,73,90,0.39,QFFD
 SR-1243,-116.367481764106,33.0532981707778,Earthquake Valley (south),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,90,180,2.5,QFFD
 SR-1244,-118.124249458813,33.9685426974037,Elysian Park (lower),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,22,90,0.01,QFFD
-SR-1246,-119.277580368395,38.1554720067034,Robinson Creek (south),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
-SR-1247,-111.867198818735,40.7834142850064,Wasatch (Virginia Street),approx centroid,1,5,UT,QFFD slip rate bin,1,5,not included in model,not included in model,not included in model,QFFD
+SR-1246,-119.277580368395,38.1554720067034,Robinson Creek (south),approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
+SR-1247,-111.867198818735,40.7834142850064,Wasatch (Virginia Street),approx centroid,1,5,UT,QFFD slip rate bin,1,5,9999,9999,9999,QFFD
 SR-1248,-111.915610515635,40.811251724222,"Wasatch (Salt Lake City, north)",approx centroid,1,5,UT,QFFD slip rate bin,1,5,50,-90,1.7,QFFD
-SR-1249,-118.598214359541,34.4393432702408,Holser - San Gabriel (connector),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,58,90,0.4,QFFD
+SR-1249,-118.598214359541,34.4393432702408,Holser-San Gabriel (connector),approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,58,90,0.4,QFFD
 SR-1250,-118.043378028845,33.4233343408176,Palos Verdes,San Gabriel Canyon,1.3,2.8,CA,slip rate study,1,5,90,180,3,"Brothers et al., (2015) JGR"
 SR-1251,-124.975128815487,44.491781263998,Alvin Canyon,approx centroid,5,10,OR,QFFD slip rate bin,5,10,90,0,6.4,QFFD
 SR-1252,-124.500392049182,43.177001812911,Coquille Anticline,approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,60,90,0.28,QFFD
@@ -1234,8 +1234,8 @@ SR-1262,-120.978509050417,36.8725801575,Ortigalita (south),approx centroid,1,5,C
 SR-1263,-116.433757742083,34.3343976479167,Homestead Valley,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,90,180,0.39,QFFD
 SR-1265,-121.822742626667,42.2409705866667,Klamath Graben (Klamath Lake),approx centroid,0.2,1,OR,QFFD slip rate bin,0.2,1,50,-90,0.26,QFFD
 SR-1266,-119.694086109375,34.305776328125,North Channel,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,26,90,1,QFFD
-SR-1267,-122.056978849092,37.3047192590481,Monte Vista - Shannon,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,61,90,0.6,QFFD
-SR-1268,-119.688264066667,39.0087016266667,East Carson Valley (proxy),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,not included in model,not included in model,not included in model,QFFD
+SR-1267,-122.056978849092,37.3047192590481,Monte Vista-Shannon,approx centroid,0.2,1,CA,QFFD slip rate bin,0.2,1,61,90,0.6,QFFD
+SR-1268,-119.688264066667,39.0087016266667,East Carson Valley (proxy),approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,9999,9999,9999,QFFD
 SR-1269,-117.803905,33.89468,Yorba Linda,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,60,90,0.01,QFFD
 SR-1270,-122.610597832849,45.4228060956395,Portland Hills (south),approx centroid,0,0.2,OR,QFFD slip rate bin,0,0.2,60,90,0.115,QFFD
 SR-1271,-115.434281552326,32.1826265906977,Canada David,approx centroid,0,0.2,CA,QFFD slip rate bin,0,0.2,37,-90,0.6,QFFD
