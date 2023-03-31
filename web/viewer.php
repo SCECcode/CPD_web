@@ -1,10 +1,10 @@
 <?php
-
 require_once("php/navigation.php");
 require_once("php/CPD_SLIPRATE.php");
-
 $header = getHeader("Viewer");
-$cpd_sliprate = new CPD_SLIPRATE();
+
+#$cpd_sliprate = new CPD_SLIPRATE();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
     <link rel="stylesheet" href="css/vendor/jquery-ui.css">
     <link rel="stylesheet" href="css/vendor/glyphicons.css">
     <link rel="stylesheet" href="css/vendor/all.css">
-    <link rel="stylesheet" href="css/cpd-ui.css?v=1">
+    <link rel="stylesheet" href="css/cxm-ui.css?v=1">
     <link rel="stylesheet" href="css/sidebar.css?v=1">
 
     <script type="text/javascript" src="js/vendor/leaflet-src.js"></script>
@@ -33,52 +33,48 @@ $cpd_sliprate = new CPD_SLIPRATE();
     <script type='text/javascript' src='js/vendor/FileSaver.js'></script>
     <script type='text/javascript' src='js/vendor/jszip.js'></script>
     <script type='text/javascript' src='js/vendor/jquery.floatThead.min.js'></script>
-    <script type='text/javascript' src='js/vendor/html2canvas.js'></script>
 
-    <link rel="stylesheet" href="plugin/Leaflet.draw/leaflet.draw.css">
-    <script type='text/javascript' src="plugin/Leaflet.draw/Leaflet.draw.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/Leaflet.Draw.Event.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/Toolbar.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/Tooltip.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/GeometryUtil.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/LatLngUtil.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/LineUtil.Intersect.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/Polygon.Intersect.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/Polyline.Intersect.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/ext/TouchEvents.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/DrawToolbar.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Feature.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.SimpleShape.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Polyline.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Marker.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Circle.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.CircleMarker.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Polygon.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/draw/handler/Draw.Rectangle.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/EditToolbar.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/EditToolbar.Edit.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/EditToolbar.Delete.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/Control.Draw.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.Poly.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.SimpleShape.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.Rectangle.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.Marker.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.CircleMarker.js"></script>
-    <script type='text/javascript' src="plugin/Leaflet.draw/edit/handler/Edit.Circle.js"></script>
-    <script type='text/javascript' src="plugin/leaflet.polylineDecorator.js"></script>
+    <link rel="stylesheet" href="js/vendor/plugin/Leaflet.draw/leaflet.draw.css">
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Leaflet.draw.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Leaflet.Draw.Event.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Toolbar.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Tooltip.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/GeometryUtil.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/LatLngUtil.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/LineUtil.Intersect.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/Polygon.Intersect.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/Polyline.Intersect.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/ext/TouchEvents.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/DrawToolbar.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Feature.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.SimpleShape.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Polyline.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Marker.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Circle.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.CircleMarker.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Polygon.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/draw/handler/Draw.Rectangle.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/EditToolbar.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/EditToolbar.Edit.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/EditToolbar.Delete.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Control.Draw.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.Poly.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.SimpleShape.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.Rectangle.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.Marker.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.CircleMarker.js"></script>
+    <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.Circle.js"></script>
 
     <!-- cpd js -->
     <script type="text/javascript" src="js/debug.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_main.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
-    <script type="text/javascript" src="js/cxm_leaflet.js?v=1"></script>
-    <script type="text/javascript" src="js/cxm_misc_util.js?v=1"></script>
+    <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics 
+<!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-495056-12"></script>
--->
     <script type="text/javascript">
         $ = jQuery;
         var tableLoadCompleted = false;
@@ -118,25 +114,37 @@ $cpd_sliprate = new CPD_SLIPRATE();
 <body>
 <?php echo $header; ?>
 
-<div class="container main">
-    <div class="row">
-        <div class="col-12">
-            <p>The Community Paleoseismic Database (CPD)</p>
-        </div>
+<div class="container main" id="cpdMain">
+
+<!-- trace dumping buttons 
+    <div style="display:none">
+      <script type="text/javascript" src="js/cpd_misc_util.js?v=1"></script>
+      <button id="dumpMarkerLatlngBtn" class="btn cfm-small-btn" onClick="toFileMarkerLatlng()">
+                <span class="glyphicon glyphicon-share"></span> Export Marker Latlng</button>
+    </div>
+-->
+
+<!-- top-intro -->
+   <div id="top-intro" style="display:">
+<p>
+The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community PaleoSeismic Database Model</a> are 
+...  See the <a href="guide">user guide</a> for more details and usage instructions.
+</p>
     </div>
 
+<!-- leaflet control -->
     <div class="row" style="display:none;">
         <div class="col justify-content-end custom-control-inline">
             <div style="display:none;" id="external_leaflet_control"></div>
-            <div id="downloadSelect" class="cxm-control-download" onMouseLeave="removeDownloadControl()"></div>
         </div>
     </div>
 
 <!-- top-control -->
     <div id="top-control">
-      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:" >
+      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;border:1px solid red" >
 
-        <div id="top-control-row-1" class="row">
+<!-- control-row-1 -->
+        <div id="top-control-row-1" class="row" style="border:1px solid black">
 
 <!-- select data set -->
           <div class="input-group input-group-sm custom-control-inline ml-0" id="dataset-controls" style="max-width:180px">
@@ -149,7 +157,7 @@ $cpd_sliprate = new CPD_SLIPRATE();
             </select>
           </div>
 <!-- SLIPRATE select -->
-          <div class="col-4 input-group filters mb-3">
+          <div class="col-6 input-group filters mb-3" style="border:1px solid blue">
             <select id="cpd-search-type" class="custom-select">
                 <option value="">Search the Slip Rate Sites</option>
                 <option value="faultname">Fault Name</option>
@@ -285,10 +293,27 @@ $cpd_sliprate = new CPD_SLIPRATE();
                 </li>
               </ul>
           </div> <!-- SLIPRATE option expand -->
+</div>
         </div> <!-- top-control-row-1 -->
 
-        <div id="top-control-row-2" class="row">
-          <div class="col-12 text-right pr-0">
+<!-- top-control-row 2 -->
+
+        <div id="top-control-row-2" class="row" style="border:1px solid green">
+<!-- SLIPRATE select -->
+          <div class="col-6 input-group filters mb-3" style="border:1px solid blue">
+            <select id="cpd-search-type" class="custom-select">
+                <option value="">Search the Slip Rate Sites</option>
+                <option value="faultname">Fault Name</option>
+                <option value="sitename">Site Name</option>
+                <option value="latlon">Latitude &amp; Longitude Box</option>
+                <option value="minrateslider">minRate</option>
+                <option value="maxrateslider">maxRate</option>
+            </select>
+            <div class="input-group-append">
+                <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
+                           class="btn btn-dark pl-4 pr-4">Reset</button>
+            </div>
+          </div>
 
 <!-- cfm -->
             <div id='model-options' class="form-check-inline mr-0">
@@ -334,15 +359,16 @@ $cpd_sliprate = new CPD_SLIPRATE();
                   <option value="shaded relief">Shaded Relief</option>
               </select>
             </div>
-          </div>
         </div> <!-- top-control-row-2 -->
+
+
       </div> <!-- cpd-controls-container -->
     </div> <!-- top-control -->
 
+<!-- map space -->
     <div id="mapDataBig" class="row mapData">
       <div id="infoData" class="col-5 button-container d-flex flex-column pr-0" style="overflow:hidden">
         <div id="searchResult" style="overflow:hidden; display:" class="mb-1"></div>
-        <div id="geoSearchByObjGidResult" style="display:none"></div>
         <div id="phpResponseTxt"></div>
       </div>
 
@@ -367,36 +393,9 @@ $cpd_sliprate = new CPD_SLIPRATE();
          </div>
       </div>
     </div> <!-- top-select -->
-</div> <!-- main -->
-
-<!--Modal: Model (modalkmlselect) -->
-<div class="modal" id="modalkmlselect" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-small" id="modalkmlselectDialog" role="document">
-
-    <!--Content-->
-    <div class="modal-content" id="modalkmlselectContent">
-      <!--Body-->
-      <div class="modal-body" id="modalkmlselectBody">
-        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
-          <div class="col-12" id="kmlselectTable-container" style="font-size:14pt"></div>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
-      </div>
-
-    </div> <!--Content-->
-  </div>
-</div> <!--Modal: modalkmlselect-->
-
 
 </div>
-</body>
-</html>
-<!--call php directly-->
-    <script type="text/javascript">
-            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
-    </script>
+
 </body>
 </html>
 

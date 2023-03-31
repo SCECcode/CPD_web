@@ -1,12 +1,16 @@
-window.console.log("HERE..");
 <?php
 require_once("php/navigation.php");
 $header = getHeader("Viewer");
+$cfm_my_db = getenv("CFM_MY_DB");
+$cfm_my_option = getenv("CFM_MY_OPTION");
+$cfm_my_port = getenv("CFM_MY_PORT");
+$cfm_my_blind = getenv("CFM_MY_BLIND");
+$cfm_my_trace = getenv("CFM_MY_TRACE");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Community Paleoseismic Database Viewer</title>
+    <title>Community Fault Model Viewer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,7 +22,7 @@ $header = getHeader("Viewer");
     <link rel="stylesheet" href="css/vendor/jquery-ui.css">
     <link rel="stylesheet" href="css/vendor/glyphicons.css">
     <link rel="stylesheet" href="css/vendor/all.css">
-    <link rel="stylesheet" href="css/cxm-ui.css?v=1">
+    <link rel="stylesheet" href="css/cfm-ui.css?v=1">
     <link rel="stylesheet" href="css/sidebar.css?v=1">
 
     <script type="text/javascript" src="js/vendor/leaflet-src.js"></script>
@@ -163,10 +167,7 @@ $header = getHeader("Viewer");
 <!-- top-intro -->
     <div id="top-intro" style="display:">
 <p>
-The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the SCEC CFM version 5.3 preferred fault set. The alternative fault representations are only provided in the complete CFM archive available for eownload on the <a href="https://www.scec.org/research/cfm">CFM homepage</a>. Here, the viewer allows users to view and download fault geometry data as well as metadata for selected faults rather than downloading the entire CFM model archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic CAD-like environment. See the user guide for more details and site usage instructions.
-</p>
-    </div> <!-- top-intro -->
-
+The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fault Model</a> are three-dimensional and non-planar; however, to simplify browsing the model, the viewer below provides a two-dimensional map-based view of the CFM. The web tools currently serve the CFM6.0 preferred (default), ruptures, and alternatives models, as well as the previous CFM5.3 preferred set. Use the pull-down menu at the top left of the map interface to select the model. These tools allow users to view and download fault geometry data as well as metadata for selected faults rather than downloading the <a href="https://doi.org/10.5281/zenodo.4651667">entire CFM model</a> archive. Once faults are selected, the “PLOT3D” button can be used to view the selected faults in a basic 3D CAD-like environment. See the <a href="guide">user guide</a> for more details and usage instructions.</p
 <!-- leaflet control -->
     <div class="row" style="display:none;">
         <div class="col justify-content-end custom-control-inline">
@@ -209,7 +210,7 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
                     <option value="keywordClick">Keyword</option>
                     <option value="latlonClick">Latitude &amp; Longitude</option>
                     <option value="areaClick">Area</option>
-                    <option value="zoneClick">Zone</option>
+                    <option value="zoneClick">Zone/option>
                     <option value="sectionClick">Section</option>
                     <option value="nameClick">Name</option>
                     <option disabled>-- Advanced --</option>
@@ -424,8 +425,10 @@ The faults of the <a href="https://www.scec.org/research/cfm">SCEC Community Fau
       <div class="row" style="display:">
              <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
              <button id="kmlBtn" class="btn" onclick='javascript:document.getElementById("fileKML").click();' title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
+<!--
 	     <button id="toggleKMLBtn" class="btn btn-sm cfm-small-btn" title="Show/Hide uploaded kml/kmz files" onclick="toggleKML()"><span id="eye_kml"  class="glyphicon glyphicon-eye-open"></span></button>
-             <button id="kmlSelectBtn" class="btn cfm-small-no-btn" title="Select which kml/kmz files to show" style="display:none;" data-toggle="modal" data-target="#modalkmlselect"></button>
+-->
+             <button id="kmlSelectBtn" class="btn cfm-small-no-btn" title="Show/Hide uploaded kml/kmz files" style="display:none;" data-toggle="modal" data-target="#modalkmlselect"><span id="eye_kml"  class="glyphicon glyphicon-eye-open"></span></button>
        </div> <!-- kml-row -->
  </div>
 </div> <!-- row --> 
@@ -576,12 +579,13 @@ onchange="switchLayer(this.value);">
                                 </div>
                             </div>
                             &nbsp
+<!--  THESE buttons was used for CFM fault review -->
 <!-- For IMPORT server ts files 
                             <button id="externalBtn" class="btn btn-sm" style="background:transparent;" data-toggle="modal" data-target="#modalexternal">
                                     <span class="fas fa-caret-up"></span>
                             </button>
 -->
-<!-- For IMPORT local ts files
+<!-- For IMPORT local ts files, 
 <input class="form-control" id='fileBtn' type='file' onchange='setExternalTSFile(this.files)' style='display:none;'></input> 
 <button class="btn cfm-small-btn" onClick='javascript:document.getElementById("fileBtn").click();'><span class="fas fa-caret-up"></span></button>
 -->
@@ -630,10 +634,7 @@ onchange="switchLayer(this.value);">
         <button id="view3DToggleBoundsbtn" class="btn btn-outline-primary btn-sm" type="button" onclick="toggleBounds3Dview()">Show Bounds</button>
         <button id="view3DToggleLegendbtn" class="btn btn-outline-primary btn-sm" type="button" onclick="toggleLegend3Dview()">Hide Legend</button>
         <button id="view3DToggleNorthbtn" class="btn btn-outline-primary btn-sm" type="button" onclick="toggleNorth3Dview()">Show Mapview</button>
-	<button id="view3DClosebtn" class="btn btn-sm" type="button" style="background-color:transparent" onclick="close3Dview()">[<b>x</b>]</button>
-<!--
-	<button id="view3DClosebtn" class="btn btn-sm" type="button" style="background-color:transparent" data-dismiss="modal" onclick="close3Dview()">[<b>x</b>]</button>
--->
+	<button id="view3DClosebtn" class="btn btn-sm" type="button" style="background-color:transparent" onclick="close3Dview()"><span class="glyphicon glyphicon-remove"></span></button>
       </div>
 
       <!--Body-->
@@ -658,7 +659,7 @@ onchange="switchLayer(this.value);">
         <button id="view3DMovebtn" class="btn btn-outline-primary btn-sm" type="button" onclick="move3Dview()">New Window</button>
         <button id="view3DWarnbtn" class="btn btn-outline-primary btn-sm" style="display:none" data-toggle="modal" data-target="#modalwarn3d"></button>
         <button id="view3DSavebtn" class="btn btn-outline-primary btn-sm" type="button" onclick="save3Dview()">Save Image</button>
-        <button id="view3DSharebtn" class="btn btn-outline-primary btn-sm" onclick="share3Dview()">Share Link</button>
+        <button id="view3DSharebtn" class="btn btn-outline-primary btn-sm" onclick="share3Dview()">Copy Link</button>
         <button id="view3DHelpbtn" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalinfo3d" onclick="$('#modal3D').modal('hide');">Help</button>
       </div> <!-- footer -->
 

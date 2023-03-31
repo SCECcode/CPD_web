@@ -131,7 +131,6 @@ var CPD_SLIPRATE = new function () {
                 let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x_2014_dip);
                 let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x_2014_rake);
                 let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
-                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
                 let reference = cpd_sliprate_site_data[index].reference;
 
                 let marker = L.circleMarker([y, x], site_marker_style.normal);
@@ -552,7 +551,7 @@ window.console.log("sliprate --->> calling search.. <<----");
                 remove_bounding_rectangle_layer();
                 add_bounding_rectangle(criteria[0],criteria[1],criteria[2],criteria[3]);
 
-                var let new_active_layers = new L.FeatureGroup();
+                var new_active_layers = new L.FeatureGroup();
                 var new_active_gid=[];
                 var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
                 let cnt=this.cpd_active_gid.length();
@@ -819,8 +818,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
         $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cpd_minrate_min);
         $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cpd_minrate_max);
 
-            $("#wait-spinner").hide();
-        };
+        $("#wait-spinner").hide();
 
     };
 
