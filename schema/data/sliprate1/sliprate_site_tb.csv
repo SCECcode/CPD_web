@@ -425,7 +425,7 @@ SR-0432,-119.818858938,38.7782027818,Genoa (south),Woodfords,0.33,0.71,CA,slip r
 SR-0433,-119.847615143,39.0110556893,Genoa (north),Jacks Valley-Walleys-Sturgis,2,3.33,NV,slip rate study,1,5,50,90,2.61,"Ramelli et al., (1999) BSSA"
 SR-0434,-119.84781096,38.8950181678,Genoa (south),Woodfords,0.33,0.71,CA,slip rate study,1,5,50,90,2.61,"Ramelli et al., (1999) BSSA"
 SR-0435,-114.351667795,39.9344125464,Antelope Range - Kingsley Mountains,approx centroid,0,0.2,NV,QFFD slip rate bin,0,0.2,50,-90,0.01,QFFD
-SR-0436,-116.626655952,36.7672429891,Bare Mountain,dePolo and Anderson location,0.006,0.02,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.01,dePolo and Anderson (2000) Basin Research; likely represents Anderson and Klinger (1996) BoR STR(?) study?
+SR-0436,-116.626655952,36.7672429891,Bare Mountain,dePolo and Anderson location,0.006,0.02,NV,dePolo and Anderson calibration rate,0,0.2,50,-90,0.01,dePolo and Anderson (2000) Basin Research; likely represents Anderson and Klinger (1996) BoR STR(?)
 SR-0437,-117.230062489,40.6307434528,Battle Mountain,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
 SR-0438,-118.074761967,38.4168436906,Benton Spring (south),Mina1-BS,1.3,1.7,NV,slip rate study,0.2,1,90,180,0.5,"Angster et al., (2019) Geosphere"
 SR-0439,-116.412925368,40.7190507127,Beowawe,approx centroid,0,0.2,NV,dePolo empirically-derived slip rate,0,0.2,50,-90,0.13,dePolo (1998) thesis
