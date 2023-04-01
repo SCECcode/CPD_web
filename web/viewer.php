@@ -130,34 +130,24 @@ $header = getHeader("Viewer");
 The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community PaleoSeismic Database Model</a> are 
 ...  See the <a href="guide">user guide</a> for more details and usage instructions.
 </p>
-    </div>
+   </div>
 
 <!-- leaflet control -->
-    <div class="row" style="display:none;">
+   <div class="row" style="display:none;">
         <div class="col justify-content-end custom-control-inline">
             <div style="display:none;" id="external_leaflet_control"></div>
         </div>
-    </div>
+   </div>
 
 <!-- top-control -->
-    <div id="top-control">
-      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;border:1px solid red" >
+   <div id="top-control" class="row">
+      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;" >
 
 <!-- control-row-1 -->
-        <div id="top-control-row-1" class="row" style="border:1px solid black">
+        <div id="top-control-row-1" class="col-12" style="border:1px solid green">
 
-<!-- select data set -->
-          <div class="input-group input-group-sm custom-control-inline ml-0" id="dataset-controls" style="max-width:180px">
-            <div class="input-group-prepend">
-              <label style='border-bottom:1;' class="input-group-text" for="data-product-select">Select Dataset</label>
-            </div>
-            <select id='data-product-select' class="custom-select custom-select-sm">
-                <option selected value="sliprate">Slip Rate</option>
-                <option value="chronology">Chronology</option>
-            </select>
-          </div>
 <!-- SLIPRATE select -->
-          <div class="col-6 input-group filters mb-3" style="border:1px solid blue">
+          <div class="col-4 input-group filters" style="">
             <select id="cpd-search-type" class="custom-select">
                 <option value="">Search the Slip Rate Sites</option>
                 <option value="faultname">Fault Name</option>
@@ -293,64 +283,65 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                 </li>
               </ul>
           </div> <!-- SLIPRATE option expand -->
-</div>
+
         </div> <!-- top-control-row-1 -->
 
 <!-- top-control-row 2 -->
+        <div id="top-control-row-2" class="col-12 row text-right" style="border:1px solid red">
 
-        <div id="top-control-row-2" class="row" style="border:1px solid green">
-<!-- SLIPRATE select -->
-          <div class="col-6 input-group filters mb-3" style="border:1px solid blue">
-            <select id="cpd-search-type" class="custom-select">
-                <option value="">Search the Slip Rate Sites</option>
-                <option value="faultname">Fault Name</option>
-                <option value="sitename">Site Name</option>
-                <option value="latlon">Latitude &amp; Longitude Box</option>
-                <option value="minrateslider">minRate</option>
-                <option value="maxrateslider">maxRate</option>
-            </select>
-            <div class="input-group-append">
-                <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
-                           class="btn btn-dark pl-4 pr-4">Reset</button>
+<!-- select data set -->
+          <div class="col-4 input-group input-group-sm custom-control-inline" id="dataset-controls" style="max-width:260px">
+            <div class="input-group-prepend">
+              <label style='border-bottom:1;' class="input-group-text" for="data-product-select">Select Dataset</label>
             </div>
+            <select id='data-product-select' class="custom-select custom-select-sm">
+                <option selected value="sliprate">Slip Rate</option>
+                <option value="chronology">Chronology</option>
+            </select>
           </div>
 
-<!-- cfm -->
-            <div id='model-options' class="form-check-inline mr-0">
-              <div class="form-check form-check-inline">
-                  <label class='form-check-label ml-1 mini-option'
-                                 for="cpd-model-cfm">
-                  <input class='form-check-inline mr-1'
-                                 type="checkbox"
-                                 id="cpd-model-cfm" value="1" />CFM faults
-                  </label>
-              </div>
-            </div>
-
 <!-- KML/KMZ overlay -->
-            <div id="kml-row" class="row" style="display:">
-              <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
-              <button id="kmlBtn" class="btn" 
+          <div id="kml-row" class="col-2 row custom-control-inline" style="display:">
+            <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
+            <button id="kmlBtn" class="btn" 
                       onclick='javascript:document.getElementById("fileKML").click();' 
                       title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." 
                       style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
-	      <button id="toggleKMLBtn" class="btn btn-sm cxm-small-btn" 
+	    <button id="toggleKMLBtn" class="btn btn-sm cxm-small-btn" 
                       title="Show/Hide uploaded kml/kmz files" 
                       onclick="toggleKML()"><span id="eye_kml"
                       class="glyphicon glyphicon-eye-open"></span></button>
-              <button id="kmlSelectBtn" class="btn cxm-small-no-btn" 
+            <button id="kmlSelectBtn" class="btn cxm-small-no-btn" 
                       title="Select which kml/kmz files to show" 
                       style="display:none;" 
                       data-toggle="modal" data-target="#modalkmlselect"></button>
-             </div> <!-- kml-row -->
+          </div> <!-- kml-row -->
 
+          <div id='model-options' class="form-check-inline">
+            <div class="form-check form-check-inline">
+                <label class='form-check-label ml-1 mini-option'
+                               for="cpd-model-cfm">
+                <input class='form-check-inline mr-1'
+                               type="checkbox"
+			       id="cpd-model-cfm" value="1" />CFM6.0
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <label class='form-check-label ml-1 mini-option'
+                               for="cpd-model-gfm">
+                <input class='form-check-inline mr-1'
+                               type="checkbox"
+			       id="cpd-model-gfm" value="1" />GFM
+                </label>
+            </div>
+          </div>
 
-            <div class="input-group input-group-sm custom-control-inline mr-0" id="map-controls">
+          <div class="input-group input-group-sm custom-control-inline mr-0 " id="map-controls">
               <div class="input-group-prepend">
-                  <label style='border-bottom:1;' class="input-group-text" for="mapLayer">Select Map Type</label>
+                <label style='border-bottom:1;' class="input-group-text" for="mapLayer">Select Map Type</label>
               </div>
               <select id="mapLayer" class="custom-select custom-select-sm"
-                                                 onchange="switchLayer(this.value);">
+                                               onchange="switchLayer(this.value);">
                   <option selected value="esri topo">ESRI Topographic</option>
                   <option value="esri NG">ESRI National Geographic</option>
                   <option value="esri imagery">ESRI Imagery</option>
@@ -358,9 +349,8 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                   <option value="osm street">OSM Street</option>
                   <option value="shaded relief">Shaded Relief</option>
               </select>
-            </div>
+          </div>
         </div> <!-- top-control-row-2 -->
-
 
       </div> <!-- cpd-controls-container -->
     </div> <!-- top-control -->
@@ -394,7 +384,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
       </div>
     </div> <!-- top-select -->
 
-</div>
+</div> <!-- main -->
 
 </body>
 </html>
