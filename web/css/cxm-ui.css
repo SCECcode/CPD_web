@@ -1,5 +1,9 @@
 /* cxm viewer required styles */
 
+#model-options label {
+  font-weight: normal;
+}
+
 #refreshBtn {
   height: calc(2rem - 1px);
 }
