@@ -1,34 +1,25 @@
 /***
-   cfm_util.js
+   cpd_util.js
 
 ***/
 
 var select_all_flag=0;
 
-// This is for plot3d PRESET MODE
-// if there are too many faults, don't show the share link
-// cut-and-paste size limit might exceed.
-var PLOT3D_PRESET_NAMELIST_MAX=50;
-var PLOT3D_PRESET_MODE = 0;
-var PLOT3D_PRESET_CAMERA = 0;
-var PLOT3D_PRESET_STATE = 0;
-var PLOT3D_PRESET_NAMELIST=[];  // bare name list
-
-// from the whole fault object set
-var strike_range_min_ref=0;
-var strike_range_max_ref=360;
-var strike_range_min = 0;
-var strike_range_max = 0;
+// from the whole site object set
+var maxrate_range_min_ref=0;
+var maxrate_range_max_ref=360;
+var maxrate_range_min = 0;
+var maxrate_range_max = 0;
 // from the whole set
-var dip_range_min_ref = 0;
-var dip_range_max_ref = 0;
-var dip_range_min = 0;
-var dip_range_max = 0;
+var minrate_range_min_ref = 0;
+var minrate_range_max_ref = 0;
+var minrate_range_min = 0;
+var minrate_range_max = 0;
 
 function getRnd() {
 //https://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
     var timestamp = $.now();
-    var rnd="CFM_"+timestamp;
+    var rnd="CPD_"+timestamp;
     return rnd;
 }
 
@@ -152,47 +143,45 @@ function resetRecordReference() {
   recordReferenceSet(cfm_gid_list);
 }
 
-function set_current_strike_range_slider()
+function set_current_minrate_range_slider()
 {
-  [min, max]=get_current_strike_range();
-  strike_range_min=min;
-  strike_range_max=max;
-//  set_strike_range_color(min,max);
-  $( "#slider-strike-range" ).slider("option", "values" ,[min, max]);
+  [min, max]=get_current_minrate_range();
+  minrate_range_min=min;
+  minrate_range_max=max;
+  $( "#slider-minrate-range" ).slider("option", "values" ,[min, max]);
 }
-function setup_strike_range_ref(min,max)
+function setup_minrate_range_ref(min,max)
 {
-   strike_range_min_ref=strike_range_min=min;
-   strike_range_max_ref=strike_range_max=max;
+   minrate_range_min_ref=minrate_range_min=min;
+   minrate_range_max_ref=minrate_range_max=max;
 }
-function reset_select_strike()
+function reset_select_minrate()
 {
-  $( "#slider-strike-range" ).slider("option", "values" ,[strike_range_min_ref, strike_range_max_ref]);
-  set_strike_range_color(strike_range_min_ref,strike_range_max_ref)
-}
-
-function set_current_dip_range_slider()
-{
-  [min, max]=get_current_dip_range(); 
-  dip_range_min=min;
-  dip_range_max=max;
-//  set_dip_range_color(min,max);
-  $( "#slider-dip-range" ).slider("option", "values" ,[min, max]);
-}
-function setup_dip_range_ref(min,max)
-{
-   dip_range_min_ref=dip_range_min=min;
-   dip_range_max_ref=dip_range_max=max;
-}
-function reset_select_dip()
-{
-  $( "#slider-dip-range" ).slider("option", "values" ,[dip_range_min_ref, dip_range_max_ref]);
-  set_dip_range_color(dip_range_min_ref,dip_range_max_ref);
+  $( "#slider-minrate-range" ).slider("option", "values" ,[minrate_range_min_ref, minrate_range_max_ref]);
+  set_minrate_range_color(minrate_range_min_ref,minrate_range_max_ref)
 }
 
-function makeDipRGB(val) {
+function set_current_maxrate_range_slider()
+{
+  [min, max]=get_current_maxrate_range(); 
+  maxrate_range_min=min;
+  maxrate_range_max=max;
+  $( "#slider-maxrate-range" ).slider("option", "values" ,[min, max]);
+}
+function setup_maxrate_range_ref(min,max)
+{
+   maxrate_range_min_ref=maxrate_range_min=min;
+   maxrate_range_max_ref=maxrate_range_max=max;
+}
+function reset_select_maxrate()
+{
+  $( "#slider-maxrate-range" ).slider("option", "values" ,[maxrate_range_min_ref, maxrate_range_max_ref]);
+  set_maxrate_range_color(maxrate_range_min_ref,maxrate_range_max_ref);
+}
+
+function makeMaxrangeRGB(val) {
     var v=val;
-    v=(v-dip_range_min_ref)/(dip_range_max_ref-dip_range_min_ref);
+    v=(v-maxrate_range_min_ref)/(maxrate_range_max_ref-maxrate_range_min_ref);
     let blue = Math.round(255 * v);
     let green = 0;
     let red = Math.round((1-v)*255);
@@ -200,9 +189,9 @@ function makeDipRGB(val) {
     return color;
 }
 
-function makeStrikeRGB(val) {
+function makeMaxrateRGB(val) {
     var v=val;
-    v=(v-strike_range_min_ref)/(strike_range_max_ref-strike_range_min_ref);
+    v=(v-minrate_range_min_ref)/(minrate_range_max_ref-minrate_range_min_ref);
     let blue = Math.round(255 * v);
     let green = 0;
     let red = Math.round((1-v)*255);
@@ -278,10 +267,10 @@ function removeColorsControl() {
 }
 
 // default -- all black --> ""
-// by avg_strike --> "strike"
-// by avg_dip    --> "dip"
-// change the fault color in the map view 
-function changeFaultColor(type) {
+// by minrate --> "minrate"
+// by maxrate    --> "maxrate"
+// change the site color in the map view 
+function changeSiteColor(type) {
     // val=$('input[name=cfm-fault-colors]:checked').val()
     use_fault_color=type;
     reset_fault_color();
@@ -442,31 +431,6 @@ function startDownload()
   }
 }
 
-function executePlot3d(type) {
-    use_download_set = type;
-    startPlot3d();
-    showPlot3dWarning();
-}
-
-function startPlot3d()
-{
-  // collect up the meta data from the highlighted set of traces
-  var hlist=get_highlight_list();
-  var mlist=get_meta_list(hlist);
-  var cnt=mlist.length;
-  if(cnt == 0) {
-    alert("No fault selected"); 
-    return;
-  }
-
-  collectURLsFor3d(mlist);
-  var nstr=get_MODAL_TS_NAME();
-  var str=get_MODAL_TS_LIST();
-  var pstr=get_MODAL_TS_PATH();
-  var nlstr=JSON.stringify(PLOT3D_PRESET_NAMELIST);
-  show3dView(str,nstr,pstr,nlstr);
-}
-
 function plotAll() {
 //  load_geo_list_layer();
   load_trace_list();
@@ -494,13 +458,13 @@ function selectAll() {
     select_all_flag=1;
     select_layer_list();
     $('#allBtn span').removeClass("glyphicon-unchecked").addClass("glyphicon-check");
-    if(use_fault_color == "strike" || use_fault_color == "dip") { 
+    if(use_fault_color == "minrate" || use_fault_color == "maxrate") { 
        removeKey();
     }
     } else {
        reset_layer_list(); // style is in original color
-       if(use_fault_color == "strike" || use_fault_color == "dip") {
-          showKey(use_fault_color);
+       if(use_fault_color == "minrate" || use_fault_color == "maxrte") {
+          showKey(use_site_color);
        } 
        select_all_flag=0;
        $('#allBtn span').removeClass("glyphicon-check").addClass("glyphicon-unchecked");
@@ -516,8 +480,8 @@ function refreshAll() {
   reset_select_name();
   reset_select_keyword();
   reset_select_latlon();
-  reset_select_strike();
-  reset_select_dip();
+  reset_select_minrate();
+  reset_select_maxrate();
 
   resetRecordReference();
 
@@ -556,8 +520,8 @@ function getMetadataRowForDisplay(meta) {
        <td class="meta_td" >${meta['zone']}</td>
        <td class="meta_td" >${meta['section']}</td>
        <td class="meta_td" >${meta['last_update']}</td>
-       <td class="meta_td" >${meta['avg_strike']}</td>
-       <td class="meta_td" >${meta['avg_dip']}</td>
+       <td class="meta_td" >${meta['minrate']}</td>
+       <td class="meta_td" >${meta['maxrate']}</td>
        <td class="meta_td" >${meta['area_km2']}</td>
        <td class="download-link" ><div class=\"row\" style=\"display:flex; justify-content:center;\">${downloadButtons}</div></td>
    </tr>
@@ -655,21 +619,21 @@ function getGidFromMeta(meta) {
 function getColorFromMeta(meta) {
 
     var color="black";
-    var strike=meta['avg_strike'];
-    var dip=meta['avg_dip'];
+    var minrate=meta['minrate'];
+    var maxrate=meta['maxrate'];
 
-    if(use_fault_color=="strike" && strike != undefined && strike != "") {
-        v=parseInt(strike);
-        v=(v-strike_range_min)/(strike_range_max-strike_range_min);
+    if(use_site_color=="minrate" && minrate != undefined && minrate != "") {
+        v=parseInt(minrate);
+        v=(v-minrate_range_min)/(minrate_range_max-minrate_range_min);
         blue = Math.round(255 * v);
         green = 0;
         red = Math.round((1-v)*255);
         color="RGB(" + red + "," + green + "," + blue + ")";
      } 
 
-    if(use_fault_color=="dip" && dip != undefined && dip != "") {
-        v=parseInt(dip);
-        v=(v-dip_range_min)/(dip_range_max-dip_range_min);
+    if(use_site_color=="maxrate" && maxrate != undefined && maxrate != "") {
+        v=parseInt(maxrate);
+        v=(v-maxrate_range_min)/(maxrate_range_max-maxrate_range_min);
         blue = Math.round(255 * v);
         green = 0;
         red = Math.round((1-v)*255);
@@ -766,10 +730,10 @@ function processSearchResult(rlist) {
         str = $('[data-side="resultBySection"]').data('params');
     } else if (rlist == 'searchByName') {
         str = $('[data-side="resultByName"]').data('params');
-    } else if (rlist == 'searchByStrikeRange') {
-        str = $('[data-side="resultByStrikeRange"]').data('params');
-    } else if (rlist == 'searchByDipRange') {
-        str = $('[data-side="resultByDipRange"]').data('params');
+    } else if (rlist == 'searchByMinrateRange') {
+        str = $('[data-side="resultByMinrateRange"]').data('params');
+    } else if (rlist == 'searchByMaxrateRange') {
+        str = $('[data-side="resultByMaxrateRange"]').data('params');
     }
 
     if(str == undefined) {
@@ -841,15 +805,15 @@ function grabTraceBlindList(gdata) {
 }
 
 
-function getStrikeRangeMinMax() {
-    let str= $('[data-side="strike-range"]').data('params');
+function getMinrateRangeMinMax() {
+    let str= $('[data-side="minrate-range"]').data('params');
     let rMin=parseInt(str.min);
     let rMax=parseInt(str.max);
     return [rMin, rMax];
 }
 
-function getDipRangeMinMax() {
-    let str= $('[data-side="dip-range"]').data('params');
+function getMaxrateRangeMinMax() {
+    let str= $('[data-side="maxrate-range"]').data('params');
     let rMin=parseInt(str.min);
     let rMax=parseInt(str.max);
     return [rMin, rMax];
@@ -922,67 +886,6 @@ function make2000mList() {
        cfm_2000m_gid_list.push(objgid);
     }
 }
-
-/****************************************************/
-function collectURLsFor3d(mlist) {
-  var url;
-  var dname;
-  clear_MODAL_TS_LIST();
-  PLOT3D_PRESET_NAMELIST=[];
-
-  var cnt=mlist.length;
-  for(var i=0; i<cnt; i++) {
-    var meta=mlist[i];
-    var gid=meta['gid'];
-
-    if(cnt < PLOT3D_PRESET_NAMELIST_MAX) { /* do not even try to store it */
-      PLOT3D_PRESET_NAMELIST.push(meta['name']);
-    }
-
-    if (use_download_set == 'native' || use_download_set =='all') {
-      if(in_native_gid_list(gid)) {
-        url=url_in_native_list(gid);
-        if(url) {
-          save_MODAL_TS_LIST(meta['fault'],url);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    } 
-    if (use_download_set == '500m' || use_download_set == 'all') {
-      if(in_500m_gid_list(gid)) {
-        url=url_in_500m_list(gid);
-        if(url) {
-          save_MODAL_TS_LIST(meta['fault'],url);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    } 
-    if (use_download_set == '1000m' || use_download_set == 'all') {
-      if(in_1000m_gid_list(gid)) {
-        url=url_in_1000m_list(gid);
-        if(url) {
-          save_MODAL_TS_LIST(meta['fault'],url);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    } 
-    if (use_download_set == '2000m' || use_download_set == 'all') {
-      if(in_2000m_gid_list(gid)) {
-        url=url_in_2000m_list(gid);
-        if(url) {
-          save_MODAL_TS_LIST(meta['fault'],url);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    }
-  }
-
-}
-
 
 /****************** for handling earthquakes ********************/
 function processQuakeResult(type) {
@@ -1106,216 +1009,3 @@ function processQuakeMeta(quake_type) {
 function get_seismicity(sw,ne) {
     quakesByLatlon(sw['lat'],sw['lng'],ne['lat'],ne['lng']);
 }
-
-/****************** for handling parameters ********************/
-// url : to start with limit of =1
-// action: 
-//    note - no setup, return a status something
-//    main - setup mapview only
-//    main+plot3d - setup mapview and also invoke plot3d
-// url: list of fault objects
-
-/*
-$('#view3DIfram').attr('src',"http:localhost:9999/?
-  "viewUID="+viewUID+
-  &viewerType="+viewerType+"
-  &fileURL="+urls+"
-  &name="+nstr;
-or
-  "viewUID="+viewUID+"
-  &viewerType="+viewerType+
-  "&fileURL="+urls+
-  "&name="+nstr+
-  "&filePATH="+path;
-
---> CFM name :
-myCFMname=MJVA-CRSF-BCYL-Bicycle_Lake_fault-CFM5
-BCLF => "Bicycle Lake fault"
-
-myCFMabb="BCLF"
-myTSname="native/500m/1000m/2000m/none"
-myPtype="note/main/main3d/"
-
-
-calling plot3D >> myParams is 
-"?viewUID=1631744479&viewerType=CFM&
-fileURL=[500m/WTRA-USAV-USAV-Indian_Hill_fault-CFM5_500m.ts]
-&name=[Indian Hill fault]
-&filePATH=[https://s3-us-west-2.amazonaws.com/files.scec.org/s3fs-public/projects/cfm/CFM5/CFM53_preferred/]
-
-http://localhost:8081/?name=["ETRA-NFTS-DTMT-Deep_detachment-CFM5"]&ts="500m"&ptype="main3d"&
-state={"trace":true,"shore":true,"legend":true,"seismicity":0,"repr":0,"bounds":0,"full":false}
-&camera={"pos":[619060.371522678,430381.3872969348,-3282431.9564900324],"angle":30,
-"viewup":[0.04456568509340286,0.7218788266181946,-0.6905829310417175],"distance":685550.3640744094,
-"focal":[466533.134765625,-26700,-3770070.5]}
-*/
-
-function inPresetMode() {
-  let param = window.location.search.substring(1);
-  if(param == "") {
-    return 0;
-  }
-  PLOT3D_PRESET_MODE = 1;
-  PLOT3D_PRESET_CAMERA = 0;
-  PLOT3D_PRESET_STATE = 0;
-  PLOT3D_PRESET_NAMELIST=[];  // bare name list
-  return 1;
-}
-    
-/**
-http://localhost:8081?abb=["BCLF","EQVE"]&ts="native"&ptype="main"
-http://localhost:8081?abb=["SSNF"]&ts="2000m"&ptype="main"
-http://localhost:8081?abb=["INHF"]&ts="native"&ptype="main"
-http://localhost:8081/?name=["WTRA-USAV-USAV-San_Jose_fault-CFM5"]&ts="1000m"&
-ptype="main3d"&camera={"pos":[486326.6875,69849.9453125,-3838326.5],"angle":30,
-"viewup":[-0.19568131864070892,-0.5419068336486816,-0.8173406720161438],
-"distance":116818.2594697855,"focal":[426630.109375,-6666.62158203125,-3773303.125]}
-fullname=[...]
-fullfileurl=[...]
-**/
-function getPresetMode() {
-  skip_warning=true; // skip 3d warning
-  let param = window.location.search.substring(1);
-  let myAbb=0;
-  let myTS=0;
-  let myPtype=0;
-  let myName=0;
-  let myCamera=0;
-  let myState=0;
-
-  let myFullName=0;
-  let myFullFileURL=0;
-
-  let qArray = param.split('&'); //get key-value pairs
-  for (var i = 0; i < qArray.length; i++)
-  {
-     let pArr = qArray[i].split('='); //split key and value
-
-//window.console.log(pArr[1]);
-     let dd=decodeURI(pArr[1]);
-     switch (pArr[0]) {
-        case "fullFileURL":
-             myFullFileURL=dd;
-             break;
-        case "fullName":
-             myFullName=dd;
-             break;
-        case "abb":
-             myAbb=JSON.parse(dd);
-             break;
-        case "name":
-             myName=JSON.parse(dd);
-             break;
-        case "ts":
-             myTS=JSON.parse(dd);
-             break;
-        case "ptype":
-             myPtype=JSON.parse(dd);
-             break;
-        case "camera":
-             myCamera=dd; // keep it as a string
-             break;
-        case "state":
-             myState=dd; // keep it as a string
-             break;
-        default: // do nothing
-             break;
-     }
-  }
-
-  if(myFullName !=0 && myFullFileURL !=0) {
-    setExternalTS(myFullName, myFullFileURL);
-  }
-  return [myPtype, myAbb, myName, myTS, myCamera, myState];
-}
-
-
-function setupPresetMode() {
-  if(inPresetMode()) {
-    let ptype=0;
-    let ts=0;
-    let name=0;
-    let camera=0;
-    let state=0;
-
-    [ptype, abb, name, ts, camera, state]=getPresetMode();
-    PLOT3D_PRESET_CAMERA=camera;
-    PLOT3D_PRESET_STATE=state;
-
-    // preset_type: note, main, main+plot3d
-    window.console.log("PresetMode >>>>got "+abb+" "+name+" "+ts+" "+ptype);
-    if(ts==0 || ptype == 0)
-      return;
-    if(name != 0) {
-      findByNameInPreset(name,ptype,ts);
-      return;
-    }
-  }
-}
-
-// name => array of fault name
-// no need to go to server,
-function findByNameInPreset(name, ptype, ts) {
-    let sz=name.length;
-    if(sz == 0) {
-      return; 
-      } else {
-        for(let i=0; i < sz; i++) {
-          let gid=find_gid_by_name(name[i]);
-          toggle_highlight(gid,1);
-          window.console.log("name >>"+name[i]);
-        }
-        switch (ptype) {
-          case "main":
-            // do nothing
-            break;
-          case "main3d":
-            setTimeout(executePlot3d(ts), 3000);
-            break;
-          case "note":
-            window.console.log("NOTE type: not sure what to do..");
-            //  TODO
-            break;
-          default:
-            // do nothing
-            break;
-        };
-    }
-}
-
-function presetPlot3d_first()
-{
-    if(PLOT3D_PRESET_CAMERA) {
-// delayed alittled
-       setTimeout(sendCamera3Dview(PLOT3D_PRESET_CAMERA), 3000);
-    }
-}
-
-// set the state to what was requested
-//{"trace":1,"shore":1,"legend":1,"seismicity":0,"repr":0,"bounds":0,"full":0}
-function presetPlot3d_second()
-{
-    if(PLOT3D_PRESET_STATE) {
-      let state=JSON.parse(PLOT3D_PRESET_STATE);
-      let trace=state['trace'];
-      if(trace != track_trace) { toggleTrace3Dview(); }
-      let shore=state['shore'];
-      if(shore != track_shore) { toggleShore3Dview(); }
-      let legend=state['legend'];
-      if(legend != track_legend) { toggleLegend3Dview(); }
-      let seismicity=state['seismicity'];
-      if(seismicity != track_seismicity) { setQuake3Dview(seismicity); }
-      let repr=state['repr'];
-      while(repr != track_representation) { toggleRepr3Dview(); }
-      let bounds=state['bounds'];
-      while(bounds != track_bounds) { toggleBounds3Dview(); }
-      let full=state['full'];
-      if(full != track_full) { toggleExpand3Dview(); }
-      sendDone3Dview("done for presetPlot3d");
-    }
-}
-
-
-
-
-

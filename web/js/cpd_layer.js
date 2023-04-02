@@ -1,5 +1,8 @@
 /***
-   cfm_query.js
+   cpd_query.js
+
+strike -> minrate
+dip -> maxrate
 ***/
 
 const DATA_CHUNK_COUNT=20;
@@ -70,7 +73,7 @@ function writeToServerFile(fname,data) {
     xmlhttp.send(params);
 }
 
-function searchByStrikeRange(min,max) {
+function searchByMinrateRange(min,max) {
     if (min == undefined || max == undefined) {
         document.getElementById("cfm-table-body").innerHTML = "";
         return;
@@ -86,44 +89,44 @@ function searchByStrikeRange(min,max) {
             if (this.readyState == 4 && this.status == 200) {
                 toggle_off_all_layer();
                 document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-                var str = processSearchResult("searchByStrikeRange");
+                var str = processSearchResult("searchByMinrateRange");
                 document.getElementById("cfm-table-body").innerHTML = makeResultTableBody(str);
             }
         };
-        xmlhttp.open("GET","php/faultsByStrikeRange.php?min="+min+"&max="+max,true);
+        xmlhttp.open("GET","php/faultsByMinrateRange.php?min="+min+"&max="+max,true);
         xmlhttp.send();
     }
 }
 
 
-function setupSearchByStrike() {
-  var lowstrikestr=document.getElementById("lowStrikeTxt").value;
-  var highstrikestr=document.getElementById("highStrikeTxt").value;
-  var lowval=parseFloat(lowstrikestr);
-  var highval=parseFloat(highstrikestr);
-  var minval= $( "#slider-strike-range" ).slider("option", "min");
-  var maxval= $( "#slider-strike-range" ).slider("option", "max");
+function setupSearchByMinrate() {
+  var lowminratetr=document.getElementById("lowMinrateTxt").value;
+  var highminratestr=document.getElementById("highMinrateTxt").value;
+  var lowval=parseFloat(lowminratestr);
+  var highval=parseFloat(highminratestr);
+  var minval= $( "#slider-minrate-range" ).slider("option", "min");
+  var maxval= $( "#slider-minrate-range" ).slider("option", "max");
   /* bad case.. reset to all */
   if( lowval < minval || lowval > maxval || highval < minval || highval > maxval ||
           highval < lowval ) {
-    window.console.log("BAD user input for strike range");
+    window.console.log("BAD user input for minrate range");
     lowval=minval;
     highval=maxval;
   }
 
-  $("#slider-strike-range" ).slider( "option", "values", [lowval, highval]);
-  searchByStrikeRange(lowval,highval);
+  $("#slider-minrate-range" ).slider( "option", "values", [lowval, highval]);
+  searchByMinrateRange(lowval,highval);
 }
 
-function searchWithStrikeRange() {
+function searchWithMinrateRange() {
 
   //grab the min and max from the slider..
-  var vals = $( "#slider-strike-range" ).slider("option", "values");
-  searchByStrikeRange(vals[0],vals[1]);
+  var vals = $( "#slider-minrate-range" ).slider("option", "values");
+  searchByMinrateRange(vals[0],vals[1]);
 }
 
 
-function searchByDipRange(min,max) {
+function searchByMaxrateRange(min,max) {
     if (min == undefined || max == undefined) {
         document.getElementById("cfm-table-body").innerHTML = "";
         return;
@@ -139,38 +142,38 @@ function searchByDipRange(min,max) {
             if (this.readyState == 4 && this.status == 200) {
                 toggle_off_all_layer();
                 document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-                var str = processSearchResult("searchByDipRange");
+                var str = processSearchResult("searchByMaxrateRange");
                 document.getElementById("cfm-table-body").innerHTML = makeResultTableBody(str);
             }
         };
-        xmlhttp.open("GET","php/faultsByDipRange.php?min="+min+"&max="+max,true);
+        xmlhttp.open("GET","php/faultsByMaxrateRange.php?min="+min+"&max="+max,true);
         xmlhttp.send();
     }
 }
 
-function setupSearchByDip() {
-  var lowdipstr=document.getElementById("lowDipTxt").value;
-  var highdipstr=document.getElementById("highDipTxt").value;
-  var lowval=parseFloat(lowdipstr);
-  var highval=parseFloat(highdipstr);
-  var minval= $( "#slider-dip-range" ).slider("option", "min");
-  var maxval= $( "#slider-dip-range" ).slider("option", "max");
+function setupSearchByMaxrate() {
+  var lowmaxratestr=document.getElementById("lowMaxrateTxt").value;
+  var highmaxratestr=document.getElementById("highMaxrateTxt").value;
+  var lowval=parseFloat(lowmaxratestr);
+  var highval=parseFloat(highmaxratestr);
+  var minval= $( "#slider-maxrate-range" ).slider("option", "min");
+  var maxval= $( "#slider-maxrate-range" ).slider("option", "max");
   /* bad case.. reset to all */
   if( lowval < minval || lowval > maxval || highval < minval || highval > maxval ||
           highval < lowval ) {
-    window.console.log("BAD user input for dip range");
+    window.console.log("BAD user input for maxrate range");
     lowval=minval;
     highval=maxval;
   }
 
-  $("#slider-dip-range" ).slider( "option", "values", [lowval, highval]);
-  searchByDipRange(lowval,highval);
+  $("#slider-maxrate-range" ).slider( "option", "values", [lowval, highval]);
+  searchByMaxrateRange(lowval,highval);
 }
 
-function searchWithDipRange() {
+function searchWithMaxrateRange() {
   //grab the min and max from the slider..
-  vals = $( "#slider-dip-range" ).slider("option", "values");
-  searchByDipRange(vals[0],vals[1]);
+  vals = $( "#slider-maxrate-range" ).slider("option", "values");
+  searchByMaxrateRange(vals[0],vals[1]);
 }
 
 
@@ -549,7 +552,7 @@ function get2000mList() {
     xmlhttp.send();
 }
 
-function getStrikeRange() {
+function getMinrateRange() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -560,15 +563,15 @@ function getStrikeRange() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-            [rangeMin, rangeMax]=getStrikeRangeMinMax();
-            setupStrikeRangeSlider(rangeMin, rangeMax);
+            [rangeMin, rangeMax]=getMinrateRangeMinMax();
+            setupMinrateRangeSlider(rangeMin, rangeMax);
         }
     };
-    xmlhttp.open("GET","php/getStrikeRange.php",true);
+    xmlhttp.open("GET","php/getMinrateRange.php",true);
     xmlhttp.send();
 }
 
-function getDipRange() {
+function getMaxrateRange() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
@@ -579,11 +582,11 @@ function getDipRange() {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("phpResponseTxt").innerHTML = this.responseText;
-            [rangeMin, rangeMax]=getDipRangeMinMax();
-            setupDipRangeSlider(rangeMin, rangeMax);
+            [rangeMin, rangeMax]=getMaxrateRangeMinMax();
+            setupMaxrateRangeSlider(rangeMin, rangeMax);
         }
     };
-    xmlhttp.open("GET","php/getDipRange.php",true);
+    xmlhttp.open("GET","php/getMaxrateRange.php",true);
     xmlhttp.send();
 }
 
@@ -632,8 +635,8 @@ function setupSearch()
    queryByType("zone");
    queryByType("section");
    queryByType("name");
-   getStrikeRange();
-   getDipRange();
+   getMinrateRange();
+   getMaxrateRange();
    getNativeList();
    get1000mList();
    get2000mList();
