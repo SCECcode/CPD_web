@@ -71,6 +71,7 @@ $header = getHeader("Viewer");
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
+    <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -386,6 +387,11 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 </div> <!-- main -->
 
+<!--call php directly-->
+    <script type="text/javascript">
+            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
+            window.console.log("HERE.. loaded data");          
+    </script>
 </body>
 </html>
 

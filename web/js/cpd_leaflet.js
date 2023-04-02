@@ -153,6 +153,13 @@ function setup_viewer()
     }
   }
 
+  function onMapZoom(e) { 
+    var zoom=mymap.getZoom();
+//window.console.log("map got zoomed..>>",zoom);
+    }
+
+
+
   mymap.on('mouseover', onMapMouseOver);
   mymap.on('zoomend dragend', onMapZoom);
 

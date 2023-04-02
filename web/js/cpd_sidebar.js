@@ -1,6 +1,6 @@
 /**
 
-  cfm_sidebar.js
+  cpd_sidebar.js
 
 **/
 
@@ -10,8 +10,8 @@ var section_sidebar=false;
 var name_sidebar=false;
 var keyword_sidebar=false;
 var latlon_sidebar=false;
-var strike_sidebar=false;
-var dip_sidebar=false;
+var minrate_sidebar=false;
+var maxrate_sidebar=false;
 var gid_sidebar=false;
 
 var drawing_rectangle=false;
@@ -26,8 +26,8 @@ function dismiss_sidebar() {
   if(name_sidebar) nameClick();
   if(keyword_sidebar) keywordClick();
   if(latlon_sidebar) latlonClick();
-  if(strike_sidebar) strikeClick();
-  if(dip_sidebar) dipClick();
+  if(minrate_sidebar) minrateClick();
+  if(maxrate_sidebar) maxrateClick();
   if(gid_sidebar) gidClick();
   var sidebarptr=$('#sidebar');
   sidebarptr.css("display","none");
@@ -217,84 +217,80 @@ function sidebar_keyword_slideIn() {
   panelptr.css("display","none");
 }
 
-// strike sidebar js
+// minrate sidebar js
 // slide out
 // if it is filtering from whole set or active list
-function strikeClick() {
-  if(!strike_sidebar) { dismiss_sidebar(); }
+function minrateClick() {
+  if(!minrate_sidebar) { dismiss_sidebar(); }
 
-  strike_sidebar = !strike_sidebar;
-  if(strike_sidebar) {
-    changeFaultColor("strike");
-    // determin the new set
-    set_current_strike_range_slider();
-    sidebar_strike_slideOut();
-    $('#strikeBtn').addClass('pick');
+  minrate_sidebar = !minrate_sidebar;
+  if(minrate_sidebar) {
+    changeSiteColor("minrate");
+    // determine the new set
+    set_current_minrate_range_slider();
+    sidebar_minrate_slideOut();
     } else {
-      changeFaultColor("");
-      sidebar_strike_slideIn();
-      $('#strikeBtn').removeClass('pick');
+      changeSiteColor("");
+      sidebar_minrate_slideIn();
   }
 }
 
-function sidebar_strike_slideOut() {
-  if (jQuery('#strike').hasClass('menuDisabled')) {
+function sidebar_minrate_slideOut() {
+  if (jQuery('#cpd-minrate-slider').hasClass('menuDisabled')) {
     // if this menu is disabled, don't slide
     return;
   }
-  var panelptr=$('#strike');
+  var panelptr=$('#cpd-minrate-slider');
   var sidebarptr=$('#sidebar');
   panelptr.css("display","");
   sidebarptr.css("display","");
   panelptr.removeClass('fade-out').addClass('fade-in');
 }
-function sidebar_strike_slideIn() {
-  if (jQuery('#strike').hasClass('menuDisabled')) {
+function sidebar_minrate_slideIn() {
+  if (jQuery('#cpd-minrate-slider').hasClass('menuDisabled')) {
     // if this menu is disabled, don't slide
     return;
   }
-  var panelptr=$('#strike');
+  var panelptr=$('#cpd-minrate-slider');
   panelptr.removeClass('fade-in').addClass('fade-out');
   panelptr.css("display","none");
 }
 
 
-// dip sidebar js
+// maxrate sidebar js
 // slide out
-function dipClick() {
-  if(!dip_sidebar) { dismiss_sidebar(); }
+function maxrateClick() {
+  if(!maxrate_sidebar) { dismiss_sidebar(); }
 
-  dip_sidebar = !dip_sidebar;
-  if(dip_sidebar) {
-    changeFaultColor("dip");
-    sidebar_dip_slideOut();
-    set_current_dip_range_slider();
-    $('#dipBtn').addClass('pick');
+  maxrate_sidebar = !maxrate_sidebar;
+  if(maxrate_sidebar) {
+    changeSiteColor("maxrate");
+    sidebar_maxrate_slideOut();
+    set_current_maxrate_range_slider();
     } else {
-      changeFaultColor("");
-      sidebar_dip_slideIn();
-      $('#dipBtn').removeClass('pick');
+      changeSiteColor("");
+      sidebar_maxrate_slideIn();
   }
 }
 
-function sidebar_dip_slideOut() {
-  if (jQuery('#dip').hasClass('menuDisabled')) {
+function sidebar_maxrate_slideOut() {
+  if (jQuery('#cpd-maxrate-slider').hasClass('menuDisabled')) {
     // if this menu is disabled, don't slide
     return;
   }
-  var panelptr=$('#dip');
+  var panelptr=$('#cpd-maxrate-slider');
   var sidebarptr=$('#sidebar');
   panelptr.css("display","");
   sidebarptr.css("display","");
   panelptr.removeClass('fade-out').addClass('fade-in');
 }
 
-function sidebar_dip_slideIn() {
-  if (jQuery('#dip').hasClass('menuDisabled')) {
+function sidebar_maxrate_slideIn() {
+  if (jQuery('#cpd-maxrate-slider').hasClass('menuDisabled')) {
     // if this menu is disabled, don't slide
     return;
   }
-  var panelptr=$('#dip');
+  var panelptr=$('#cpd-maxrate-slider');
   panelptr.removeClass('fade-in').addClass('fade-out');
   panelptr.css("display","none");
 }
