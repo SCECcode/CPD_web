@@ -11,15 +11,15 @@ var seismicity_loaded = false;
 var seismicity_from_cache = true;
 
 
-var CFM_DB_tb = {
+var CPD_DB_tb = {
    'viewers': [
-        { 'option': 0, 'name':'CFM6_preferred','db':'CFM6_preferred_db',
+        { 'option': 0, 'name':'CPD6_preferred','db':'CPD6_preferred_db',
           'pathname': 'cfm-viewer', 'port': 8082},
-        { 'option': 1, 'name':'CFM6_alternatives','db':'CFM6_alt_db',
+        { 'option': 1, 'name':'CPD6_alternatives','db':'CPD6_alt_db',
           'pathname': 'cfm-alt-viewer', 'port': 8086},
-        { 'option': 2, 'name':'CFM6_ruptures','db':'CFM6_rup_db',
+        { 'option': 2, 'name':'CPD6_ruptures','db':'CPD6_rup_db',
           'pathname': 'cfm-rup-viewer', 'port': 8088},
-        { 'option': 3, 'name':'CFM53_preferred','db':'CFM53_preferred_db',
+        { 'option': 3, 'name':'CPD53_preferred','db':'CPD53_preferred_db',
           'pathname': 'cfm53-viewer', 'port': 8090}
               ]
 };
@@ -41,7 +41,7 @@ function gotoOtherViewer(option) {
   var nport;
   var npathname;
 
-  let tb=CFM_DB_tb['viewers'];
+  let tb=CPD_DB_tb['viewers'];
   let icnt=tb.length;
   for(let i=0; i<icnt; i++) {
      let item=tb[i];
@@ -71,7 +71,7 @@ let h=576+c_height;
 
 $('#top-intro').css("display", "none");
 $('#searchResult').css("display", "none");
-$('#CFM_plot').css("height", h);
+$('#CPD_plot').css("height", h);
 $('#infoData').removeClass('col-5').addClass('col-0');
 $('#top-map').removeClass('col-7').addClass('row');
 $('#top-map').removeClass('pl-1').addClass('pl-0');
@@ -97,8 +97,8 @@ let h = height - c_height-4.5;
 let w = width - 15;
 //window.console.log( "height: %d, %d > %d \n",height, c_height,h);
 //window.console.log( "width: %d, %d  \n",width, w);
-$('#CFM_plot').css("height", h);
-$('#CFM_plot').css("width", w);
+$('#CPD_plot').css("height", h);
+$('#CPD_plot').css("width", w);
 resize_map();
 }
 
@@ -106,8 +106,8 @@ function _toNormalView()
 {
 $('#top-control').css("display", "");
 $('#top-select').css("display", "");
-$('#CFM_plot').css("height", "576px");
-$('#CFM_plot').css("width", "635px");
+$('#CPD_plot').css("height", "576px");
+$('#CPD_plot').css("width", "635px");
 $('.navbar').css("margin-bottom", "20px");
 $('.container').css("max-width", "1140px");
 $('.container').css("padding-left", "15px");
@@ -145,7 +145,7 @@ function toggleBigMap()
 function dumpAllQuakeLayer() {
 // TODO -- maybe some webgl page dump ??
 // start with hauksson and then ross within
-//  dumpQuakeCFMGeo(QUAKE_TYPE_HAUKSSON);
+//  dumpQuakeCPDGeo(QUAKE_TYPE_HAUKSSON);
 }
 
 // extract all EQ northing/easting info to file 
@@ -205,20 +205,20 @@ function enable_last_record_btn() {
 }
 
 
-function set_strike_range_color(min,max) {
+function set_minrate_range_color(min,max) {
   let minRGB= makeStrikeRGB(min);
   let maxRGB= makeStrikeRGB(max);
   let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
-  $("#slider-strike-range .ui-slider-range" ).css( "background", myColor );
+  $("#slider-minrate-range .ui-slider-range" ).css( "background", myColor );
 }
 
 // not using the realmin and realmax
 function setupStrikeRangeSlider(realmin,realmax) {
 window.console.log("setup real Strike Range",realmin," and ",realmax);
 // around 0,360
-  setup_strike_range_ref(realmin,realmax);
+  setup_minrate_range_ref(realmin,realmax);
 
-  $( "#slider-strike-range" ).slider({
+  $( "#slider-minrate-range" ).slider({
     range: true,
     step: 1,
     min: 0,
@@ -227,12 +227,12 @@ window.console.log("setup real Strike Range",realmin," and ",realmax);
     slide: function( event, ui ) {
       $("#lowStrikeTxt").val(ui.values[0]);
       $("#highStrikeTxt").val(ui.values[1]);
-      set_strike_range_color(ui.values[0],ui.values[1]);
+      set_minrate_range_color(ui.values[0],ui.values[1]);
     },
     change: function( event, ui ) {
       $("#lowStrikeTxt").val(ui.values[0]);
       $("#highStrikeTxt").val(ui.values[1]);
-      set_strike_range_color(ui.values[0],ui.values[1]);
+      set_minrate_range_color(ui.values[0],ui.values[1]);
     },
     stop: function( event, ui ) {
       searchWithStrikeRange();
@@ -243,21 +243,21 @@ window.console.log("setup real Strike Range",realmin," and ",realmax);
     }
   });
 
-  $('#slider-strike-range').slider("option", "min", realmin);
-  $('#slider-strike-range').slider("option", "max", realmax);
+  $('#slider-minrate-range').slider("option", "min", realmin);
+  $('#slider-minrate-range').slider("option", "max", realmax);
 }
 
-function set_dip_range_color(min,max) {
-  let minRGB= makeDipRGB(min);
-  let maxRGB= makeDipRGB(max);
+function set_maxrate_range_color(min,max) {
+  let minRGB= makeMaxrateRGB(min);
+  let maxRGB= makeMaxrateRGB(max);
   let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
-  $("#slider-dip-range .ui-slider-range" ).css( "background", myColor );
+  $("#slider-maxrate-range .ui-slider-range" ).css( "background", myColor );
 }
 
 // using the realmin and realmax
 function setupDipRangeSlider(realmin,realmax) {
-  setup_dip_range_ref(realmin,realmax);
-  $( "#slider-dip-range" ).slider({
+  setup_maxrate_range_ref(realmin,realmax);
+  $( "#slider-maxrate-range" ).slider({
     range: true,
     step: 1,
     min: 0,
@@ -266,12 +266,12 @@ function setupDipRangeSlider(realmin,realmax) {
     change: function( event, ui ) {
       $("#lowDipTxt").val(ui.values[0]);
       $("#highDipTxt").val(ui.values[1]);
-      set_dip_range_color(ui.values[0],ui.values[1]);
+      set_maxrate_range_color(ui.values[0],ui.values[1]);
     },
     slide: function( event, ui ) {
       $("#lowDipTxt").val(ui.values[0]);
       $("#highDipTxt").val(ui.values[1]);
-      set_dip_range_color(ui.values[0],ui.values[1]);
+      set_maxrate_range_color(ui.values[0],ui.values[1]);
     },
     stop: function( event, ui ) {
       searchWithDipRange();
@@ -281,8 +281,8 @@ function setupDipRangeSlider(realmin,realmax) {
       $("#highDipTxt").val(realmax);
     }
   });
-  $('#slider-dip-range').slider("option", "min", realmin);
-  $('#slider-dip-range').slider("option", "max", realmax);
+  $('#slider-maxrate-range').slider("option", "min", realmin);
+  $('#slider-maxrate-range').slider("option", "max", realmax);
 }
 
 function queryByType(type)
@@ -379,20 +379,20 @@ function showKey(type) {
         showing_key = true;
     }
 
-    if (type == "dip") {
-        min = dip_range_min;
-        max = dip_range_max;
-    } else if (type == "strike") {
-        min = strike_range_min;
-        max = strike_range_max;
+    if (type == "maxrate") {
+        min = maxrate_range_min;
+        max = maxrate_range_max;
+    } else if (type == "minrate") {
+        min = minrate_range_min;
+        max = minrate_range_max;
     }
-    $("#CFM_plot").prepend($("#dip-strike-key-container").html());
-    $("#dip-strike-key span.min").html(min);
-    $("#dip-strike-key span.max").html(max);
+    $("#CPD_plot").prepend($("#maxrate-minrate-key-container").html());
+    $("#maxrate-minrate-key span.min").html(min);
+    $("#maxrate-minrate-key span.max").html(max);
 }
 
 function removeKey() {
-    $("#CFM_plot #dip-strike-key").remove();
+    $("#CPD_plot #maxrate-minrate-key").remove();
     showing_key = false;
 }
 
@@ -498,7 +498,7 @@ function makeResultTable(str)
     window.console.log("calling makeResultTable..");
 
     var html="<div class=\"cfm-table\" ><table>";
-    html+="<thead><tr><th class='text-center'><button id=\"allBtn\" class=\"btn btn-sm cfm-small-btn\" title=\"select all visible faults\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='text-center'></th><th class='myheader'>CFM Fault Objects</th></tr></thead>";
+    html+="<thead><tr><th class='text-center'><button id=\"allBtn\" class=\"btn btn-sm cfm-small-btn\" title=\"select all visible faults\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='text-center'></th><th class='myheader'>CPD Site Location</th></tr></thead>";
 
     var body=makeResultTableBody(str);
     html=html+ body + "</tbody></table></div>";
@@ -730,7 +730,7 @@ function saveAsJSONBlobFile(data, timestamp)
 {
 //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
 //   var rnd= Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    var fname="CFM_metadata_"+timestamp+".json";
+    var fname="CPD_metadata_"+timestamp+".json";
     var blob = new Blob([data], {
         type: "text/plain;charset=utf-8"
     });
@@ -742,7 +742,7 @@ function saveAsCSVBlobFile(data, timestamp)
 {
 //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
 //   var rnd= Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    var fname="CFM_metadata_"+timestamp+".csv";
+    var fname="CPD_metadata_"+timestamp+".csv";
     var blob = new Blob([data], {
         type: "text/plain;charset=utf-8"
     });
@@ -753,7 +753,7 @@ function saveAsCSVBlobFile(data, timestamp)
 function saveAsBlobFile(data)
 {
     let timestamp = $.now();
-    let fname="CFM_link_"+timestamp+".txt";
+    let fname="CPD_link_"+timestamp+".txt";
     let blob = new Blob([data], {
         type: "text/plain;charset=utf-8"
     });

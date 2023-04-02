@@ -310,7 +310,7 @@ function downloadURLsAsZip(mlist) {
   var nzip=new JSZip();
 
   // put in the metadata
-  var fname="CFM_metadata_"+timestamp+".csv"; 
+  var fname="CPD_metadata_"+timestamp+".csv"; 
   nzip.file(fname, data);
 
   var cnt=mlist.length;
@@ -367,7 +367,7 @@ function downloadURLsAsZip(mlist) {
     }
   }
 
-  var zipfname="CFM_"+timestamp+".zip"; 
+  var zipfname="CPD_"+timestamp+".zip"; 
   nzip.generateAsync({type:"blob"}).then(function (content) {
     // see FileSaver.js
     saveAs(content, zipfname);
