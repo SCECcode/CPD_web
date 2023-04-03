@@ -91,6 +91,10 @@ jQuery(document).ready(function() {
 
   $.event.trigger({ type: "page-ready", "message": "completed", });
 
+  window.console.log("END in main");
+  let tmp =cpd_sliprate_sites_data;
+
+
 /** MAIN setup **/
 // XXX
 //  SLIPRATE_XX setup_layers
