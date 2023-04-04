@@ -34,6 +34,22 @@ this.hideCFMFaults = function (viewermap) {
   viewermap.removeLayer(cxm_cfm_layer);
 }
 
+// actually using CRM geo
+this.showGFMRegions = function (viewermap) {
+  if(cxm_crm_layer == null) {
+    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
+  }
+  viewermap.addLayer(cxm_crm_layer);
+}
+
+this.hideGFMRegions = function (viewermap) {
+  if(cxm_crm_layer == null) {
+    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
+  }
+  viewermap.removeLayer(cxm_crm_layer);
+}
+
+
 /***
 --> needs gfm_regions.js
 ***/

@@ -124,7 +124,7 @@ $cpd_sliprate = new SLIPRATE();
 
 <!-- trace dumping buttons 
     <div style="display:none">
-      <button id="dumpMarkerLatlngBtn" class="btn cfm-small-btn" onClick="toFileMarkerLatlng()">
+      <button id="dumpMarkerLatlngBtn" class="btn cxm-small-btn" onClick="toFileMarkerLatlng()">
                 <span class="glyphicon glyphicon-share"></span> Export Marker Latlng</button>
     </div>
 -->
@@ -301,7 +301,9 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
             </div>
             <select id='data-product-select' class="custom-select custom-select-sm">
                 <option selected value="sliprate">Slip Rate</option>
+<!--
                 <option value="chronology">Chronology</option>
+-->
             </select>
           </div>
 

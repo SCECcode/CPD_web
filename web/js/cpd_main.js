@@ -87,11 +87,21 @@ jQuery(document).ready(function() {
       }
   });
 
-  if ($("#cpd-model-cfm").prop('checked')) {
-      CXM.showCFMFaults(viewermap);
-      } else {
-          CXM.hideCFMFaults(viewermap);
-  }
+  $("#cpd-model-cfm").change(function() {
+      if ($("#cpd-model-cfm").prop('checked')) {
+          CXM.showCFMFaults(viewermap);
+          } else {
+              CXM.hideCFMFaults(viewermap);
+      }
+  });
+
+  $("#cpd-model-gfm").change(function() {
+      if ($("#cpd-model-gfm").prop('checked')) {
+          CXM.showGFMRegions(viewermap);
+          } else {
+              CXM.hideGFMRegions(viewermap);
+      }
+  });
 
   $("#cpd-search-type").trigger("change");
 
