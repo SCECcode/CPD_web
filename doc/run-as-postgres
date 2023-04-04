@@ -2,7 +2,6 @@ set -e
 
 # Perform all actions as $POSTGRES_USER
 export PGUSER="$POSTGRES_USER"
-export PGDATA="$PGDATA"
 
 # Carve out db space
 initdb /home/postgres/cpd_db
@@ -12,3 +11,7 @@ pg_ctl -D /home/postgres/cpd_db -l /home/postgres/logfile start
 
 /app/schema/load_db_setup
 /app/schema/load_sliprate_db_up
+
+
+
+

@@ -6,7 +6,7 @@ class SLIPRATE extends SpatialData
   function __construct()
   {
     print("<br>Calling pg_connect<br>");
-    $this->connection = pg_connect("host=db port=5432 dbname=CPD_sliprate_db user=webonly password=scec");
+    $this->connection = pg_connect("host=db port=5432 dbname=CPD_db user=webonly password=scec");
     if (!$this->connection) 
     {
 	    print('Could not connect<br>');

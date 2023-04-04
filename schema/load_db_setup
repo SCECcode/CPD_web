@@ -2,4 +2,4 @@
 
 mkdir -p /home/postgres/CPD
 cp -Rv /app/schema/data /home/postgres/CPD/
-cp -Rv /app/schema/sql /home/postgres/CPD/
+cp -Rv /app/schema/sql  /home/postgres/CPD/
