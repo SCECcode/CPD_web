@@ -416,9 +416,9 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!--call php directly-->
     <script type="text/javascript">
-            cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
             var ttt=CGM_GNSS;
 	    window.console.log("HERE");
+            cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>
 </html>
