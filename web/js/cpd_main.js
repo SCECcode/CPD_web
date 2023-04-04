@@ -87,6 +87,12 @@ jQuery(document).ready(function() {
       }
   });
 
+  if ($("#cpd-model-cfm").prop('checked')) {
+      CXM.showCFMFaults(viewermap);
+      } else {
+          CXM.hideCFMFaults(viewermap);
+  }
+
   $("#cpd-search-type").trigger("change");
 
   $.event.trigger({ type: "page-ready", "message": "completed", });

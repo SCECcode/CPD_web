@@ -34,6 +34,9 @@ $cpd_sliprate = new SLIPRATE();
     <script type='text/javascript' src='js/vendor/jszip.js'></script>
     <script type='text/javascript' src='js/vendor/jquery.floatThead.min.js'></script>
 
+    <script type='text/javascript' src='js/vendor/togeojson.js'></script>
+    <script type='text/javascript' src='js/vendor/leaflet-kmz-src.js'></script>
+
     <link rel="stylesheet" href="js/vendor/plugin/Leaflet.draw/leaflet.draw.css">
     <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Leaflet.draw.js"></script>
     <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/Leaflet.Draw.Event.js"></script>
@@ -72,7 +75,9 @@ $cpd_sliprate = new SLIPRATE();
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
+    <script type="text/javascript" src="js/cpd_ui.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
+    <script type="text/javascript" src="js/cxm_misc_util.js?v=1"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-495056-12"></script>
@@ -119,7 +124,6 @@ $cpd_sliprate = new SLIPRATE();
 
 <!-- trace dumping buttons 
     <div style="display:none">
-      <script type="text/javascript" src="js/cpd_misc_util.js?v=1"></script>
       <button id="dumpMarkerLatlngBtn" class="btn cfm-small-btn" onClick="toFileMarkerLatlng()">
                 <span class="glyphicon glyphicon-share"></span> Export Marker Latlng</button>
     </div>
@@ -384,6 +388,27 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
          </div>
       </div>
     </div> <!-- top-select -->
+
+<!-- modal list -->
+<!--Modal: Model (modalkmlselect) -->
+<div class="modal" id="modalkmlselect" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-small" id="modalkmlselectDialog" role="document">
+
+    <!--Content-->
+    <div class="modal-content" id="modalkmlselectContent">
+      <!--Body-->
+      <div class="modal-body" id="modalkmlselectBody">
+        <div class="row col-md-12 ml-auto" style="overflow:hidden;">
+          <div class="col-12" id="kmlselectTable-container" style="font-size:14pt"></div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close</button>
+      </div>
+
+    </div> <!--Content-->
+  </div>
+</div> <!--Modal: modalkmlselect-->
 
 </div> <!-- main -->
 
