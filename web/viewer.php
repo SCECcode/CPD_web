@@ -3,11 +3,7 @@ require_once("php/navigation.php");
 require_once("php/CPD_SLIPRATE.php");
 $header = getHeader("Viewer");
 
-print "START..";
-
 $cpd_sliprate = new SLIPRATE();
-
-print "DONE..";
 
 ?>
 <!DOCTYPE html>
@@ -393,8 +389,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!--call php directly-->
     <script type="text/javascript">
-            window.console.log("HERE.. setup data");          
-//            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
+            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>
 </html>
