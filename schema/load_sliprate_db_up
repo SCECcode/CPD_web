@@ -1,9 +1,9 @@
 #!/bin/bash
 
-dropdb --if-exists CPD_db 
-createdb CPD_db
+dropdb --if-exists SLIPRATE_db 
+createdb SLIPRATE_db
 
-psql postgresql://postgres:example@localhost/CPD_db << AAA
+psql postgresql://postgres:example@localhost/SLIPRATE_db << AAA
 
   CREATE EXTENSION postgis;
   SELECT PostGIS_Version();
