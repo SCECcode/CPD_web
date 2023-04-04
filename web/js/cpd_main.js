@@ -10,8 +10,8 @@ const Products = {
 };
 
 var activeProduct = Products.SLIPRATE;
-var cpd_sliprate_sites_data=null;
-var cpd_chronology_sites_data=null;
+var cpd_sliprate_site_data=null;
+var cpd_chronology_site_data=null;
 
 var viewermap;
 
@@ -107,8 +107,14 @@ jQuery(document).ready(function() {
 
   $.event.trigger({ type: "page-ready", "message": "completed", });
 
-  window.console.log("END in main");
-  let tmp =cpd_sliprate_sites_data;
+
+  // SETUP
+  window.console.log(" --- SETUP in main");
+
+  let tmp =cpd_sliprate_site_data;
+  let ctmp=CPD_SLIPRATE;
+
+//  CPD_SLIPRATE.generateLayers();
 
 
 /** MAIN setup **/
@@ -116,6 +122,7 @@ jQuery(document).ready(function() {
 //  SLIPRATE_XX setup_layers
 //  setupSearch();
 //  addDownloadSelect();
+  window.console.log(" --- WRAP up in main");
 
 }); // end of MAIN
 

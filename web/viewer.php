@@ -72,6 +72,7 @@ $cpd_sliprate = new SLIPRATE();
     <script type="text/javascript" src="js/debug.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_main.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
+    <script type="text/javascript" src="js/cgm_gnss.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
@@ -390,6 +391,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
          </div>
       </div>
     </div> <!-- top-select -->
+</div> <!-- main -->
 
 <!-- modal list -->
 <!--Modal: Model (modalkmlselect) -->
@@ -412,11 +414,11 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
   </div>
 </div> <!--Modal: modalkmlselect-->
 
-</div> <!-- main -->
-
 <!--call php directly-->
     <script type="text/javascript">
-            cpd_sliprate_sites_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
+            cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
+            var ttt=CGM_GNSS;
+	    window.console.log("HERE");
     </script>
 </body>
 </html>
