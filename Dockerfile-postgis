@@ -1,6 +1,8 @@
 FROM mdillon/postgis:10-alpine
-ENV POSTGRES_USER=postgres
-ENV POSTGRES_DATA=/home/postgres/cpd_db
+
+ENV POSTGRES_USER postgres
+ENV POSTGRES_DB CPD_sliprate_db
+ENV PGDATA=/home/postgres/cpd_db
 
 WORKDIR /app
 
@@ -10,7 +12,7 @@ RUN mkdir /home/postgres
 RUN chown postgres /home/postgres
 RUN su postgres -c /app/doc/run-as-postgres
 
-RUN echo "host all  all    0.0.0.0/0  trust" >> $POSTGRES_DATA/pg_hba.conf
+#RUN echo "host all  all    0.0.0.0/0  trust" >> /home/postgres/cpd_db/pg_hba.conf
 
 #
 #   /home/postgres/cpd_db  <-- for actual db and config 
