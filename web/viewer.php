@@ -68,7 +68,7 @@ $cpd_sliprate = new SLIPRATE();
     <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.CircleMarker.js"></script>
     <script type='text/javascript' src="js/vendor/plugin/Leaflet.draw/edit/handler/Edit.Circle.js"></script>
 
-    <!-- cpd js -->
+<!-- cpd js -->
     <script type="text/javascript" src="js/debug.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_main.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
@@ -76,7 +76,10 @@ $cpd_sliprate = new SLIPRATE();
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_ui.js?v=1"></script>
+
+<!-- cxm js -->
     <script type="text/javascript" src="js/cxm_kml.js?v=1"></script>
+    <script type="text/javascript" src="js/cxm_model_util.js?v=1"></script>
     <script type="text/javascript" src="js/cxm_misc_util.js?v=1"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -416,7 +419,6 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!--call php directly-->
     <script type="text/javascript">
-            var tmp=CPD_SLIPRATE;
             cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>

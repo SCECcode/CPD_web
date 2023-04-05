@@ -1,5 +1,5 @@
 /**
-    cxm_kml_util.c
+    cxm_kml.c
 
     manage user uploaded kml being handled as a leaflet overlay layer
 **/

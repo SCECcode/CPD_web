@@ -1,134 +1,7 @@
 /**
-    cxm_util.c
-
-a) export 'active' fault's geo out into an external file CFM5.2_geoJson.txt
-b) import external geoJson.txt and create a groupLayer with optional name popup
-c) import external latlon.csv with 'name' and create a group Layerof mulitple groups of points with different color 
+    cxm_misc_util.c
 
 **/
-
-var CXM = new function () {
-
-  const CFM_URL="data/CFM6.0_geoJson.txt";
-  const CTM_URL="data/CTM_geoJson.txt";
-  const CRM_URL="data/CRM_geoJson.txt";
-  const CRM_POLYGON_URL="data/CRM_polygons_points_with_corrected_Rift_names_Mar112019.csv";
-
-  let cxm_cfm_layer=null;
-  let cxm_ctm_layer=null;
-  let cxm_crm_layer=null;
-  let cxm_crm_polygon_layer=null;
-
-
-this.showCFMFaults = function (viewermap) {
-  if(cxm_cfm_layer == null) {
-    cxm_cfm_layer=this.readLocalAndProcessActiveCFMGeo();
-  }
-  viewermap.addLayer(cxm_cfm_layer);
-}
-
-this.hideCFMFaults = function (viewermap) {
-  if(cxm_cfm_layer == null) {
-    cxm_cfm_layer=this.readLocalAndProcessActiveCFMGeo();
-  }
-  viewermap.removeLayer(cxm_cfm_layer);
-}
-
-// actually using CRM geo
-this.showGFMRegions = function (viewermap) {
-  if(cxm_crm_layer == null) {
-    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
-  }
-  viewermap.addLayer(cxm_crm_layer);
-}
-
-this.hideGFMRegions = function (viewermap) {
-  if(cxm_crm_layer == null) {
-    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
-  }
-  viewermap.removeLayer(cxm_crm_layer);
-}
-
-
-/***
---> needs gfm_regions.js
-***/
-function getGFMRegionColorWithName(name) {
-   var tb=GFM_tb['regions'];
-   var cnt=tb.length;
-   var i;
-   for(i=0; i<cnt;i++) {
-      var region=tb[i];
-      if(region['name'] == name)
-        return region['color'];
-   }
-   return undefined;
-}
-
-// should be a very small file and used for testing and so can ignore
-// >>Synchronous XMLHttpRequest on the main thread is deprecated
-// >>because of its detrimental effects to the end user's experience.
-//     url=http://localhost/data/synapse/segments-dummy.csv
-function ckCXMExist(url) {
-  var http = new XMLHttpRequest();
-  http.onreadystatechange = function () {
-    if (this.readyState == 4) {
- // okay
-    }
-  }
-  http.open("GET", url, false);
-  http.send();
-  if(http.status !== 404) {
-    return http.responseText;
-    } else {
-      return null;
-  }
-}
-
-
-// *** specifically for CFM_web ***
-// create CFM5.2_geoJson.txt json file from cfm_trace_list.json
-function dumpActiveCFMGeo() {
-  var tracelist = [];
-  var labellist = [];
-
-  var csz=cfm_active_gid_list.length; // there is a search list result
-  var tsz=cfm_trace_list.length;
-  for(var i=0; i< tsz; i++) {
-    var titem=cfm_trace_list[i];
-    var gid=titem['gid'];
-    var tracename=find_pretty_name_by_gid(gid);
-    var atrace=titem['trace'];
-    // either all, or has a active list
-    if(!csz || in_active_gid_list(gid)) {
-      labellist.push(tracename);
-      tracelist.push(atrace);
-    }
-  }
-  if(tracelist.length) {
-    dumpActiveGeo("CFM5.2_geoJson.txt", tracelist, labellist);
-  }
-}
-
-function dumpActiveCRMGeo() {
-  var tracelist = [];
-  var labellist = [];
-
-  var tsz=crm_trace_list.length;
-  for(var i=0; i< tsz; i++) {
-    var titem=crm_trace_list[i];
-    var gid=titem['gid'];
-    var tracename=find_crm_name_by_gid(gid);
-    var atrace=titem['trace'];
-    // either all, or has a active list
-    labellist.push(tracename);
-    tracelist.push(atrace);
-  }
-
-  if(tracelist.length) {
-     dumpActiveGeo("CRM_geoJson.txt", tracelist, labellist);
-  }
-}
 
 function dumpActiveGeo(dumpname, trace_list, label_list) {
 
@@ -152,9 +25,9 @@ function dumpActiveGeo(dumpname, trace_list, label_list) {
 }
 
 // from a local file
-this.readLocalAndProcessActiveCFMGeo = function () {
-  let url=CFM_URL;
-  var blob=ckCXMExist(url);
+function readLocalAndProcessActiveCFMGeo() {
+  var url="data/CFM6.0_geoJson.txt";
+  var blob=ckExist(url);
   var jblob=JSON.parse(blob);
 
   var trace_list= jblob["trace_list"];
@@ -172,9 +45,9 @@ this.readLocalAndProcessActiveCFMGeo = function () {
 // SPECIAL CASE
 //   atrace.features[0].properties.style.color="red"; // the first one in all traces
      var name= atrace.features[0].properties.name;
-//     window.console.log("adding trace.. ",name);
+     window.console.log("adding trace.. ",name);
   }
-  return makeGeoGroup(trace_list);
+  return _makeGeoGroup(trace_list);
 }
 
 
@@ -197,20 +70,21 @@ function readAndProcessActiveGeo(urls) {
          atrace.features[j].properties.style.color="orange";
        }
        var name= atrace.features[0].properties.name;
-//       window.console.log("adding trace.. ",name);
+       window.console.log("adding trace.. ",name);
     }
-    return makeGeoGroup(trace_list);
+//XX    return _makeGeoGroup(trace_list);
+    return _addGeoGroupToMap(trace_list,viewermap);
   };
   reader.readAsText(urls[0]);
 }
 
-function addGeoGroupToMap(traceList, mymap) {
-   var group=makeGeoGroup(traceList);
+function _addGeoGroupToMap(traceList, mymap) {
+   var group=_makeGeoGroup(traceList);
    mymap.addLayer(group);
    return group;
 }
 
-function makeGeoGroup(traceList) {
+function _makeGeoGroup(traceList) {
    var cnt=traceList.length;
    window.console.log("number of importing traces ",cnt);
    var group = L.layerGroup();
@@ -232,33 +106,20 @@ function makeGeoGroup(traceList) {
                return {color: "#0000ff", "weight":2}
            }
          },
-         onEachFeature: bindPopupEachFeatureName
+         onEachFeature: _bindPopupEachFeatureName
      });
      group.addLayer(geoLayer);
    } 
-
-   group.eachLayer(function(layer) {
-     var popUp= layer._popup;
-     if(popUp) {
-       window.console.log("layergroup got a popup...", popUp);
-     }
-   });
-
-
    return group;
 }
 
 
 // binding the 'detail' fault content
-function bindPopupEachFeatureName(feature, layer) {
+function _bindPopupEachFeatureName(feature, layer) {
     var popupContent="";
     layer.on({
         mouseover: function(e) {
           layer.setStyle({weight: 5});
-          if (feature.properties != undefined) {
-            popupContent = feature.properties.name;
-          }
-          layer.bindPopup(popupContent);
         },
         mouseout: function(e) {
           layer.setStyle({weight: 1});
@@ -270,13 +131,12 @@ function bindPopupEachFeatureName(feature, layer) {
           layer.bindPopup(popupContent);
         },
     });
-   
 }
 
 // from a local file
-this.readLocalAndProcessActiveCRMGeo = function () {
-  let url=CRM_URL;
-  var blob=ckCXMExist(url);
+function readLocalAndProcessActiveCRMGeo() {
+  var url="data/CRM_geoJson.txt";
+  var blob=ckExist(url);
   var jblob=JSON.parse(blob);
 
   var trace_list= jblob["trace_list"];
@@ -290,45 +150,22 @@ this.readLocalAndProcessActiveCRMGeo = function () {
        atrace.features[j].properties.style.weight=0.3;
      }
      var name= atrace.features[0].properties.name;
-//     window.console.log("adding trace.. ",name);
+     window.console.log("adding trace.. ",name);
   }
-  return makeGeoGroup(trace_list);
+  return _makeGeoGroup(trace_list);
 }
 
 function loadCRMRegions() {
   getCRMAllTraces();
 }
 
-// from a local file
-this.readLocalAndProcessActiveCTMGeo = function() {
-  let url=CTM_URL;
-  var blob=ckCXMExist(url);
-  var jblob=JSON.parse(blob);
-
-  var trace_list= jblob["trace_list"];
-  var cnt=trace_list.length;
-  var i;
-  for(i=0;i<cnt;i++) {
-     var atrace=trace_list[i];
-     var tcnt=atrace.features.length;
-     for(var j=0; j<tcnt; j++) {
-// make it lighter
-       atrace.features[j].properties.style.weight=0.3;
-     }
-     var name= atrace.features[0].properties.name;
-//     window.console.log("adding trace.. ",name);
-  }
-  return makeGeoGroup(trace_list);
-}
-
 function loadCTMRegions() {
   getCTMAllTraces();
 }
 
-
 //domain,xcoord,ycoord
 //Peninsular Range (E),-114.53244,29.43361
-function readAndProcessActiveLatlon(urls) {
+function readAndLoadActiveLatlon(urls) {
   var reader = new FileReader();
 
   reader.onload=function(event) {
@@ -363,15 +200,17 @@ function readAndProcessActiveLatlon(urls) {
            } 
        }   
     }  
-    return makeRawLatlonGroup(fdata);
-
+    let group=_makeRawLatlonGroup(fdata, 1);
+    mymap.addLayer(group);
+    return group;
   };
   reader.readAsText(urls[0]);
 }
 
-function readLocalAndProcessActiveLatlon() {
-  let url=CRM_POLYGON_URL;
-  var blob=ckCXMExist(url);
+function readAndLoadLocalActiveLatlon() {
+
+  var url="data/CRM_polygons_points_with_corrected_Rift_names_Mar112019.csv";
+  var blob=ckExist(url);
   var ffline = blob.split('\n');
   var cnt=ffline.length;
   var fdata=[];
@@ -402,16 +241,21 @@ function readLocalAndProcessActiveLatlon() {
          } 
      }   
   }  
-  return makeRawLatlonGroup(fdata);
+  let group=_makeRawLatlonGroup(fdata, 0);
+  mymap.addLayer(group);
+
+  return group;
 }
 
-function addRawLatlonGroupToMap(fdataList, mymap) {
-   var group=makeRawLatlonGroup(fdataList);
+/***???
+function _addRawLatlonGroupToMap(fdataList, mymap) {
+   var group=_makeRawLatlonGroup(fdataList, 0);
    mymap.addLayer(group);
    return group;
 }
+***/
 
-function makeRawLatlonGroup(fdataList) {
+function _makeRawLatlonGroup(fdataList, isheat) {
    var cnt=fdataList.length;
    window.console.log("number of importing points ",cnt);
    var group = L.layerGroup();
@@ -423,13 +267,19 @@ function makeRawLatlonGroup(fdataList) {
      var lon=parseFloat(item[1]);
      var lat=parseFloat(item[2]);
     
-     var color=getGFMRegionColorWithName(name);
+     var color=getHeatRegionColorWithName(name);
+     if( isheat) {
+       var color=getHeatRegionColorWithName(name);
+       } else {
+         var color=getRegionColorWithName(name);
+     }
      if(color == undefined) {
         window.console.log("BAD -- no color for ", name);
         continue;
      }
 
 const myCustomColour = '#583470'
+
 const markerHtmlStyles = `
   background-color: ${color};
   width: 0.2rem;
@@ -445,6 +295,7 @@ const newIcon = L.divIcon({
   className: '',
   html: `<span style="${markerHtmlStyles}" />`
 })
+
 
      var small_point_options = { icon : newIcon};
 
@@ -462,4 +313,23 @@ const newIcon = L.divIcon({
 }
 
 
+// >>Synchronous XMLHttpRequest on the main thread is deprecated
+// >>because of its detrimental effects to the end user's experience.
+//     url=http://localhost/data/synapse/segments-dummy.csv
+function ckExist(url) {
+  var http = new XMLHttpRequest();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4) {
+ // okay
+    }
+  }
+  http.open("GET", url, false);
+  http.send();
+  if(http.status !== 404) {
+    return http.responseText;
+    } else {
+      return null;
+  }
 }
+
+

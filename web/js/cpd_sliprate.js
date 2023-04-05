@@ -1,7 +1,6 @@
 /***
    cpd_sliprate.js
 ***/
-var TTT_SLIPRATE=10;
 
 var CPD_SLIPRATE = new function () {
     window.console.log("in CPD_SLIPRATE..");
@@ -13,7 +12,7 @@ var CPD_SLIPRATE = new function () {
 
     // complete sliprate layers, one marker layer for one site, 
     // setup once from viewer.php
-    this.cpd_layers= new L.FeatureGroup();
+    this.cpd_layers;
 
     // searched layers being actively looked at -- result of a search
     this.cpd_active_layers= new L.FeatureGroup();
@@ -22,6 +21,12 @@ var CPD_SLIPRATE = new function () {
     // selected some layers from active layers
     // to be displayed at the metadata_table
     this.cpd_selected_gid = [];
+
+    // locally used, floats
+    var cpd_minrate_min=undefined;
+    var cpd_minrate_max=undefined;
+    var cpd_maxrate_min=undefined;
+    var cpd_maxrate_max=undefined;
 
     var site_colors = {
         normal: '#006E90',
@@ -68,7 +73,7 @@ var CPD_SLIPRATE = new function () {
     };
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
-                        <td colspan="5">Metadata for selected sliprate sites will appear here.</td>
+                        <td colspan="9">Metadata for selected sliprate sites will appear here.</td>
                     </tr>`;
 
     this.activateData = function() {
@@ -155,10 +160,32 @@ var CPD_SLIPRATE = new function () {
       
                 };
 
-		  XX
-                this.cpd_layers.push(marker);
-                this.cpd_active_layers.push(marker);
+                this.cpd_layers.addLayer(marker);
+                this.cpd_active_layers.addLayer(marker);
                 this.cpd_active_gid.push(gid);
+
+                if(cpd_minrate_min == undefined) {
+                   cpd_minrate_min = low_rate;
+                   cpd_minrate_max = low_rate;
+                  } else {
+                    if(low_rate < cpd_minrate_min) {
+                      cpd_minrate_min=low_rate;  
+                    }
+                    if(low_rate > cpd_minrate_max) {
+                      cpd_minrate_max=low_rate;
+                    }
+                }
+                if(cpd_maxrate_min == undefined) {
+                   cpd_maxrate_min = high_rate;
+                   cpd_maxrate_max = high_rate;
+                  } else {
+                    if(high_rate < cpd_maxrate_min) {
+                      cpd_maxrate_min=high_rate;  
+                    }
+                    if(high_rate > cpd_minrate_max) {
+                      cpd_maxrate_max=low_rate;
+                    }
+                }
             }
         }
 
@@ -386,33 +413,15 @@ var generateTableRow = function(layer) {
 
     this.showProduct = function () {
 
-        let $cpd_site_sliprate = $("#cpd-site-sliprate");
-
-        if (!$cpd_site_sliprate.prop('checked')) {
-            $cpd_site_sliprate.prop('checked', true);
-        }
-
 window.console.log("SHOW product");
         if (this.searching) {
             this.cpd_active_layers.addTo(viewermap);
         } else {
             this.cpd_layers.addTo(viewermap);
         }
-
-        if (currentLayerName != 'shaded relief') {
-            switchLayer('shaded relief');
-            $("#mapLayer").val('shaded relief');
-        }
-
     };
 
-    
     this.hideProduct = function () {
-        let $cpd_site_sliprate = $("#cpd-site-sliprate");
-        if ($cpd_site_sliprate.prop('checked')) {
-            $cpd_site_sliprate.prop('checked', false);
-        }
-
         if (CPD_SLIPRATE.searching) {
             this.cpd_active_layers.remove();
         } else {
@@ -472,24 +481,16 @@ window.console.log("sliprate --- calling freshSearch..");
         this.resetMaxRateSlider();
         this.resetSearch();
 
-        // show sliprate product
-        if ($("#cpd-site-sliprate").prop('checked')) {
-          this.showProduct();
-          } else {
-          this.hideProduct();
-        }
-
-        // show chrono product
-        if ($("#cpd-site-chronology").prop('checked')) {
-          CPD_CHRONOLOGY.showProduct();
-          } else {
-          CPD_CHRONOLOGY.hideProduct();
-        }
-
         if ($("#cpd-model-cfm").prop('checked')) {
           CXM.showCFMFaults(viewermap);
           } else {
           CXM.hideCFMFaults(viewermap);
+        }
+
+        if ($("#cpd-model-gfm").prop('checked')) {
+          CXM.showGFMRegions(viewermap);
+          } else {
+          CXM.hideGFMRegions(viewermap);
         }
     };
 
@@ -716,31 +717,31 @@ window.console.log("changeResultsTableBody..");
         };
 
         var resetMinrateRangeColor = function (target_min, target_max){
-          let minRGB= makeRGB(target_min, CPD_SLIPRATE.cpd_minrate_max, CPD_SLIPRATE.cpd_minrate_min );
-          let maxRGB= makeRGB(target_max, CPD_SLIPRATE.cpd_minrate_max, CPD_SLIPRATE.cpd_minrate_min );
+          let minRGB= makeRGB(target_min, cpd_minrate_max, cpd_minrate_min );
+          let maxRGB= makeRGB(target_max, cpd_minrate_max, cpd_minrate_min );
           let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
           $("#slider-minrate-range .ui-slider-range" ).css( "background", myColor );
         }
 
         this.resetMinrateSlider = function () {
           $("#slider-minrate-range").slider('values', 
-                              [CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max]);
-          $("#cpd-minMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
-          $("#cpd-maxMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
+                              [cpd_minrate_min, cpd_minrate_max]);
+          $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);
+          $("#cpd-maxMinrateSliderTxt").val(cpd_minrate_max);
         }
 
         var resetMaxrateRangeColor = function (target_min, target_max){
-          let minRGB= makeRGB(target_min, CPD_SLIPRATE.cpd_maxrate_max, CPD_SLIPRATE.cpd_maxrate_min );
-          let maxRGB= makeRGB(target_max, CPD_SLIPRATE.cpd_maxrate_max, CPD_SLIPRATE.cpd_maxrate_min );
+          let minRGB= makeRGB(target_min, cpd_maxrate_max, cpd_maxrate_min );
+          let maxRGB= makeRGB(target_max, cpd_maxrate_max, cpd_maxrate_min );
           let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
           $("#slider-maxrate-range .ui-slider-range" ).css( "background", myColor );
         }
 
         this.resetMaxrateSlider = function () {
           $("#slider-maxrate-range").slider('values', 
-                              [CPD_SLIPRATE.cpd_maxrate_min, CPD_SLIPRATE.cpd_maxrate_max]);
-          $("#cpd-minMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_maxrate_min);
-          $("#cpd-maxMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_maxrate_max);
+                              [cpd_maxrate_min, cpd_maxrate_max]);
+          $("#cpd-minMaxrateSliderTxt").val(cpd_maxrate_min);
+          $("#cpd-maxMaxrateSliderTxt").val(cpd_maxrate_max);
         }
 
         this.setupCPDInterface = function() {
@@ -774,7 +775,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
 
 /* setup  sliders */
         $("#slider-minrate-range").slider({ 
-                  range:true, step:0.01, min:CPD_SLIPRATE.cpd_minrate_min, max:CPD_SLIPRATE.cpd_minrate_max, values:[CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max],
+                  range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
               slide: function( event, ui ) {
                            $("#cpd-minMinrateSliderTxt").val(ui.values[0]);
                            $("#cpd-maxMinrateSliderTxt").val(ui.values[1]);
@@ -790,15 +791,15 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
                            CPD_SLIPRATE.searchBox(searchType, ui.values);
                      },
               create: function() {
-                          $("#cpd-minMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
-                          $("#cpd-maxMinrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
+                          $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);
+                          $("#cpd-maxMinrateSliderTxt").val(cpd_minrate_max);
                     }
         });
-        $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cpd_minrate_min);
-        $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cpd_minrate_max);
+        $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
+        $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
 
         $("#slider-minrate-range").slider({ 
-                  range:true, step:0.01, min:CPD_SLIPRATE.cpd_minrate_min, max:CPD_SLIPRATE.cpd_minrate_max, values:[CPD_SLIPRATE.cpd_minrate_min, CPD_SLIPRATE.cpd_minrate_max],
+                  range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
               slide: function( event, ui ) {
                            $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
                            $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
@@ -814,12 +815,12 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
                            CPD_SLIPRATE.searchBox(searchType, ui.values);
                      },
               create: function() {
-                          $("#cpd-minMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_min);
-                          $("#cpd-maxMaxrateSliderTxt").val(CPD_SLIPRATE.cpd_minrate_max);
+                          $("#cpd-minMaxrateSliderTxt").val(cpd_minrate_min);
+                          $("#cpd-maxMaxrateSliderTxt").val(cpd_minrate_max);
                     }
         });
-        $('#slider-minrate-range').slider("option", "min", CPD_SLIPRATE.cpd_minrate_min);
-        $('#slider-minrate-range').slider("option", "max", CPD_SLIPRATE.cpd_minrate_max);
+        $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
+        $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
 
         $("#wait-spinner").hide();
 

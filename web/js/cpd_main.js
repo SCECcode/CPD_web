@@ -111,11 +111,8 @@ jQuery(document).ready(function() {
   // SETUP
   window.console.log(" --- SETUP in main");
 
-  let tmp =cpd_sliprate_site_data;
-  let ctmp=CPD_SLIPRATE;
-
-//  CPD_SLIPRATE.generateLayers();
-
+  CPD_SLIPRATE.generateLayers();
+  CPD_SLIPRATE.setupCPDInterface();
 
 /** MAIN setup **/
 // XXX
