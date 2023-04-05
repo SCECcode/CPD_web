@@ -3,6 +3,7 @@
 ***/
 
 var CGM_GNSS = new function () {
+    window.console.log(" in gnss..");
 
     // meters 22 - 35306
     this.cgm_vector_max = -1;

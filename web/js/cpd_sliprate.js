@@ -4,6 +4,7 @@
 var TTT_SLIPRATE=10;
 
 var CPD_SLIPRATE = new function () {
+    window.console.log("in CPD_SLIPRATE..");
 
     // searching mode, would show all active layers with 
     //    selected ones in highlights
@@ -110,29 +111,29 @@ var CPD_SLIPRATE = new function () {
     };
 
 
-// :156 is from viewer.php, which is the JSON 
+// cpd_sliprate_site_data is from viewer.php, which is the JSON 
 // result from calling php getAllSiteData script
     this.generateLayers = function () {
         this.cpd_layers = new L.FeatureGroup();
 
-        for (const index in :156) {
-          if (:156.hasOwnProperty(index)) {
-                let gid = :156[index].gid;
-                let sliprate_id = :156[index].sliprate_id;
-                let x = parseFloat(:156[index].x);
-                let y = parseFloat(:156[index].y);
-                let fault_name = :156[index].fault_name;
-                let site_name = :156[index].site_name;
-                let low_rate = parseFloat(:156[index].low_rate);
-                let high_rate = parseFloat(:156[index].high_rate);
-                let state = :156[index].state;
-                let data_type = :156[index].data_type;
-                let q_bin_min = parseFloat(:156[index].q_bin_min);
-                let q_bin_max = parseFloat(:156[index].q_bin_max);
-                let x_2014_dip = parseFloat(:156[index].x_2014_dip);
-                let x_2014_rake = parseFloat(:156[index].x_2014_rake);
-                let x_2014_rate = parseFloat(:156[index].x_2014_rate);
-                let reference = :156[index].reference;
+        for (const index in cpd_sliprate_site_data) {
+          if (cpd_sliprate_site_data.hasOwnProperty(index)) {
+                let gid = cpd_sliprate_site_data[index].gid;
+                let sliprate_id = cpd_sliprate_site_data[index].sliprate_id;
+                let x = parseFloat(cpd_sliprate_site_data[index].x);
+                let y = parseFloat(cpd_sliprate_site_data[index].y);
+                let fault_name = cpd_sliprate_site_data[index].fault_name;
+                let site_name = cpd_sliprate_site_data[index].site_name;
+                let low_rate = parseFloat(cpd_sliprate_site_data[index].low_rate);
+                let high_rate = parseFloat(cpd_sliprate_site_data[index].high_rate);
+                let state = cpd_sliprate_site_data[index].state;
+                let data_type = cpd_sliprate_site_data[index].data_type;
+                let q_bin_min = parseFloat(cpd_sliprate_site_data[index].q_bin_min);
+                let q_bin_max = parseFloat(cpd_sliprate_site_data[index].q_bin_max);
+                let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x_2014_dip);
+                let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x_2014_rake);
+                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
+                let reference = cpd_sliprate_site_data[index].reference;
 
                 let marker = L.circleMarker([y, x], site_marker_style.normal);
 
@@ -494,9 +495,9 @@ window.console.log("sliprate --- calling freshSearch..");
 
 
     this.getMarkerBySiteId = function (site_id) {
-        for (const index in :156) {
-            if (:156[index].sliprate_id == site_id) {
-                return :156[index];
+        for (const index in cpd_sliprate_site_data) {
+            if (cpd_sliprate_site_data[index].sliprate_id == site_id) {
+                return cpd_sliprate_site_data[index];
             }
         }
 

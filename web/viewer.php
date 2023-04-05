@@ -390,8 +390,8 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
          </div>
       </div>
     </div> <!-- top-select -->
+
 </div> <!-- main -->
-</div>
 
 <!-- modal list -->
 <!--Modal: Model (modalkmlselect) -->
@@ -416,6 +416,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!--call php directly-->
     <script type="text/javascript">
+            var tmp=CPD_SLIPRATE;
             cpd_sliprate_site_data = <?php print $cpd_sliprate->getAllStationData()->outputJSON(); ?>;
     </script>
 </body>

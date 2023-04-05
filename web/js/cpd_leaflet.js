@@ -1,12 +1,12 @@
 /***
-   cfm_leaflet.js
+   cpd_leaflet.js
 
 This is leaflet specific utilities
 ***/
 
 var init_map_zoom_level = 7;
 
-var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cfm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
+var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cxm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
 
 var rectangle_options = {
        showArea: false,
