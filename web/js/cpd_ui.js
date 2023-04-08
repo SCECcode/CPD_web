@@ -206,8 +206,8 @@ function enable_last_record_btn() {
 
 
 function set_minrate_range_color(min,max) {
-  let minRGB= makeStrikeRGB(min);
-  let maxRGB= makeStrikeRGB(max);
+  let minRGB= makeMinrateRGB(min);
+  let maxRGB= makeMinrateRGB(max);
   let myColor="linear-gradient(to right, "+minRGB+","+maxRGB+")";
   $("#slider-minrate-range .ui-slider-range" ).css( "background", myColor );
 }

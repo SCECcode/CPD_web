@@ -179,7 +179,7 @@ function reset_select_maxrate()
   set_maxrate_range_color(maxrate_range_min_ref,maxrate_range_max_ref);
 }
 
-function makeMaxrangeRGB(val) {
+function makeMaxrateRGB(val) {
     var v=val;
     v=(v-maxrate_range_min_ref)/(maxrate_range_max_ref-maxrate_range_min_ref);
     let blue = Math.round(255 * v);
@@ -189,7 +189,7 @@ function makeMaxrangeRGB(val) {
     return color;
 }
 
-function makeMaxrateRGB(val) {
+function makeMinrateRGB(val) {
     var v=val;
     v=(v-minrate_range_min_ref)/(minrate_range_max_ref-minrate_range_min_ref);
     let blue = Math.round(255 * v);

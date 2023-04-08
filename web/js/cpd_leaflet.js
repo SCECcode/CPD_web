@@ -1,7 +1,7 @@
 /***
    cpd_leaflet.js
 
-This is leaflet specific utilities
+This is leaflet specific utilities for CPD
 ***/
 
 var init_map_zoom_level = 7;
@@ -26,6 +26,12 @@ var rectangleDrawer;
 var mymap, baseLayers, layerControl, currentLayer;
 var mylegend;
 var visibleFaults = new L.FeatureGroup();
+
+
+var cpd_latlon_area_list=[];
+var cpd_latlon_point_list=[];
+
+/*****************************************************************/
 
 function clear_popup()
 {
@@ -281,3 +287,148 @@ function switchLayer(layerString) {
     currentLayer = baseLayers[layerString];
 
 }
+
+/****************************** from a list ****************/
+
+function add_bounding_rectangle(a,b,c,d) {
+  // remove old one and add a new one
+  remove_bounding_rectangle_layer();
+  var layer=addRectangleLayer(a,b,c,d);
+  var tmp={"layer":layer, "latlngs":[{"lat":a,"lon":b},{"lat":c,"lon":d}]};
+  cpd_latlon_area_list.push(tmp);
+  return layer;
+}
+
+function remove_bounding_rectangle_layer() {
+   if(cpd_latlon_area_list.length == 1) {
+     var area=cpd_latlon_area_list.pop();
+     var l=area["layer"];
+     viewermap.removeLayer(l);
+   }
+}
+
+
+function add_bounding_rectangle_layer(layer, a,b,c,d) {
+  // remove old one and add a new one
+  remove_bounding_rectangle_layer();
+  var tmp={"layer":layer, "latlngs":[{"lat":a,"lon":b},{"lat":c,"lon":d}]};
+  //set_latlons(a,b,c,d);
+  cpd_latlon_area_list.push(tmp);
+}
+
+function add_marker_point(a,b) {
+  // remove old one and add a new one
+  remove_marker_point_layer();
+  var layer=addMarkerLayer(a,b);
+  var tmp={"layer":layer, "latlngs":[{"lat":a,"lon":b}]};
+  cpd_latlon_point_list.push(tmp);
+  return layer;
+}
+
+function remove_marker_point_layer() {
+   if(cpd_latlon_point_list.length == 1) {
+     var point=cpd_latlon_point_list.pop();
+     var l=point["layer"];
+     viewermap.removeLayer(l);
+   }
+}
+
+function add_marker_point_layer(layer, a,b) {
+  // remove old one and add a new one
+  remove_marker_point_layer();
+  var tmp={"layer":layer, "latlngs":[{"lat":a,"lon":b}]};
+  cpd_latlon_point_list.push(tmp);
+}
+
+
+// see if layer is contained in the layerGroup
+function containsLayer(layergroup,layer) {
+    let target=layergroup.getLayerId(layer);
+    let layers=layergroup.getLayers();
+    for(var i=0; i<layers.length; i++) {
+      let id=layergroup.getLayerId(layers[i]);
+      if(id == target) {
+        return 1;
+      }
+    }
+    return 0;
+}
+
+// https://www.w3schools.com/howto/howto_js_sort_table.asp
+// n is which column to sort-by
+// type is "a"=alpha "n"=numerical
+function sortMetadataTableByRow(n,type) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("metadata-viewer");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc"; 
+
+window.console.log("Calling sortMetadataTableByRow..",n);
+
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    if(rows.length < 3) // no switching
+      return;
+
+/* loop through except first and last */
+    for (i = 1; i < (rows.length - 2); i++) {
+      shouldSwitch = false;
+
+      x = rows[i].getElementsByTagName("td")[n];
+      y = rows[i + 1].getElementsByTagName("td")[n];
+
+      if (dir == "asc") {
+        if(type == "a") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+          } else {
+            if (Number(x.innerHTML) > Number(y.innerHTML)) {
+              shouldSwitch = true;
+              break;
+            }
+         }
+      } else if (dir == "desc") {
+        if(type == "a") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+          } else {
+            if (Number(x.innerHTML) < Number(y.innerHTML)) {
+              shouldSwitch = true;
+              break;
+            }
+        }
+      }
+    }
+    if (shouldSwitch) {
+window.console.log("need switching..");
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++; 
+    } else {
+
+      window.console.log("done switching..");
+      if(switchcount != 0) {
+
+      }
+
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+  var id="#sortCol_"+n;
+  var t=$(id);
+  if(dir == 'asc') {
+    t.removeClass("fa-angle-down").addClass("fa-angle-up");
+    } else {
+      t.removeClass("fa-angle-up").addClass("fa-angle-down");
+  }
+}
+
