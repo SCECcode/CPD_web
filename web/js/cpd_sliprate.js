@@ -120,7 +120,6 @@ var CPD_SLIPRATE = new function () {
 // result from calling php getAllSiteData script
     this.generateLayers = function () {
         this.cpd_layers = new L.FeatureGroup();
-window.console.log("HERE");
 
         for (const index in cpd_sliprate_site_data) {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
@@ -231,27 +230,32 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
     };
 
     this.selectSiteByLayer = function (layer, moveTableRow=false) {
-window.console.log("HERE.. selectSiteByLayer..");
+
+window.console.log("selectSiteByLayer..");
+
         layer.scec_properties.selected = true;
         layer.setStyle(site_marker_style.selected);
         let gid = layer.scec_properties.gid;
 
-        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
+        this.upSelectedCount(gid);
+
+        // metatable table
+        let $row = $(`tr[sliprate-metadata-gid='${gid}'`);
         let rowHTML = "";
         if ($row.length == 0) {
            this.addToMetadataTable(layer);
         }
-
-        $row = $(`tr[sliprate-data-point-gid='${gid}'`);
-        $row.addClass('row-selected');
-
-        this.upSelectedCount(gid);
-
         // move row to top
         if (moveTableRow) {
             let $rowHTML = $row.prop('outerHTML');
             $row.remove();
             $("#metadata-viewer.sliprate tbody").prepend($rowHTML);
+        }
+
+        // search result table 
+        let elt=document.getElementById("sliprate-result-gid_"+gid);
+        if ($elt) {
+            $elt.addClass('glyphicon-check').removeClass('glyphicon-unchecked');
         }
     };
 
@@ -261,19 +265,24 @@ window.console.log("HERE.. selectSiteByLayer..");
 
         let gid = layer.scec_properties.gid;
 
-        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
+        this.downSelectedCount(gid);
 
+        let $row = $(`tr[sliprate-metadata-gid='${gid}'`);
         if ($row.length != 0) {
            this.removeFromMetadataTable(gid);
         }
-        this.downSelectedCount(gid);
+
+        let elt=document.getElementById("sliprate-result-gid_"+gid);
+        if ($elt) {
+            $elt.addClass('glyphicon-unchecked').removeClass('glyphicon-check');
+        }
     };
 
     this.unselectSiteByGid = function (gid) {
         let layer = this.getLayerByGid(gid);
         layer.scec_properties.selected = false;
         layer.setStyle(site_marker_style.normal);
-        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
+        let $row = $(`tr[sliprate-metadata-gid='${gid}'`);
 
         if ($row.length != 0) {
            this.removeFromMetadataTable(gid);
@@ -310,8 +319,6 @@ window.console.log("HERE.. selectSiteByLayer..");
         this.cpd_active_layers.eachLayer(function(layer){
             sliprate_object.unselectSiteByLayer(layer);
         });
-        $("#metadata-viewer.sliprate tr.row-selected button span.glyphicon.glyphicon-check").removeClass('glyphicon-check').addClass('glyphicon-unchecked');
-        $("#metadata-viewer.sliprate tr.row-selected").removeClass('row-selected');
     };
 
 // create a metadata list using selected gid list
@@ -355,7 +362,7 @@ window.console.log("HERE.. selectSiteByLayer..");
     this.addToMetadataTable = function(layer) {
         let $table = $("#metadata-viewer.sliprate tbody");
         let gid = layer.scec_properties.gid;
-        if ($(`tr[sliprate-data-point-gid='${gid}'`).length > 0) {
+        if ($(`tr[sliprate-metadata-gid='${gid}'`).length > 0) {
             return;
         }
         let html = generateTableRow(layer);
@@ -363,7 +370,7 @@ window.console.log("HERE.. selectSiteByLayer..");
     };
 
     this.removeFromMetadataTable = function (gid) {
-        $(`#metadata-viewer tbody tr[sliprate-data-point-gid='${gid}']`).remove();
+        $(`#metadata-viewer tbody tr[sliprate-metadata-gid='${gid}']`).remove();
     };
 
     this.downloadURLsAsZip = function(ftype) {
@@ -415,9 +422,9 @@ window.console.log("HERE.. selectSiteByLayer..");
         let $table = $("#metadata-viewer");
         let html = "";
 
-        html += `<tr sliprate-data-point-gid="${layer.scec_properties.gid}">`;
+        html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
 
-        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"highlight_meta_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
         html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
         html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
@@ -884,7 +891,7 @@ window.console.log("making body..");
        var s=json[i];
        var gid=parseInt(s.gid);
        var name=s.sliprateid;
-       var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=toggle_highlight("+gid+",0)><span id=\"highlight_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+       var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
        tmp=tmp+t;
     }
     html=html+ tmp + "</tbody>";
@@ -902,7 +909,7 @@ function makeResultTable(json)
     window.console.log("XXX calling makeResultTable..");
 
     var html="<div class=\"cpd-table\" ><table>";
-    html+="<thead><tr><th class='text-center'><button id=\"allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
+    html+="<thead><tr><th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
 
     var body=makeResultTableBody(json);
     html=html+ body + "</tbody></table></div>";
