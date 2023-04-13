@@ -796,6 +796,9 @@ window.console.log("changeResultsTableBody..");
             }
 window.console.log("setupCPDInterface: retrieved sites "+sz);
 
+            let elt=document.getElementById("dataset_sliprate");
+            elt.click();
+
             this.activateData();
             document.getElementById("searchResult").innerHTML = makeResultTable(cpd_sliprate_site_data);
 

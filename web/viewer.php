@@ -154,9 +154,17 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
       <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;border:solid 1px orange" >
 -->
       <div id="cpd-controls-container" class="col mb-0" style="display:;border:solid 1px orange" >
-
 <!-- control-row-1 -->
         <div id="top-control-row-1" class="col-12" style="border:1px solid green">
+<div class="row">
+   <form id="id_select_dataset">
+     <label for="dataset"> Choose CPD Dataset : </label>
+     <label><input type="radio" id="dataset_sliprate" name_dataset onclick="display(0)">
+            <span>Sliprate sites</span></label>
+     <label><input type="radio" id="dataset_chronology" name=dataset onclick="display(1)">
+            <span>Chronology sites</span></label>
+   </form>
+</div>
 
 <!-- SLIPRATE select -->
           <div class="col-4 input-group filters" style="">
@@ -300,19 +308,6 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!-- top-control-row 2 -->
         <div id="top-control-row-2" class="col-12 row justify-content-end" style="border:1px solid red">
-
-<!-- select data set -->
-          <div class="col-4 input-group input-group-sm custom-control-inline" id="dataset-controls" style="max-width:260px">
-            <div class="input-group-prepend">
-              <label style='border-bottom:1;' class="input-group-text" for="data-product-select">Select Dataset</label>
-            </div>
-            <select id='data-product-select' class="custom-select custom-select-sm">
-                <option selected value="sliprate">Slip Rate</option>
-<!--
-                <option value="chronology">Chronology</option>
--->
-            </select>
-          </div>
 
 <!-- KML/KMZ overlay -->
           <div id="kml-row" class="col-2 row custom-control-inline" style="display:">
