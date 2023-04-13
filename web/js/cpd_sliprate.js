@@ -211,6 +211,13 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 
 // select from currently active sites
     this.toggleSiteSelected = function(layer, clickFromMap=false) {
+
+if(clickFromMap) {
+window.console.log("toggleSiteSlected from map");             
+} else {
+window.console.log("toggleSiteSlected from tables");             
+}
+
         if (typeof layer.scec_properties.selected === 'undefined') {
             layer.scec_properties.selected = true;
         } else {
@@ -253,7 +260,8 @@ window.console.log("selectSiteByLayer..");
         }
 
         // search result table 
-        let elt=document.getElementById("sliprate-result-gid_"+gid);
+        let label="sliprate-result-gid_"+gid;
+        let $elt=$(`#${label}`);
         if ($elt) {
             $elt.addClass('glyphicon-check').removeClass('glyphicon-unchecked');
         }
@@ -272,7 +280,8 @@ window.console.log("selectSiteByLayer..");
            this.removeFromMetadataTable(gid);
         }
 
-        let elt=document.getElementById("sliprate-result-gid_"+gid);
+        let label="sliprate-result-gid_"+gid;
+        let $elt=$(`#${label}`);
         if ($elt) {
             $elt.addClass('glyphicon-unchecked').removeClass('glyphicon-check');
         }
@@ -280,16 +289,8 @@ window.console.log("selectSiteByLayer..");
 
     this.unselectSiteByGid = function (gid) {
         let layer = this.getLayerByGid(gid);
-        layer.scec_properties.selected = false;
-        layer.setStyle(site_marker_style.normal);
-        let $row = $(`tr[sliprate-metadata-gid='${gid}'`);
-
-        if ($row.length != 0) {
-           this.removeFromMetadataTable(gid);
-        }
-        this.downSelectedCount(gid);
+        return this.unselectSiteByLayer(layer);
     };
-
 
 // selectAll button - toggle
     this.toggleSelectAll = function() {
