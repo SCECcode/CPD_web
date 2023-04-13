@@ -236,11 +236,10 @@ window.console.log("HERE.. selectSiteByLayer..");
         layer.setStyle(site_marker_style.selected);
         let gid = layer.scec_properties.gid;
 
-// ResultsTable is the metadata-viewer
         let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         let rowHTML = "";
         if ($row.length == 0) {
-           this.addToResultsTable(layer);
+           this.addToMetadataTable(layer);
         }
 
         $row = $(`tr[sliprate-data-point-gid='${gid}'`);
@@ -265,7 +264,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
 
         if ($row.length != 0) {
-           this.removeFromResultsTable(gid);
+           this.removeFromMetadataTable(gid);
         }
         this.downSelectedCount(gid);
     };
@@ -277,7 +276,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
 
         if ($row.length != 0) {
-           this.removeFromResultsTable(gid);
+           this.removeFromMetadataTable(gid);
         }
         this.downSelectedCount(gid);
     };
@@ -353,7 +352,7 @@ window.console.log("HERE.. selectSiteByLayer..");
        return foundLayer;
     };
 
-    this.addToResultsTable = function(layer) {
+    this.addToMetadataTable = function(layer) {
         let $table = $("#metadata-viewer.sliprate tbody");
         let gid = layer.scec_properties.gid;
         if ($(`tr[sliprate-data-point-gid='${gid}'`).length > 0) {
@@ -363,7 +362,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         $table.prepend(html);
     };
 
-    this.removeFromResultsTable = function (gid) {
+    this.removeFromMetadataTable = function (gid) {
         $(`#metadata-viewer tbody tr[sliprate-data-point-gid='${gid}']`).remove();
     };
 
@@ -419,16 +418,16 @@ window.console.log("HERE.. selectSiteByLayer..");
         html += `<tr sliprate-data-point-gid="${layer.scec_properties.gid}">`;
 
         html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"highlight_meta_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.sliprate_id}</td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.site_name} </td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.fault_name}</td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.x} </td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.y} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.x} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.y} </td>`;
 
-        html += `<td class="cpd-data-click" align='center' >${layer.scec_properties.low_rate} </td>`;
-        html += `<td class="cpd-data-click" align='center' >${layer.scec_properties.high_rate}</td>`;
+        html += `<td class="meta-data" align='center' >${layer.scec_properties.low_rate} </td>`;
+        html += `<td class="meta-data" align='center' >${layer.scec_properties.high_rate}</td>`;
 
-        html += `<td class="cpd-data-click">......</td>`;
+        html += `<td class="meta-data">......</td>`;
 
         html += `</tr>`;
 
@@ -492,7 +491,7 @@ window.console.log("sliprate calling --->> reset");
         this.showProduct();
 
         remove_bounding_rectangle_layer();
-        this.replaceResultsTableBody([]);
+        this.replaceMetadataTableBody([]);
         skipRectangle();
         viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
         $("#cpd-controls-container input, #cpd-controls-container select").val("");
@@ -513,7 +512,7 @@ window.console.log("sliprate calling --->> resetSearch.");
         this.cpd_active_layers = new L.FeatureGroup();
         this.cpd_active_gid=[];
 
-        this.replaceResultsTableBody([]);
+        this.replaceMetadataTableBody([]);
         skipRectangle();
         remove_bounding_rectangle_layer();
 
@@ -680,7 +679,7 @@ window.console.log("sliprate --->> calling searchBox");
 
         }
 
-       this.replaceResultsTableBody(results);
+       this.replaceMetadataTableBody(results);
 window.console.log("DONE with BoxSearch..");
        $("#wait-spinner").hide();
     };
@@ -691,8 +690,8 @@ window.console.log("DONE with BoxSearch..");
     };
 
     // private function
-    var generateResultsTable = function (results) {
-window.console.log("generateResultsTable..");
+    var generateMetadataTable = function (results) {
+window.console.log("generateMetadataTable..");
             var html = "";
             html+=`
 <thead>
@@ -700,12 +699,12 @@ window.console.log("generateResultsTable..");
         <th class="text-center button-container" style="width:2rem">
         </th>
         <th class="hoverColor" style="width:5rem" >Id&nbsp<span></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Site Name&nbsp<span id='sortCol_1' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'n')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'n')" style="width:9rem">X&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">Y&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">High<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Site Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Fault Name&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">X&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Y&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')" style="width:5rem">High<br>Rate&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span></th>
         <th style="width:20%;"><div class="col text-center">
 <!--download all -->
                 <div class="btn-group download-now">
@@ -737,8 +736,8 @@ window.console.log("generateResultsTable..");
             return html;
         };
 
-       var changeResultsTableBody = function (results) {
-window.console.log("changeResultsTableBody..");
+       var changeMetadataTableBody = function (results) {
+window.console.log("changeMetadataTableBody..");
             var html = "";
             for (let i = 0; i < results.length; i++) {
                 html += generateTableRow(results[i]);
@@ -750,14 +749,14 @@ window.console.log("changeResultsTableBody..");
         };
 
    
-        this.replaceResultsTableBody = function(results) {
-            window.console.log("calling replaceResultsTableBody");
-            $("#metadata-viewer tbody").html(changeResultsTableBody(results));
+        this.replaceMetadataTableBody = function(results) {
+            window.console.log("calling replaceMetadataTableBody");
+            $("#metadata-viewer tbody").html(changeMetadataTableBody(results));
         };
 
-        this.replaceResultsTable = function(results) {
-            window.console.log("calling replaceResultsTable");
-            $("#metadata-viewer").html(generateResultsTable(results));
+        this.replaceMetadataTable = function(results) {
+            window.console.log("calling replaceMetadataTable");
+            $("#metadata-viewer").html(generateMetadataTable(results));
         };
 
         var resetMinrateRangeColor = function (target_min, target_max){
@@ -810,7 +809,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
             viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
             $download_queue_table.floatThead('destroy');
 
-            this.replaceResultsTable([]);
+            this.replaceMetadataTable([]);
             $download_queue_table.addClass('sliprate');
             $("#data-product-select").val("sliprate");
 

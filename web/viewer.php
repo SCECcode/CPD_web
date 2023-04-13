@@ -149,41 +149,39 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
    </div>
 
 <!-- top-control -->
-   <div id="top-control" class="row" style="border:solid 1px blue">
-<!-- 
-      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;border:solid 1px orange" >
--->
-      <div id="cpd-controls-container" class="col mb-0" style="display:;border:solid 1px orange" >
+   <div id="top-control" class="row">
+      <div id="cpd-controls-container" class="col" >
 <!-- control-row-1 -->
-        <div id="top-control-row-1" class="col-12" style="border:1px solid green">
-<div class="row">
-   <form id="id_select_dataset">
-     <label for="dataset"> Choose CPD Dataset : </label>
-     <label><input type="radio" id="dataset_sliprate" name_dataset onclick="display(0)">
-            <span>Sliprate sites</span></label>
-     <label><input type="radio" id="dataset_chronology" name=dataset onclick="display(1)">
-            <span>Chronology sites</span></label>
-   </form>
-</div>
-
-<!-- SLIPRATE select -->
-          <div class="col-4 input-group filters" style="">
-            <select id="cpd-search-type" class="custom-select">
-                <option value="">Search the Slip Rate Sites</option>
-                <option value="faultname">Fault Name</option>
-                <option value="sitename">Site Name</option>
-                <option value="latlon">Latitude &amp; Longitude Box</option>
-                <option value="minrateslider">minRate</option>
-                <option value="maxrateslider">maxRate</option>
-            </select>
-            <div class="input-group-append">
-                <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
-                           class="btn btn-dark pl-4 pr-4">Reset</button>
-            </div>
+        <div id="top-control-row-1" class="col-12">
+          <div class="row mb-1">
+             <form id="id_select_dataset">
+               <label for="dataset"> Choose CPD Dataset : </label>
+               <label><input type="radio" id="dataset_sliprate" name=dataset />
+                        <span>Sliprate sites</span></label>
+               <label><input type="radio" id="dataset_chronology" name=dataset />
+                        <span>Chronology sites</span></label>
+             </form>
           </div>
 
+<!-- SLIPRATE select -->
+          <div id="cpd-sliprate-search-control" class="row" style="display:;">
+            <div class="row col-4 input-group filters" style="">
+              <select id="cpd-search-type" class="custom-select">
+                  <option value="">Search the Slip Rate Sites</option>
+                  <option value="faultname">Fault Name</option>
+                  <option value="sitename">Site Name</option>
+                  <option value="latlon">Latitude &amp; Longitude Box</option>
+                  <option value="minrateslider">minRate</option>
+                  <option value="maxrateslider">maxRate</option>
+              </select>
+              <div class="input-group-append">
+                  <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
+                           class="btn btn-dark pl-4 pr-4">Reset</button>
+              </div>
+            </div>
+
 <!-- SLIPRATE option expand -->
-          <div class="col-8">
+            <div class="col-8">
               <ul>
                 <li id='cpd-fault-name' class='navigationLi ' style="display:none">
                   <div class='menu row justify-content-center'>
@@ -302,25 +300,13 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                   </div>
                 </li>
               </ul>
-          </div> <!-- SLIPRATE option expand -->
+            </div> <!-- SLIPRATE option expand -->
+         </div> <!-- cpd-sliprate-search-control -->
 
         </div> <!-- top-control-row-1 -->
 
 <!-- top-control-row 2 -->
-        <div id="top-control-row-2" class="col-12 row justify-content-end" style="border:1px solid red">
-
-<!-- KML/KMZ overlay -->
-          <div id="kml-row" class="col-2 row custom-control-inline" style="display:">
-             <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
-	     <button id="kmlBtn" class="btn" 
-		      onclick='javascript:document.getElementById("fileKML").click();' 
-		      title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." 
-                      style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
-	     <button id="kmlSelectBtn" class="btn cxm-small-no-btn" 
-		      title="Show/Hide uploaded kml/kmz files" 
-		      style="display:none;" data-toggle="modal" data-target="#modalkmlselect">
-                      <span id="eye_kml"  class="glyphicon glyphicon-eye-open"></span></button>
-          </div> <!-- kml-row -->
+        <div id="top-control-row-2" class="row justify-content-end mb-1">
 
           <div id='model-options' class="form-check-inline">
             <div class="form-check form-check-inline">
@@ -341,7 +327,20 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
             </div>
           </div>
 
-          <div class="input-group input-group-sm custom-control-inline mr-0 " id="map-controls">
+<!-- KML/KMZ overlay -->
+          <div id="kml-row" class="col-2 custom-control-inline">
+             <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
+             <button id="kmlBtn" class="btn"
+                      onclick='javascript:document.getElementById("fileKML").click();'
+                      title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)."
+                      style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
+             <button id="kmlSelectBtn" class="btn cxm-small-no-btn"
+                      title="Show/Hide uploaded kml/kmz files"
+                      style="display:none;" data-toggle="modal" data-target="#modalkmlselect">
+                      <span id="eye_kml"  class="glyphicon glyphicon-eye-open"></span></button>
+          </div> <!-- kml-row -->
+
+          <div class="input-group input-group-sm custom-control-inline" id="map-controls" style="margin-right:15px">
               <div class="input-group-prepend">
                 <label style='border-bottom:1;' class="input-group-text" for="mapLayer">Select Map Type</label>
               </div>
@@ -375,7 +374,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
     </div>
 
     <div id="top-select" class="row mb-2">
-      <div class="col-12" style="padding-right:0px">
+      <div class="col-12">
          <div id="metadata-viewer-container" style="border:solid 1px #ced4da;overflow-x:hidden">
             <table id="metadata-viewer">
               <thead>

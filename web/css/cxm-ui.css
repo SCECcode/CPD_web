@@ -1,5 +1,10 @@
 /* cxm viewer required styles */
 
+.cpd-table {
+    max-height: 576px;
+    overflow: auto;
+}
+
 #id_select_dataset input[type="radio"] {
   display: none;
 }

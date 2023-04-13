@@ -103,23 +103,6 @@ jQuery(document).ready(function() {
       }
   });
 
-  $("#metadata-viewer-container").on('click','td.cpd-data-click', function(){
-      window.console.log("calling cpd-data-click");
-
-      if ($(this).find('button[id="cpd-allBtn"]').length != 0) {
-            return;
-      }
-
-      let $glyphElem = $(this).find('span.cpd-data-row');
-      let parent = $(this).parent();
-
-      let gid = $(parent).data('point-gid');
-      let isElemSelected = CPD_SLIPRATE.toggleStationSelectedByGid(gid);
-
-      window.console.log("IN clicking metadata");
-  });
-
-
   $("#cpd-search-type").trigger("change");
 
   $.event.trigger({ type: "page-ready", "message": "completed", });
