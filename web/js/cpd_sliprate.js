@@ -10,7 +10,7 @@ var CPD_SLIPRATE = new function () {
     // non-searching mode, would be showing all layers
     this.searching = false;
 
-    // complete sliprate layers, one marker layer for one site, 
+    // complete set of sliprate layers, one marker layer for one site, 
     // setup once from viewer.php
     this.cpd_layers;
 
@@ -111,8 +111,8 @@ var CPD_SLIPRATE = new function () {
     };
 
     this.zeroSelectedCount = function() {
-        this.cpd_selected_gid = [];
-        updateDownloadCounter(0);
+       this.cpd_selected_gid = [];
+       updateDownloadCounter(0);
     };
 
 
@@ -120,24 +120,25 @@ var CPD_SLIPRATE = new function () {
 // result from calling php getAllSiteData script
     this.generateLayers = function () {
         this.cpd_layers = new L.FeatureGroup();
+window.console.log("HERE");
 
         for (const index in cpd_sliprate_site_data) {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
                 let gid = cpd_sliprate_site_data[index].gid;
-                let sliprate_id = cpd_sliprate_site_data[index].sliprate_id;
+                let sliprate_id = cpd_sliprate_site_data[index].sliprateid;
                 let x = parseFloat(cpd_sliprate_site_data[index].x);
                 let y = parseFloat(cpd_sliprate_site_data[index].y);
-                let fault_name = cpd_sliprate_site_data[index].fault_name;
-                let site_name = cpd_sliprate_site_data[index].site_name;
-                let low_rate = parseFloat(cpd_sliprate_site_data[index].low_rate);
-                let high_rate = parseFloat(cpd_sliprate_site_data[index].high_rate);
+                let fault_name = cpd_sliprate_site_data[index].faultname;
+                let site_name = cpd_sliprate_site_data[index].sitename;
+                let low_rate = parseFloat(cpd_sliprate_site_data[index].lowrate);
+                let high_rate = parseFloat(cpd_sliprate_site_data[index].highrate);
                 let state = cpd_sliprate_site_data[index].state;
-                let data_type = cpd_sliprate_site_data[index].data_type;
-                let q_bin_min = parseFloat(cpd_sliprate_site_data[index].q_bin_min);
-                let q_bin_max = parseFloat(cpd_sliprate_site_data[index].q_bin_max);
-                let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x_2014_dip);
-                let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x_2014_rake);
-                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x_2014_rate);
+                let data_type = cpd_sliprate_site_data[index].datatype;
+                let q_bin_min = parseFloat(cpd_sliprate_site_data[index].qbinmin);
+                let q_bin_max = parseFloat(cpd_sliprate_site_data[index].qbinmax);
+                let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x2014dip);
+                let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x2014rake);
+                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x2014rate);
                 let reference = cpd_sliprate_site_data[index].reference;
 
                 let marker = L.circleMarker([y, x], site_marker_style.normal);
@@ -146,7 +147,10 @@ var CPD_SLIPRATE = new function () {
                 marker.bindTooltip(site_info).openTooltip();
 
                 marker.scec_properties = {
+                    idx: index,
                     gid: gid,
+                    active: true,
+                    selected: false,
                     sliprate_id: sliprate_id,
                     x: x,
                     y: y,
@@ -154,10 +158,8 @@ var CPD_SLIPRATE = new function () {
                     site_name: site_name,
                     low_rate: low_rate,
                     high_rate: high_rate,
-                    reference: reference,
-                    active: true,
-                    selected: false
-      
+                    data_type: data_type,
+                    reference: reference
                 };
 
                 this.cpd_layers.addLayer(marker);
@@ -244,11 +246,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         $row = $(`tr[sliprate-data-point-gid='${gid}'`);
         $row.addClass('row-selected');
 
-// this is the selected table
-        let $glyphElem = $row.find('span.cpd-data-row');
-        $glyphElem.removeClass('glyphicon-unchecked').addClass('glyphicon-check');
-
-        this.upSelectCount(gid);
+        this.upSelectedCount(gid);
 
         // move row to top
         if (moveTableRow) {
@@ -269,7 +267,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         let $glyphElem = $row.find('span.sliprate-data-row');
         $glyphElem.addClass('glyphicon-unchecked').removeClass('glyphicon-check');
 
-        this.downSelectCount(gid);
+        this.downSelectedCount(gid);
     };
 
 // selectAll button - toggle
@@ -303,6 +301,31 @@ window.console.log("HERE.. selectSiteByLayer..");
         $("#metadata-viewer.sliprate tr.row-selected button span.glyphicon.glyphicon-check").removeClass('glyphicon-check').addClass('glyphicon-unchecked');
         $("#metadata-viewer.sliprate tr.row-selected").removeClass('row-selected');
     };
+
+// create a metadata list using selected gid list
+    function createMetaData(properties) {
+        var meta={};
+        meta.gid = properties.gid;
+        meta.sliprate_id = properties.sliprateid;
+        meta.x = properties.x;
+        meta.y = properties.y;
+        meta.fault_name = properties.faultname;
+        meta.site_name = properties.sitename;
+        meta.y = properties.y;
+        meta.fault_name = properties.faultname;
+        meta.site_name = properties.sitename;
+        meta.low_rate = properties.lowrate;
+        meta.high_rate = properties.highrate;
+        meta.state = properties.state;
+        meta.data_type = properties.datatype;
+        meta.q_bin_min = properties.qbinmin;
+        meta.q_bin_max = properties.qbinmax;
+        meta.x_2014_dip = properties.x2014dip;
+        meta.x_2014_rake = properties.x2014rake;
+        meta.x_2014_rate = properties.x2014rate;
+        meta.reference = properties.reference;
+        return meta;
+    }
 
 // search for a layer from master list by gid
     this.getLayerByGid = function(gid) {
@@ -338,6 +361,7 @@ window.console.log("HERE.. selectSiteByLayer..");
         var nzip=new JSZip();
         var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
         let timestamp=$.now();
+        let mlist=[];
       
         var cnt=layers.length;
         for(var i=0; i<cnt; i++) {
@@ -346,39 +370,56 @@ window.console.log("HERE.. selectSiteByLayer..");
           if( !layer.scec_properties.selected ) {
             continue;
           }
+
+          if(ftype == "metadata" || ftype == "all") {
+          // create metadata from layer.scec_properties
+            let m=createMetaData(cpd_sliprate_site_data[layer.scec_properties.idx]);
+            mlist.push(m);
+          }
       
-          if(ftype == "all") {
+/***** this is for downloading some generated file from the result directory..
+          if(ftype == "extra") {
             let downloadURL = getDataDownloadURL(layer.scec_properties.sliprate_id);
             let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
             let promise = $.get(downloadURL);
             nzip.file(dname,promise);
           }
+***/
         }
-      
-      
+
+/**
         var zipfname="CPD_SLIPRATE_"+timestamp+".zip"; 
         nzip.generateAsync({type:"blob"}).then(function (content) {
           // see FileSaver.js
           saveAs(content, zipfname);
         })
-    }
+***/
 
-var generateTableRow = function(layer) {
+        if(mlist.length != 0) {
+//        saveAsJSONBlobFile(mlist, timestamp)
+          var data=getCSVFromMeta(mlist, timestamp);
+          saveAsCSVBlobFile(data, timestamp);
+        }
+    };
+
+    var generateTableRow = function(layer) {
         let $table = $("#metadata-viewer");
         let html = "";
 
         html += `<tr sliprate-data-point-gid="${layer.scec_properties.gid}">`;
 
-        html += `<td style="width:25px" class="cpd-data-click button-container"> <button class="btn btn-sm cxm-small-btn" id="" title="highlight the sliprate site" onclick=''>
-            <span class="cpd-data-row glyphicon glyphicon-unchecked"></span>
-        </button></td>`;
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=toggle_highlight("${layer.scec_properties.gid}");><span id=\"highlight_meta_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
 
-        html += `<td class="cpd-data-click">${layer.scec_properties.site_name}</td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.sliprate_id}</td>`;
+        html += `<td class="cpd-data-click">${layer.scec_properties.site_name} </td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.fault_name}</td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.x} </td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.y} </td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.low_rate} </td>`;
-        html += `<td class="cpd-data-click">${layer.scec_properties.high_rate}</td>`;
+
+        html += `<td class="cpd-data-click" align='center' >${layer.scec_properties.low_rate} </td>`;
+        html += `<td class="cpd-data-click" align='center' >${layer.scec_properties.high_rate}</td>`;
+
+        html += `<td class="cpd-data-click">......</td>`;
 
         html += `</tr>`;
 
@@ -412,7 +453,6 @@ var generateTableRow = function(layer) {
     };
 
     this.showProduct = function () {
-
 window.console.log("SHOW product");
         if (this.searching) {
             this.cpd_active_layers.addTo(viewermap);
@@ -433,7 +473,7 @@ window.console.log("SHOW product");
     this.reset = function() {
 window.console.log("sliprate calling --->> reset");
         $("#wait-spinner").hide();
-        this.zeroSelectCount();
+        this.zeroSelectedCount();
         this.showSearch('none');
         this.searching = false;
         this.cpd_active_layers.removeLayer();
@@ -524,7 +564,7 @@ window.console.log("sliprate --- calling freshSearch..");
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c; // in metres
         return d;
-    }
+    };
 
     this.search = function (type, criteria) {
 window.console.log("sliprate --->> calling search.. <<----");
@@ -576,11 +616,11 @@ window.console.log("sliprate --->> calling search.. <<----");
     };
 
     // private function
-var _foo = function (){
-   var foolist=[];
-   foolist.push(1);
-   return foolist;
-}
+    var _foo = function (){
+       var foolist=[];
+       foolist.push(1);
+       return foolist;
+    };
 
     this.searchBox = function (type, criteria) {
 window.console.log("sliprate --->> calling searchBox");
@@ -628,12 +668,12 @@ window.console.log("sliprate --->> calling searchBox");
                     }
                     break;
             };
+
         }
 
-    this.replaceResultsTableBody(results);
+       this.replaceResultsTableBody(results);
 window.console.log("DONE with BoxSearch..");
-
-        $("#wait-spinner").hide();
+       $("#wait-spinner").hide();
     };
 
     // private function
@@ -649,17 +689,14 @@ window.console.log("generateResultsTable..");
 <thead>
 <tr>
         <th class="text-center button-container" style="width:2rem">
-            <button id="cpd-allBtn" class="btn btn-sm cxm-small-btn" title="select all visible stations" onclick="CPD_SLIPRATE.toggleSelectAll();">
-              <span class="glyphicon glyphicon-unchecked"></span>
-            </button>
         </th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Site Name&nbsp<span id='sortCol_1' class="fas fa-angle-down"></span><br>Name</th>
+        <th class="hoverColor" style="width:5rem" >Id&nbsp<span></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(1,'a')">Site Name&nbsp<span id='sortCol_1' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(2,'n')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'n')">X&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')">Y&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
-        <th style="width:6rem">Type</th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')">Low Rate&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')">High Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'n')" style="width:9rem">X&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">Y&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">High<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
         <th style="width:20%;"><div class="col text-center">
 <!--download all -->
                 <div class="btn-group download-now">
@@ -668,8 +705,11 @@ window.console.log("generateResultsTable..");
                             DOWNLOAD&nbsp<span id="download-counter"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
+                       <button class="dropdown-item" type="button" value="metadata"
+                            onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">metadata
+                       </button>
                        <button class="dropdown-item" type="button" value="all"
-                               onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">All of the Above
+                            onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">All of the Above
                        </button>
                     </div>
                 </div>
@@ -711,11 +751,6 @@ window.console.log("changeResultsTableBody..");
             $("#metadata-viewer").html(generateResultsTable(results));
         };
 
-        var getDataDownloadURL = function(station_id, frame)  {
-//??? XX
-            window.console.log("calling getDtaDownlaodURL.. TODO");
-        };
-
         var resetMinrateRangeColor = function (target_min, target_max){
           let minRGB= makeRGB(target_min, cpd_minrate_max, cpd_minrate_min );
           let maxRGB= makeRGB(target_max, cpd_minrate_max, cpd_minrate_min );
@@ -753,12 +788,12 @@ window.console.log("changeResultsTableBody..");
 window.console.log("setupCPDInterface: retrieved sites "+sz);
 
             this.activateData();
+            document.getElementById("searchResult").innerHTML = makeResultTable(cpd_sliprate_site_data);
 
             $("#cpd-controlers-container").css('display','');
             $("#cpd-sliprate-controlers-container").css('display','none');
 
             $("div.mapData div.map-container").css('padding-left','30px');
-            $("#CPD_plot").css('height','500px');
             viewermap.invalidateSize();
             viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
             $download_queue_table.floatThead('destroy');
@@ -825,5 +860,57 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
         $("#wait-spinner").hide();
 
     };
+
+// str=metadata
+function makeResultTableBody(json) {
+
+    var html="<tbody id=\"cpd-table-body\">";
+    var sz=json.length;
+window.console.log("making body..");
+
+    var tmp="";
+    for( var i=0; i< sz; i++) {
+       var s=json[i];
+       var gid=parseInt(s.gid);
+       var name=s.sliprateid;
+       var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=toggle_highlight("+gid+",0)><span id=\"highlight_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+       tmp=tmp+t;
+    }
+    html=html+ tmp + "</tbody>";
+
+    if (visibleSiteObjects.getBounds().isValid()) {
+        viewermap.fitBounds(visibleSiteObjects.getBounds());
+    }
+
+    return html;
+}
+
+// str=metadata
+function makeResultTable(json)
+{
+    window.console.log("XXX calling makeResultTable..");
+
+    var html="<div class=\"cpd-table\" ><table>";
+    html+="<thead><tr><th class='text-center'><button id=\"allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
+
+    var body=makeResultTableBody(json);
+    html=html+ body + "</tbody></table></div>";
+
+    return html;
+}
+
+// using existing gid_list,
+function makeResultTableWithList(glist)
+{
+    window.console.log("calling makeResultTableWithList..");
+
+    if(glist.length > 0) {
+      toggle_layer_with_list(glist);
+      var newhtml = _makeResultTableBodyWithGList(glist);
+      document.getElementById("cpd-table-body").innerHTML = newhtml;
+    }
+}
+
+
 
 };

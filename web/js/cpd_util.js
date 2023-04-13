@@ -227,38 +227,19 @@ function reset_select_latlon() {
 }
 
 
-
-// download meta data of selected highlighted faults 
-// mlist should not be null
-function downloadJSONMeta(mlist) {
-   var data;
-   var timestamp;
-   [data,timestamp]=getJSONFromMeta(mlist);
-   saveAsJSONBlobFile(data, timestamp);
-}
-
-// download meta data of selected highlighted faults 
-// mlist should not be null
-function downloadCSVMeta(mlist) {
-   var data;
-   var timestamp;
-   [data,timestamp]=getCSVFromMeta(mlist);
-   saveAsCSVBlobFile(data, timestamp);
-}
-
 function expandColorsControl() {
-   if ( $('#colorSelect').hasClass('cfm-control-colors-expanded') ) {
+   if ( $('#colorSelect').hasClass('cpd-control-colors-expanded') ) {
      window.console.log("already expanded...");
      } else {
-       $('#colorSelect').addClass('cfm-control-colors-expanded');
+       $('#colorSelect').addClass('cpd-control-colors-expanded');
 //      element = document.getElementById('colorSelect');
 //      element.addEventListener('mouseleave', removeColorsControl);
    }
 }
 
 function removeColorsControl() {
-   if ( $('#colorSelect').hasClass('cfm-control-colors-expanded') ) {
-     $('#colorSelect').removeClass('cfm-control-colors-expanded');
+   if ( $('#colorSelect').hasClass('cpd-control-colors-expanded') ) {
+     $('#colorSelect').removeClass('cpd-control-colors-expanded');
 //    element = document.getElementById('colorSelect');
 //    element.removeEventListener('mouseleave', removeColorsControl);
      } else {
@@ -297,94 +278,16 @@ function changeSiteColor(type) {
 }
 
 
-// for native, 500m, 1000m, 2000m
-// with added metadata file
-// mlist should not be null
-function downloadURLsAsZip(mlist) {
-  var data;
-  var timestamp;
-  var url;
-  var dname;
-
-  [data,timestamp]=getCSVFromMeta(mlist);
-  var nzip=new JSZip();
-
-  // put in the metadata
-  var fname="CPD_metadata_"+timestamp+".csv"; 
-  nzip.file(fname, data);
-
-  var cnt=mlist.length;
-  for(var i=0; i<cnt; i++) {
-    var meta=mlist[i];
-    var gid=meta['gid'];
-    if (use_download_set == 'native' || use_download_set =='all') {
-      if(in_native_gid_list(gid)) {
-        url=url_in_native_list(gid);
-        if(url) {
-          dname=url.substring(url.lastIndexOf('/')+1);
-          var promise = $.get(url);
-          nzip.file(dname,promise);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    } 
-    if (use_download_set == '500m' || use_download_set == 'all') {
-      if(in_500m_gid_list(gid)) {
-        url=url_in_500m_list(gid);
-        if(url) {
-          dname=url.substring(url.lastIndexOf('/')+1);
-          var promise = $.get(url);
-          nzip.file(dname,promise);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    }
-    if (use_download_set == '1000m' || use_download_set == 'all') {
-      if(in_1000m_gid_list(gid)) {
-        url=url_in_1000m_list(gid);
-        if(url) {
-          dname=url.substring(url.lastIndexOf('/')+1);
-          var promise = $.get(url);
-          nzip.file(dname,promise);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    }
-    if (use_download_set == '2000m' || use_download_set == 'all') {
-      if(in_2000m_gid_list(gid)) {
-        url=url_in_2000m_list(gid);
-        if(url) {
-          dname=url.substring(url.lastIndexOf('/')+1);
-          var promise = $.get(url);
-          nzip.file(dname,promise);
-        }
-      }
-      if( use_download_set != 'all')
-        continue;
-    }
-  }
-
-  var zipfname="CPD_"+timestamp+".zip"; 
-  nzip.generateAsync({type:"blob"}).then(function (content) {
-    // see FileSaver.js
-    saveAs(content, zipfname);
-  })
-}
-
-
 function expandDownloadControl() {
-   if ( $('#downloadSelect').hasClass('cfm-control-download-expanded') ) {
+   if ( $('#downloadSelect').hasClass('cpd-control-download-expanded') ) {
      window.console.log("already expanded...");
      } else {
-       $('#downloadSelect').addClass('cfm-control-download-expanded');
+       $('#downloadSelect').addClass('cpd-control-download-expanded');
    }
 }
 
 function removeDownloadControl() {
-    var divs=document.getElementsByClassName('cfm-control-download-selector');
+    var divs=document.getElementsByClassName('cpd-control-download-selector');
     for(var i = 0; i < divs.length; i++)
     {
       var div=divs[i];
@@ -394,8 +297,8 @@ function removeDownloadControl() {
          return;
       }
     }
-   if ( $('#downloadSelect').hasClass('cfm-control-download-expanded') ) {
-     $('#downloadSelect').removeClass('cfm-control-download-expanded');
+   if ( $('#downloadSelect').hasClass('cpd-control-download-expanded') ) {
+     $('#downloadSelect').removeClass('cpd-control-download-expanded');
      } else {
         window.console.log("hum.. not yet expanded...");
    }
@@ -514,7 +417,7 @@ function getMetadataRowForDisplay(meta) {
 
    var content = ` 
    <tr id="metadata-${meta['gid']}">
-       <td><button class=\"btn btn-sm cfm-small-btn\" id=\"button_meta_${meta['gid']}\" title=\"remove the fault\" onclick=toggle_highlight("${meta['gid']}");><span id=\"highlight_meta_${meta['gid']}\" class=\"glyphicon glyphicon-trash\"></span></button></td>
+       <td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${meta['gid']}\" title=\"remove the fault\" onclick=toggle_highlight("${meta['gid']}",0);><span id=\"highlight_meta_${meta['gid']}\" class=\"glyphicon glyphicon-trash\"></span></button></td>
        <td class="meta_td" >${meta['fault']}</td>
        <td class="meta_td" >${meta['area']}</td>
        <td class="meta_td" >${meta['zone']}</td>
@@ -557,19 +460,16 @@ function getLevel3ContentFromMeta(meta) {
 // build up json format for output metadata
 // mlist = [ meta1, meta2 ]
 // JSON = { "timestamp":date,"metadata":[ { fault1-meta }, {fault2-meta} ..] }
-function getJSONFromMeta(mlist) {
-    var timestamp = $.now(); //https://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
+function getJSONFromMeta(mlist, timestamp) {
     var data={"timestamp":timestamp, "metadata":mlist };
     var jsonblob=JSON.stringify(data);
 //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-    return [jsonblob,timestamp];
+    return jsonblob;
 }
 
 // build up csv format for output metadata
 // CSV < fault1-meta , fault2-meta ..
-function getCSVFromMeta(mlist) {
-
-    var timestamp = $.now(); //https://stackoverflow.com/questions/221294/how-do-you-get-a-timestamp-in-javascript
+function getCSVFromMeta(mlist,timestamp) {
 
     var data={"timestamp":timestamp, "metadata":mlist };
     var len=mlist.length;  // each data is a meta data format
@@ -607,7 +507,7 @@ function getCSVFromMeta(mlist) {
        }
    }
 //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-    return [csvblob,timestamp];
+    return csvblob;
 }
 
 
@@ -817,74 +717,6 @@ function getMaxrateRangeMinMax() {
     let rMin=parseInt(str.min);
     let rMax=parseInt(str.max);
     return [rMin, rMax];
-}
-
-function makeNativeList() {
-    var str = $('[data-side="objNative"]').data('params');
-    if (str == undefined)
-      return "";
-
-    var sz=(Object.keys(str).length);
-    for( var i=0; i< sz; i++) {
-       var s = JSON.parse(str[i]);
-       var gid=parseInt(s['gid']);
-       var name=s['name'];
-       var url=s['url'];
-       var objgid=parseInt(s['objgid']);
-       cfm_native_list.push( {"gid":gid, "name":name, "url":url, "objgid":objgid } );
-       cfm_native_gid_list.push(objgid);
-    }
-}
-
-function make500mList() {
-    var str = $('[data-side="obj500m"]').data('params');
-    if (str == undefined)
-      return "";
-
-    var sz=(Object.keys(str).length);
-    for( var i=0; i< sz; i++) {
-       var s = JSON.parse(str[i]);
-       var gid=parseInt(s['gid']);
-       var name=s['name'];
-       var url=s['url'];
-       var objgid=parseInt(s['objgid']);
-       cfm_500m_list.push( {"gid":gid, "name":name, "url":url, "objgid":objgid } );
-       cfm_500m_gid_list.push( objgid );
-    }
-}
-
-function make1000mList() {
-    var str = $('[data-side="obj1000m"]').data('params');
-    if (str == undefined)
-      return "";
-
-    var sz=(Object.keys(str).length);
-    for( var i=0; i< sz; i++) {
-       var s = JSON.parse(str[i]);
-       var gid=parseInt(s['gid']);
-       var name=s['name'];
-       var url=s['url'];
-       var objgid=parseInt(s['objgid']);
-       cfm_1000m_list.push( {"gid":gid, "name":name, "url":url, "objgid":objgid } );
-       cfm_1000m_gid_list.push(objgid);
-    }
-}
-
-function make2000mList() {
-    var str = $('[data-side="obj2000m"]').data('params');
-    if (str == undefined)
-      return "";
-
-    var sz=(Object.keys(str).length);
-    for( var i=0; i< sz; i++) {
-       var s = JSON.parse(str[i]);
-       var gid=parseInt(s['gid']);
-       var name=s['name'];
-       var url=s['url'];
-       var objgid=parseInt(s['objgid']);
-       cfm_2000m_list.push( {"gid":gid, "name":name, "url":url, "objgid":objgid } );
-       cfm_2000m_gid_list.push(objgid);
-    }
 }
 
 /****************** for handling earthquakes ********************/

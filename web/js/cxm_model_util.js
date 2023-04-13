@@ -46,14 +46,14 @@ this.hideCFMFaults = function (viewermap) {
 // actually using CRM geo
 this.showGFMRegions = function (viewermap) {
   if(cxm_crm_layer == null) {
-    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
+    cxm_crm_layer=_readLocalAndProcessActiveCRMGeo();
   }
   viewermap.addLayer(cxm_crm_layer);
 }
 
 this.hideGFMRegions = function (viewermap) {
   if(cxm_crm_layer == null) {
-    cxm_crm_layer=this.readLocalAndProcessActiveCRMGeo();
+    cxm_crm_layer=_readLocalAndProcessActiveCRMGeo();
   }
   viewermap.removeLayer(cxm_crm_layer);
 }
@@ -275,7 +275,7 @@ this.dumpActiveCRMGeo = function() {
 }
 
 //
-function readLocalAndProcessActiveCRMGeo() {
+function _readLocalAndProcessActiveCRMGeo() {
   let url=CRM_URL;
   var blob=ckExist(url);
   var jblob=JSON.parse(blob);
@@ -301,7 +301,7 @@ function loadCRMRegions() {
 }
 
 // from a local file
-function readLocalAndProcessActiveCTMGeo() {
+function _readLocalAndProcessActiveCTMGeo() {
   let url=CTM_URL;
   var blob=ckExist(url);
   var jblob=JSON.parse(blob);
@@ -382,7 +382,7 @@ function readAndProcessActiveLatlon(urls) {
   reader.readAsText(urls[0]);
 }
 
-function readLocalAndProcessActiveLatlon() {
+function _readLocalAndProcessActiveLatlon() {
   let url=CRM_POLYGON_URL;
   var blob=ckExist(url);
   var ffline = blob.split('\n');

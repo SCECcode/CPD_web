@@ -25,7 +25,8 @@ var rectangle_options = {
 var rectangleDrawer;
 var mymap, baseLayers, layerControl, currentLayer;
 var mylegend;
-var visibleFaults = new L.FeatureGroup();
+// this could be chronology or sliprate sites
+var visibleSiteObjects = new L.FeatureGroup();
 
 
 var cpd_latlon_area_list=[];
@@ -225,8 +226,8 @@ function bindPopupEachFeature(feature, layer) {
 
     layer.on({
         click: function(e) {
-            let clickedFaultID = feature.id;
-            toggle_highlight(clickedFaultID,1);
+            let clickedSiteID = feature.id;
+            toggle_highlight(clickedSiteID,1);
         },
     })
 }

@@ -144,12 +144,16 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
    <div class="row" style="display:none;">
         <div class="col justify-content-end custom-control-inline">
             <div style="display:none;" id="external_leaflet_control"></div>
+            <div id="downloadSelect" class="cxm-control-download" onMouseLeave="removeDownloadControl()"></div>
         </div>
    </div>
 
 <!-- top-control -->
-   <div id="top-control" class="row">
-      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;" >
+   <div id="top-control" class="row" style="border:solid 1px blue">
+<!-- 
+      <div id="cpd-controls-container" class="row d-flex mb-0" style="display:;border:solid 1px orange" >
+-->
+      <div id="cpd-controls-container" class="col mb-0" style="display:;border:solid 1px orange" >
 
 <!-- control-row-1 -->
         <div id="top-control-row-1" class="col-12" style="border:1px solid green">
@@ -295,7 +299,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
         </div> <!-- top-control-row-1 -->
 
 <!-- top-control-row 2 -->
-        <div id="top-control-row-2" class="col-12 row text-right" style="border:1px solid red">
+        <div id="top-control-row-2" class="col-12 row justify-content-end" style="border:1px solid red">
 
 <!-- select data set -->
           <div class="col-4 input-group input-group-sm custom-control-inline" id="dataset-controls" style="max-width:260px">
@@ -312,19 +316,15 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
 <!-- KML/KMZ overlay -->
           <div id="kml-row" class="col-2 row custom-control-inline" style="display:">
-            <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
-            <button id="kmlBtn" class="btn" 
-                      onclick='javascript:document.getElementById("fileKML").click();' 
-                      title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." 
+             <input id="fileKML" type='file' multiple onchange='uploadKMLFile(this.files)' style='display:none;'></input>
+	     <button id="kmlBtn" class="btn" 
+		      onclick='javascript:document.getElementById("fileKML").click();' 
+		      title="Upload your own kml/kmz file to be displayed on the map interface. We currently support points, lines, paths, polygons, and image overlays (kmz only)." 
                       style="color:#395057;background-color:#f2f2f2;border:1px solid #ced4da;border-radius:0.2rem;padding:0.15rem 0.5rem;"><span>Upload kml/kmz</span></button>
-	    <button id="toggleKMLBtn" class="btn btn-sm cxm-small-btn" 
-                      title="Show/Hide uploaded kml/kmz files" 
-                      onclick="toggleKML()"><span id="eye_kml"
-                      class="glyphicon glyphicon-eye-open"></span></button>
-            <button id="kmlSelectBtn" class="btn cxm-small-no-btn" 
-                      title="Select which kml/kmz files to show" 
-                      style="display:none;" 
-                      data-toggle="modal" data-target="#modalkmlselect"></button>
+	     <button id="kmlSelectBtn" class="btn cxm-small-no-btn" 
+		      title="Show/Hide uploaded kml/kmz files" 
+		      style="display:none;" data-toggle="modal" data-target="#modalkmlselect">
+                      <span id="eye_kml"  class="glyphicon glyphicon-eye-open"></span></button>
           </div> <!-- kml-row -->
 
           <div id='model-options' class="form-check-inline">

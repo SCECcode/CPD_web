@@ -76,7 +76,7 @@ class SLIPRATE extends SpatialData
 
   public function getAllStationData()
   {
-    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb LIMIT 10";
+    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb LIMIT 100";
 
     $result = pg_query($this->connection, $query);
 
