@@ -143,7 +143,7 @@ window.console.log("HERE");
 
                 let marker = L.circleMarker([y, x], site_marker_style.normal);
 
-                let site_info = `site name: ${site_name}`;
+                let site_info = `${sliprate_id}`;
                 marker.bindTooltip(site_info).openTooltip();
 
                 marker.scec_properties = {
@@ -263,12 +263,25 @@ window.console.log("HERE.. selectSiteByLayer..");
         let gid = layer.scec_properties.gid;
 
         let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
-        $row.removeClass('row-selected');
-        let $glyphElem = $row.find('span.sliprate-data-row');
-        $glyphElem.addClass('glyphicon-unchecked').removeClass('glyphicon-check');
 
+        if ($row.length != 0) {
+           this.removeFromResultsTable(gid);
+        }
         this.downSelectedCount(gid);
     };
+
+    this.unselectSiteByGid = function (gid) {
+        let layer = this.getLayerByGid(gid);
+        layer.scec_properties.selected = false;
+        layer.setStyle(site_marker_style.normal);
+        let $row = $(`tr[sliprate-data-point-gid='${gid}'`);
+
+        if ($row.length != 0) {
+           this.removeFromResultsTable(gid);
+        }
+        this.downSelectedCount(gid);
+    };
+
 
 // selectAll button - toggle
     this.toggleSelectAll = function() {
@@ -330,16 +343,14 @@ window.console.log("HERE.. selectSiteByLayer..");
 // search for a layer from master list by gid
     this.getLayerByGid = function(gid) {
         let foundLayer = false;
-        let cnt=cpd_layers.length;
-        for(let i=0; i<cnt; i++) {
-          let layer=cpd_layers[i];
+        this.cpd_layers.eachLayer(function(layer){
           if (layer.hasOwnProperty("scec_properties")) {
              if (gid == layer.scec_properties.gid) {
                  foundLayer = layer;
              }
           }
-        }
-        return foundLayer;
+       });
+       return foundLayer;
     };
 
     this.addToResultsTable = function(layer) {
@@ -349,7 +360,6 @@ window.console.log("HERE.. selectSiteByLayer..");
             return;
         }
         let html = generateTableRow(layer);
-        $table.find("tr#placeholder-row").remove();
         $table.prepend(html);
     };
 
@@ -408,8 +418,7 @@ window.console.log("HERE.. selectSiteByLayer..");
 
         html += `<tr sliprate-data-point-gid="${layer.scec_properties.gid}">`;
 
-        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=toggle_highlight("${layer.scec_properties.gid}");><span id=\"highlight_meta_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
-
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"highlight_meta_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.sliprate_id}</td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.site_name} </td>`;
         html += `<td class="cpd-data-click">${layer.scec_properties.fault_name}</td>`;
