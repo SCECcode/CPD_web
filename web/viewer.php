@@ -100,20 +100,17 @@ $cpd_sliprate = new SLIPRATE();
         $(document).on("tableLoadCompleted", function () {
             tableLoadCompleted = true;
 
-            var $table = $('div.cpd-table table');
-	    window.console.log("HERE..");
-            $table.floatThead({
-                autoReflow: true,
+            var $result_table = $('#result-viewer');
+            $tresult_able.floatThead({
                 scrollContainer: function ($table) {
-                    return $table.closest('div.cpd-table');
-                }
+                    return $table.closest('div#result-viewer-container');
+                },
             });
 
-            var $download_queue_table = $('#metadata-viewer');
-            $download_queue_table.floatThead({
+            var $download_table = $('#metadata-viewer');
+            $download_table.floatThead({
                 scrollContainer: function ($table) {
-//                    return $table.closest('div#metadata-viewer-container');
-                    return $download_queue_table.closest('div#metadata-viewer-container');
+                    return $table.closest('div#metadata-viewer-container');
                 },
             });
 

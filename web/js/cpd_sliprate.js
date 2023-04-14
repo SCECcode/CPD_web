@@ -806,7 +806,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
 /******************  Result table functions **************************/
     function makeResultTableBody(json) {
 
-        var html="<tbody id=\"cpd-table-body\">";
+        var html="<tbody id=\"result-table-body\">";
         var sz=json.length;
 
         var tmp="";
@@ -829,7 +829,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
     function makeResultTable(json) {
         window.console.log("XXX calling makeResultTable..");
 
-        var html="<div class=\"cpd-table\" ><table>";
+        var html="<div id=\"result-viewer-container\" ><table id=\"result-viewer\">";
         html+="<thead><tr><th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
 
         var body=makeResultTableBody(json);
@@ -845,7 +845,7 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
         if(glist.length > 0) {
           toggle_layer_with_list(glist);
           var newhtml = _makeResultTableBodyWithGList(glist);
-          document.getElementById("cpd-table-body").innerHTML = newhtml;
+          document.getElementById("result-table-body").innerHTML = newhtml;
         }
     }
 
