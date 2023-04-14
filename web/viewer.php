@@ -99,21 +99,6 @@ $cpd_sliprate = new SLIPRATE();
 
         $(document).on("tableLoadCompleted", function () {
             tableLoadCompleted = true;
-
-            var $result_table = $('#result-viewer');
-            $tresult_able.floatThead({
-                scrollContainer: function ($table) {
-                    return $table.closest('div#result-viewer-container');
-                },
-            });
-
-            var $download_table = $('#metadata-viewer');
-            $download_table.floatThead({
-                scrollContainer: function ($table) {
-                    return $table.closest('div#metadata-viewer-container');
-                },
-            });
-
         });
 
     </script>
