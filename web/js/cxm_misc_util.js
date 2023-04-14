@@ -130,7 +130,7 @@ function updateDownloadCounter(select_count) {
 // type is "a"=alpha "n"=numerical
 function sortMetadataTableByRow(n,type) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("metadata-viewer");
+  table = document.getElementById("metadata-table");
   switching = true;
   // Set the sorting direction to ascending:
   dir = "asc"; 

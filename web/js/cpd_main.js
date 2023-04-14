@@ -111,7 +111,9 @@ jQuery(document).ready(function() {
   // SETUP
   window.console.log(" --- SETUP in main");
 
+// load the data from backend and setup layers
   CPD_SLIPRATE.generateLayers();
+// setup the interface 
   CPD_SLIPRATE.setupCPDInterface();
 
 /** MAIN setup **/

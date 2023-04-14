@@ -196,9 +196,9 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
     this.toggleSiteSelected = function(layer, clickFromMap=false) {
 
 if(clickFromMap) {
-window.console.log("XXX toggleSiteSlected from map");             
+window.console.log("toggleSiteSlected from map");             
 } else {
-window.console.log("XXX toggleSiteSlected from tables");             
+window.console.log("toggleSiteSlected from tables");             
 }
         if (typeof layer.scec_properties.selected === 'undefined') {
             layer.scec_properties.selected = true;
@@ -233,9 +233,10 @@ window.console.log("XXX toggleSiteSlected from tables");
         }
         // move row to top
         if (moveTableRow) {
+window.console.log("HERE moving table Row ???");
             let $rowHTML = $row.prop('outerHTML');
             $row.remove();
-            $("#metadata-viewer.sliprate tbody").prepend($rowHTML);
+            $("#metadata-table.sliprate tbody").prepend($rowHTML);
         }
 
         // search result table 
@@ -585,7 +586,7 @@ window.console.log("DONE with BoxSearch..");
     }
 
     this.addToMetadataTable = function(layer) {
-        let $table = $("#metadata-viewer.sliprate tbody");
+        let $table = $("#metadata-table.sliprate tbody");
         let gid = layer.scec_properties.gid;
         if ($(`tr[sliprate-metadata-gid='${gid}'`).length > 0) {
             return;
@@ -595,11 +596,11 @@ window.console.log("DONE with BoxSearch..");
     };
 
     this.removeFromMetadataTable = function (gid) {
-        $(`#metadata-viewer tbody tr[sliprate-metadata-gid='${gid}']`).remove();
+        $(`#metadata-table tbody tr[sliprate-metadata-gid='${gid}']`).remove();
     };
 
     var generateMetadataTableRow = function(layer) {
-        let $table = $("#metadata-viewer");
+        let $table = $("#metadata-table");
         let html = "";
 
         html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
@@ -680,12 +681,12 @@ window.console.log("changeMetadataTableBody..");
    
         this.replaceMetadataTableBody = function(results) {
             window.console.log("calling replaceMetadataTableBody");
-            $("#metadata-viewer tbody").html(changeMetadataTableBody(results));
+            $("#metadata-table tbody").html(changeMetadataTableBody(results));
         };
 
         this.replaceMetadataTable = function(results) {
-            window.console.log("calling replaceMetadataTable");
-            $("#metadata-viewer").html(generateMetadataTable(results));
+window.console.log("XXX calling replaceMetadataTable");
+            $("#metadata-table").html(generateMetadataTable(results));
         };
 
 /********************* slider functions **************************/
@@ -719,18 +720,19 @@ window.console.log("changeMetadataTableBody..");
         }
 
         this.setupCPDInterface = function() {
-            var $download_queue_table = $('#metadata-viewer');
-            var sz=0;
-            if($download_queue_table != null) {
-                sz=cpd_sliprate_site_data.length;
-            }
-window.console.log("setupCPDInterface: retrieved sites "+sz);
+
+window.console.log("XXX HERE");
+            var $result_table = $('#result-table');
+            $result_table.floatThead('destroy');
+	    $("#result-table").html(makeResultTable(cpd_sliprate_site_data));
+            $result_table.floatThead({
+                 scrollContainer: function ($table) {
+                     return $table.closest('div#result-table-container');
+                 },
+            });
 
             let elt=document.getElementById("dataset_sliprate");
             elt.click();
-
-            this.activateData();
-            document.getElementById("searchResult").innerHTML = makeResultTable(cpd_sliprate_site_data);
 
             $("#cpd-controlers-container").css('display','');
             $("#cpd-sliprate-controlers-container").css('display','none');
@@ -738,20 +740,21 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
             $("div.mapData div.map-container").css('padding-left','30px');
             viewermap.invalidateSize();
             viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
-            $download_queue_table.floatThead('destroy');
 
+            var $download_queue_table = $('#metadata-table');
+            $download_queue_table.floatThead('destroy');
             this.replaceMetadataTable([]);
             $download_queue_table.addClass('sliprate');
-            $("#data-product-select").val("sliprate");
-
             $download_queue_table.floatThead({
                  scrollContainer: function ($table) {
-                     return $table.closest('div#metadata-viewer-container');
+                     return $table.closest('div#metadata-table-container');
                  },
             });
 
+            this.activateData();
+
 /* setup  sliders */
-        $("#slider-minrate-range").slider({ 
+            $("#slider-minrate-range").slider({ 
                   range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
               slide: function( event, ui ) {
                            $("#cpd-minMinrateSliderTxt").val(ui.values[0]);
@@ -771,11 +774,11 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
                           $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);
                           $("#cpd-maxMinrateSliderTxt").val(cpd_minrate_max);
                     }
-        });
-        $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
-        $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
+            });
+            $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
+            $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
 
-        $("#slider-minrate-range").slider({ 
+            $("#slider-minrate-range").slider({ 
                   range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
               slide: function( event, ui ) {
                            $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
@@ -795,11 +798,11 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
                           $("#cpd-minMaxrateSliderTxt").val(cpd_minrate_min);
                           $("#cpd-maxMaxrateSliderTxt").val(cpd_minrate_max);
                     }
-        });
-        $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
-        $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
+            });
+            $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
+            $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
 
-        $("#wait-spinner").hide();
+            $("#wait-spinner").hide();
 
     };
 
@@ -827,13 +830,16 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
     }
 
     function makeResultTable(json) {
-        window.console.log("XXX calling makeResultTable..");
-
-        var html="<div id=\"result-viewer-container\" ><table id=\"result-viewer\">";
-        html+="<thead><tr><th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
-
+        var html="";
+        html+=`
+<thead>
+<tr>
+   <th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th>
+<th class='myheader'>CPD Site Location</th>
+</tr>
+</thead>`;
         var body=makeResultTableBody(json);
-        html=html+ body + "</tbody></table></div>";
+        html=html+ "<tbody>" + body + "</tbody>";
 
         return html;
     }

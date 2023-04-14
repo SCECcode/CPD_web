@@ -99,6 +99,13 @@ $cpd_sliprate = new SLIPRATE();
 
         $(document).on("tableLoadCompleted", function () {
             tableLoadCompleted = true;
+
+	    var $result_table = $('#result_table');
+            $result_table.floatThead({
+                scrollContainer: function ($table) {
+                    return $table.closest('div#result-table-container');
+                },
+            });
         });
 
     </script>
@@ -347,7 +354,14 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 <!-- map space -->
     <div id="mapDataBig" class="row mapData">
       <div id="infoData" class="col-5 button-container d-flex flex-column pr-0" style="overflow:hidden">
-        <div id="searchResult" style="overflow:hidden; display:" class="mb-1"></div>
+	<div id="searchResult" style="overflow:hidden; display:" class="mb-1">
+          <div id="result-table-container" style="border:solid 1px #ced4da;overflow-x:hidden">
+            <table id="result-table">
+              <thead>
+              </thead>
+            </table>
+          </div> 
+        </div>
         <div id="phpResponseTxt"></div>
       </div>
 
@@ -360,8 +374,8 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 
     <div id="top-select" class="row mb-2">
       <div class="col-12">
-         <div id="metadata-viewer-container" style="border:solid 1px #ced4da;overflow-x:hidden">
-            <table id="metadata-viewer">
+         <div id="metadata-table-container" style="border:solid 1px #ced4da;overflow-x:hidden">
+            <table id="metadata-table">
               <thead>
               </thead>    
               <tbody>
