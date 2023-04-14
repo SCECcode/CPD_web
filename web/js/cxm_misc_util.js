@@ -5,6 +5,27 @@ contains utilities used by cxm based functions
 
 **/
 
+function calculateDistanceMeter(start_latlng, end_latlng) {
+    let start_lat = start_latlng.lat;
+    let start_lng = start_latlng.lng;
+    let end_lat = end_latlng.lat;
+    let end_lng = end_latlng.lng;
+
+    // from http://www.movable-type.co.uk/scripts/latlong.html
+    const R = 6371e3; // metres
+    const theta1 = start_lat * Math.PI/180; // φ, λ in radians
+    const theta2 = end_lat * Math.PI/180;
+    const deltaTheta = (end_lat-start_lat) * Math.PI/180;
+    const deltaLamda = (end_lng-start_lng) * Math.PI/180;
+
+    const a = Math.sin(deltaTheta/2) * Math.sin(deltaTheta/2) +
+                   Math.cos(theta1) * Math.cos(theta2) *
+                   Math.sin(deltaLamda/2) * Math.sin(deltaLamda/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c; // in metres
+    return d;
+}
+
 function truncateNumber(num, digits) {
     let numstr = num.toString();
     if (numstr.indexOf('.') > -1) {

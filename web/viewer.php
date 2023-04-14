@@ -101,6 +101,7 @@ $cpd_sliprate = new SLIPRATE();
             tableLoadCompleted = true;
 
             var $table = $('div.cpd-table table');
+	    window.console.log("HERE..");
             $table.floatThead({
                 autoReflow: true,
                 scrollContainer: function ($table) {
@@ -111,7 +112,8 @@ $cpd_sliprate = new SLIPRATE();
             var $download_queue_table = $('#metadata-viewer');
             $download_queue_table.floatThead({
                 scrollContainer: function ($table) {
-                    return $table.closest('div#metadata-viewer-container');
+//                    return $table.closest('div#metadata-viewer-container');
+                    return $download_queue_table.closest('div#metadata-viewer-container');
                 },
             });
 
@@ -144,7 +146,6 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
    <div class="row" style="display:none;">
         <div class="col justify-content-end custom-control-inline">
             <div style="display:none;" id="external_leaflet_control"></div>
-            <div id="downloadSelect" class="cxm-control-download" onMouseLeave="removeDownloadControl()"></div>
         </div>
    </div>
 
@@ -158,8 +159,10 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                <label for="dataset"> Choose CPD Dataset : </label>
                <label><input type="radio" id="dataset_sliprate" name=dataset />
                         <span>Sliprate sites</span></label>
+<!--
                <label><input type="radio" id="dataset_chronology" name=dataset />
                         <span>Chronology sites</span></label>
+-->
              </form>
           </div>
 

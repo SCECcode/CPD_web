@@ -118,7 +118,6 @@ jQuery(document).ready(function() {
 // XXX
 //  SLIPRATE_XX setup_layers
 //  setupSearch();
-//  addDownloadSelect();
   window.console.log(" --- WRAP up in main");
 
 }); // end of MAIN

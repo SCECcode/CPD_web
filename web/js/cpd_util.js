@@ -356,6 +356,7 @@ function toggleAll() {
 
 // function changeFaultColor(type) {
 
+// ???
 function selectAll() {
   if(select_all_flag == 0) {
     select_all_flag=1;

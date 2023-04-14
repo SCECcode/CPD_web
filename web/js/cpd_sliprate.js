@@ -84,37 +84,7 @@ var CPD_SLIPRATE = new function () {
 
     };
 
-    this.upSelectedCount = function(gid) {
-       let i=this.cpd_selected_gid.indexOf(gid); 
-       if(i != -1) {
-         window.console.log("this is bad.. already in selected list "+gid);
-         return;
-       }
- 
-       window.console.log("=====adding to list "+gid);
-       this.cpd_selected_gid.push(gid);
-       updateDownloadCounter(this.cpd_selected_gid.length);
-    };
-
-    this.downSelectedCount = function(gid) {
-       if(this.cpd_selected_gid.length == 0) { // just ignore..
-         return;
-       }
-       let i=this.cpd_selected_gid.indexOf(gid); 
-       if(i == -1) {
-         window.console.log("this is bad.. not in selected list "+gid);
-         return;
-       }
-       window.console.log("=====remove from list "+gid);
-       this.cpd_selected_gid.splice(i,1);
-       updateDownloadCounter(this.cpd_selected_gid.length);
-    };
-
-    this.zeroSelectedCount = function() {
-       this.cpd_selected_gid = [];
-       updateDownloadCounter(0);
-    };
-
+/********** show layer/select functions *********************/
 
 // cpd_sliprate_site_data is from viewer.php, which is the JSON 
 // result from calling php getAllSiteData script
@@ -209,15 +179,27 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 
     };
 
+// search for a layer from master list by gid
+    this.getLayerByGid = function(gid) {
+        let foundLayer = false;
+        this.cpd_layers.eachLayer(function(layer){
+          if (layer.hasOwnProperty("scec_properties")) {
+             if (gid == layer.scec_properties.gid) {
+                 foundLayer = layer;
+             }
+          }
+       });
+       return foundLayer;
+    };
+
 // select from currently active sites
     this.toggleSiteSelected = function(layer, clickFromMap=false) {
 
 if(clickFromMap) {
-window.console.log("toggleSiteSlected from map");             
+window.console.log("XXX toggleSiteSlected from map");             
 } else {
-window.console.log("toggleSiteSlected from tables");             
+window.console.log("XXX toggleSiteSlected from tables");             
 }
-
         if (typeof layer.scec_properties.selected === 'undefined') {
             layer.scec_properties.selected = true;
         } else {
@@ -237,9 +219,6 @@ window.console.log("toggleSiteSlected from tables");
     };
 
     this.selectSiteByLayer = function (layer, moveTableRow=false) {
-
-window.console.log("selectSiteByLayer..");
-
         layer.scec_properties.selected = true;
         layer.setStyle(site_marker_style.selected);
         let gid = layer.scec_properties.gid;
@@ -322,126 +301,38 @@ window.console.log("selectSiteByLayer..");
         });
     };
 
-// create a metadata list using selected gid list
-    function createMetaData(properties) {
-        var meta={};
-        meta.gid = properties.gid;
-        meta.sliprate_id = properties.sliprateid;
-        meta.x = properties.x;
-        meta.y = properties.y;
-        meta.fault_name = properties.faultname;
-        meta.site_name = properties.sitename;
-        meta.y = properties.y;
-        meta.fault_name = properties.faultname;
-        meta.site_name = properties.sitename;
-        meta.low_rate = properties.lowrate;
-        meta.high_rate = properties.highrate;
-        meta.state = properties.state;
-        meta.data_type = properties.datatype;
-        meta.q_bin_min = properties.qbinmin;
-        meta.q_bin_max = properties.qbinmax;
-        meta.x_2014_dip = properties.x2014dip;
-        meta.x_2014_rake = properties.x2014rake;
-        meta.x_2014_rate = properties.x2014rate;
-        meta.reference = properties.reference;
-        return meta;
-    }
-
-// search for a layer from master list by gid
-    this.getLayerByGid = function(gid) {
-        let foundLayer = false;
-        this.cpd_layers.eachLayer(function(layer){
-          if (layer.hasOwnProperty("scec_properties")) {
-             if (gid == layer.scec_properties.gid) {
-                 foundLayer = layer;
-             }
-          }
-       });
-       return foundLayer;
+    this.upSelectedCount = function(gid) {
+       let i=this.cpd_selected_gid.indexOf(gid); 
+       if(i != -1) {
+         window.console.log("this is bad.. already in selected list "+gid);
+         return;
+       }
+       window.console.log("=====adding to list "+gid);
+       this.cpd_selected_gid.push(gid);
+       updateDownloadCounter(this.cpd_selected_gid.length);
     };
 
-    this.addToMetadataTable = function(layer) {
-        let $table = $("#metadata-viewer.sliprate tbody");
-        let gid = layer.scec_properties.gid;
-        if ($(`tr[sliprate-metadata-gid='${gid}'`).length > 0) {
-            return;
-        }
-        let html = generateTableRow(layer);
-        $table.prepend(html);
+    this.downSelectedCount = function(gid) {
+       if(this.cpd_selected_gid.length == 0) { // just ignore..
+         return;
+       }
+       let i=this.cpd_selected_gid.indexOf(gid); 
+       if(i == -1) {
+         window.console.log("this is bad.. not in selected list "+gid);
+         return;
+       }
+       window.console.log("=====remove from list "+gid);
+       this.cpd_selected_gid.splice(i,1);
+       updateDownloadCounter(this.cpd_selected_gid.length);
     };
 
-    this.removeFromMetadataTable = function (gid) {
-        $(`#metadata-viewer tbody tr[sliprate-metadata-gid='${gid}']`).remove();
+    this.zeroSelectedCount = function() {
+       this.cpd_selected_gid = [];
+       updateDownloadCounter(0);
     };
 
-    this.downloadURLsAsZip = function(ftype) {
-        var nzip=new JSZip();
-        var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
-        let timestamp=$.now();
-        let mlist=[];
-      
-        var cnt=layers.length;
-        for(var i=0; i<cnt; i++) {
-          let layer=layers[i];
 
-          if( !layer.scec_properties.selected ) {
-            continue;
-          }
-
-          if(ftype == "metadata" || ftype == "all") {
-          // create metadata from layer.scec_properties
-            let m=createMetaData(cpd_sliprate_site_data[layer.scec_properties.idx]);
-            mlist.push(m);
-          }
-      
-/***** this is for downloading some generated file from the result directory..
-          if(ftype == "extra") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.sliprate_id);
-            let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
-            let promise = $.get(downloadURL);
-            nzip.file(dname,promise);
-          }
-***/
-        }
-
-/**
-        var zipfname="CPD_SLIPRATE_"+timestamp+".zip"; 
-        nzip.generateAsync({type:"blob"}).then(function (content) {
-          // see FileSaver.js
-          saveAs(content, zipfname);
-        })
-***/
-
-        if(mlist.length != 0) {
-//        saveAsJSONBlobFile(mlist, timestamp)
-          var data=getCSVFromMeta(mlist, timestamp);
-          saveAsCSVBlobFile(data, timestamp);
-        }
-    };
-
-    var generateTableRow = function(layer) {
-        let $table = $("#metadata-viewer");
-        let html = "";
-
-        html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
-
-        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
-        html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
-        html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
-        html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
-        html += `<td class="meta-data">${layer.scec_properties.x} </td>`;
-        html += `<td class="meta-data">${layer.scec_properties.y} </td>`;
-
-        html += `<td class="meta-data" align='center' >${layer.scec_properties.low_rate} </td>`;
-        html += `<td class="meta-data" align='center' >${layer.scec_properties.high_rate}</td>`;
-
-        html += `<td class="meta-data">......</td>`;
-
-        html += `</tr>`;
-
-        return html;
-    };
-
+/********** search/layer  functions *********************/
     this.showSearch = function (type) {
         const $all_search_controls = $("#cpd-controls-container ul li");
         $all_search_controls.hide();
@@ -561,27 +452,6 @@ window.console.log("sliprate --- calling freshSearch..");
         return [];
     };
 
-    this.calculateDistanceMeter = function (start_latlng, end_latlng) {
-        let start_lat = start_latlng.lat;
-        let start_lng = start_latlng.lng;
-        let end_lat = end_latlng.lat;
-        let end_lng = end_latlng.lng;
-
-        // from http://www.movable-type.co.uk/scripts/latlong.html
-        const R = 6371e3; // metres
-        const theta1 = start_lat * Math.PI/180; // φ, λ in radians
-        const theta2 = end_lat * Math.PI/180;   
-        const deltaTheta = (end_lat-start_lat) * Math.PI/180;
-        const deltaLamda = (end_lng-start_lng) * Math.PI/180;
-
-        const a = Math.sin(deltaTheta/2) * Math.sin(deltaTheta/2) +
-                       Math.cos(theta1) * Math.cos(theta2) *
-                       Math.sin(deltaLamda/2) * Math.sin(deltaLamda/2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        var d = R * c; // in metres
-        return d;
-    };
-
     this.search = function (type, criteria) {
 window.console.log("sliprate --->> calling search.. <<----");
         let results = [];
@@ -658,10 +528,6 @@ window.console.log("sliprate --->> calling searchBox");
 
             this.showSitesByLayers(this.search_result);
 
-            if( !modelVisible()) {
-                this.showProduct();
-            }
-
             switch (type) {
                 case this.searchType.latlon:
                     {
@@ -692,12 +558,67 @@ window.console.log("DONE with BoxSearch..");
        $("#wait-spinner").hide();
     };
 
-    // private function
-    var modelVisible = function (){
-        return $("#cpd-sliprate-model").prop('checked');
+/********** metadata  functions *********************/
+// create a metadata list using selected gid list
+    function createMetaData(properties) {
+        var meta={};
+        meta.gid = properties.gid;
+        meta.sliprate_id = properties.sliprateid;
+        meta.x = properties.x;
+        meta.y = properties.y;
+        meta.fault_name = properties.faultname;
+        meta.site_name = properties.sitename;
+        meta.y = properties.y;
+        meta.fault_name = properties.faultname;
+        meta.site_name = properties.sitename;
+        meta.low_rate = properties.lowrate;
+        meta.high_rate = properties.highrate;
+        meta.state = properties.state;
+        meta.data_type = properties.datatype;
+        meta.q_bin_min = properties.qbinmin;
+        meta.q_bin_max = properties.qbinmax;
+        meta.x_2014_dip = properties.x2014dip;
+        meta.x_2014_rake = properties.x2014rake;
+        meta.x_2014_rate = properties.x2014rate;
+        meta.reference = properties.reference;
+        return meta;
+    }
+
+    this.addToMetadataTable = function(layer) {
+        let $table = $("#metadata-viewer.sliprate tbody");
+        let gid = layer.scec_properties.gid;
+        if ($(`tr[sliprate-metadata-gid='${gid}'`).length > 0) {
+            return;
+        }
+        let html = generateMetadataTableRow(layer);
+        $table.prepend(html);
     };
 
-    // private function
+    this.removeFromMetadataTable = function (gid) {
+        $(`#metadata-viewer tbody tr[sliprate-metadata-gid='${gid}']`).remove();
+    };
+
+    var generateMetadataTableRow = function(layer) {
+        let $table = $("#metadata-viewer");
+        let html = "";
+
+        html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
+
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
+        html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.x} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.y} </td>`;
+
+        html += `<td class="meta-data" align='center' >${layer.scec_properties.low_rate} </td>`;
+        html += `<td class="meta-data" align='center' >${layer.scec_properties.high_rate}</td>`;
+
+        html += `<td class="meta-data">......</td>`;
+        html += `</tr>`;
+        return html;
+    };
+
     var generateMetadataTable = function (results) {
 window.console.log("generateMetadataTable..");
             var html = "";
@@ -735,7 +656,7 @@ window.console.log("generateMetadataTable..");
 <tbody>`;
 
             for (let i = 0; i < results.length; i++) {
-                html += generateTableRow(results[i]);
+                html += generateMetadataTableRow(results[i]);
             }
             if (results.length == 0) {
                 html += tablePlaceholderRow;
@@ -748,7 +669,7 @@ window.console.log("generateMetadataTable..");
 window.console.log("changeMetadataTableBody..");
             var html = "";
             for (let i = 0; i < results.length; i++) {
-                html += generateTableRow(results[i]);
+                html += generateMetadataTableRow(results[i]);
             }
             if (results.length == 0) {
                 html += tablePlaceholderRow;
@@ -766,6 +687,8 @@ window.console.log("changeMetadataTableBody..");
             window.console.log("calling replaceMetadataTable");
             $("#metadata-viewer").html(generateMetadataTable(results));
         };
+
+/********************* slider functions **************************/
 
         var resetMinrateRangeColor = function (target_min, target_max){
           let minRGB= makeRGB(target_min, cpd_minrate_max, cpd_minrate_min );
@@ -880,56 +803,95 @@ window.console.log("setupCPDInterface: retrieved sites "+sz);
 
     };
 
-// str=metadata
-function makeResultTableBody(json) {
+/******************  Result table functions **************************/
+    function makeResultTableBody(json) {
 
-    var html="<tbody id=\"cpd-table-body\">";
-    var sz=json.length;
-window.console.log("making body..");
+        var html="<tbody id=\"cpd-table-body\">";
+        var sz=json.length;
 
-    var tmp="";
-    for( var i=0; i< sz; i++) {
-       var s=json[i];
-       var gid=parseInt(s.gid);
-       var name=s.sliprateid;
-       var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
-       tmp=tmp+t;
+        var tmp="";
+        for( var i=0; i< sz; i++) {
+           var s=json[i];
+           var gid=parseInt(s.gid);
+           var name=s.sliprateid;
+           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+           tmp=tmp+t;
+        }
+        html=html+ tmp + "</tbody>";
+
+        if (visibleSiteObjects.getBounds().isValid()) {
+            viewermap.fitBounds(visibleSiteObjects.getBounds());
+        }
+
+        return html;
     }
-    html=html+ tmp + "</tbody>";
 
-    if (visibleSiteObjects.getBounds().isValid()) {
-        viewermap.fitBounds(visibleSiteObjects.getBounds());
+    function makeResultTable(json) {
+        window.console.log("XXX calling makeResultTable..");
+
+        var html="<div class=\"cpd-table\" ><table>";
+        html+="<thead><tr><th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
+
+        var body=makeResultTableBody(json);
+        html=html+ body + "</tbody></table></div>";
+
+        return html;
     }
-
-    return html;
-}
-
-// str=metadata
-function makeResultTable(json)
-{
-    window.console.log("XXX calling makeResultTable..");
-
-    var html="<div class=\"cpd-table\" ><table>";
-    html+="<thead><tr><th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"selectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th><th class='myheader'>CPD Site Location</th></tr></thead>";
-
-    var body=makeResultTableBody(json);
-    html=html+ body + "</tbody></table></div>";
-
-    return html;
-}
 
 // using existing gid_list,
-function makeResultTableWithList(glist)
-{
-    window.console.log("calling makeResultTableWithList..");
+    function makeResultTableWithList(glist) {
+        window.console.log("calling makeResultTableWithList..");
 
-    if(glist.length > 0) {
-      toggle_layer_with_list(glist);
-      var newhtml = _makeResultTableBodyWithGList(glist);
-      document.getElementById("cpd-table-body").innerHTML = newhtml;
+        if(glist.length > 0) {
+          toggle_layer_with_list(glist);
+          var newhtml = _makeResultTableBodyWithGList(glist);
+          document.getElementById("cpd-table-body").innerHTML = newhtml;
+        }
     }
-}
 
+/********************** zip utilities functions *************************/
+    this.downloadURLsAsZip = function(ftype) {
+        var nzip=new JSZip();
+        var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
+        let timestamp=$.now();
+        let mlist=[];
+      
+        var cnt=layers.length;
+        for(var i=0; i<cnt; i++) {
+          let layer=layers[i];
 
+          if( !layer.scec_properties.selected ) {
+            continue;
+          }
 
+          if(ftype == "metadata" || ftype == "all") {
+          // create metadata from layer.scec_properties
+            let m=createMetaData(cpd_sliprate_site_data[layer.scec_properties.idx]);
+            mlist.push(m);
+          }
+      
+/***** this is for downloading some generated file from the result directory..
+          if(ftype == "extra") {
+            let downloadURL = getDataDownloadURL(layer.scec_properties.sliprate_id);
+            let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
+            let promise = $.get(downloadURL);
+            nzip.file(dname,promise);
+          }
+***/
+        }
+
+/**
+        var zipfname="CPD_SLIPRATE_"+timestamp+".zip"; 
+        nzip.generateAsync({type:"blob"}).then(function (content) {
+          // see FileSaver.js
+          saveAs(content, zipfname);
+        })
+***/
+
+        if(mlist.length != 0) {
+//        saveAsJSONBlobFile(mlist, timestamp)
+          var data=getCSVFromMeta(mlist, timestamp);
+          saveAsCSVBlobFile(data, timestamp);
+        }
+    };
 };

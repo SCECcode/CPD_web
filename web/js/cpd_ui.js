@@ -243,13 +243,10 @@ window.console.log("Calling sortMetadataTableByRow..",n);
       switching = true;
       switchcount ++; 
     } else {
-
       window.console.log("done switching..");
       if(switchcount != 0) {
 
       }
-     
-
       if (switchcount == 0 && dir == "asc") {
         dir = "desc";
         switching = true;
@@ -264,54 +261,6 @@ window.console.log("Calling sortMetadataTableByRow..",n);
       t.removeClass("fa-angle-up").addClass("fa-angle-down");
   }
 }
-
-
-// add details button
-function add_details_btn(meta,str) {
-  var gid=meta['gid'];
-  str=str+'<button class=\"btn btn-xs cxm-small-btn\" title=\"show more fault details\"><span id=\"detail_'+gid+'\" class=\"glyphicon glyphicon-menu-hamburger\" onclick=\"show_details('+gid+')\"></span></button>';
-  return str;
-}
-
-// add details button
-function add_highlight_btn(meta,str) {
-  var gid=meta['gid'];
-  str=str+'<button class=\"btn btn-xs cxm-small-btn\" title=\"highlight this fault\"><span id=\"detail_'+gid+'\" class=\"glyphicon glyphicon-ok\" onclick=\"toggle_highlight('+gid+',0)\"></span></button>';
-  return str;
-}
-
-function add_downloads_btn(meta,str) {
-  var gid=meta['gid'];
-  if(in_native_gid_list(gid)) {
-    var url=url_in_native_list(gid);
-    if(url) {
-      str=str+'<a href=\"'+url+'\" download> <button class=\"btn btn-xs cxm-btn\" title=\"download native tsurf file\"><span id=\"download_native_'+gid+'\" class=\"glyphicon glyphicon-download\"></span>native</button></a>';
-    }
-  }
-  return str;
-}
-
-function get_downloads_btn(meta) {
-    var str = "";
-    var gid=meta['gid'];
-
-    if(in_native_gid_list(gid)) {
-        var url=url_in_native_list(gid);
-        if(url) {
-            str=str+'<a href=\"'+url+'\" download> <button class=\"btn btn-xs cxm-btn\" title=\"download native tsurf file\"><span id=\"download_native_'+gid+'\" class=\"glyphicon glyphicon-download\"></span>native</button></a>';
-        }
-    }
-    return str;
-}
-
-
-function addDownloadSelect() {
-  var htmlstr="<div class=\"cpd-control-download-list\"><span style=\"font-size:14px;font-weight:bold; text-align:center;\">&nbsp;Select download </span><form onchange=\"changeDownloadSet()\"><div class=\"cpd-control-download-base\"><label> <div><input type=\"radio\" class=\"cpd-control-download-selector\" name=\"cpd-sliprate-download\" value=\"meta\"><span> metadata</span></div><div><input type=\"radio\" class=\"cpd-control-download-selector\" name=\"cpd-sliprate-download\" value=\"native\"><span> native + metadata</span></div></label><label><div><input type=\"radio\" class=\"cpd-control-download-selector\" name=\"cpd-sliprate-download\" value=\"500m\" ><span> 500m + metadata</span></div></label><label><div><input type=\"radio\" class=\"cpd-control-download-selector\" name=\"cpd-sliprate-download\" value=\"1000m\" ><span> 1000m + metadata</span></div></label></div></form></div>";
-
-   var html_div=document.getElementById('downloadSelect');
-   html_div.innerHTML = htmlstr;
-}
-
 
 function saveAsJSONBlobFile(data, timestamp)
 {
