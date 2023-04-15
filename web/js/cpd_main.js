@@ -64,6 +64,7 @@ jQuery(document).ready(function() {
        $('.cpd-maxrate-item').off("blur");
        if( $(this).val() != '' ) {
          setupSearchByMaxrate();
+         window.console.log(" need to call search by maxrate ");
        }
        $(this).blur();
      });
@@ -75,6 +76,7 @@ jQuery(document).ready(function() {
        $('.cpd-latlon-item').off("blur");
        if( $(this).val() != '' ) {
          searchByLatlon(0);
+         window.console.log(" need to call search by latlon ");
        }
        $(this).blur();
      });
@@ -82,8 +84,9 @@ jQuery(document).ready(function() {
 
   $("#cpd-search-type").on('change', function () {
       let type=$(this).val();
+  window.console.log( "initiate a search session...",type);
       CPD_SLIPRATE.freshSearch();
-      CPD_SLIPRATE.showSearch(type);
+      //CPD_SLIPRATE.showSearch(type);
   });
 
 

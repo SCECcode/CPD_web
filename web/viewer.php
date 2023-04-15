@@ -144,7 +144,6 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 <!-- control-row-1 -->
         <div id="top-control-row-1" class="col-12">
 
-<!--
           <div class="row mb-1">
              <form id="id_select_dataset">
                <label for="dataset"> Choose CPD Dataset : </label>
@@ -154,11 +153,10 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                         <span>Chronology sites</span></label>
              </form>
           </div>
--->
 
 <!-- SLIPRATE select -->
           <div id="cpd-sliprate-search-control" class="row container-control" style="display:;border:solid 1px red">
-            <div class="col-4 input-group filters mb-1" style="">
+            <div class="col-4 input-group filters mb-3" style="">
               <select id="cpd-search-type" class="custom-select">
                   <option value="">Search the Slip Rate Sites</option>
                   <option value="faultname">Fault Name</option>
@@ -168,7 +166,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                   <option value="maxrate">maxRate</option>
               </select>
               <div class="input-group-append">
-                  <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
+                  <button id="refresh-all-button" onclick="CPD_SLIPRATE.resetSearch();"
                            class="btn btn-dark pl-4 pr-4">Reset</button>
               </div>
             </div>
@@ -381,7 +379,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
               </thead>    
               <tbody>
                 <tr id="placeholder-row">
-                  <td colspan="6">Metadata for selected sliprate site will appear here. </td>
+                  <td colspan="9">Metadata for selected sites will appear here. </td>
                 </tr>
             </table>
          </div>

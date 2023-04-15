@@ -5,11 +5,6 @@
 var CPD_SLIPRATE = new function () {
     window.console.log("in CPD_SLIPRATE..");
 
-    // searching mode, would show all active layers with 
-    //    selected ones in highlights
-    // non-searching mode, would be showing all layers
-    this.searching = false;
-
     // complete set of sliprate layers, one marker layer for one site, 
     // setup once from viewer.php
     this.cpd_layers;
@@ -78,7 +73,7 @@ var CPD_SLIPRATE = new function () {
 
     this.activateData = function() {
         activeProduct = Products.SLIPRATE;
-        this.showProduct();
+        this.showOnMap();
         $("div.control-container").hide();
         $("#cpd-controls-container").show();
 
@@ -89,8 +84,9 @@ var CPD_SLIPRATE = new function () {
 // cpd_sliprate_site_data is from viewer.php, which is the JSON 
 // result from calling php getAllSiteData script
     this.generateLayers = function () {
-        this.cpd_layers = new L.FeatureGroup();
+        this.cpd_layers = [];
 
+// SELECT * FROM tb ORDER BY gid ASC;
         for (const index in cpd_sliprate_site_data) {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
                 let gid = cpd_sliprate_site_data[index].gid;
@@ -131,7 +127,7 @@ var CPD_SLIPRATE = new function () {
                     reference: reference
                 };
 
-                this.cpd_layers.addLayer(marker);
+                this.cpd_layers.push(marker);
                 this.cpd_active_layers.addLayer(marker);
                 this.cpd_active_gid.push(gid);
 
@@ -181,16 +177,41 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 
     };
 
+// recreate a new active_layers using a glist
+// glist is a sorted ascending list
+// this.cpd_layers should be also ascending
+    this.createLayerGroupByGids = function(gidlist) {
+        let gsz=gidlist.length;
+	let lsz= this.cpd_layers.length;
+        let i_start=0;
+        let group= new L.FeatureGroup();
+
+        for (let j=0; j<gsz; j++) {
+          let gid=gidlist[j];
+          for (let i=i_start; i< lsz; i++) {
+            let layer = this.cpd_layers[i];
+            if (layer.hasOwnProperty("scec_properties")) {
+               if (gid == layer.scec_properties.gid) {
+		   fgroup.addLayer(layer);
+                   i_start=i+1;
+               }
+            }
+          }
+        }
+        return fgroup; 
+    };
+
 // search for a layer from master list by gid
     this.getLayerByGid = function(gid) {
         let foundLayer = false;
-        this.cpd_layers.eachLayer(function(layer){
+        for (let i=0; i< this.cpd_layers.length; i++) {
+          let layer = this.cpd_layers[i];
           if (layer.hasOwnProperty("scec_properties")) {
              if (gid == layer.scec_properties.gid) {
-                 foundLayer = layer;
+		 return layer;     
              }
           }
-       });
+       }
        return foundLayer;
     };
 
@@ -359,58 +380,44 @@ window.console.log("HERE moving table Row ???");
             default:
                 // no action
         }
-        $all_search_controls.hide();
     };
 
-    this.showProduct = function () {
-window.console.log("SHOW product");
+    this.showOnMap = function () {
         this.cpd_active_layers.addTo(viewermap);
     };
 
-    this.hideProduct = function () {
+    this.hideOnMap = function () {
         this.cpd_active_layers.remove();
-    };
-
-// reset everything
-    this.reset = function() {
-
-window.console.log("sliprate calling --->> reset");
-
-        this.zeroSelectedCount();
-        this.showSearch('none');
-        this.searching = false;
-
-        this.cpd_active_layers = new L.FeatureGroup();
-        this.cpd_active_gid=[];
-
-        this.showProduct();
-
-        remove_bounding_rectangle_layer();
-        this.replaceMetadataTableBody([]);
-        skipRectangle();
-        viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
-        $("#cpd-controls-container input, #cpd-controls-container select").val("");
-
-        this.resetMinRateSlider();
-        this.resetMaxRateSlider();
-        this.clearAllSelections();
     };
 
 // reset just the search only
     this.resetSearch = function (){
-        this.searching = false;
-
 window.console.log("sliprate calling --->> resetSearch.");
         this.clearAllSelections();
 
-        viewermap.removeLayer(this.cpd_active_layers);
-        this.cpd_active_layers = new L.FeatureGroup();
-        this.cpd_active_gid=[];
+        this.hideOnMap();
 
-        this.replaceMetadataTableBody([]);
+	this.cpd_active_layers= new L.FeatureGroup();     
+	this.cpd_active_gid=[];
+
+        for (let i=0; i< this.cpd_layers.length; i++) {
+          let marker = this.cpd_layers[i];
+          if (marker.hasOwnProperty("scec_properties")) {
+             let gid = marker.scec_properties.gid;
+             this.cpd_active_layers.addLayer(marker);
+             this.cpd_active_gid.push(gid);
+          }
+        }
+        this.cpd_active_layers.addTo(viewermap);
 
         skipRectangle();
         remove_bounding_rectangle_layer();
+
+        this.resetMinrateSlider();
+        this.resetMaxrateSlider();
+        this.resetLatLon();
+        this.resetFaultname();
+        this.resetSitename();
 
         viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
     };
@@ -419,12 +426,7 @@ window.console.log("sliprate calling --->> resetSearch.");
     this.freshSearch = function (){
 
 window.console.log("sliprate --- calling freshSearch..");
-
-        $("#cpd-controls-container input").val("");
-
-	    // XXX not yet
-//        this.resetMinRateSlider();
-//        this.resetMaxRateSlider();
+	    
         this.resetSearch();
 
         if ($("#cpd-model-cfm").prop('checked')) {
@@ -510,7 +512,7 @@ window.console.log( "   HERE -- search by latlon");
 
     this.searchBox = function (type, criteria) {
 window.console.log("sliprate --->> calling searchBox");
-        this.hideProduct();
+        this.hideOnMap();
         this.resetSearch();
 
         this.searching = true;
