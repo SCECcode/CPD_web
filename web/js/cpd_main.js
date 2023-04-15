@@ -80,12 +80,12 @@ jQuery(document).ready(function() {
      });
   });
 
-  $("#cpd-search-type").change(function () {
-      var funcToRun = $(this).val();
-      if (funcToRun != "") {
-          window[funcToRun]();
-      }
+  $("#cpd-search-type").on('change', function () {
+      let type=$(this).val();
+      CPD_SLIPRATE.freshSearch();
+      CPD_SLIPRATE.showSearch(type);
   });
+
 
   $("#cpd-model-cfm").change(function() {
       if ($("#cpd-model-cfm").prop('checked')) {
@@ -102,8 +102,6 @@ jQuery(document).ready(function() {
               CXM.hideGFMRegions(viewermap);
       }
   });
-
-  $("#cpd-search-type").trigger("change");
 
   $.event.trigger({ type: "page-ready", "message": "completed", });
 

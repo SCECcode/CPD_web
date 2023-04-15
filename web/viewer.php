@@ -143,28 +143,29 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
       <div id="cpd-controls-container" class="col" >
 <!-- control-row-1 -->
         <div id="top-control-row-1" class="col-12">
+
+<!--
           <div class="row mb-1">
              <form id="id_select_dataset">
                <label for="dataset"> Choose CPD Dataset : </label>
                <label><input type="radio" id="dataset_sliprate" name=dataset />
                         <span>Sliprate sites</span></label>
-<!--
                <label><input type="radio" id="dataset_chronology" name=dataset />
                         <span>Chronology sites</span></label>
--->
              </form>
           </div>
+-->
 
 <!-- SLIPRATE select -->
-          <div id="cpd-sliprate-search-control" class="row" style="display:;">
-            <div class="row col-4 input-group filters" style="">
+          <div id="cpd-sliprate-search-control" class="row container-control" style="display:;border:solid 1px red">
+            <div class="col-4 input-group filters mb-1" style="">
               <select id="cpd-search-type" class="custom-select">
                   <option value="">Search the Slip Rate Sites</option>
                   <option value="faultname">Fault Name</option>
                   <option value="sitename">Site Name</option>
                   <option value="latlon">Latitude &amp; Longitude Box</option>
-                  <option value="minrateslider">minRate</option>
-                  <option value="maxrateslider">maxRate</option>
+                  <option value="minrate">minRate</option>
+                  <option value="maxrate">maxRate</option>
               </select>
               <div class="input-group-append">
                   <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
@@ -175,7 +176,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 <!-- SLIPRATE option expand -->
             <div class="col-8">
               <ul>
-                <li id='cpd-fault-name' class='navigationLi ' style="display:none">
+                <li id='cpd-fault-name' class='navigationLi' style="display:none">
                   <div class='menu row justify-content-center'>
                     <div class="col-12">
                       <div class="d-flex">
@@ -195,7 +196,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                     </div>
                   </div>
                 </li>
-                <li id='cpd-latlon' class='navigationLi ' style="display:none">
+                <li id='cpd-latlon' class='navigationLi ' style="display:">
                   <div id='cpd-latlonMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">

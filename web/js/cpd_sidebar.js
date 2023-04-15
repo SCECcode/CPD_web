@@ -2,17 +2,19 @@
 
   cpd_sidebar.js
 
+<option value="sliprate_faultname_search">Fault Name</option>
+<option value="sliprate_sitename_search">Site Name</option>
+<option value="sliprate_latlon_search">Latitude &amp; Longitude Box</option>
+<option value="sliprate_minrate_search">minRate</option>
+<option value="sliprate_maxrate_search">maxRate</option>
+
 **/
 
-var area_sidebar=false;
-var zone_sidebar=false;
-var section_sidebar=false;
-var name_sidebar=false;
-var keyword_sidebar=false;
+var fault_sidebar=false;
+var site_sidebar=false;
 var latlon_sidebar=false;
 var minrate_sidebar=false;
 var maxrate_sidebar=false;
-var gid_sidebar=false;
 
 var drawing_rectangle=false;
 
