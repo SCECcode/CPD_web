@@ -554,7 +554,6 @@ window.console.log("sliprate --->> calling search.. <<----");
             case CPD_SLIPRATE.searchType.faultname:
                 {
                 let new_faultname=criteria[0];
-                let glist= <?php print $cpd_sliprate->searchFaultname(faultname)->outputJSON(); ?>;
  window.console.log(" fultname HERE...");
 		this.createActiveLayerGroupByGids(glist);
                 }

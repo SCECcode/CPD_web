@@ -19,28 +19,27 @@ class SLIPRATE extends SpatialData
     }
     $error = false;
 
-
     switch ($type) {
       case "faultname":
         if (count($criteria) !== 1) {
           $this->php_result = "BAD";
           return $this;
         }
-        list($faultname) = $criteria;
+	list($faultname) = $criteria;
 
 	$query = "SELECT gid, sliprateid, faultname FROM sliprate_db WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
-	$data = array($faultname);
+ 	$data = array($faultname);
         $result = pg_query_params($dbconn, $query, $data);
 
         $sliprate_data = array();
+ 
+        while($row = pg_fetch_object($result)) { $sliprate_data.push($row[0]); }
 
-// gid is $row[0], sliprateid is $row[1], faultname is $row[2] 
-        while($row = pg_fetch_object($result)) {
-          $sliprate_data[].push($row[0]);
-        }
-
-        $this->php_result = $sliprate_data;
+	$this->php_result = $sliprate_data;
         return $this;
+        break;
+
+
         break;
       case "sitename":
         break;
