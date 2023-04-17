@@ -129,7 +129,7 @@ function bindPopupEachFeatureName(feature, layer) {
 
 function makeGeoGroup(traceList) {
    var cnt=traceList.length;
-   window.console.log("number of importing traces ",cnt);
+   window.console.log("number of importing external traces ",cnt);
    var group = L.layerGroup();
    for(var i=0; i< cnt; i++) {
      var trace=traceList[i];

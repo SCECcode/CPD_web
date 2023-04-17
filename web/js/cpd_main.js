@@ -82,10 +82,42 @@ jQuery(document).ready(function() {
      });
   });
 
+  $('.cpd-sitename-item').on("focus", function() {
+     $('.cpd-sitename-item').on("blur mouseout", function() {
+       $('.cpd-sitename-item').off("mouseout");
+       $('.cpd-sitename-item').off("blur");
+       if( $(this).val() != '' ) {
+         window.console.log(" need to call search by sitename ");
+	 let criteria = [];
+         criteria.push($(this).val());
+         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.siteName, criteria);
+       }
+       $(this).blur();
+     });
+  });
+
+  $('.cpd-faultname-item').on("focus", function() {
+window.console.log("getting on the faultname item..");
+     $('.cpd-faultname-item').on("blur mouseout", function() {
+       $('.cpd-faultname-item').off("mouseout");
+       $('.cpd-faultname-item').off("blur");
+       if( $(this).val() != '' ) {
+	 let criteria = [];
+         criteria.push($(this).val());
+         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.faultName, criteria);
+         window.console.log(" need to call search by faultname ");
+       }
+       $(this).blur();
+     });
+  });
+
+
   $("#cpd-search-type").on('change', function () {
       let type=$(this).val();
   window.console.log( "initiate a search session...",type);
-      CPD_SLIPRATE.freshSearch();
+      if(type != "") {
+        CPD_SLIPRATE.freshSearch();
+      }
       //CPD_SLIPRATE.showSearch(type);
   });
 

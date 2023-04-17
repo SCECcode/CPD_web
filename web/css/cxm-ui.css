@@ -1,4 +1,7 @@
 /* cxm viewer required styles */
+select, input {
+    max-width: 260px;
+}
 
 #refresh-all-button {
     height: calc(2.25rem + 2px);
@@ -9,7 +12,7 @@
 }
 
 div.vector-slider-input-boxes input[type='text']{
-   width: 105px;
+   width: 100px;
    margin-left: 5px;
 }
 
@@ -759,11 +762,6 @@ table tr td label {
 
 .input-group {
     max-width: 269px;
-}
-
-.cxm-input-group {
-    max-width: 400px;
-    padding: 0;
 }
 
 .info-page-container {

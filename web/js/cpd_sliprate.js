@@ -60,12 +60,14 @@ var CPD_SLIPRATE = new function () {
     };
 
     this.searchType = {
+        none: 'none',
         faultname: 'faultname',
         sitename: 'sitename',
         latlon: 'latlon',
         minrate: 'minrate',
         maxrate: 'maxrate'
     };
+    this.searchingType=this.searchType.none;
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
                         <td colspan="9">Metadata for selected sliprate sites will appear here.</td>
@@ -149,14 +151,12 @@ var CPD_SLIPRATE = new function () {
                     if(high_rate < cpd_maxrate_min) {
                       cpd_maxrate_min=high_rate;  
                     }
-                    if(high_rate > cpd_minrate_max) {
-                      cpd_maxrate_max=low_rate;
+                    if(high_rate > cpd_maxrate_max) {
+                      cpd_maxrate_max=high_rate;
                     }
                 }
             }
         }
-
-        window.console.log("HERE");
 
         this.cpd_active_layers.on('click', function(event) {
             if(activeProduct == Products.SLIPRATE) { 
@@ -180,11 +180,14 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 // recreate a new active_layers using a glist
 // glist is a sorted ascending list
 // this.cpd_layers should be also ascending
-    this.createLayerGroupByGids = function(gidlist) {
+    this.createActiveLayerGroupByGids = function(gidlist) {
+
+        this.cpd_active_layers= new L.FeatureGroup();
+        this.cpd_active_gid=[];
+
         let gsz=gidlist.length;
 	let lsz= this.cpd_layers.length;
         let i_start=0;
-        let group= new L.FeatureGroup();
 
         for (let j=0; j<gsz; j++) {
           let gid=gidlist[j];
@@ -192,14 +195,31 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
             let layer = this.cpd_layers[i];
             if (layer.hasOwnProperty("scec_properties")) {
                if (gid == layer.scec_properties.gid) {
-		   fgroup.addLayer(layer);
+		   this.cpd_active_layers.addLayer(layer);
+                   this.cpd_active_gid.push(gid);
                    i_start=i+1;
                }
             }
           }
         }
-        return fgroup; 
     };
+
+// recreate the original map state
+    this.recreateActiveLayerGroup = function() {
+
+        this.cpd_active_layers= new L.FeatureGroup();
+        this.cpd_active_gid=[];
+        
+        for (let i=0; i< this.cpd_layers.length; i++) {
+          let marker = this.cpd_layers[i];
+          if (marker.hasOwnProperty("scec_properties")) {
+             let gid = marker.scec_properties.gid;
+             this.cpd_active_layers.addLayer(marker);
+             this.cpd_active_gid.push(gid);
+          }
+        }
+        this.cpd_active_layers.addTo(viewermap);
+    }
 
 // search for a layer from master list by gid
     this.getLayerByGid = function(gid) {
@@ -390,25 +410,45 @@ window.console.log("HERE moving table Row ???");
         this.cpd_active_layers.remove();
     };
 
+// reset from the reset button
+// reset option button, the map to original state
+// but leave the external model state the same
+    this.reset = function () {
+
+window.console.log("calling reset..");
+
+        this.resetSearch();
+
+        if ($("#cpd-model-cfm").prop('checked')) {
+          CXM.showCFMFaults(viewermap);
+          } else {
+          CXM.hideCFMFaults(viewermap);
+        }
+
+        if ($("#cpd-model-gfm").prop('checked')) {
+          CXM.showGFMRegions(viewermap);
+          } else {
+          CXM.hideGFMRegions(viewermap);
+        }
+
+	$("#cpd-search-type").val("");
+        this.searchingType = this.searchType.none;
+    };
+
 // reset just the search only
     this.resetSearch = function (){
+
 window.console.log("sliprate calling --->> resetSearch.");
+
         this.clearAllSelections();
 
-        this.hideOnMap();
-
-	this.cpd_active_layers= new L.FeatureGroup();     
-	this.cpd_active_gid=[];
-
-        for (let i=0; i< this.cpd_layers.length; i++) {
-          let marker = this.cpd_layers[i];
-          if (marker.hasOwnProperty("scec_properties")) {
-             let gid = marker.scec_properties.gid;
-             this.cpd_active_layers.addLayer(marker);
-             this.cpd_active_gid.push(gid);
-          }
+	// put all original markers back
+        if(this.cpd_active_gid.length != this.cpd_layers.length) {
+          this.hideOnMap();
+          this.recreateActiveLayerGroup();
+          } else {
+window.console.log("active layers is original.. no need to recreate");
         }
-        this.cpd_active_layers.addTo(viewermap);
 
         skipRectangle();
         remove_bounding_rectangle_layer();
@@ -453,8 +493,54 @@ window.console.log("sliprate --- calling freshSearch..");
         return [];
     };
 
-    this.search = function (type, criteria) {
+    this.search = function(type, criteria) {
+
+        $searchResult = $("#searchResult");
+        if (!type || !criteria) {
+            $searchResult.html("");
+        }
+        if (!Array.isArray(criteria)) {
+            criteria = [criteria];
+        }
+
+        let JSON_criteria = JSON.stringify(criteria);
+
+window.console.log("calling search() with the type.."+type);
+window.console.log("calling search() with the string.."+JSON_criteria);
+
+        $("#wait-spinner").show();
+
+        $.ajax({
+            url: "php/search.php",
+            data: {t: type, q: JSON_criteria},
+        }).done(function(sliprate_result) {
+
+            let results=[];
+            let ncriteria=[];
+window.console.log(sliprate_result);
+            if(sliprate_result === "[\"[]\"]") {
+window.console.log("Did not find any PHP result");
+            } else {
+                let tmp=JSON.parse(sliprate_result); 
+                let jblob=JSON.parse(tmp[0].replace(/'/g,'"'));
+                let glist=[];
+/*****
+[{'gidlist': [ gid1, gid2 ...] } ]
+****/
+                if(type==SLIPRATE.searchType.faultname) {
+                    let item=jblob[0];
+                    gidlist=item['gidlist]'];
+window.console.log("WHAT are the result..");
+                    } else { // hanle othe types
+                }
+	        this.createActiveLayerGroupByGids(glist);
+            }
+        });
+    };
+
+    this.search00 = function (type, criteria) {
 window.console.log("sliprate --->> calling search.. <<----");
+        this.searchingType = type;
         let results = [];
         switch (type) {
             case CPD_SLIPRATE.searchType.maxrate:
@@ -467,6 +553,10 @@ window.console.log("sliprate --->> calling search.. <<----");
                 break;
             case CPD_SLIPRATE.searchType.faultname:
                 {
+                let new_faultname=criteria[0];
+                let glist= <?php print $cpd_sliprate->searchFaultname(faultname)->outputJSON(); ?>;
+ window.console.log(" fultname HERE...");
+		this.createActiveLayerGroupByGids(glist);
                 }
                 break;
             case CPD_SLIPRATE.searchType.sitename:
@@ -483,36 +573,19 @@ window.console.log( "   HERE -- search by latlon");
                 remove_bounding_rectangle_layer();
                 add_bounding_rectangle(criteria[0],criteria[1],criteria[2],criteria[3]);
 
-                var new_active_layers = new L.FeatureGroup();
-                var new_active_gid=[];
-                var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
-                let cnt=this.cpd_active_gid.length();
-
                 let glist=_foo();
-
-                for(let i=0; i<cnt; i++) {
-                    let g=this.cpd_active_gid[i];
-                    if(g in glist) {
-                        let layer=layers[i];
-                        results.push(layer); 
-                    }
+		this.createActiveLayerGroupByGids(glist);
                 }
-                }
-                return results;
                 break;
+            default : 
+                {
+                window.console.log("BAD... search");
+                }
         }
-    };
-
-    // private function
-    var _foo = function (){
-       var foolist=[];
-       foolist.push(1);
-       return foolist;
     };
 
     this.searchBox = function (type, criteria) {
 window.console.log("sliprate --->> calling searchBox");
-        this.hideOnMap();
         this.resetSearch();
 
         this.searching = true;
@@ -687,7 +760,22 @@ window.console.log("generateMetadataTable..");
             $("#metadata-table").html(generateMetadataTable(results));
         };
 
-/********************* slider functions **************************/
+/********************* reset functions **************************/
+        this.resetLatLon = function () {
+          if( this.searchingType != this.searchType.latlon) return;
+          $("#cpd-firstLatTxt").val("");
+          $("#cpd-firstLonTxt").val("");
+          $("#cpd-secondLatTxt").val("");
+          $("#cpd-scecondLonTxt").val("");
+        }
+        this.resetFaultname = function () {
+          if( this.searchingType != this.searchType.faultname) return;
+          $("#cpd-faultnameTxt").val("");
+        }
+        this.resetSitename = function () {
+          if( this.searchingType != this.searchType.sitename) return;
+          $("#cpd-sitenameTxt").val("");
+        }
 
         var resetMinrateRangeColor = function (target_min, target_max){
           let minRGB= makeRGB(target_min, cpd_minrate_max, cpd_minrate_min );
@@ -697,6 +785,7 @@ window.console.log("generateMetadataTable..");
         }
 
         this.resetMinrateSlider = function () {
+          if( this.searchingType != this.searchType.minrate) return;
           $("#slider-minrate-range").slider('values', 
                               [cpd_minrate_min, cpd_minrate_max]);
           $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);
@@ -711,12 +800,14 @@ window.console.log("generateMetadataTable..");
         }
 
         this.resetMaxrateSlider = function () {
+          if( this.searchingType != this.searchType.maxrate) return;
           $("#slider-maxrate-range").slider('values', 
                               [cpd_maxrate_min, cpd_maxrate_max]);
           $("#cpd-minMaxrateSliderTxt").val(cpd_maxrate_min);
           $("#cpd-maxMaxrateSliderTxt").val(cpd_maxrate_max);
         }
 
+/********************* sliprate INTERFACE function **************************/
         this.setupCPDInterface = function() {
 
             var $result_table = $('#result-table');
@@ -775,8 +866,9 @@ window.console.log("generateMetadataTable..");
             $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
             $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
 
-            $("#slider-minrate-range").slider({ 
-                  range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
+/* setup  sliders */
+            $("#slider-maxrate-range").slider({ 
+                  range:true, step:0.01, min:cpd_maxrate_min, max:cpd_maxrate_max, values:[cpd_maxrate_min, cpd_maxrate_max],
               slide: function( event, ui ) {
                            $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
                            $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
@@ -788,17 +880,16 @@ window.console.log("generateMetadataTable..");
                            resetMinrateRangeColor(ui.values[0],ui.values[1]);
                      },
               stop: function( event, ui ) {
-                           let searchType = CPD_SLIPRATE.searchType.minrate;
+                           let searchType = CPD_SLIPRATE.searchType.maxrate;
                            CPD_SLIPRATE.searchBox(searchType, ui.values);
                      },
               create: function() {
-                          $("#cpd-minMaxrateSliderTxt").val(cpd_minrate_min);
-                          $("#cpd-maxMaxrateSliderTxt").val(cpd_minrate_max);
+                          $("#cpd-minMaxrateSliderTxt").val(cpd_maxrate_min);
+                          $("#cpd-maxMaxrateSliderTxt").val(cpd_maxrate_max);
                     }
             });
-            $('#slider-minrate-range').slider("option", "min", cpd_minrate_min);
-            $('#slider-minrate-range').slider("option", "max", cpd_minrate_max);
-
+            $('#slider-maxrate-range').slider("option", "min", cpd_maxrate_min);
+            $('#slider-maxrate-range').slider("option", "max", cpd_maxrate_max);
     };
 
 /******************  Result table functions **************************/

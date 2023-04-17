@@ -21,7 +21,6 @@ $cpd_sliprate = new SLIPRATE();
     <link rel="stylesheet" href="css/vendor/glyphicons.css">
     <link rel="stylesheet" href="css/vendor/all.css">
     <link rel="stylesheet" href="css/cxm-ui.css?v=1">
-    <link rel="stylesheet" href="css/sidebar.css?v=1">
 
     <script type="text/javascript" src="js/vendor/leaflet-src.js"></script>
     <script type='text/javascript' src='js/vendor/leaflet.awesome-markers.min.js'></script>
@@ -74,7 +73,6 @@ $cpd_sliprate = new SLIPRATE();
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
-    <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_ui.js?v=1"></script>
 
 <!-- cxm js -->
@@ -149,47 +147,51 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                <label for="dataset"> Choose CPD Dataset : </label>
                <label><input type="radio" id="dataset_sliprate" name=dataset />
                         <span>Sliprate sites</span></label>
+<!--
                <label><input type="radio" id="dataset_chronology" name=dataset />
                         <span>Chronology sites</span></label>
+-->
              </form>
           </div>
 
 <!-- SLIPRATE select -->
-          <div id="cpd-sliprate-search-control" class="row container-control" style="display:;border:solid 1px red">
-            <div class="col-4 input-group filters mb-3" style="">
+          <div id="cpd-sliprate-search-control" class="row mt-1 container-control" style="margin-left:-30px">
+            <div class="col-4 input-group filters mb-3">
               <select id="cpd-search-type" class="custom-select">
                   <option value="">Search the Slip Rate Sites</option>
                   <option value="faultname">Fault Name</option>
                   <option value="sitename">Site Name</option>
-                  <option value="latlon">Latitude &amp; Longitude Box</option>
+                  <option value="latlon">Latitude &amp; Longitude</option>
                   <option value="minrate">minRate</option>
                   <option value="maxrate">maxRate</option>
               </select>
-              <div class="input-group-append">
-                  <button id="refresh-all-button" onclick="CPD_SLIPRATE.resetSearch();"
-                           class="btn btn-dark pl-4 pr-4">Reset</button>
+	      <div class="input-group-append">
+                  <button id="refresh-all-button" onclick="CPD_SLIPRATE.reset();"
+                           class="btn btn-dark pl-4 pr-4" type="button">Reset</button>
               </div>
             </div>
 
 <!-- SLIPRATE option expand -->
             <div class="col-8">
               <ul>
-                <li id='cpd-fault-name' class='navigationLi' style="display:none">
+                <li id='cpd-fault-name' class='navigationLi' style="display:">
                   <div class='menu row justify-content-center'>
                     <div class="col-12">
                       <div class="d-flex">
-                           <input placeholder="Enter Fault Name" type="text"
-                                  class="cpd-search-item form-control" style=""/>
+                           <input id="cpd-faultnameTxt" placeholder="Enter Fault Name" type="text"
+                                  onfocus="this.value=''"
+                                  class="cpd-faultname-item form-control">
                       </div>
                     </div>
                   </div>
                 </li>
-                <li id='cpd-site-name' class='navigationLi ' style="display:none">
+                <li id='cpd-site-name' class='navigationLi ' style="display:">
                   <div class='menu row justify-content-center'>
                     <div class="col-12">
                       <div class="d-flex">
-                           <input placeholder="Enter Site Name" type="text"
-                                  class="cpd-search-item form-control" style=""/>
+                           <input id="cpd-sitenameTxt" placeholder="Enter Site Name" type="text"
+                                  onfocus="this.value=''"
+                                  class="cpd-sitename-item form-control">
                       </div>
                     </div>
                   </div>
@@ -233,14 +235,14 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                 </li>
 
 <!-- minrate slider -->
-                <li id='cpd-minrate-slider' class='navigationLi' style="display:none">
+                <li id='cpd-minrate-slider' class='navigationLi' style="display:;">
                   <div id='cpd-minrate-sliderMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">
                           <p>Select a range on the minRate slider or enter the two boundaries</p>
                       </div>
                       <div class="col-8">
-                        <div class="form-inline">
+                        <div class="form-inline vector-slider-input-boxes">
                           <input type="text"
                               id="cpd-minMinrateSliderTxt"
                               title="min minrate slider"
@@ -262,14 +264,14 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                   </div>
                 </li>
 <!-- maxrate slider -->
-                <li id='cpd-maxrate-slider' class='navigationLi' style="display:none">
+                <li id='cpd-maxrate-slider' class='navigationLi' style="display:">
                   <div id='cpd-maxrate-sliderMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">
-                          <p>Select a range on the minRate slider or enter the two boundaries</p>
+                          <p>Select a range on the maxRate slider or enter the two boundaries</p>
                       </div>
                       <div class="col-8">
-                        <div class="form-inline">
+                        <div class="form-inline vector-slider-input-boxes">
                           <input type="text"
                               id="cpd-minMaxrateSliderTxt"
                               title="min maxrate slider"
@@ -367,6 +369,13 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
       <div id="top-map" class="col-7 pl-1">
         <div class="w-100 mb-1" id='CPD_plot'
              style="position:relative;border:solid 1px #ced4da; height:576px;">
+             <div  id='wait-spinner' style="">
+               <div class="d-flex justify-content-center" >
+                 <div class="spinner-border text-light" role="status">
+                   <span class="sr-only">Loading...</span>
+                 </div>
+               </div>
+             </div>
         </div>
       </div>
     </div>

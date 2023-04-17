@@ -14,21 +14,41 @@ class SLIPRATE extends SpatialData
   public function search($type, $criteria="")
   {
     $query = "";
+    if (!is_array($criteria)) {
+      $criteria = array($criteria);
+    }
+    $error = false;
+
 
     switch ($type) {
       case "faultname":
+        if (count($criteria) !== 1) {
+          $this->php_result = "BAD";
+          return $this;
+        }
+        list($faultname) = $criteria;
+
+	$query = "SELECT gid, sliprateid, faultname FROM sliprate_db WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
+	$data = array($faultname);
+        $result = pg_query_params($dbconn, $query, $data);
+
+        $sliprate_data = array();
+
+// gid is $row[0], sliprateid is $row[1], faultname is $row[2] 
+        while($row = pg_fetch_object($result)) {
+          $sliprate_data[].push($row[0]);
+        }
+
+        $this->php_result = $sliprate_data;
+        return $this;
         break;
       case "sitename":
         break;
-      case "minrateslider":
+      case "minrate":
         break;
-      case "maxrateslider":
+      case "maxrate":
         break;
       case "latlon":
-        if (!is_array($criteria)) {
-         $criteria = array($criteria);
-        }
-
         if (count($criteria) !== 4) {
           $this->php_result = "BAD";
           return $this;
