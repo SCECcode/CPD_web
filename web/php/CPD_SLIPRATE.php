@@ -52,8 +52,9 @@ class SLIPRATE extends SpatialData
           $this->php_result = "BAD";
           return $this;
         }
+        $criteria = array_map("floatVal", $criteria);
         list($min, $max) = $criteria;
-	$query = "SELECT gid FROM sliprate_tb WHERE lowrate NOT NULL AND lowrate >= $1 AND lowrate <= $2";
+	$query = "SELECT gid FROM sliprate_tb WHERE lowrate >= $1 AND lowrate <= $2";
         $data = array($min,$max);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();
@@ -66,8 +67,9 @@ class SLIPRATE extends SpatialData
           $this->php_result = "BAD";
           return $this;
         }
+        $criteria = array_map("floatVal", $criteria);
         list($min, $max) = $criteria;
-	$query = "SELECT gid FROM sliprate_tb WHERE highrate NOT NULL AND highrate >= $1 AND highrate <= $2";
+	$query = "SELECT gid FROM sliprate_tb WHERE highrate >= $1 AND highrate <= $2";
         $data = array($min,$max);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();

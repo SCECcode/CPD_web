@@ -52,7 +52,7 @@ jQuery(document).ready(function() {
        $('.cpd-minrate-item').off("mouseout");
        $('.cpd-minrate-item').off("blur");
        if( $(this).val() != '' ) {
-         setupSearchByMinrate();
+         CPD_SLIPRATE.refreshMinrateSlider();
        }
        $(this).blur();
      });
@@ -63,10 +63,7 @@ jQuery(document).ready(function() {
        $('.cpd-maxrate-item').off("mouseout");
        $('.cpd-maxrate-item').off("blur");
        if( $(this).val() != '' ) {
-
-         setupSearchByMaxrate();
-         window.console.log(" need to call search by maxrate ");
-
+         CPD_SLIPRATE.refreshMaxrateSlider();
        }
        $(this).blur();
      });
@@ -118,7 +115,7 @@ window.console.log("getting on the faultname item..");
       let type=$(this).val();
   window.console.log( "initiate a search session...",type);
       if(type != "") {
-        CPD_SLIPRATE.freshSearch();
+        CPD_SLIPRATE.freshSearch(type);
       }
       //CPD_SLIPRATE.showSearch(type);
   });

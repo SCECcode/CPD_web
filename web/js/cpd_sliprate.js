@@ -491,9 +491,29 @@ window.console.log("active layers is original.. no need to recreate");
     };
 
 // a complete fresh search
-    this.freshSearch = function (){
+    this.freshSearch = function (t){
 
 window.console.log("sliprate --- calling freshSearch..");
+        switch (t) {
+	    case "faultname": 
+	       this.searchingType = this.searchType.faultname;
+               break;
+	    case "sitename": 
+	       this.searchingType = this.searchType.sitename;
+               break;
+	    case "minrate": 
+	       this.searchingType = this.searchType.minrate;
+               break;
+	    case "maxrate": 
+	       this.searchingType = this.searchType.maxrate;
+               break;
+	    case "latlon": 
+	       this.searchingType = this.searchType.latlon;
+               break;
+            default:
+	       this.searchingType = this.searchType.none;
+               break;
+        }
             
         this.resetSearch();
 
@@ -522,7 +542,9 @@ window.console.log("sliprate --- calling freshSearch..");
 
     this.search = function(type, criteria) {
 
-        this.searchingType = type;
+        if(type != this.searchingType)
+          return;
+
         $searchResult = $("#searchResult");
         if (!type || !criteria) {
             $searchResult.html("");
@@ -657,7 +679,6 @@ window.console.log("sliprate --->> calling searchBox");
         }
 
        this.replaceMetadataTableBody(results);
-window.console.log("DONE with BoxSearch..");
     };
 
 /********** metadata  functions *********************/
@@ -835,6 +856,22 @@ window.console.log("generateMetadataTable..");
           $("#cpd-maxMaxrateSliderTxt").val(cpd_maxrate_max);
         }
 
+        this.refreshMaxrateSlider = function () {
+          if( this.searchingType != this.searchType.maxrate) return;
+          let maxrate_min=$("#cpd-minMaxrateSliderTxt").val();
+          let maxrate_max=$("#cpd-maxMaxrateSliderTxt").val();
+          $("#slider-maxrate-range").slider('values', 
+                              [maxrate_min, maxrate_max]);
+        }
+
+        this.refreshMinrateSlider = function () {
+          if( this.searchingType != this.searchType.minrate) return;
+          let minrate_min=$("#cpd-minMinrateSliderTxt").val();
+          let minrate_max=$("#cpd-maxMinrateSliderTxt").val();
+          $("#slider-minrate-range").slider('values', 
+                              [minrate_min, minrate_max]);
+	}
+
 /********************* sliprate INTERFACE function **************************/
         this.setupCPDInterface = function() {
 
@@ -884,7 +921,7 @@ window.console.log("generateMetadataTable..");
                      },
               stop: function( event, ui ) {
                            let searchType = CPD_SLIPRATE.searchType.minrate;
-		      window.console.log(" HERE in minrage search call..");
+		      window.console.log(" HERE in minrate search call..");
                            CPD_SLIPRATE.search(searchType, ui.values);
 		      // MIGHT WANT TO FLY TO IT XXX
                      },
@@ -902,16 +939,17 @@ window.console.log("generateMetadataTable..");
               slide: function( event, ui ) {
                            $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
                            $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
-                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                           resetMaxrateRangeColor(ui.values[0],ui.values[1]);
                      },
               change: function( event, ui ) {
                            $("#cpd-minMaxrateSliderTxt").val(ui.values[0]);
                            $("#cpd-maxMaxrateSliderTxt").val(ui.values[1]);
-                           resetMinrateRangeColor(ui.values[0],ui.values[1]);
+                           resetMaxrateRangeColor(ui.values[0],ui.values[1]);
                      },
               stop: function( event, ui ) {
                            let searchType = CPD_SLIPRATE.searchType.maxrate;
-                           CPD_SLIPRATE.searchBox(searchType, ui.values);
+		      window.console.log(" HERE in maxrate search call..");
+                           CPD_SLIPRATE.search(searchType, ui.values);
                      },
               create: function() {
                           $("#cpd-minMaxrateSliderTxt").val(cpd_maxrate_min);
