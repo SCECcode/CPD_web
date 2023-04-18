@@ -527,6 +527,10 @@ window.console.log("sliprate --- calling freshSearch..");
             
         this.resetSearch();
 
+        if(t == this.searchType.latlon) {
+               drawRectangle();
+        }
+
         if ($("#cpd-model-cfm").prop('checked')) {
           CXM.showCFMFaults(viewermap);
           } else {
@@ -652,7 +656,7 @@ window.console.log("sliprate --->> calling searchLatlon");
             let lon1=$("#cpd-firstLonTxt").val();
             let lat2=$("#cpd-secondLatTxt").val();
             let lon2=$("#cpd-scecondLonTxt").val();
-            if(lat1=='' || lon1='' || lat2='' || lon2='') return;
+            if(lat1=='' || lon1=='' || lat2=='' || lon2=='') return;
             remove_bounding_rectangle_layer();
             add_bounding_rectangle(lat1,lon1,lat2,lon2);
             criteria.push(lat1);
@@ -660,7 +664,7 @@ window.console.log("sliprate --->> calling searchLatlon");
             criteria.push(lat2);
             criteria.push(lon2);
             } else {
-	        var loclist=rect[0];
+                var loclist=rect[0];
                 var sw=loclist[0];
                 var ne=loclist[2];
                 criteria.push(sw['lat']);
@@ -668,12 +672,12 @@ window.console.log("sliprate --->> calling searchLatlon");
                 criteria.push(ne['lat']);
                 criteria.push(ne['lng']);
 
-		$("#cpd-firstLatTxt").val(criteria[0]);
+                $("#cpd-firstLatTxt").val(criteria[0]);
                 $("#cpd-firstLonTxt").val(criteria[1]);
                 $("#cpd-secondLatTxt").val(criteria[2]);
                 $("#cpd-secondLonTxt").val(criteria[3]);
         }
-		 
+                 
         this.search(CPD_SLIPRATE.searchType.latlon, criteria);
     };
 
@@ -812,6 +816,7 @@ window.console.log("generateMetadataTable..");
           $("#cpd-firstLonTxt").val("");
           $("#cpd-secondLatTxt").val("");
           $("#cpd-scecondLonTxt").val("");
+          skipRectangle();
         }
 
         this.resetFaultname = function () {
@@ -1025,10 +1030,6 @@ window.console.log(" ==> here in replace color");
         }
         html=html+ tmp + "</tbody>";
 
-        if (visibleSiteObjects.getBounds().isValid()) {
-            viewermap.fitBounds(visibleSiteObjects.getBounds());
-        }
-
         return html;
     }
 
@@ -1047,9 +1048,6 @@ window.console.log(" ==> here in replace color");
            html=html+t;
         }
 
-        if (visibleSiteObjects.getBounds().isValid()) {
-            viewermap.fitBounds(visibleSiteObjects.getBounds());
-        }
         document.getElementById("result-table-body").innerHTML = html;
     }
 

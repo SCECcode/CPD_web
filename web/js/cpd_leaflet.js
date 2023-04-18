@@ -25,9 +25,6 @@ var rectangle_options = {
 var rectangleDrawer;
 var mymap, baseLayers, layerControl, currentLayer;
 var mylegend;
-// this could be chronology or sliprate sites
-var visibleSiteObjects;  // pointer to a L.FeatureGroup();
-
 
 var cpd_latlon_area_list=[];
 var cpd_latlon_point_list=[];
@@ -207,9 +204,11 @@ function showColorLegend(param) {
 }
 
 function drawRectangle(){
+window.console.log(" XXX enable rectangle drawing");
   rectangleDrawer.enable();
 }
 function skipRectangle(){
+window.console.log(" XXX disable rectangle drawing");
   rectangleDrawer.disable();
 }
 
