@@ -101,9 +101,10 @@ class SLIPRATE extends SpatialData
           $maxlat = $firstlat;
         }
 
-        $query = "SELECT gid FROM sliprate_db WHERE ST_INTERSECTS(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_db.geom)";
+        $query = "SELECT gid FROM sliprate_tb WHERE ST_INTERSECTS(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_tb.geom)";
 
         $data = array($minlon, $minlat, $maxlon, $maxlat);
+
         $result = pg_query_params($dbconn, $query, $data);
 
         $sliprate_data = array();

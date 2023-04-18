@@ -655,7 +655,7 @@ window.console.log("sliprate --->> calling searchLatlon");
             let lat1=$("#cpd-firstLatTxt").val();
             let lon1=$("#cpd-firstLonTxt").val();
             let lat2=$("#cpd-secondLatTxt").val();
-            let lon2=$("#cpd-scecondLonTxt").val();
+            let lon2=$("#cpd-secondLonTxt").val();
             if(lat1=='' || lon1=='' || lat2=='' || lon2=='') return;
             remove_bounding_rectangle_layer();
             add_bounding_rectangle(lat1,lon1,lat2,lon2);
