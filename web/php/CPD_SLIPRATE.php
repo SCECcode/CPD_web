@@ -7,8 +7,6 @@ class SLIPRATE extends SpatialData
   {
     $this->connection = pg_connect("host=db port=5432 dbname=SLIPRATE_db user=webonly password=scec");
     if (!$this->connection) { die('Could not connect'); }
-//    $this->connection = pg_connect("host=db port=5432 dbname=CPD_sliprate_db user=webonly password=scec");
-//    if (!$this->connection) { die('Could not connect'); }
   }
 
   public function search($type, $criteria="")
@@ -39,10 +37,23 @@ class SLIPRATE extends SpatialData
 	$this->php_result = $sliprate_data;
         return $this;
         break;
-
-
-        break;
       case "sitename":
+	if (count($criteria) !== 1) {
+          $this->php_result = "BAD";
+          return $this;
+        }
+        list($match) = $criteria;
+
+        $query = "SELECT gid from sliprate_tb WHERE to_tsvector(sitename) @@ plainto_tsquery($1)";
+        $data = array($match);
+        $result = pg_query_params($this->connection, $query, $data);
+
+        $sliprate_data = array();
+
+        while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
+
+        $this->php_result = $sliprate_data;
+        return $this;
         break;
       case "minrate":
         break;

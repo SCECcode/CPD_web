@@ -350,6 +350,7 @@ window.console.log("HERE moving table Row ???");
         this.cpd_active_layers.eachLayer(function(layer){
             sliprate_object.unselectSiteByLayer(layer);
         });
+        let $selectAllButton = $("#cpd-allBtn span");
         $selectAllButton.removeClass('glyphicon-check').addClass('glyphicon-unchecked');
     };
 
@@ -531,7 +532,8 @@ window.console.log("calling search() with the string.."+JSON_criteria);
 window.console.log("Did not find any PHP result");
             } else {
                 let tmp=JSON.parse(sliprate_result); 
-                if(type == CPD_SLIPRATE.searchType.faultname) {
+                if(type == CPD_SLIPRATE.searchType.faultname
+                     ||  type == CPD_SLIPRATE.searchType.sitename) {
 //expected [{'gid':'2'},{'gid':'10'}]
                     let sz=tmp.length;
                     for(let i=0; i<sz; i++) {
