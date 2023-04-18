@@ -26,7 +26,7 @@ var rectangleDrawer;
 var mymap, baseLayers, layerControl, currentLayer;
 var mylegend;
 // this could be chronology or sliprate sites
-var visibleSiteObjects = new L.FeatureGroup();
+var visibleSiteObjects;  // pointer to a L.FeatureGroup();
 
 
 var cpd_latlon_area_list=[];
@@ -188,7 +188,9 @@ function setup_viewer()
 // XX CHECK, the rectangle created on the mapview does not seem to 'confirm'
 // like hand inputed rectangle. Maybe some property needs to be set
 // For now, just redraw the rectangle
-        searchByLatlon(0);
+	    //
+window.console.log("draw Rectangle XXX");
+        CPD_SLIPRATE.searchLatlon(1,latlngs);        
     }
   });
 

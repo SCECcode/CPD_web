@@ -175,6 +175,8 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
             layer.setRadius(site_marker_style.normal.radius);
         });
 
+        // now update the scec_properties's color
+        this.makeLayerColors(1);
     };
 
 // recreate a new active_layers using a glist
@@ -182,8 +184,8 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 // this.cpd_layers should be also ascending
     this.createActiveLayerGroupWithGids = function(glist) {
 
-	// remove the old ones and remove from result table
-	this.clearAllSelections()
+        // remove the old ones and remove from result table
+        this.clearAllSelections()
         this.cpd_active_layers.remove();
         this.cpd_active_layers= new L.FeatureGroup();
         this.cpd_active_gid=[];
@@ -194,18 +196,20 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 
         let markerLocations = [];
 
+window.console.log("HERE is the marker being  used..",gsz);
         for (let j=0; j<gsz; j++) {
           let gid=glist[j];
           for (let i=i_start; i< lsz; i++) {
             let layer = this.cpd_layers[i];
             if (layer.hasOwnProperty("scec_properties")) {
                if (gid == layer.scec_properties.gid) {
-                   this.cpd_active_layers.addLayer(layer);
-                   this.cpd_active_gid.push(gid);
-                   i_start=i+1;
-                   if(gsz < 20 && j < gsz) {
-                     markerLocations.push(layer.getLatLng())		      
-                   }
+                  this.replaceColor(layer);
+                  this.cpd_active_layers.addLayer(layer);
+                  this.cpd_active_gid.push(gid);
+                  i_start=i+1;
+                  if(gsz < 20 && j < gsz) {
+                    markerLocations.push(layer.getLatLng())                      
+                  }
                    break;
                }
             }
@@ -214,9 +218,9 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
         replaceResultTableBodyWithGids(glist);
         this.cpd_active_layers.addTo(viewermap);
 
-	// make the small set at least alittle bit visible
-	if(markerLocations.length > 0) {
-	  let bounds = L.latLngBounds(markerLocations);
+        // make the small set at least alittle bit visible
+        if(markerLocations.length > 0) {
+          let bounds = L.latLngBounds(markerLocations);
           viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
         }
     };
@@ -224,19 +228,30 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 // recreate the original map state
     this.recreateActiveLayerGroup = function() {
 
-        this.cpd_active_layers= new L.FeatureGroup();
-        this.cpd_active_gid=[];
+        if(this.cpd_active_gid.length != this.cpd_layers.length 
+               || this.searchingType == this.searchType.minrate
+               || this.searchingType == this.searchType.maxrate) {
+
+window.console.log(" ---- active layers is original.. but still needs to recreate ");
+
+          this.cpd_active_layers= new L.FeatureGroup();
+          this.cpd_active_gid=[];
         
-        for (let i=0; i< this.cpd_layers.length; i++) {
-          let marker = this.cpd_layers[i];
-          if (marker.hasOwnProperty("scec_properties")) {
-             let gid = marker.scec_properties.gid;
-             this.cpd_active_layers.addLayer(marker);
-             this.cpd_active_gid.push(gid);
+          for (let i=0; i< this.cpd_layers.length; i++) {
+            let marker = this.cpd_layers[i];
+            if (marker.hasOwnProperty("scec_properties")) {
+               let gid = marker.scec_properties.gid;
+               this.replaceColor(marker);
+               this.cpd_active_layers.addLayer(marker);
+               this.cpd_active_gid.push(gid);
+            }
           }
-        }
-        replaceResultTableBodyWithGids(this.cpd_active_gid);
-        this.cpd_active_layers.addTo(viewermap);
+          replaceResultTableBodyWithGids(this.cpd_active_gid);
+          this.cpd_active_layers.addTo(viewermap);
+          } else {
+window.console.log(" ---- active layers is original.. no need to recreate ");
+            this.cpd_active_layers.addTo(viewermap);
+       }
     }
 
 // search for a layer from master list by gid
@@ -268,11 +283,11 @@ window.console.log("toggleSiteSlected from tables");
         }
         if (layer.scec_properties.selected) {
             this.selectSiteByLayer(layer, clickFromMap);
-		
+                
             if(!clickFromMap) {  // click from Table, lets fly over
               let markerLocations = [];
-              markerLocations.push(layer.getLatLng())		      
-	      let bounds = L.latLngBounds(markerLocations);
+              markerLocations.push(layer.getLatLng())                      
+              let bounds = L.latLngBounds(markerLocations);
               viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
             }
 
@@ -471,19 +486,14 @@ window.console.log("sliprate calling --->> resetSearch.");
 
         this.clearAllSelections();
 
-        this.resetMinrateSlider();
-        this.resetMaxrateSlider();
+        this.resetMinrate();
+        this.resetMaxrate();
         this.resetLatLon();
         this.resetFaultname();
         this.resetSitename();
 
-        // put all original markers back
-        if(this.cpd_active_gid.length != this.cpd_layers.length) {
-          this.hideOnMap();
-          this.recreateActiveLayerGroup();
-          } else {
-window.console.log("active layers is original.. no need to recreate");
-        }
+        this.hideOnMap();
+        this.recreateActiveLayerGroup();
 
         skipRectangle();
         remove_bounding_rectangle_layer();
@@ -495,23 +505,23 @@ window.console.log("active layers is original.. no need to recreate");
 
 window.console.log("sliprate --- calling freshSearch..");
         switch (t) {
-	    case "faultname": 
-	       this.searchingType = this.searchType.faultname;
+            case "faultname": 
+               this.searchingType = this.searchType.faultname;
                break;
-	    case "sitename": 
-	       this.searchingType = this.searchType.sitename;
+            case "sitename": 
+               this.searchingType = this.searchType.sitename;
                break;
-	    case "minrate": 
-	       this.searchingType = this.searchType.minrate;
+            case "minrate": 
+               this.searchingType = this.searchType.minrate;
                break;
-	    case "maxrate": 
-	       this.searchingType = this.searchType.maxrate;
+            case "maxrate": 
+               this.searchingType = this.searchType.maxrate;
                break;
-	    case "latlon": 
-	       this.searchingType = this.searchType.latlon;
+            case "latlon": 
+               this.searchingType = this.searchType.latlon;
                break;
             default:
-	       this.searchingType = this.searchType.none;
+               this.searchingType = this.searchType.none;
                break;
         }
             
@@ -561,11 +571,7 @@ window.console.log("sliprate --- calling freshSearch..");
             url: "php/search.php",
             data: {t: type, q: JSON_criteria},
         }).done(function(sliprate_result) {
-
-            let results=[];
-            let ncriteria=[];
             let glist=[];
-
             if(sliprate_result === "[]") {
 window.console.log("Did not find any PHP result");
             } else {
@@ -573,14 +579,14 @@ window.console.log("Did not find any PHP result");
                 if(type == CPD_SLIPRATE.searchType.faultname
                      ||  type == CPD_SLIPRATE.searchType.sitename
                      ||  type == CPD_SLIPRATE.searchType.minrate
-                     ||  type == CPD_SLIPRATE.searchType.maxrate) {
+                     ||  type == CPD_SLIPRATE.searchType.maxrate
+                     ||  type == CPD_SLIPRATE.searchType.latlon) {
 //expected [{'gid':'2'},{'gid':'10'}]
                     let sz=tmp.length;
                     for(let i=0; i<sz; i++) {
                         let gid= parseInt(tmp[i]['gid']); 
                         glist.push(gid);
                     }
-                    } else if ( type == CPD_SLIPRATE.searchType.latlon ) {
                     } else {
 window.console.log( "BAD, unknown search type \n");
                 }
@@ -634,51 +640,41 @@ window.console.log( "   HERE -- search by latlon");
         }
     };
 
-    this.searchBox = function (type, criteria) {
-window.console.log("sliprate --->> calling searchBox");
-        this.resetSearch();
+    // special case, Latlon can be from text inputs or from the map
+    // fromWhere=0 is from text
+    // fromWhere=1 from drawRectangle call
+    this.searchLatlon = function (fromWhere, rect) {
 
-        this.searching = true;
-        let results = this.search(type, criteria);
+window.console.log("sliprate --->> calling searchLatlon");
+        let criteria = [];
+        if( fromWhere == 0) {
+            let lat1=$("#cpd-firstLatTxt").val();
+            let lon1=$("#cpd-firstLonTxt").val();
+            let lat2=$("#cpd-secondLatTxt").val();
+            let lon2=$("#cpd-scecondLonTxt").val();
+            if(lat1=='' || lon1='' || lat2='' || lon2='') return;
+            remove_bounding_rectangle_layer();
+            add_bounding_rectangle(lat1,lon1,lat2,lon2);
+            criteria.push(lat1);
+            criteria.push(lon1);
+            criteria.push(lat2);
+            criteria.push(lon2);
+            } else {
+	        var loclist=rect[0];
+                var sw=loclist[0];
+                var ne=loclist[2];
+                criteria.push(sw['lat']);
+                criteria.push(sw['lng']);
+                criteria.push(ne['lat']);
+                criteria.push(ne['lng']);
 
-        if (results.length === 0) {
-            viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
-        } else {
-            let markerLocations = [];
-
-            for (let i = 0; i < results.length; i++) {
-                markerLocations.push(results[i].getLatLng());
-                this.search_result.addLayer(results[i]);
-            }
-
-            this.showSitesByLayers(this.search_result);
-
-            switch (type) {
-                case this.searchType.latlon:
-                    {
-                    this.unselectAll();
-                    markerLocations.push(L.latLng(criteria[0],criteria[1]));
-                    markerLocations.push(L.latLng(criteria[2],criteria[3]));
-
-                    let bounds = L.latLngBounds(markerLocations);
-                    viewermap.fitBounds(bounds, {maxZoom: 12});
-                    setTimeout(skipRectangle, 500);
-                    } 
-                    break;
-                case this.searchType.sitename:
-                case this.searchType.faultname:
-                case this.searchType.minrate:
-                case this.searchType.maxrate:
-                    {
-                    let bounds = L.latLngBounds(markerLocations);
-                    viewermap.flyToBounds(bounds, {maxZoom: 12 });
-                    }
-                    break;
-            };
-
+		$("#cpd-firstLatTxt").val(criteria[0]);
+                $("#cpd-firstLonTxt").val(criteria[1]);
+                $("#cpd-secondLatTxt").val(criteria[2]);
+                $("#cpd-secondLonTxt").val(criteria[3]);
         }
-
-       this.replaceMetadataTableBody(results);
+		 
+        this.search(CPD_SLIPRATE.searchType.latlon, criteria);
     };
 
 /********** metadata  functions *********************/
@@ -817,6 +813,7 @@ window.console.log("generateMetadataTable..");
           $("#cpd-secondLatTxt").val("");
           $("#cpd-scecondLonTxt").val("");
         }
+
         this.resetFaultname = function () {
           if( this.searchingType != this.searchType.faultname) return;
           $("#cpd-faultnameTxt").val("");
@@ -824,6 +821,16 @@ window.console.log("generateMetadataTable..");
         this.resetSitename = function () {
           if( this.searchingType != this.searchType.sitename) return;
           $("#cpd-sitenameTxt").val("");
+        }
+
+        this.resetMinrate = function () {
+          this.resetMinrateSlider();
+          resetMinrateRangeColor(cpd_minrate_min, cpd_minrate_max);
+        }
+
+        this.resetMaxrate = function () {
+          this.resetMaxrateSlider();
+          resetMaxrateRangeColor(cpd_maxrate_min, cpd_maxrate_max);
         }
 
         var resetMinrateRangeColor = function (target_min, target_max){
@@ -870,7 +877,52 @@ window.console.log("generateMetadataTable..");
           let minrate_max=$("#cpd-maxMinrateSliderTxt").val();
           $("#slider-minrate-range").slider('values', 
                               [minrate_min, minrate_max]);
-	}
+        }
+
+/********************* marker color function **************************/
+// marker.scec_properties.high_rate_color, marker.sce_properties.low_rate_color
+// toMake == 1, set the scec_properties color values
+        this.makeLayerColors = function() {
+            let lsz = this.cpd_layers.length;
+            for(let i=0; i<lsz; i++) {
+                let layer=this.cpd_layers[i];
+                let hr = layer.scec_properties.high_rate;
+                let lr = layer.scec_properties.low_rate;
+                layer.scec_properties.low_rate_color = makeRGB(lr, cpd_minrate_max, cpd_minrate_min );
+                layer.scec_properties.high_rate_color = makeRGB(hr, cpd_maxrate_max, cpd_maxrate_min );
+            }
+        }
+
+        this.replaceColor = function(layer) {
+            let myColor = site_colors.normal;
+
+            let hr = layer.scec_properties.high_rate;
+            let lr = layer.scec_properties.low_rate;
+            if( this.searchingType == this.searchType.minrate) {
+                myColor = layer.scec_properties.low_rate_color;
+            }
+            if( this.searchingType == this.searchType.maxrate) {
+                myColor = layer.scec_properties.high_rate_color;
+            }
+            if(layer.scec_properties.selected) {
+                myColor = site_colors.selected;
+            }
+            layer.setStyle({fillColor:myColor, color:myColor});
+       }
+
+       this.resetActiveLayerColor = function () {
+            this.cpd_active_layers.remove();
+
+window.console.log(" ==> here in replace color");
+            let layers=this.cpd_active_layers;
+
+            layers.eachLayer(function(layer) {
+              layer.resetStyle();
+            });
+
+            this.cpd_active_layers.addTo(viewermap);
+       }
+
 
 /********************* sliprate INTERFACE function **************************/
         this.setupCPDInterface = function() {
@@ -921,9 +973,7 @@ window.console.log("generateMetadataTable..");
                      },
               stop: function( event, ui ) {
                            let searchType = CPD_SLIPRATE.searchType.minrate;
-		      window.console.log(" HERE in minrate search call..");
                            CPD_SLIPRATE.search(searchType, ui.values);
-		      // MIGHT WANT TO FLY TO IT XXX
                      },
               create: function() {
                           $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);
@@ -948,7 +998,6 @@ window.console.log("generateMetadataTable..");
                      },
               stop: function( event, ui ) {
                            let searchType = CPD_SLIPRATE.searchType.maxrate;
-		      window.console.log(" HERE in maxrate search call..");
                            CPD_SLIPRATE.search(searchType, ui.values);
                      },
               create: function() {

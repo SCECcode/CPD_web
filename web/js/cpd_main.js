@@ -34,19 +34,6 @@ jQuery(document).ready(function() {
 
   viewermap=setup_viewer();
 
-// special handle keyword's input completion
-  $('#keywordTxt').on("focus", function() {
-
-     $('#keywordTxt').on("blur mouseout", function(event) {
-       $('#keywordTxt').off("mouseout");
-       $('#keywordTxt').off("blur");
-       if( $(this).val() != '' ) {
-        searchByKeyword();
-       }
-       $('#keywordTxt').blur();
-     });
-  });
-
   $('.cpd-minrate-item').on("focus", function() {
      $('.cpd-minrate-item').on("blur mouseout", function() {
        $('.cpd-minrate-item').off("mouseout");
@@ -74,8 +61,8 @@ jQuery(document).ready(function() {
        $('.cpd-latlon-item').off("mouseout");
        $('.cpd-latlon-item').off("blur");
        if( $(this).val() != '' ) {
-         searchByLatlon(0);
          window.console.log(" need to call search by latlon ");
+         CPD_SLIPRATE.searchLatlon(0, []);
        }
        $(this).blur();
      });
@@ -86,7 +73,6 @@ jQuery(document).ready(function() {
        $('.cpd-sitename-item').off("mouseout");
        $('.cpd-sitename-item').off("blur");
        if( $(this).val() != '' ) {
-         window.console.log(" need to call search by sitename ");
 	 let criteria = [];
          criteria.push($(this).val());
          CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.sitename, criteria);
@@ -104,7 +90,6 @@ window.console.log("getting on the faultname item..");
 	 let criteria = [];
          criteria.push($(this).val());
          CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.faultname, criteria);
-         window.console.log(" need to call search by faultname ");
        }
        $(this).blur();
      });
