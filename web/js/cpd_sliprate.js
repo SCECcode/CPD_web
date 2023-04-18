@@ -192,6 +192,8 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
         let lsz= this.cpd_layers.length;
         let i_start=0;
 
+        let markerLocations = [];
+
         for (let j=0; j<gsz; j++) {
           let gid=glist[j];
           for (let i=i_start; i< lsz; i++) {
@@ -201,6 +203,9 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
                    this.cpd_active_layers.addLayer(layer);
                    this.cpd_active_gid.push(gid);
                    i_start=i+1;
+                   if(gsz < 20 && j < gsz) {
+                     markerLocations.push(layer.getLatLng())		      
+                   }
                    break;
                }
             }
@@ -208,6 +213,12 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
         }
         replaceResultTableBodyWithGids(glist);
         this.cpd_active_layers.addTo(viewermap);
+
+	// make the small set at least alittle bit visible
+	if(markerLocations.length > 0) {
+	  let bounds = L.latLngBounds(markerLocations);
+          viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
+        }
     };
 
 // recreate the original map state
@@ -257,6 +268,14 @@ window.console.log("toggleSiteSlected from tables");
         }
         if (layer.scec_properties.selected) {
             this.selectSiteByLayer(layer, clickFromMap);
+		
+            if(!clickFromMap) {  // click from Table, lets fly over
+              let markerLocations = [];
+              markerLocations.push(layer.getLatLng())		      
+	      let bounds = L.latLngBounds(markerLocations);
+              viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
+            }
+
         } else {
             this.unselectSiteByLayer(layer);
         }
@@ -425,7 +444,6 @@ window.console.log("HERE moving table Row ???");
     this.reset = function () {
 
 window.console.log("calling reset..");
-
         this.resetSearch();
 
         if ($("#cpd-model-cfm").prop('checked')) {
@@ -442,6 +460,8 @@ window.console.log("calling reset..");
 
         $("#cpd-search-type").val("");
         this.searchingType = this.searchType.none;
+        // go back to default view,
+        viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
     };
 
 // reset just the search only
@@ -490,7 +510,6 @@ window.console.log("sliprate --- calling freshSearch..");
         }
     };
 
-
     this.getMarkerBySiteId = function (site_id) {
         for (const index in cpd_sliprate_site_data) {
             if (cpd_sliprate_site_data[index].sliprate_id == site_id) {
@@ -514,9 +533,6 @@ window.console.log("sliprate --- calling freshSearch..");
 
         let JSON_criteria = JSON.stringify(criteria);
 
-window.console.log("calling search() with the type.."+type);
-window.console.log("calling search() with the string.."+JSON_criteria);
-
         $("#wait-spinner").show();
 
         $.ajax({
@@ -533,14 +549,18 @@ window.console.log("Did not find any PHP result");
             } else {
                 let tmp=JSON.parse(sliprate_result); 
                 if(type == CPD_SLIPRATE.searchType.faultname
-                     ||  type == CPD_SLIPRATE.searchType.sitename) {
+                     ||  type == CPD_SLIPRATE.searchType.sitename
+                     ||  type == CPD_SLIPRATE.searchType.minrate
+                     ||  type == CPD_SLIPRATE.searchType.maxrate) {
 //expected [{'gid':'2'},{'gid':'10'}]
                     let sz=tmp.length;
                     for(let i=0; i<sz; i++) {
                         let gid= parseInt(tmp[i]['gid']); 
                         glist.push(gid);
                     }
-                    } else { // hanle othe types
+                    } else if ( type == CPD_SLIPRATE.searchType.latlon ) {
+                    } else {
+window.console.log( "BAD, unknown search type \n");
                 }
             }
             CPD_SLIPRATE.createActiveLayerGroupWithGids(glist);
@@ -864,7 +884,9 @@ window.console.log("generateMetadataTable..");
                      },
               stop: function( event, ui ) {
                            let searchType = CPD_SLIPRATE.searchType.minrate;
-                           CPD_SLIPRATE.searchBox(searchType, ui.values);
+		      window.console.log(" HERE in minrage search call..");
+                           CPD_SLIPRATE.search(searchType, ui.values);
+		      // MIGHT WANT TO FLY TO IT XXX
                      },
               create: function() {
                           $("#cpd-minMinrateSliderTxt").val(cpd_minrate_min);

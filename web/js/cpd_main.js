@@ -63,8 +63,10 @@ jQuery(document).ready(function() {
        $('.cpd-maxrate-item').off("mouseout");
        $('.cpd-maxrate-item').off("blur");
        if( $(this).val() != '' ) {
+
          setupSearchByMaxrate();
          window.console.log(" need to call search by maxrate ");
+
        }
        $(this).blur();
      });

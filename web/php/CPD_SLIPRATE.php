@@ -24,16 +24,12 @@ class SLIPRATE extends SpatialData
           return $this;
         }
 	list($match) = $criteria;
-
-//        $query = "SELECT gid from sliprate_tb WHERE faultname = $1";
-	$query = "SELECT gid from sliprate_tb WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
+//        $query = "SELECT gid FROM sliprate_tb WHERE faultname = $1";
+	$query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
         $data = array($match);
         $result = pg_query_params($this->connection, $query, $data);
-
         $sliprate_data = array();
- 
         while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
-
 	$this->php_result = $sliprate_data;
         return $this;
         break;
@@ -43,21 +39,42 @@ class SLIPRATE extends SpatialData
           return $this;
         }
         list($match) = $criteria;
-
-        $query = "SELECT gid from sliprate_tb WHERE to_tsvector(sitename) @@ plainto_tsquery($1)";
+        $query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(sitename) @@ plainto_tsquery($1)";
         $data = array($match);
         $result = pg_query_params($this->connection, $query, $data);
-
         $sliprate_data = array();
-
         while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
-
         $this->php_result = $sliprate_data;
         return $this;
         break;
       case "minrate":
+	if (count($criteria) !== 2) {
+          $this->php_result = "BAD";
+          return $this;
+        }
+        list($min, $max) = $criteria;
+	$query = "SELECT gid FROM sliprate_tb WHERE lowrate NOT NULL AND lowrate >= $1 AND lowrate <= $2";
+        $data = array($min,$max);
+        $result = pg_query_params($this->connection, $query, $data);
+        $sliprate_data = array();
+        while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
+        $this->php_result = $sliprate_data;
+        return $this;
         break;
       case "maxrate":
+	if (count($criteria) !== 2) {
+          $this->php_result = "BAD";
+          return $this;
+        }
+        list($min, $max) = $criteria;
+	$query = "SELECT gid FROM sliprate_tb WHERE highrate NOT NULL AND highrate >= $1 AND highrate <= $2";
+        $data = array($min,$max);
+        $result = pg_query_params($this->connection, $query, $data);
+        $sliprate_data = array();
+        while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
+        $this->php_result = $sliprate_data;
+        return $this;
+        break;
         break;
       case "latlon":
         if (count($criteria) !== 4) {
@@ -103,8 +120,8 @@ class SLIPRATE extends SpatialData
 
   public function getAllStationData()
   {
-//    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb LIMIT 10";
-    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb";
+//    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference FROM sliprate_tb LIMIT 10";
+    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference FROM sliprate_tb";
 
     $result = pg_query($this->connection, $query);
 
