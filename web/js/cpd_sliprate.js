@@ -350,6 +350,7 @@ window.console.log("HERE moving table Row ???");
         this.cpd_active_layers.eachLayer(function(layer){
             sliprate_object.unselectSiteByLayer(layer);
         });
+        $selectAllButton.removeClass('glyphicon-check').addClass('glyphicon-unchecked');
     };
 
     this.upSelectedCount = function(gid) {
