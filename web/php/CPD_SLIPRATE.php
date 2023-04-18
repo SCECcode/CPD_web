@@ -25,15 +25,16 @@ class SLIPRATE extends SpatialData
           $this->php_result = "BAD";
           return $this;
         }
-	list($faultname) = $criteria;
+	list($match) = $criteria;
 
-	$query = "SELECT gid, sliprateid, faultname FROM sliprate_db WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
- 	$data = array($faultname);
-        $result = pg_query_params($dbconn, $query, $data);
+//        $query = "SELECT gid from sliprate_tb WHERE faultname = $1";
+	$query = "SELECT gid from sliprate_tb WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
+        $data = array($match);
+        $result = pg_query_params($this->connection, $query, $data);
 
         $sliprate_data = array();
  
-        while($row = pg_fetch_object($result)) { $sliprate_data.push($row[0]); }
+        while($row = pg_fetch_object($result)) { $sliprate_data[] = $row; }
 
 	$this->php_result = $sliprate_data;
         return $this;
@@ -89,14 +90,10 @@ class SLIPRATE extends SpatialData
       return $this;
   }
 
-  public function getStationCount()
-  {
-  }
-
   public function getAllStationData()
   {
-    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb LIMIT 10";
-//    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb";
+//    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb LIMIT 10";
+    $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference from sliprate_tb";
 
     $result = pg_query($this->connection, $query);
 

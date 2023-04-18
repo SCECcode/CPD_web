@@ -1,4 +1,11 @@
 /* cxm viewer required styles */
+#wait-spinner {
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
 select, input {
     max-width: 260px;
 }

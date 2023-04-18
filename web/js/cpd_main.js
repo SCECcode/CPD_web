@@ -90,7 +90,7 @@ jQuery(document).ready(function() {
          window.console.log(" need to call search by sitename ");
 	 let criteria = [];
          criteria.push($(this).val());
-         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.siteName, criteria);
+         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.sitename, criteria);
        }
        $(this).blur();
      });
@@ -104,7 +104,7 @@ window.console.log("getting on the faultname item..");
        if( $(this).val() != '' ) {
 	 let criteria = [];
          criteria.push($(this).val());
-         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.faultName, criteria);
+         CPD_SLIPRATE.search(CPD_SLIPRATE.searchType.faultname, criteria);
          window.console.log(" need to call search by faultname ");
        }
        $(this).blur();
