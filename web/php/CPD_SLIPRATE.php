@@ -101,16 +101,10 @@ class SLIPRATE extends SpatialData
           $maxlat = $firstlat;
         }
 
-        $data = array($minlon, $minlat, $maxlon, $maxlat);
-
-//        $this->criteria = $criteria;
-//        $this->data = $data;
 
         $query = "SELECT gid FROM sliprate_tb WHERE ST_Contains(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_tb.geom)";
-
         $data = array($minlon, $minlat, $maxlon, $maxlat);
-
-        $result = pg_query_params($dbconn, $query, $data);
+        $result = pg_query_params($this->connection, $query, $data);
 
         $sliprate_data = array();
 
