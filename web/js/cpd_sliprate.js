@@ -421,7 +421,7 @@ window.console.log("HERE moving table Row ???");
 
 /********** search/layer  functions *********************/
     this.showSearch = function (type) {
-        const $all_search_controls = $("#cpd-controls-container ul li");
+        const $all_search_controls = $("#cpd-sliprate-search-control ul li");
         $all_search_controls.hide();
         switch (type) {
             case this.searchType.faultname:
@@ -503,22 +503,33 @@ window.console.log("sliprate calling --->> resetSearch.");
 // a complete fresh search
     this.freshSearch = function (t){
 
+        const $all_search_controls = $("#cpd-controls-container ul li")
 window.console.log("sliprate --- calling freshSearch..");
         switch (t) {
             case "faultname": 
                this.searchingType = this.searchType.faultname;
+               $all_search_controls.hide();
+               $("#cpd-fault-name").show();
                break;
             case "sitename": 
                this.searchingType = this.searchType.sitename;
+               $all_search_controls.hide();
+               $("#cpd-site-name").show();
                break;
             case "minrate": 
                this.searchingType = this.searchType.minrate;
+               $all_search_controls.hide();
+               $("#cpd-minrate-slider").show();
                break;
             case "maxrate": 
                this.searchingType = this.searchType.maxrate;
+               $all_search_controls.hide();
+               $("#cpd-maxrate-slider").show();
                break;
             case "latlon": 
                this.searchingType = this.searchType.latlon;
+               $all_search_controls.hide();
+               $("#cpd-latlon").show();
                break;
             default:
                this.searchingType = this.searchType.none;
@@ -648,8 +659,6 @@ window.console.log( "   HERE -- search by latlon");
     // fromWhere=0 is from text
     // fromWhere=1 from drawRectangle call
     this.searchLatlon = function (fromWhere, rect) {
-
-window.console.log("sliprate --->> calling searchLatlon");
         let criteria = [];
         if( fromWhere == 0) {
             let lat1=$("#cpd-firstLatTxt").val();

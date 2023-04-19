@@ -175,7 +175,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 <!-- SLIPRATE option expand -->
             <div class="col-8">
               <ul>
-                <li id='cpd-fault-name' class='navigationLi' style="display:">
+                <li id='cpd-fault-name' class='navigationLi' style="display:none">
                   <div class='menu row justify-content-center'>
                     <div class="col-12">
                       <div class="d-flex">
@@ -186,7 +186,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                     </div>
                   </div>
                 </li>
-                <li id='cpd-site-name' class='navigationLi ' style="display:">
+                <li id='cpd-site-name' class='navigationLi ' style="display:none">
                   <div class='menu row justify-content-center'>
                     <div class="col-12">
                       <div class="d-flex">
@@ -197,7 +197,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                     </div>
                   </div>
                 </li>
-                <li id='cpd-latlon' class='navigationLi ' style="display:">
+                <li id='cpd-latlon' class='navigationLi ' style="display:none">
                   <div id='cpd-latlonMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">
@@ -236,7 +236,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                 </li>
 
 <!-- minrate slider -->
-                <li id='cpd-minrate-slider' class='navigationLi' style="display:;">
+                <li id='cpd-minrate-slider' class='navigationLi' style="display:none;">
                   <div id='cpd-minrate-sliderMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">
@@ -265,7 +265,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
                   </div>
                 </li>
 <!-- maxrate slider -->
-                <li id='cpd-maxrate-slider' class='navigationLi' style="display:">
+                <li id='cpd-maxrate-slider' class='navigationLi' style="display:none">
                   <div id='cpd-maxrate-sliderMenu' class='menu'>
                     <div class="row">
                       <div class="col-4">
