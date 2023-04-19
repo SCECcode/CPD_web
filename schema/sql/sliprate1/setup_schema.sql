@@ -18,4 +18,4 @@ CREATE TABLE SLIPRATE_tb (
    Reference   VARCHAR(200) NOT NULl
 );
 
-SELECT AddGeometryColumn('','sliprate_tb','geom','0','POINT',2);
+SELECT AddGeometryColumn('','sliprate_tb','geom',4326,'POINT',2);
