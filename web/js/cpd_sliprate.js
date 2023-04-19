@@ -610,51 +610,6 @@ window.console.log( "BAD, unknown search type \n");
         });
     };
 
-    this.search00 = function (type, criteria) {
-window.console.log("sliprate --->> calling search.. <<----");
-        this.searchingType = type;
-        let results = [];
-        switch (type) {
-            case CPD_SLIPRATE.searchType.maxrate:
-                {
-                }
-                break;
-            case CPD_SLIPRATE.searchType.minrate:
-                {
-                }
-                break;
-            case CPD_SLIPRATE.searchType.faultname:
-                {
-                let new_faultname=criteria[0];
- window.console.log(" fultname HERE...");
-                this.createActiveLayerGroupWithGids(glist);
-                }
-                break;
-            case CPD_SLIPRATE.searchType.sitename:
-                {
-                }
-                break;
-            case CPD_SLIPRATE.searchType.latlon:
-                {
-window.console.log( "   HERE -- search by latlon");
-                $("#cpd-firstLatTxt").val(criteria[0]);
-                $("#cpd-firstLonTxt").val(criteria[1]);
-                $("#cpd-secondLatTxt").val(criteria[2]);
-                $("#cpd-secondLonTxt").val(criteria[3]);
-                remove_bounding_rectangle_layer();
-                add_bounding_rectangle(criteria[0],criteria[1],criteria[2],criteria[3]);
-
-                let glist=_foo();
-                this.createActiveLayerGroupWithGids(glist);
-                }
-                break;
-            default : 
-                {
-                window.console.log("BAD... search");
-                }
-        }
-    };
-
     // special case, Latlon can be from text inputs or from the map
     // fromWhere=0 is from text
     // fromWhere=1 from drawRectangle call
@@ -688,6 +643,13 @@ window.console.log( "   HERE -- search by latlon");
         }
                  
         this.search(CPD_SLIPRATE.searchType.latlon, criteria);
+
+        let markerLocations = [];
+	markerLocations.push(L.latLng(criteria[0],criteria[1]));
+        markerLocations.push(L.latLng(criteria[2],criteria[3]));
+	let bounds = L.latLngBounds(markerLocations);
+        viewermap.flyToBounds(bounds, {maxZoom: 10 });
+        setTimeout(skipRectangle, 500);
     };
 
 /********** metadata  functions *********************/

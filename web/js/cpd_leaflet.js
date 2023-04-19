@@ -5,6 +5,7 @@ This is leaflet specific utilities for CPD
 ***/
 
 var init_map_zoom_level = 7;
+var drawing_rectangle = false;
 
 var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cxm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
 
