@@ -153,7 +153,7 @@ function setup_viewer()
 
   function onMapMouseOver(e) {
     if(drawing_rectangle) {
-      draw_at();
+      drawRectangle();
     }
   }
 
@@ -327,7 +327,6 @@ function add_bounding_rectangle_layer(layer, a,b,c,d) {
   // remove old one and add a new one
   remove_bounding_rectangle_layer();
   var tmp={"layer":layer, "latlngs":[{"lat":a,"lon":b},{"lat":c,"lon":d}]};
-  //set_latlons(a,b,c,d);
   cpd_latlon_area_list.push(tmp);
 }
 

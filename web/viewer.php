@@ -71,9 +71,7 @@ $cpd_sliprate = new SLIPRATE();
     <script type="text/javascript" src="js/debug.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_main.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_sliprate.js?v=1"></script>
-    <script type="text/javascript" src="js/cpd_util.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_leaflet.js?v=1"></script>
-    <script type="text/javascript" src="js/cpd_sidebar.js?v=1"></script>
     <script type="text/javascript" src="js/cpd_ui.js?v=1"></script>
 
 <!-- cxm js -->
