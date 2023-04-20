@@ -781,6 +781,13 @@ window.console.log("generateMetadataTable..");
         };
 
 /********************* reset functions **************************/
+        this.toDraw = function () {
+          if( this.searchingType == this.searchType.latlon) { 
+		  true;
+          }
+          return false;
+        }
+
         this.resetLatLon = function () {
           if( this.searchingType != this.searchType.latlon) return;
           $("#cpd-firstLatTxt").val("");

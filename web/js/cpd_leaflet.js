@@ -153,7 +153,7 @@ function setup_viewer()
 // mymap.on('click', onMapClick);
 
   function onMapMouseOver(e) {
-    if(drawing_rectangle) {
+    if(CPD_SLIPRATE.toDraw() && drawing_rectangle) {
       drawRectangle();
     }
   }
@@ -187,7 +187,6 @@ function setup_viewer()
 // like hand inputed rectangle. Maybe some property needs to be set
 // For now, just redraw the rectangle
 	    //
-window.console.log("draw Rectangle XXX");
         CPD_SLIPRATE.searchLatlon(1,latlngs);        
     }
   });
@@ -205,11 +204,9 @@ function showColorLegend(param) {
 }
 
 function drawRectangle(){
-window.console.log(" XXX enable rectangle drawing");
   rectangleDrawer.enable();
 }
 function skipRectangle(){
-window.console.log(" XXX disable rectangle drawing");
   rectangleDrawer.disable();
 }
 
