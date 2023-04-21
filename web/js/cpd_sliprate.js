@@ -196,7 +196,6 @@ window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.slipra
 
         let markerLocations = [];
 
-window.console.log("HERE is the marker being  used..",gsz);
         for (let j=0; j<gsz; j++) {
           let gid=glist[j];
           for (let i=i_start; i< lsz; i++) {
@@ -226,14 +225,12 @@ window.console.log("HERE is the marker being  used..",gsz);
     };
 
 // recreate the original map state
-    this.recreateActiveLayerGroup = function() {
+// original state  toOriginal use normal color
+    this.recreateActiveLayerGroup = function(toOriginal) {
 
         if(this.cpd_active_gid.length != this.cpd_layers.length 
                || this.searchingType == this.searchType.minrate
                || this.searchingType == this.searchType.maxrate) {
-
-window.console.log(" ---- active layers is original.. but still needs to recreate ");
-
           this.cpd_active_layers= new L.FeatureGroup();
           this.cpd_active_gid=[];
         
@@ -241,7 +238,9 @@ window.console.log(" ---- active layers is original.. but still needs to recreat
             let marker = this.cpd_layers[i];
             if (marker.hasOwnProperty("scec_properties")) {
                let gid = marker.scec_properties.gid;
-               this.replaceColor(marker);
+               if(!toOriginal) {
+                 this.replaceColor(marker);
+               }
                this.cpd_active_layers.addLayer(marker);
                this.cpd_active_gid.push(gid);
             }
@@ -249,7 +248,6 @@ window.console.log(" ---- active layers is original.. but still needs to recreat
           replaceResultTableBodyWithGids(this.cpd_active_gid);
           this.cpd_active_layers.addTo(viewermap);
           } else {
-window.console.log(" ---- active layers is original.. no need to recreate ");
             this.cpd_active_layers.addTo(viewermap);
        }
     }
@@ -317,7 +315,7 @@ window.console.log("toggleSiteSlected from tables");
         }
         // move row to top
         if (moveTableRow) {
-window.console.log("HERE moving table Row ???");
+window.console.log("XX HERE moving table Row ???");
             let $rowHTML = $row.prop('outerHTML');
             $row.remove();
             $("#metadata-table.sliprate tbody").prepend($rowHTML);
@@ -493,15 +491,14 @@ window.console.log("sliprate calling --->> resetSearch.");
         this.resetSitename();
 
         this.hideOnMap();
-        this.recreateActiveLayerGroup();
-
-        skipRectangle();
-        remove_bounding_rectangle_layer();
+        this.recreateActiveLayerGroup(true);
 
     };
 
 // a complete fresh search
     this.freshSearch = function (t){
+
+        this.resetSearch();
 
         const $all_search_controls = $("#cpd-controls-container ul li")
 window.console.log("sliprate --- calling freshSearch..");
@@ -520,26 +517,23 @@ window.console.log("sliprate --- calling freshSearch..");
                this.searchingType = this.searchType.minrate;
                $all_search_controls.hide();
                $("#cpd-minrate-slider").show();
+               this.recreateActiveLayerGroup(false);
                break;
             case "maxrate": 
                this.searchingType = this.searchType.maxrate;
                $all_search_controls.hide();
                $("#cpd-maxrate-slider").show();
+               this.recreateActiveLayerGroup(false);
                break;
             case "latlon": 
                this.searchingType = this.searchType.latlon;
                $all_search_controls.hide();
                $("#cpd-latlon").show();
+               drawRectangle();
                break;
             default:
                this.searchingType = this.searchType.none;
                break;
-        }
-            
-        this.resetSearch();
-
-        if(t == this.searchType.latlon) {
-               drawRectangle();
         }
 
         if ($("#cpd-model-cfm").prop('checked')) {
@@ -645,11 +639,11 @@ window.console.log( "BAD, unknown search type \n");
         this.search(CPD_SLIPRATE.searchType.latlon, criteria);
 
         let markerLocations = [];
-	markerLocations.push(L.latLng(criteria[0],criteria[1]));
+        markerLocations.push(L.latLng(criteria[0],criteria[1]));
         markerLocations.push(L.latLng(criteria[2],criteria[3]));
-	let bounds = L.latLngBounds(markerLocations);
+        let bounds = L.latLngBounds(markerLocations);
         viewermap.flyToBounds(bounds, {maxZoom: 10 });
-        setTimeout(skipRectangle, 500);
+//        setTimeout(skipRectangle, 500);
     };
 
 /********** metadata  functions *********************/
@@ -783,7 +777,7 @@ window.console.log("generateMetadataTable..");
 /********************* reset functions **************************/
         this.toDraw = function () {
           if( this.searchingType == this.searchType.latlon) { 
-		  true;
+            return true;
           }
           return false;
         }
@@ -795,6 +789,7 @@ window.console.log("generateMetadataTable..");
           $("#cpd-secondLatTxt").val("");
           $("#cpd-scecondLonTxt").val("");
           skipRectangle();
+          remove_bounding_rectangle_layer();
         }
 
         this.resetFaultname = function () {

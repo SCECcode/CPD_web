@@ -153,7 +153,7 @@ function setup_viewer()
 // mymap.on('click', onMapClick);
 
   function onMapMouseOver(e) {
-    if(CPD_SLIPRATE.toDraw() && drawing_rectangle) {
+    if(CPD_SLIPRATE.toDraw()) {
       drawRectangle();
     }
   }
@@ -162,8 +162,6 @@ function setup_viewer()
     var zoom=mymap.getZoom();
 //window.console.log("map got zoomed..>>",zoom);
     }
-
-
 
   mymap.on('mouseover', onMapMouseOver);
   mymap.on('zoomend dragend', onMapZoom);

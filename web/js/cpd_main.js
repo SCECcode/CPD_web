@@ -125,19 +125,12 @@ window.console.log("getting on the faultname item..");
   $.event.trigger({ type: "page-ready", "message": "completed", });
 
 
-  // SETUP
-  window.console.log(" --- SETUP in main");
+// MAIN SETUP
 
 // load the data from backend and setup layers
   CPD_SLIPRATE.generateLayers();
 // setup the interface 
   CPD_SLIPRATE.setupCPDInterface();
-
-/** MAIN setup **/
-// XXX
-//  SLIPRATE_XX setup_layers
-//  setupSearch();
-  window.console.log(" --- WRAP up in main");
 
 }); // end of MAIN
 
