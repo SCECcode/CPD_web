@@ -456,7 +456,6 @@ window.console.log("XX HERE moving table Row ???");
 // but leave the external model state the same
     this.reset = function () {
 
-window.console.log("calling reset..");
         this.resetSearch();
 
         if ($("#cpd-model-cfm").prop('checked')) {
@@ -574,7 +573,7 @@ window.console.log("sliprate --- calling freshSearch..");
 
         let JSON_criteria = JSON.stringify(criteria);
 
-        $("#wait-spinner").show();
+// not used:        $("#wait-spinner").show();
 
         $.ajax({
             url: "php/search.php",
