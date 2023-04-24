@@ -19,19 +19,9 @@ csvcut -n ${EXCEL_NM}.csv > ${EXCEL_NM}_column_labels
 #sliprate_id,test
 #"> my_tb.csv 
 
-csvcut -l -c "1" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
-id,name
-"> id_fault_tb.csv 
-
-#longitude,latitude,name >> Longitude,Latitude,SiteName
-csvcut -l -c "4" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
-id,name
-"> id_name_tb.csv 
-
-#longitude,latitude,min,max >> Longitude,Latitude,LowRate,HighRate
-csvcut -l -c "13,14" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
-id,min,max
-"> id_rate_tb.csv
+csvcut -l -c "9" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
+id,test
+"> id_test_tb.csv 
 
 # Longitude,Latitude,
 # FaultName,FaultID,
@@ -50,5 +40,5 @@ id,min,max
 #Longitude,Latitude,FaultName,FaultID,State,SiteName,DataType,DistToCFMFault,CFM6ObjectName,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB
 #
 csvcut -l -c "6,7,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25" ${EXCEL_NM}.csv |csvcut -K 1|sort -n|uniq | sed "1i\\
-SliprateID,Longitude,Latitude,FaultName,FaultID,State,SiteName,DataType,DistToCFMFault,CFM6ObjectName,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB
+SliprateID,Longitude,Latitude,FaultName,FaultID,State,SiteName,DistToCFMFault,CFM6ObjectName,DataType,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB
 "> sliprate_site_tb.csv 
