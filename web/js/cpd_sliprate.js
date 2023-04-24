@@ -93,20 +93,13 @@ var CPD_SLIPRATE = new function () {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
                 let gid = cpd_sliprate_site_data[index].gid;
                 let sliprate_id = cpd_sliprate_site_data[index].sliprateid;
-                let x = parseFloat(cpd_sliprate_site_data[index].x);
-                let y = parseFloat(cpd_sliprate_site_data[index].y);
+                let longitude = parseFloat(cpd_sliprate_site_data[index].longitude);
+                let latitude = parseFloat(cpd_sliprate_site_data[index].latitude);
                 let fault_name = cpd_sliprate_site_data[index].faultname;
+                let state = cpd_sliprate_site_data[index].state;
                 let site_name = cpd_sliprate_site_data[index].sitename;
                 let low_rate = parseFloat(cpd_sliprate_site_data[index].lowrate);
                 let high_rate = parseFloat(cpd_sliprate_site_data[index].highrate);
-                let state = cpd_sliprate_site_data[index].state;
-                let data_type = cpd_sliprate_site_data[index].datatype;
-                let q_bin_min = parseFloat(cpd_sliprate_site_data[index].qbinmin);
-                let q_bin_max = parseFloat(cpd_sliprate_site_data[index].qbinmax);
-                let x_2014_dip = parseFloat(cpd_sliprate_site_data[index].x2014dip);
-                let x_2014_rake = parseFloat(cpd_sliprate_site_data[index].x2014rake);
-                let x_2014_rate = parseFloat(cpd_sliprate_site_data[index].x2014rate);
-                let reference = cpd_sliprate_site_data[index].reference;
 
                 let marker = L.circleMarker([y, x], site_marker_style.normal);
 
@@ -115,18 +108,17 @@ var CPD_SLIPRATE = new function () {
 
                 marker.scec_properties = {
                     idx: index,
-                    gid: gid,
                     active: true,
                     selected: false,
+                    gid: gid,
                     sliprate_id: sliprate_id,
-                    x: x,
-                    y: y,
+                    longitude: longitude,
+                    latitude: latitude,
                     fault_name: fault_name,
+                    state: state,
                     site_name: site_name,
                     low_rate: low_rate,
                     high_rate: high_rate,
-                    data_type: data_type,
-                    reference: reference
                 };
 
                 this.cpd_layers.push(marker);
@@ -647,27 +639,90 @@ window.console.log( "BAD, unknown search type \n");
 
 /********** metadata  functions *********************/
 // create a metadata list using selected gid list
+/*
+gid
+sliprate_id
+longitude
+latitude
+fault_name
+fault_id
+state
+site_name
+data_type
+dist_to_cfmfault
+cfm6_objectname
+observation
+pref_rate
+low_rate
+high_rate
+rate_unct
+rate_type
+rept_reint
+off_type
+age_type
+num_events
+rate_age
+q_bin_min
+q_bin_max
+reference
+app_b
+**
+gid
+sliprateid
+longitude
+latitude
+faultname
+faultid
+state
+sitename
+datatype
+disttocfmfault
+cfm6objectname
+observation
+prefrate
+lowrate
+highrate
+rateunct
+ratetype
+reptreint
+offtype
+agetype
+numevents
+rateage
+qbinmin
+qbinmax
+reference
+appb
+*/
     function createMetaData(properties) {
         var meta={};
-        meta.gid = properties.gid;
-        meta.sliprate_id = properties.sliprateid;
-        meta.x = properties.x;
-        meta.y = properties.y;
+
+        meta.sliprate_id= properties.sliprateid;
+        meta.longitude = properties.longitude;
+        meta.latitude = properties.latitude;
         meta.fault_name = properties.faultname;
+        meta.fault_id = properties.faultid;
+        meta.state = properties.state;
         meta.site_name = properties.sitename;
-        meta.y = properties.y;
-        meta.fault_name = properties.faultname;
-        meta.site_name = properties.sitename;
+        meta.data_type = properties.datatype;
+        meta.dist_to_cfmfault = properties.disttocfmfault;
+        meta.cfm6_objectname = properties.cfm6objectname;
+        meta.observation = properties.observation;
+        meta.pref_rate = properties.prefrate;
         meta.low_rate = properties.lowrate;
         meta.high_rate = properties.highrate;
-        meta.state = properties.state;
-        meta.data_type = properties.datatype;
+        meta.rate_unct = properties.rateunct;
+        meta.rate_type = properties.ratetype;
+        meta.rept_reint = properties.reptreint;
+        meta.off_type = properties.offtype;
+        meta.age_type = properties.agetype;
+        meta.num_events = properties.numevents;
+        meta.rate_age = properties.rateage;
         meta.q_bin_min = properties.qbinmin;
         meta.q_bin_max = properties.qbinmax;
-        meta.x_2014_dip = properties.x2014dip;
-        meta.x_2014_rake = properties.x2014rake;
-        meta.x_2014_rate = properties.x2014rate;
         meta.reference = properties.reference;
+        meta.app_b = properties.appb;
+
         return meta;
     }
 
@@ -695,8 +750,8 @@ window.console.log( "BAD, unknown search type \n");
         html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
         html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
-        html += `<td class="meta-data">${layer.scec_properties.x} </td>`;
-        html += `<td class="meta-data">${layer.scec_properties.y} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.latitude} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.longitude} </td>`;
 
         html += `<td class="meta-data" align='center' >${layer.scec_properties.low_rate} </td>`;
         html += `<td class="meta-data" align='center' >${layer.scec_properties.high_rate}</td>`;

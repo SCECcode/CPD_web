@@ -11,36 +11,44 @@
 rm -f *.csv
 #in2csv --sheet "${EXCEL_NM_SHEET}" ${EXCEL_NM_FILE} | csvcut -c 1-26 > ${EXCEL_NM}_raw.csv
 
-cat ${CPDPATH}/${EXCEL_NM}.csv | csvcut -c 1-26 > ${EXCEL_NM}_raw.csv
+cat ${CPDPATH}/${EXCEL_NM}.csv | csvcut -c 1-25 > ${EXCEL_NM}_raw.csv
 cat ${EXCEL_NM}_raw.csv |sed "s/  / /g" | sed "s/, E/,E/"  > ${EXCEL_NM}.csv
 csvcut -n ${EXCEL_NM}.csv > ${EXCEL_NM}_column_labels
 
-#sid,whatever
-csvcut -c "3,18" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-sid,whatever
-"> test_tb.csv 
+#csvcut -l -c 21 ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
+#sliprate_id,test
+#"> my_tb.csv 
 
-#sid,name >> SlipRateID,FaultName
-csvcut -c "3,5" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-sid,name
-"> slipid_fault_tb.csv 
+csvcut -l -c "1" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
+id,name
+"> id_fault_tb.csv 
 
-#sid,name >> SlipRateID,SiteName
-csvcut -c "3,7" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-sid,name
-"> slipid_name_tb.csv 
+#longitude,latitude,name >> Longitude,Latitude,SiteName
+csvcut -l -c "4" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
+id,name
+"> id_name_tb.csv 
 
-#sid,min,max >> SlipRateID,LowRate,HighRate
-csvcut -c "3,11,12" ${EXCEL_NM}.csv |csvcut -K 1 | sort |uniq | sed "1i\\
-sid,min,max
-"> slipid_rate_tb.csv
+#longitude,latitude,min,max >> Longitude,Latitude,LowRate,HighRate
+csvcut -l -c "13,14" ${EXCEL_NM}.csv |csvcut -K 1 | sort -n|uniq | sed "1i\\
+id,min,max
+"> id_rate_tb.csv
 
-#sid,x,y >> SlipRateID,X,Y
-csvcut -c "3,1,2" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
-sid,x,y
-"> slipid_loc_tb.csv
-
-# SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
-csvcut -c "3,1,2,5,7,11,12,6,8,20,21,22,23,24,25" ${EXCEL_NM}.csv |csvcut -K 1|sort |uniq | sed "1i\\
-SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference
+# Longitude,Latitude,
+# FaultName,FaultID,
+# State,SiteName,
+# DataType,
+# DistToCFMFault(km),
+# CFM6.0-ObjectName,
+# Observation,
+# PrefRate,LowRate,HighRate,
+# RateUnct,RateType,ReptReint,
+# OffType,AgeType,NumEvents,RateAge
+# QbinMin,QbinMax,
+# Reference,AppB
+#
+# 6,7,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25
+#Longitude,Latitude,FaultName,FaultID,State,SiteName,DataType,DistToCFMFault,CFM6ObjectName,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB
+#
+csvcut -l -c "6,7,1,2,3,4,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25" ${EXCEL_NM}.csv |csvcut -K 1|sort -n|uniq | sed "1i\\
+SliprateID,Longitude,Latitude,FaultName,FaultID,State,SiteName,DataType,DistToCFMFault,CFM6ObjectName,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB
 "> sliprate_site_tb.csv 

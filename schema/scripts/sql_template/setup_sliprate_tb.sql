@@ -1,2 +1,1 @@
-
-COPY SLIPRATE_tb(SlipRateID,X,Y,FaultName,SiteName,LowRate,HighRate,State,DataType,QbinMin,QbinMax,x2014dip,x2014rake,x2014rate,Reference) FROM '/home/postgres/CPD/schema/data/DATATYPE/sliprate_site_tb.csv' DELIMITER ',' CSV HEADER;
+COPY SLIPRATE_tb(SliprateID,Longitude,Latitude,FaultName,FaultID,State,SiteName,DataType,DistToCFMFault,CFM6ObjectName,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference,AppB) FROM '/home/postgres/CPD/schema/data/DATATYPE/sliprate_site_tb.csv' DELIMITER ',' CSV HEADER;
