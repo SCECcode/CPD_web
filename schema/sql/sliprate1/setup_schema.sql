@@ -8,7 +8,7 @@ CREATE TABLE SLIPRATE_tb (
    State         VARCHAR(10) NOT NULL,
    SiteName      VARCHAR(100) NOT NULL,
    DistToCFMFault float DEFAULT 0.0,
-   CFM6ObjectName VARCHAR(20) NOT NULL,
+   CFM6ObjectName VARCHAR(100) NOT NULL,
    DataType      VARCHAR(100) NOT NULL,
    Observation   VARCHAR(400) NOT NULL,
    PrefRate      VARCHAR(50),
