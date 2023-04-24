@@ -17,7 +17,7 @@ CREATE TABLE SLIPRATE_tb (
    RateUnct      VARCHAR(200) NOT NULL,
    RateType      VARCHAR(100) NOT NULL,
    ReptReint     VARCHAR(200) NOT NULL,
-   OffType       VARCHAR(200) NOT NULL,
+   OffType       VARCHAR(300) NOT NULL,
    AgeType       VARCHAR(100) NOT NULL,
    NumEvents     VARCHAR(100) NOT NULL,
    RateAge       VARCHAR(100) NOT NULL,
