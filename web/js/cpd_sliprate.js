@@ -67,6 +67,35 @@ var CPD_SLIPRATE = new function () {
         minrate: 'minrate',
         maxrate: 'maxrate'
     };
+
+    var sliprate_csv_keys= {
+fault_name: 'Fault Name',
+fault_id: 'NSHM23 Fault ID',
+state: 'State',
+site_name: 'Site Name',
+cpd_id: 'CPD ID',
+sliprate_id: 'NSHM23 Slip Rate ID',
+longitude: 'Longitude',
+latitud: 'Latitude',
+dist_to_cfmfault: 'Distance To Nearest CFM Fault (km)',
+cfm6_objectname: 'CFM6.0 Object Name',
+data_type: 'Data Type',
+observation: 'Observation',
+pref_rate: 'Preferred Rate',
+low_rate: 'Low Rate',
+high_rate: 'High Rate',
+rate_unct: 'Rate Uncertainty',
+rate_type: 'Rate Type',
+rept_reint: 'ReptReint',
+offset_type: 'Offset Type',
+age_type: 'Age Type',
+num_events: 'Num Events',
+rate_age: 'Rate Age',
+q_bin_min: 'Qbin Min',
+q_bin_max: 'Qbin Max',
+reference: 'References'
+        };
+
     this.searchingType=this.searchType.none;
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
@@ -104,7 +133,7 @@ var CPD_SLIPRATE = new function () {
 
                 let marker = L.circleMarker([latitude, longitude], site_marker_style.normal);
 
-                let site_info = `${sliprate_id}`;
+                let site_info = `${fault_name}`;
                 marker.bindTooltip(site_info).openTooltip();
 
                 marker.scec_properties = {
@@ -154,7 +183,6 @@ var CPD_SLIPRATE = new function () {
 
         this.cpd_active_layers.on('click', function(event) {
             if(activeProduct == Products.SLIPRATE) { 
-window.console.log(" Clicked on a layer--->"+ event.layer.scec_properties.sliprate_id);
                CPD_SLIPRATE.toggleSiteSelected(event.layer, true);
             }
         });
@@ -544,7 +572,7 @@ window.console.log("sliprate --- calling freshSearch..");
 
     this.getMarkerBySiteId = function (site_id) {
         for (const index in cpd_sliprate_site_data) {
-            if (cpd_sliprate_site_data[index].sliprate_id == site_id) {
+            if (cpd_sliprate_site_data[index].cpd_id == site_id) {
                 return cpd_sliprate_site_data[index];
             }
         }
@@ -748,9 +776,9 @@ reference
         html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
 
         html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
-        html += `<td class="meta-data">${layer.scec_properties.sliprate_id}</td>`;
-        html += `<td class="meta-data">${layer.scec_properties.site_name} </td>`;
-        html += `<td class="meta-data">${layer.scec_properties.fault_name}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.cpd_id}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.fault_name} </td>`;
+        html += `<td class="meta-data">${layer.scec_properties.site_name}</td>`;
         html += `<td class="meta-data">${layer.scec_properties.latitude} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.longitude} </td>`;
 
@@ -771,8 +799,8 @@ window.console.log("generateMetadataTable..");
         <th class="text-center button-container" style="width:2rem">
         </th>
         <th class="hoverColor" style="width:5rem" >Id&nbsp<span></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Site Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Fault Name&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Site Name&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">X&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Y&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
@@ -780,6 +808,11 @@ window.console.log("generateMetadataTable..");
         <th style="width:20%;"><div class="col text-center">
 <!--download all -->
                 <div class="btn-group download-now">
+                    <button id="download-all" type="button" class="btn btn-dark" value="metadata"
+                            onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);" disabled>
+                            DOWNLOAD&nbsp<span id="download-counter"></span>
+                    </button>
+<!--
                     <button id="download-all" type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" disabled>
                             DOWNLOAD&nbsp<span id="download-counter"></span>
@@ -789,6 +822,7 @@ window.console.log("generateMetadataTable..");
                             onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">metadata
                        </button>
                     </div>
+-->
                 </div>
         </th>
 </tr>
@@ -1115,7 +1149,7 @@ window.console.log(" ==> here in replace color");
       
 /***** this is for downloading some generated file from the result directory..
           if(ftype == "extra") {
-            let downloadURL = getDataDownloadURL(layer.scec_properties.sliprate_id);
+            let downloadURL = getDataDownloadURL(layer.scec_properties.cpd_id);
             let dname=downloadURL.substring(downloadURL.lastIndexOf('/')+1);
             let promise = $.get(downloadURL);
             nzip.file(dname,promise);
@@ -1138,15 +1172,25 @@ window.console.log(" ==> here in replace color");
         }
     };
 
+
     function getCSVFromMeta(mlist) {
         var len=mlist.length;  // each data is a meta data format
-    // grab the first meta data and generate the title..
         var last=len-1;
+
+    // grab the first meta data and generate the title..
         var meta=mlist[0];
         var keys=Object.keys(meta);
         var jlen=keys.length;
-        var csvblob = keys.join(",");
+        
+//        var csvblob = keys.join(",");
+window.console.log(" HERE...");
+   window.console.log("  KEYS..",keys);
+        var csvblob=sliprate_csv_keys[keys[0]];
+        for(let k=1; k< jlen; k++) {
+           csvblob += (','+sliprate_csv_keys[keys[k]]);
+        }
         csvblob +='\n';
+
         for(let i=0; i< len; i++) {
             let j=0;
             meta=mlist[i];
