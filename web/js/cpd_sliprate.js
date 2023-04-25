@@ -93,7 +93,7 @@ var CPD_SLIPRATE = new function () {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
                 let gid = cpd_sliprate_site_data[index].gid;
                 let cpd_id = cpd_sliprate_site_data[index].cpdid;
-                let sliprate_id = cpd_sliprate_site_data[index].sliprate_id;
+                let sliprate_id = cpd_sliprate_site_data[index].sliprateid;
                 let longitude = parseFloat(cpd_sliprate_site_data[index].longitude);
                 let latitude = parseFloat(cpd_sliprate_site_data[index].latitude);
                 let fault_name = cpd_sliprate_site_data[index].faultname;
@@ -787,9 +787,6 @@ window.console.log("generateMetadataTable..");
                     <div class="dropdown-menu dropdown-menu-right">
                        <button class="dropdown-item" type="button" value="metadata"
                             onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">metadata
-                       </button>
-                       <button class="dropdown-item" type="button" value="all"
-                            onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);">All of the Above
                        </button>
                     </div>
                 </div>
