@@ -1,4 +1,37 @@
+/* cpd */
+#plot-range-key {
+    z-index: 8000;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    background-color: #F2F2F2;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#plot-range-key .ui-slider-range {
+    display: inline-flex;
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 0, 255));
+}
+
+#plot-range-key div {
+    padding:0;
+}
+
+#plot-range-key span.min {
+    display: inline-flex;
+    width: 1ch;
+    margin-right:3px;
+}
+
+#plot-range-key span.max {
+    display: inline-flex;
+    width: 1ch;
+    margin-left:3px;
+}
+
 /* cxm viewer required styles */
+
 #wait-spinner {
     z-index: 9999;
     position: absolute;

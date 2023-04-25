@@ -456,9 +456,11 @@ window.console.log("XX HERE moving table Row ???");
                 break;
             case this.searchType.minrate:
                 $("#cpd-minrate-slider").show();
+                showKey(cpd_minrate_min, cpd_minrate_max);
                 break;
             case this.searchType.maxrate:
                 $("#cpd-maxrate-slider").show();
+                showKey(cpd_maxrate_min, cpd_maxrate_max);
                 break;
             default:
                 // no action
@@ -890,11 +892,13 @@ window.console.log("generateMetadataTable..");
         this.resetMinrate = function () {
           this.resetMinrateSlider();
           resetMinrateRangeColor(cpd_minrate_min, cpd_minrate_max);
+          removeKey();
         }
 
         this.resetMaxrate = function () {
           this.resetMaxrateSlider();
           resetMaxrateRangeColor(cpd_maxrate_min, cpd_maxrate_max);
+          removeKey();
         }
 
         var resetMinrateRangeColor = function (target_min, target_max){
