@@ -123,7 +123,7 @@ class SLIPRATE extends SpatialData
 
   public function getAllStationData()
   {
-    $query = "SELECT gid,sliprateid,longitude,latitude,faultname,faultid,state,sitename,datatype,disttocfmfault,cfm6objectname,observation,prefrate,lowrate,highrate,rateunct,ratetype,reptreint,offtype,agetype,numevents,rateage,qbinmin,qbinmax,reference,appb FROM sliprate_tb";
+	  $query = "SELECT gid,faultname,faultid,state,sitename,cpdid,sliprateid,longitude,latitude,disttocfmfault,cfm6objectname,datatype,observation,prefrate,lowrate,highrate,rateunct,ratetype,reptreint,offsettype,agetype,numevents,rateage,qbinmin,qbinmax,reference FROM sliprate_tb";
 	  
 ##   $query = "SELECT gid,sliprateid,x,y,faultname,sitename,lowrate,highrate,state,datatype,qbinmin,qbinmax,x2014dip,x2014rake,x2014rate,reference FROM sliprate_tb";
 
