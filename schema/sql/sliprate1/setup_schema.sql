@@ -1,7 +1,7 @@
 CREATE TABLE SLIPRATE_tb (
    gid           serial PRIMARY KEY,
    SliprateID    VARCHAR(10) UNIQUE NOT NULL,
-   CPDID         VARCHAR(4) UNIQUE NOT NULL,
+   CPDID         VARCHAR(10) UNIQUE NOT NULL,
    Longitude     float DEFAULT 0.0,  
    Latitude      float DEFAULT 0.0,  
    FaultName     VARCHAR(200) NOT NULL,
