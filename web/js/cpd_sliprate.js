@@ -1067,7 +1067,7 @@ window.console.log(" ==> here in replace color");
            let gid=glist[i];
            let layer=CPD_SLIPRATE.getLayerByGid(gid);
            let s=layer.scec_properties;
-           let name=s.faultname + " | " +s.sitename;
+           let name= s.fault_name + " | " +s.site_name;
 
            var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
            html=html+t;
