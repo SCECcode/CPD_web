@@ -8,20 +8,27 @@ var big_map=0; // 0,1(some control),2(none)
 /************************************************************************************/
 
 function showKey(minv,maxv) {
+window.console.log("calling showing key");
     if (showing_key) {
         removeKey();
     } else {
         showing_key = true;
     }
+    // truncate the values alittle..
+    let min=Math.round(minv * 100) / 100;
+    let max=Math.round(maxv * 100) / 100;
 
     $("#CPD_plot").prepend($("#plot-range-key-container").html());
-    $("#plot-range-key span.min").html(minv);
-    $("#plot-range-key span.max").html(maxv);
+    $("#plot-range-key span.min").html(min);
+    $("#plot-range-key span.max").html(max);
 }
 
 function removeKey() {
-    $("#CPD_plot #plot-range-key-container").remove();
-    showing_key = false;
+window.console.log("calling removing key");
+    if(showing_key) {
+      $("#CPD_plot #plot-range-key").remove();
+      showing_key = false;
+    }
 }
 
 /************************************************************************************/

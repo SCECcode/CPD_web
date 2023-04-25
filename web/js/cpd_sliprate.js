@@ -540,12 +540,14 @@ window.console.log("sliprate --- calling freshSearch..");
                this.searchingType = this.searchType.minrate;
                $all_search_controls.hide();
                $("#cpd-minrate-slider").show();
+               showKey(cpd_minrate_min, cpd_minrate_max);
                this.recreateActiveLayerGroup(false);
                break;
             case "maxrate": 
                this.searchingType = this.searchType.maxrate;
                $all_search_controls.hide();
                $("#cpd-maxrate-slider").show();
+               showKey(cpd_maxrate_min, cpd_maxrate_max);
                this.recreateActiveLayerGroup(false);
                break;
             case "latlon": 
@@ -1187,8 +1189,6 @@ window.console.log(" ==> here in replace color");
         var jlen=keys.length;
         
 //        var csvblob = keys.join(",");
-window.console.log(" HERE...");
-   window.console.log("  KEYS..",keys);
         var csvblob=sliprate_csv_keys[keys[0]];
         for(let k=1; k< jlen; k++) {
            csvblob += (','+sliprate_csv_keys[keys[k]]);

@@ -397,9 +397,9 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
 </div> <!-- main -->
 
 <div id="plot-range-key-container" style="display:none;">
-    <div id=plot-range-key" class="row" style="opacity:0.8">
-        <div class="col text-left" style="width:110px;height:24px;">
-           <span class="min"></span>
+    <div id="plot-range-key" class="row" style="opacity:0.8">
+        <div class="col" style="width:110px;height:24px;">
+           <span class="min" style="width:1rem"></span>
            <span class="ui-slider-range" style="border:1px solid grey; width:60px;height:20px;"></span>
            <span class="max"></span>
         </div>
