@@ -24,7 +24,7 @@ CREATE TABLE SLIPRATE_tb (
    RateAge       VARCHAR(100) NOT NULL,
    QbinMin       float default 0.0,
    QbinMax       float default 0.0,
-   Reference     VARCHAR(400) NOT NULL,
+   Reference     VARCHAR(400) NOT NULL
 );
 
 SELECT AddGeometryColumn('','sliprate_tb','geom','0','POINT',2);
