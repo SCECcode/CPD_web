@@ -1123,7 +1123,7 @@ window.console.log(" ==> here in replace color");
 <thead>
 <tr>
    <th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th>
-<th class='myheader'>CPD Site Location (fault name | site name)</th>
+<th class='myheader'>CPD Site Location ( fault | site )</th>
 </tr>
 </thead>`;
         var body=makeResultTableBody(json);
