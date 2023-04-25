@@ -1049,7 +1049,7 @@ window.console.log(" ==> here in replace color");
         for( var i=0; i< sz; i++) {
            var s=json[i];
            var gid=parseInt(s.gid);
-           var name=s.sliprateid;
+           var name=s.faultname + " | " +s.sitename;
            var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
            tmp=tmp+t;
         }
@@ -1083,7 +1083,7 @@ window.console.log(" ==> here in replace color");
 <thead>
 <tr>
    <th class='text-center'><button id=\"cpd-allBtn\" class=\"btn btn-sm cxm-small-btn\" title=\"select all visible sliprate sites\" onclick=\"CPD_SLIPRATE.toggleSelectAll();\"><span class=\"glyphicon glyphicon-unchecked\"></span></button></th>
-<th class='myheader'>CPD Site Location</th>
+<th class='myheader'>CPD Site Location (fault name | site name)</th>
 </tr>
 </thead>`;
         var body=makeResultTableBody(json);
