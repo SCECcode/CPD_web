@@ -18,7 +18,7 @@ if [ $TOGGLE_S1 == 1 ]
 then
   CPDPATH=${PWD}"/../CPD_1_slip_rates/"
   CPDTYPE="CPD1_sliprates"
-  EXCEL_NM="CPD_test"
+  EXCEL_NM="CPD_SlipRatesSites"
   DATATYPE="sliprate1"
   EXCEL_NM_SHEET="CPD1 Slip Rates"
 #  EXCEL_NM_FILE=${CPDPATH}"/CPD_SlipRates.xlsx"

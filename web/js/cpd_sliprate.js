@@ -92,7 +92,8 @@ var CPD_SLIPRATE = new function () {
         for (const index in cpd_sliprate_site_data) {
           if (cpd_sliprate_site_data.hasOwnProperty(index)) {
                 let gid = cpd_sliprate_site_data[index].gid;
-                let sliprate_id = cpd_sliprate_site_data[index].sliprateid;
+                let cpd_id = cpd_sliprate_site_data[index].cpdid;
+                let sliprate_id = cpd_sliprate_site_data[index].sliprate_id;
                 let longitude = parseFloat(cpd_sliprate_site_data[index].longitude);
                 let latitude = parseFloat(cpd_sliprate_site_data[index].latitude);
                 let fault_name = cpd_sliprate_site_data[index].faultname;
@@ -101,7 +102,7 @@ var CPD_SLIPRATE = new function () {
                 let low_rate = parseFloat(cpd_sliprate_site_data[index].lowrate);
                 let high_rate = parseFloat(cpd_sliprate_site_data[index].highrate);
 
-                let marker = L.circleMarker([y, x], site_marker_style.normal);
+                let marker = L.circleMarker([latitude, longitude], site_marker_style.normal);
 
                 let site_info = `${sliprate_id}`;
                 marker.bindTooltip(site_info).openTooltip();
@@ -111,7 +112,8 @@ var CPD_SLIPRATE = new function () {
                     active: true,
                     selected: false,
                     gid: gid,
-                    sliprate_id: sliprate_id,
+                    cpd_id: cpd_id,
+                    sliprate_id:sliprate_id,
                     longitude: longitude,
                     latitude: latitude,
                     fault_name: fault_name,
@@ -658,26 +660,27 @@ high_rate
 rate_unct
 rate_type
 rept_reint
-off_type
+offset_type
 age_type
 num_events
 rate_age
 q_bin_min
 q_bin_max
 reference
-app_b
 **
+FaultName,FaultID,State,SiteName,CPDId,SliprateId,Longitude,Latitude,DistToCFMFault,CFM6ObjectName,DataType,Observation,PrefRate,LowRate,HighRate,RateUncr,RateType,ReptReint,OffsetType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference
 gid
-sliprateid
-longitude
-latitude
 faultname
 faultid
 state
 sitename
-datatype
+cpdid
+sliprateid
+longitude
+latitud
 disttocfmfault
 cfm6objectname
+datatype
 observation
 prefrate
 lowrate
@@ -685,28 +688,27 @@ highrate
 rateunct
 ratetype
 reptreint
-offtype
+offsettype
 agetype
 numevents
 rateage
 qbinmin
 qbinmax
 reference
-appb
 */
     function createMetaData(properties) {
         var meta={};
-
-        meta.sliprate_id= properties.sliprateid;
-        meta.longitude = properties.longitude;
-        meta.latitude = properties.latitude;
         meta.fault_name = properties.faultname;
         meta.fault_id = properties.faultid;
         meta.state = properties.state;
         meta.site_name = properties.sitename;
-        meta.data_type = properties.datatype;
+        meta.cpd_id= properties.cpdid;
+        meta.sliprate_id= properties.sliprateid;
+        meta.longitude = properties.longitude;
+        meta.latitude = properties.latitude;
         meta.dist_to_cfmfault = properties.disttocfmfault;
         meta.cfm6_objectname = properties.cfm6objectname;
+        meta.data_type = properties.datatype;
         meta.observation = properties.observation;
         meta.pref_rate = properties.prefrate;
         meta.low_rate = properties.lowrate;
@@ -714,14 +716,13 @@ appb
         meta.rate_unct = properties.rateunct;
         meta.rate_type = properties.ratetype;
         meta.rept_reint = properties.reptreint;
-        meta.off_type = properties.offtype;
+        meta.offset_type = properties.offsettype;
         meta.age_type = properties.agetype;
         meta.num_events = properties.numevents;
         meta.rate_age = properties.rateage;
         meta.q_bin_min = properties.qbinmin;
         meta.q_bin_max = properties.qbinmax;
         meta.reference = properties.reference;
-        meta.app_b = properties.appb;
 
         return meta;
     }
@@ -1135,8 +1136,44 @@ window.console.log(" ==> here in replace color");
 
         if(mlist.length != 0) {
 //        saveAsJSONBlobFile(mlist, timestamp)
-          var data=getCSVFromMeta(mlist, timestamp);
+          var data=getCSVFromMeta(mlist);
           saveAsCSVBlobFile(data, timestamp);
         }
     };
+
+    function getCSVFromMeta(mlist) {
+        var len=mlist.length;  // each data is a meta data format
+    // grab the first meta data and generate the title..
+        var last=len-1;
+        var meta=mlist[0];
+        var keys=Object.keys(meta);
+        var jlen=keys.length;
+        var csvblob = keys.join(",");
+        csvblob +='\n';
+        for(let i=0; i< len; i++) {
+            let j=0;
+            meta=mlist[i];
+            var values=Object.values(meta)
+            var vblob=JSON.stringify(values[0]);
+            for(j=1; j< jlen; j++) {
+                var vv=values[j];
+                if(vv != null) {
+                  if(isNaN(vv)) {
+                    vblob=vblob+","+ JSON.stringify(vv);
+                    } else {
+                      vblob=vblob+","+vv;
+                  }
+                  } else {
+                    vblob=vblob+",";
+                }
+            }
+            csvblob += vblob;
+            if(i != last) {
+            csvblob +='\n';
+            }
+        }
+//http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+        return csvblob;
+    }
+	      
 };
