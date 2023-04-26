@@ -8,6 +8,7 @@ var CPD_SLIPRATE = new function () {
     // complete set of sliprate layers, one marker layer for one site, 
     // setup once from viewer.php
     this.cpd_layers;
+    this.cpd_markerLocations;
 
     // searched layers being actively looked at -- result of a search
     this.cpd_active_layers= new L.FeatureGroup();
@@ -54,7 +55,6 @@ var CPD_SLIPRATE = new function () {
     };
 
     this.defaultMapView = {
-        // coordinates: [34.3, -118.4],
         coordinates: [34.16, -118.57],
         zoom: 7
     };
@@ -115,7 +115,10 @@ reference: 'References'
 // cpd_sliprate_site_data is from viewer.php, which is the JSON 
 // result from calling php getAllSiteData script
     this.generateLayers = function () {
+
+window.console.log( "generate the initial cpd_layers");
         this.cpd_layers = [];
+        this.cpd_markerLocations = [];
 
 // SELECT * FROM tb ORDER BY gid ASC;
         for (const index in cpd_sliprate_site_data) {
@@ -153,6 +156,7 @@ reference: 'References'
                 };
 
                 this.cpd_layers.push(marker);
+                this.cpd_markerLocations.push(marker.getLatLng())                      
                 this.cpd_active_layers.addLayer(marker);
                 this.cpd_active_gid.push(gid);
 
@@ -242,7 +246,7 @@ reference: 'References'
         // make the small set at least alittle bit visible
         if(markerLocations.length > 0) {
           let bounds = L.latLngBounds(markerLocations);
-          viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
+          viewermap.flyToBounds(bounds);
         }
     };
 
@@ -308,7 +312,7 @@ window.console.log("toggleSiteSlected from tables");
               let markerLocations = [];
               markerLocations.push(layer.getLatLng())                      
               let bounds = L.latLngBounds(markerLocations);
-              viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom });
+              viewermap.flyToBounds(bounds);
             }
 
         } else {
@@ -667,7 +671,7 @@ window.console.log( "BAD, unknown search type \n");
         markerLocations.push(L.latLng(criteria[0],criteria[1]));
         markerLocations.push(L.latLng(criteria[2],criteria[3]));
         let bounds = L.latLngBounds(markerLocations);
-        viewermap.flyToBounds(bounds, {maxZoom: 10 });
+        viewermap.flyToBounds(bounds);
 //        setTimeout(skipRectangle, 500);
     };
 
@@ -1013,8 +1017,6 @@ window.console.log(" ==> here in replace color");
             $("#cpd-sliprate-controlers-container").css('display','none');
 
             $("div.mapData div.map-container").css('padding-left','30px');
-            viewermap.invalidateSize();
-            viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
 
             var $download_queue_table = $('#metadata-table');
             $download_queue_table.floatThead('destroy');
@@ -1028,6 +1030,14 @@ window.console.log(" ==> here in replace color");
 
             this.activateData();
 
+/* setup default view coordinates */
+            viewermap.invalidateSize();
+            let bounds = L.latLngBounds(cpd_markerLocations);
+            viewermap.fitBounds(bounds);
+
+            this.defaultMapView.coordinates = viewermap.getCenter();
+            this.defaultMapView.zoom = viewermap.getZoom();
+ 
 /* setup  sliders */
             $("#slider-minrate-range").slider({ 
                   range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],
