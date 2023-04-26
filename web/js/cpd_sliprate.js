@@ -232,10 +232,8 @@ window.console.log( "generate the initial cpd_layers");
                   this.cpd_active_layers.addLayer(layer);
                   this.cpd_active_gid.push(gid);
                   i_start=i+1;
-                  if(gsz < 20 && j < gsz) {
-                    markerLocations.push(layer.getLatLng())                      
-                  }
-                   break;
+                  markerLocations.push(layer.getLatLng())                      
+                  break;
                }
             }
           }
@@ -672,6 +670,7 @@ window.console.log( "BAD, unknown search type \n");
         markerLocations.push(L.latLng(criteria[2],criteria[3]));
         let bounds = L.latLngBounds(markerLocations);
         viewermap.flyToBounds(bounds);
+//        viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom} );
 //        setTimeout(skipRectangle, 500);
     };
 
@@ -1032,11 +1031,12 @@ window.console.log(" ==> here in replace color");
 
 /* setup default view coordinates */
             viewermap.invalidateSize();
-            let bounds = L.latLngBounds(cpd_markerLocations);
+            let bounds = L.latLngBounds(this.cpd_markerLocations);
             viewermap.fitBounds(bounds);
 
             this.defaultMapView.coordinates = viewermap.getCenter();
             this.defaultMapView.zoom = viewermap.getZoom();
+window.console.log("default zoom is.. ", this.defaultMapView.zoom );
  
 /* setup  sliders */
             $("#slider-minrate-range").slider({ 
