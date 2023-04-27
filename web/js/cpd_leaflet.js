@@ -5,6 +5,7 @@ This is leaflet specific utilities for CPD
 ***/
 
 var init_map_zoom_level = 7;
+var init_map_coordinates =  [34.29, -118.4];
 var drawing_rectangle = false;
 
 var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cxm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
@@ -48,7 +49,7 @@ function refresh_map()
     window.console.log("refresh_map: BAD BAD BAD");
     } else {
       window.console.log("refresh_map: calling setView");
-      viewermap.setView([34.3, -118.4], init_map_zoom_level);
+      viewermap.setView(CPD_SLIPRATE.defaultMapView.coordinates, CPD_SLIPRATE.defaultMapView.zoom);
   }
 }
 
@@ -70,8 +71,9 @@ function get_bounds()
 
 function get_map()
 {
-  var center=[34.3,-118.4];
-  var zoom=7;
+  var center=init_map_coordinates;
+  var zoom=init_map_zoom_level;
+
   if (viewermap == undefined) {
     window.console.log("get_map: BAD BAD BAD");
     } else {
@@ -113,7 +115,7 @@ function setup_viewer()
 
 // ==> mymap <==
   mymap = L.map('CPD_plot', { drawControl:false, layers: [esri_topographic, basemap], zoomControl:true} );
-  mymap.setView([34.3, -118.4], init_map_zoom_level);
+  mymap.setView(init_map_coordinates, init_map_zoom_level);
   mymap.attributionControl.addAttribution(scecAttribution);
 
 // basemap selection

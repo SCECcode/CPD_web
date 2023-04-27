@@ -55,7 +55,7 @@ var CPD_SLIPRATE = new function () {
     };
 
     this.defaultMapView = {
-        coordinates: [34.16, -118.57],
+        coordinates: [34.28899, -118.399],
         zoom: 7
     };
 
@@ -241,9 +241,9 @@ window.console.log( "generate the initial cpd_layers");
         replaceResultTableBodyWithGids(glist);
         this.cpd_active_layers.addTo(viewermap);
 
-        // make the small set at least alittle bit visible
         if(markerLocations.length > 0) {
           let bounds = L.latLngBounds(markerLocations);
+window.console.log("flying to 1");
           viewermap.flyToBounds(bounds);
         }
     };
@@ -310,6 +310,7 @@ window.console.log("toggleSiteSlected from tables");
               let markerLocations = [];
               markerLocations.push(layer.getLatLng())                      
               let bounds = L.latLngBounds(markerLocations);
+window.console.log("flying to 2");
               viewermap.flyToBounds(bounds);
             }
 
@@ -482,6 +483,7 @@ window.console.log("XX HERE moving table Row ???");
 // but leave the external model state the same
     this.reset = function () {
 
+window.console.log("calling reset");
         this.resetSearch();
 
         if ($("#cpd-model-cfm").prop('checked')) {
@@ -498,6 +500,7 @@ window.console.log("XX HERE moving table Row ???");
 
         $("#cpd-search-type").val("");
         this.searchingType = this.searchType.none;
+
         // go back to default view,
         viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
     };
@@ -669,8 +672,8 @@ window.console.log( "BAD, unknown search type \n");
         markerLocations.push(L.latLng(criteria[0],criteria[1]));
         markerLocations.push(L.latLng(criteria[2],criteria[3]));
         let bounds = L.latLngBounds(markerLocations);
+window.console.log("flying to 3");
         viewermap.flyToBounds(bounds);
-//        viewermap.flyToBounds(bounds, {maxZoom: this.defaultMapView.zoom} );
 //        setTimeout(skipRectangle, 500);
     };
 
@@ -883,27 +886,32 @@ window.console.log("generateMetadataTable..");
           $("#cpd-scecondLonTxt").val("");
           skipRectangle();
           remove_bounding_rectangle_layer();
+          $("#cpd-latlon").hide();
         }
 
         this.resetFaultname = function () {
           if( this.searchingType != this.searchType.faultname) return;
           $("#cpd-faultnameTxt").val("");
+          $("#cpd-fault-name").hide();
         }
         this.resetSitename = function () {
           if( this.searchingType != this.searchType.sitename) return;
           $("#cpd-sitenameTxt").val("");
+          $("#cpd-site-name").hide();
         }
 
         this.resetMinrate = function () {
           this.resetMinrateSlider();
           resetMinrateRangeColor(cpd_minrate_min, cpd_minrate_max);
-          removeKey();
+          removeKey(); 
+	  $("#cpd-minrate-slider").hide();
         }
 
         this.resetMaxrate = function () {
           this.resetMaxrateSlider();
           resetMaxrateRangeColor(cpd_maxrate_min, cpd_maxrate_max);
           removeKey();
+	  $("#cpd-maxrate-slider").hide();
         }
 
         var resetMinrateRangeColor = function (target_min, target_max){
@@ -1031,12 +1039,16 @@ window.console.log(" ==> here in replace color");
 
 /* setup default view coordinates */
             viewermap.invalidateSize();
+window.console.log("before : default coord is.. ", this.defaultMapView.coordinates);
+window.console.log("before : default zoom is.. ", this.defaultMapView.zoom );
             let bounds = L.latLngBounds(this.cpd_markerLocations);
             viewermap.fitBounds(bounds);
 
             this.defaultMapView.coordinates = viewermap.getCenter();
             this.defaultMapView.zoom = viewermap.getZoom();
-window.console.log("default zoom is.. ", this.defaultMapView.zoom );
+
+window.console.log("setup : default coord is.. ", this.defaultMapView.coordinates);
+window.console.log("setup : default zoom is.. ", this.defaultMapView.zoom );
  
 /* setup  sliders */
             $("#slider-minrate-range").slider({ 
