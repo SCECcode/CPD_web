@@ -82,7 +82,6 @@ jQuery(document).ready(function() {
   });
 
   $('.cpd-faultname-item').on("focus", function() {
-window.console.log("getting on the faultname item..");
      $('.cpd-faultname-item').on("blur mouseout", function() {
        $('.cpd-faultname-item').off("mouseout");
        $('.cpd-faultname-item').off("blur");
@@ -102,7 +101,6 @@ window.console.log("getting on the faultname item..");
       if(type != "") {
         CPD_SLIPRATE.freshSearch(type);
       }
-      //CPD_SLIPRATE.showSearch(type);
   });
 
 

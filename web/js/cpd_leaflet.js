@@ -48,7 +48,6 @@ function refresh_map()
   if (viewermap == undefined) {
     window.console.log("refresh_map: BAD BAD BAD");
     } else {
-      window.console.log("refresh_map: calling setView", init_map_coordinates, init_map_zoom_level);
       viewermap.setView( init_map_coordinates, init_map_zoom_level);
   }
 }
@@ -58,7 +57,6 @@ function set_map(center,zoom)
   if (viewermap == undefined) {
     window.console.log("set_map: BAD BAD BAD");
     } else {
-      window.console.log("set_map: calling setView", center, zoom);
       viewermap.setView(center, zoom);
   }
 }
@@ -115,7 +113,6 @@ function setup_viewer()
 
 // ==> mymap <==
   mymap = L.map('CPD_plot', { drawControl:false, layers: [esri_topographic, basemap], zoomControl:true} );
-  window.console.log(" top setView ..",init_map_coordinates, init_map_zoom_level);
   mymap.setView(init_map_coordinates, init_map_zoom_level);
   mymap.attributionControl.addAttribution(scecAttribution);
 

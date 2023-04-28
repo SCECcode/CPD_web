@@ -299,6 +299,11 @@ window.console.log("flyingBounds --recreateActiveLayer");
        return foundLayer;
     };
 
+
+    function _resetRadius(layer) {
+      layer.setRadius(site_marker_style.normal.radius);
+    }
+
 // select from currently active sites
     this.toggleSiteSelected = function(layer, clickFromMap=false) {
 
@@ -314,13 +319,9 @@ window.console.log("toggleSiteSlected from tables");
         }
         if (layer.scec_properties.selected) {
             this.selectSiteByLayer(layer, clickFromMap);
-                
-            if(!clickFromMap) {  // click from Table, lets fly over
-              let markerLocations = [];
-              markerLocations.push(layer.getLatLng())                      
-              let bounds = L.latLngBounds(markerLocations);
-window.console.log("flyingBounds --click site");
-              viewermap.flyToBounds(bounds);
+            if(!clickFromMap) {  
+               layer.setRadius(site_marker_style.hover.radius);
+               setTimeout(_resetRadius, 500, layer);
             }
 
         } else {
@@ -684,35 +685,9 @@ window.console.log("flyingBounds --latlon");
     };
 
 /********** metadata  functions *********************/
-// create a metadata list using selected gid list
-/*
-gid
-sliprate_id
-longitude
-latitude
-fault_name
-fault_id
-state
-site_name
-data_type
-dist_to_cfmfault
-cfm6_objectname
-observation
-pref_rate
-low_rate
-high_rate
-rate_unct
-rate_type
-rept_reint
-offset_type
-age_type
-num_events
-rate_age
-q_bin_min
-q_bin_max
-reference
-**
+/* create a metadata list using selected gid list
 FaultName,FaultID,State,SiteName,CPDId,SliprateId,Longitude,Latitude,DistToCFMFault,CFM6ObjectName,DataType,Observation,PrefRate,LowRate,HighRate,RateUnct,RateType,ReptReint,OffsetType,AgeType,NumEvents,RateAge,QbinMin,QbinMax,Reference
+
 gid
 faultname
 faultid
