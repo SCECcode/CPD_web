@@ -8,10 +8,11 @@ var CPD_SLIPRATE = new function () {
     // complete set of sliprate layers, one marker layer for one site, 
     // setup once from viewer.php
     this.cpd_layers;
-    this.cpd_markerLocations;
+    this.cpd_markerLocations = [];
 
     // searched layers being actively looked at -- result of a search
     this.cpd_active_layers= new L.FeatureGroup();
+    this.cpd_markerLocations = [];
     this.cpd_active_gid = [];
 
     // selected some layers from active layers
@@ -54,9 +55,10 @@ var CPD_SLIPRATE = new function () {
         },
     };
 
+// coordinates: [34.28899, -118.399],
     this.defaultMapView = {
-        coordinates: [34.28899, -118.399],
-        zoom: 7
+        coordinates: [37.73, -119.9],
+        zoom: 10 
     };
 
     this.searchType = {
@@ -119,6 +121,7 @@ reference: 'References'
 window.console.log( "generate the initial cpd_layers");
         this.cpd_layers = [];
         this.cpd_markerLocations = [];
+        this.cpd_active_markerLocations = [];
 
 // SELECT * FROM tb ORDER BY gid ASC;
         for (const index in cpd_sliprate_site_data) {
@@ -155,10 +158,13 @@ window.console.log( "generate the initial cpd_layers");
                     high_rate: high_rate,
                 };
 
+// all layers
                 this.cpd_layers.push(marker);
                 this.cpd_markerLocations.push(marker.getLatLng())                      
+// current active layers
                 this.cpd_active_layers.addLayer(marker);
                 this.cpd_active_gid.push(gid);
+                this.cpd_active_markerLocations.push(marker.getLatLng())                      
 
                 if(cpd_minrate_min == undefined) {
                    cpd_minrate_min = low_rate;
@@ -215,12 +221,11 @@ window.console.log( "generate the initial cpd_layers");
         this.cpd_active_layers.remove();
         this.cpd_active_layers= new L.FeatureGroup();
         this.cpd_active_gid=[];
+        this.cpd_active_markerLocations = [];
 
         let gsz=glist.length;
         let lsz= this.cpd_layers.length;
         let i_start=0;
-
-        let markerLocations = [];
 
         for (let j=0; j<gsz; j++) {
           let gid=glist[j];
@@ -231,8 +236,8 @@ window.console.log( "generate the initial cpd_layers");
                   this.replaceColor(layer);
                   this.cpd_active_layers.addLayer(layer);
                   this.cpd_active_gid.push(gid);
+                  this.cpd_active_markerLocations.push(layer.getLatLng())                      
                   i_start=i+1;
-                  markerLocations.push(layer.getLatLng())                      
                   break;
                }
             }
@@ -241,9 +246,9 @@ window.console.log( "generate the initial cpd_layers");
         replaceResultTableBodyWithGids(glist);
         this.cpd_active_layers.addTo(viewermap);
 
-        if(markerLocations.length > 0) {
-          let bounds = L.latLngBounds(markerLocations);
-window.console.log("flying to 1");
+        if(this.cpd_active_markerLocations.length > 0) {
+          let bounds = L.latLngBounds(this.cpd_active_markerLocations);
+window.console.log("flyingBounds --new list");
           viewermap.flyToBounds(bounds);
         }
     };
@@ -267,6 +272,7 @@ window.console.log("flying to 1");
                }
                this.cpd_active_layers.addLayer(marker);
                this.cpd_active_gid.push(gid);
+               this.cpd_active_markerLocations.push(marker.getLatLng())                      
             }
           }
           replaceResultTableBodyWithGids(this.cpd_active_gid);
@@ -274,6 +280,9 @@ window.console.log("flying to 1");
           } else {
             this.cpd_active_layers.addTo(viewermap);
        }
+window.console.log("flyingBounds --recreateActiveLayer");
+       let bounds = L.latLngBounds(this.cpd_active_markerLocations);
+       viewermap.flyToBounds(bounds);
     }
 
 // search for a layer from master list by gid
@@ -310,7 +319,7 @@ window.console.log("toggleSiteSlected from tables");
               let markerLocations = [];
               markerLocations.push(layer.getLatLng())                      
               let bounds = L.latLngBounds(markerLocations);
-window.console.log("flying to 2");
+window.console.log("flyingBounds --click site");
               viewermap.flyToBounds(bounds);
             }
 
@@ -502,6 +511,7 @@ window.console.log("calling reset");
         this.searchingType = this.searchType.none;
 
         // go back to default view,
+window.console.log("call setView.. default");
         viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
     };
 
@@ -672,7 +682,7 @@ window.console.log( "BAD, unknown search type \n");
         markerLocations.push(L.latLng(criteria[0],criteria[1]));
         markerLocations.push(L.latLng(criteria[2],criteria[3]));
         let bounds = L.latLngBounds(markerLocations);
-window.console.log("flying to 3");
+window.console.log("flyingBounds --latlon");
         viewermap.flyToBounds(bounds);
 //        setTimeout(skipRectangle, 500);
     };
@@ -1037,19 +1047,10 @@ window.console.log(" ==> here in replace color");
 
             this.activateData();
 
-/* setup default view coordinates */
             viewermap.invalidateSize();
-window.console.log("before : default coord is.. ", this.defaultMapView.coordinates);
-window.console.log("before : default zoom is.. ", this.defaultMapView.zoom );
             let bounds = L.latLngBounds(this.cpd_markerLocations);
             viewermap.fitBounds(bounds);
 
-            this.defaultMapView.coordinates = viewermap.getCenter();
-            this.defaultMapView.zoom = viewermap.getZoom();
-
-window.console.log("setup : default coord is.. ", this.defaultMapView.coordinates);
-window.console.log("setup : default zoom is.. ", this.defaultMapView.zoom );
- 
 /* setup  sliders */
             $("#slider-minrate-range").slider({ 
                   range:true, step:0.01, min:cpd_minrate_min, max:cpd_minrate_max, values:[cpd_minrate_min, cpd_minrate_max],

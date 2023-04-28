@@ -4,8 +4,8 @@
 This is leaflet specific utilities for CPD
 ***/
 
-var init_map_zoom_level = 7;
-var init_map_coordinates =  [34.29, -118.4];
+var init_map_zoom_level = 10;
+var init_map_coordinates =  [37.73, -119.9];
 var drawing_rectangle = false;
 
 var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cxm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
