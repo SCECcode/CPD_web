@@ -49,7 +49,7 @@ function refresh_map()
     window.console.log("refresh_map: BAD BAD BAD");
     } else {
       window.console.log("refresh_map: calling setView");
-      viewermap.setView(CPD_SLIPRATE.defaultMapView.coordinates, CPD_SLIPRATE.defaultMapView.zoom);
+      viewermap.setView( init_map_coordinates, init_map_zoom_level);
   }
 }
 
