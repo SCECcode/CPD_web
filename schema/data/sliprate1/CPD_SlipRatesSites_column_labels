@@ -1,0 +1,25 @@
+  1: Fault Name
+  2: NSHM23 Fault ID
+  3: State
+  4: Site Name
+  5: CPD ID
+  6: NSHM23 Slip Rate ID
+  7: Longitude
+  8: Latitude
+  9: Distance To Nearest CFM Fault (km)
+ 10: CFM6.0 Object Name
+ 11: Data Type
+ 12: Observation
+ 13: Preferred Rate
+ 14: Low Rate
+ 15: High Rate
+ 16: Rate Uncertainty
+ 17: Rate Type
+ 18: ReptReint
+ 19: Offset Type
+ 20: Age Type
+ 21: Num Events
+ 22: Rate Age
+ 23: Qbin Min
+ 24: Qbin Max
+ 25: References
