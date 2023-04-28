@@ -509,10 +509,6 @@ window.console.log("calling reset");
 
         $("#cpd-search-type").val("");
         this.searchingType = this.searchType.none;
-
-        // go back to default view,
-window.console.log("call setView.. default");
-        viewermap.setView(this.defaultMapView.coordinates, this.defaultMapView.zoom);
     };
 
 // reset just the search only
@@ -911,6 +907,7 @@ window.console.log("generateMetadataTable..");
         }
 
         this.resetMinrate = function () {
+          if( this.searchingType != this.searchType.minrate) return;
           this.resetMinrateSlider();
           resetMinrateRangeColor(cpd_minrate_min, cpd_minrate_max);
           removeKey(); 
@@ -918,6 +915,7 @@ window.console.log("generateMetadataTable..");
         }
 
         this.resetMaxrate = function () {
+          if( this.searchingType != this.searchType.maxrate) return;
           this.resetMaxrateSlider();
           resetMaxrateRangeColor(cpd_maxrate_min, cpd_maxrate_max);
           removeKey();
