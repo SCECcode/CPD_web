@@ -24,8 +24,7 @@ class SLIPRATE extends SpatialData
           return $this;
         }
 	list($match) = $criteria;
-//        $query = "SELECT gid FROM sliprate_tb WHERE faultname = $1";
-	$query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(faultname) @@ plainto_tsquery($1)";
+	$query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(faultname) @@ plainto_tsquery($1) ORDER BY gid ASC";
         $data = array($match);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();
@@ -39,7 +38,7 @@ class SLIPRATE extends SpatialData
           return $this;
         }
         list($match) = $criteria;
-        $query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(sitename) @@ plainto_tsquery($1)";
+        $query = "SELECT gid FROM sliprate_tb WHERE to_tsvector(sitename) @@ plainto_tsquery($1) ORDER BY gid ASC";
         $data = array($match);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();
@@ -54,7 +53,7 @@ class SLIPRATE extends SpatialData
         }
         $criteria = array_map("floatVal", $criteria);
         list($min, $max) = $criteria;
-	$query = "SELECT gid FROM sliprate_tb WHERE lowrate >= $1 AND lowrate <= $2";
+	$query = "SELECT gid FROM sliprate_tb WHERE lowrate >= $1 AND lowrate <= $2 ORDER BY gid ASC";
         $data = array($min,$max);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();
@@ -69,7 +68,7 @@ class SLIPRATE extends SpatialData
         }
         $criteria = array_map("floatVal", $criteria);
         list($min, $max) = $criteria;
-	$query = "SELECT gid FROM sliprate_tb WHERE highrate >= $1 AND highrate <= $2";
+	$query = "SELECT gid FROM sliprate_tb WHERE highrate >= $1 AND highrate <= $2 ORDER BY gid ASC";
         $data = array($min,$max);
         $result = pg_query_params($this->connection, $query, $data);
         $sliprate_data = array();
@@ -102,7 +101,7 @@ class SLIPRATE extends SpatialData
         }
 
 
-        $query = "SELECT gid FROM sliprate_tb WHERE ST_Contains(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_tb.geom)";
+        $query = "SELECT gid FROM sliprate_tb WHERE ST_Contains(ST_MakeEnvelope( $1, $2, $3, $4, 4326), sliprate_tb.geom) ORDER BY gid ASC";
         $data = array($minlon, $minlat, $maxlon, $maxlat);
         $result = pg_query_params($this->connection, $query, $data);
 

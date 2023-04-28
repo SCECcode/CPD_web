@@ -1,2 +1,4 @@
+#
 #docker container exec -it cpd_web_web_1 /bin/bash
-docker container exec -it 94c3af0d2cf2 /bin/bash
+# psql SLIPRATE_db  -U webonly
+docker container exec -it $1 /bin/bash
