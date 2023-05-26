@@ -99,13 +99,15 @@ function setup_viewer()
   var openURL='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var openAttribution ='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   var osm_street=L.tileLayer(openURL, {attribution: openAttribution, maxZoom:18});
+  var shaded_relief =  L.esri.basemapLayer("ShadedRelief");
 
   baseLayers = {
     "esri topo" : esri_topographic,
     "esri NG" : esri_ng,
     "esri imagery" : esri_imagery,
     "otm topo": otm_topographic,
-    "osm street" : osm_street
+    "osm street" : osm_street,
+    "shaded relief": shaded_relief
   };
   var overLayer = {};
   var basemap = L.layerGroup();
