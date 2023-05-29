@@ -27,6 +27,7 @@ function removeKey() {
 window.console.log("calling removing key");
     if(showing_key) {
       $("#CPD_plot #plot-range-key").remove();
+      $("#CPD_plot #plot-range-label").remove();
       showing_key = false;
     }
 }
