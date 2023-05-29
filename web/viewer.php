@@ -387,7 +387,7 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
               </thead>    
               <tbody>
                 <tr id="placeholder-row">
-                  <td colspan="9">Metadata for selected sites will appear here. </td>
+                  <td colspan="10">Metadata for selected sites will appear here. </td>
                 </tr>
             </table>
          </div>

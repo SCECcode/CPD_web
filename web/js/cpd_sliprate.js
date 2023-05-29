@@ -101,7 +101,7 @@ reference: 'References'
     this.searchingType=this.searchType.none;
 
     var tablePlaceholderRow = `<tr id="placeholder-row">
-                        <td colspan="9">Metadata for selected sliprate sites will appear here.</td>
+                        <td colspan="10">Metadata for selected sliprate sites will appear here.</td>
                     </tr>`;
 
     this.activateData = function() {
@@ -775,6 +775,7 @@ reference
 
         html += `<td class="meta-data" align='center' >${layer.scec_properties.low_rate} </td>`;
         html += `<td class="meta-data" align='center' >${layer.scec_properties.high_rate}</td>`;
+        html += `<td class="meta-data">${layer.scec_properties.reference}</td>`;
 
         html += `<td class="meta-data">......</td>`;
         html += `</tr>`;
@@ -796,7 +797,8 @@ window.console.log("generateMetadataTable..");
         <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Y&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')" style="width:5rem">High<br>Rate&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span></th>
-        <th style="width:20%;"><div class="col text-center">
+        <th class="hoverColor" onClick="sortMetadataTableByRow(8,'a')" style="width:9rem">Reference&nbsp<span id='sortCol_8' class="fas fa-angle-down"></span></th>
+        <th style="width:10%;"><div class="col text-center">
 <!--download all -->
                 <div class="btn-group download-now">
                     <button id="download-all" type="button" class="btn btn-dark" value="metadata"
