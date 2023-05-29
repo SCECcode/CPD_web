@@ -95,7 +95,7 @@ num_events: 'Num Events',
 rate_age: 'Rate Age',
 q_bin_min: 'Qbin Min',
 q_bin_max: 'Qbin Max',
-reference: 'References'
+reference: 'Reference'
         };
 
     this.searchingType=this.searchType.none;
@@ -136,6 +136,7 @@ window.console.log( "generate the initial cpd_layers");
                 let site_name = cpd_sliprate_site_data[index].sitename;
                 let low_rate = parseFloat(cpd_sliprate_site_data[index].lowrate);
                 let high_rate = parseFloat(cpd_sliprate_site_data[index].highrate);
+                let reference = cpd_sliprate_site_data[index].reference;
 
                 let marker = L.circleMarker([latitude, longitude], site_marker_style.normal);
 
@@ -156,6 +157,7 @@ window.console.log( "generate the initial cpd_layers");
                     site_name: site_name,
                     low_rate: low_rate,
                     high_rate: high_rate,
+                    reference: reference
                 };
 
 // all layers
@@ -790,18 +792,19 @@ window.console.log("generateMetadataTable..");
 <tr>
         <th class="text-center button-container" style="width:2rem">
         </th>
-        <th class="hoverColor" style="width:5rem" >Id&nbsp<span></span></th>
+        <th class="hoverColor" style="width:4rem" >Id&nbsp<span></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Site Name&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">X&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Y&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:5rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')" style="width:5rem">High<br>Rate&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:4rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')" style="width:4rem">High<br>Rate&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(8,'a')" style="width:9rem">Reference&nbsp<span id='sortCol_8' class="fas fa-angle-down"></span></th>
-        <th style="width:10%;"><div class="col text-center">
+        <th style="width:12%;"><div class="text-center">
 <!--download all -->
                 <div class="btn-group download-now">
                     <button id="download-all" type="button" class="btn btn-dark" value="metadata"
+		            style="padding:0 0.5rem 0 0.5rem;" 
                             onclick="CPD_SLIPRATE.downloadURLsAsZip(this.value);" disabled>
                             DOWNLOAD&nbsp<span id="download-counter"></span>
                     </button>
