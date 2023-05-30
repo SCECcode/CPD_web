@@ -7,7 +7,7 @@ var big_map=0; // 0,1(some control),2(none)
 
 /************************************************************************************/
 
-function showKey(minv,maxv) {
+function showKey(minv,maxv,label) {
 window.console.log("calling showing key");
     if (showing_key) {
         removeKey();
@@ -21,6 +21,8 @@ window.console.log("calling showing key");
     $("#CPD_plot").prepend($("#plot-range-key-container").html());
     $("#plot-range-key span.min").html(min);
     $("#plot-range-key span.max").html(max);
+    let elt = document.getElementById('plot-range-label-string');
+    elt.innerHTML=label;
 }
 
 function removeKey() {

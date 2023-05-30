@@ -26,22 +26,24 @@ var CPD_SLIPRATE = new function () {
     var cpd_maxrate_max=undefined;
 
     var site_colors = {
-        normal: '#006E90',
+        normal: '#006E90', // original
         selected: '#B02E0C',
         abnormal: '#00FFFF',
     };
 
     var site_marker_style = {
         normal: {
-            color: site_colors.normal,
+//          color: site_colors.normal,
+            color: "white",
             fillColor: site_colors.normal,
-            fillOpacity: 0.5,
+            fillOpacity: 1,
             radius: 3,
             riseOnHover: true,
             weight: 1,
         },
         selected: {
-            color: site_colors.selected,
+//          color: site_colors.selected,
+            color: "white",
             fillColor: site_colors.selected,
             fillOpacity: 1,
             radius: 3,
@@ -352,7 +354,6 @@ window.console.log("toggleSiteSlected from tables");
         }
         // move row to top
         if (moveTableRow) {
-window.console.log("XX HERE moving table Row ???");
             let $rowHTML = $row.prop('outerHTML');
             $row.remove();
             $("#metadata-table.sliprate tbody").prepend($rowHTML);
@@ -368,7 +369,8 @@ window.console.log("XX HERE moving table Row ???");
 
     this.unselectSiteByLayer = function (layer) {
         layer.scec_properties.selected = false;
-        layer.setStyle(site_marker_style.normal);
+	this.replaceColor(layer);
+        //layer.setStyle(site_marker_style.normal);
 
         let gid = layer.scec_properties.gid;
 
@@ -471,11 +473,11 @@ window.console.log("XX HERE moving table Row ???");
                 break;
             case this.searchType.minrate:
                 $("#cpd-minrate-slider").show();
-                showKey(cpd_minrate_min, cpd_minrate_max);
+                showKey(cpd_minrate_min, cpd_minrate_max, "Min Slip Rate");
                 break;
             case this.searchType.maxrate:
                 $("#cpd-maxrate-slider").show();
-                showKey(cpd_maxrate_min, cpd_maxrate_max);
+                showKey(cpd_maxrate_min, cpd_maxrate_max, "Max Slip Rate");
                 break;
             default:
                 // no action
@@ -554,14 +556,14 @@ window.console.log("sliprate --- calling freshSearch..");
                this.searchingType = this.searchType.minrate;
                $all_search_controls.hide();
                $("#cpd-minrate-slider").show();
-               showKey(cpd_minrate_min, cpd_minrate_max);
+               showKey(cpd_minrate_min, cpd_minrate_max, "Min Slip Rate");
                this.recreateActiveLayerGroup(false);
                break;
             case "maxrate": 
                this.searchingType = this.searchType.maxrate;
                $all_search_controls.hide();
                $("#cpd-maxrate-slider").show();
-               showKey(cpd_maxrate_min, cpd_maxrate_max);
+               showKey(cpd_maxrate_min, cpd_maxrate_max, "Max Slip Rate");
                this.recreateActiveLayerGroup(false);
                break;
             case "latlon": 
@@ -795,8 +797,8 @@ window.console.log("generateMetadataTable..");
         <th class="hoverColor" style="width:4rem" >Id&nbsp<span></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(2,'a')">Fault Name&nbsp<span id='sortCol_2' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(3,'a')">Site Name&nbsp<span id='sortCol_3' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">X&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
-        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Y&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(4,'n')" style="width:9rem">Longitude&nbsp<span id='sortCol_4' class="fas fa-angle-down"></span></th>
+        <th class="hoverColor" onClick="sortMetadataTableByRow(5,'n')" style="width:9rem">Latitude&nbsp<span id='sortCol_5' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(6,'n')" style="width:4rem">Low<br>Rate&nbsp<span id='sortCol_6' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(7,'n')" style="width:4rem">High<br>Rate&nbsp<span id='sortCol_7' class="fas fa-angle-down"></span></th>
         <th class="hoverColor" onClick="sortMetadataTableByRow(8,'a')" style="width:9rem">Reference&nbsp<span id='sortCol_8' class="fas fa-angle-down"></span></th>
@@ -976,7 +978,8 @@ window.console.log("generateMetadataTable..");
             if(layer.scec_properties.selected) {
                 myColor = site_colors.selected;
             }
-            layer.setStyle({fillColor:myColor, color:myColor});
+            layer.setStyle({fillColor:myColor, color:"white"});
+          //  layer.setStyle({fillColor:myColor, color:myColor});
        }
 
        this.resetActiveLayerColor = function () {

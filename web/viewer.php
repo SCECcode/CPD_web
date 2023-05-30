@@ -404,7 +404,9 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
            <span class="max"></span>
         </div>
     </div>
-    <div id="plot-range-label" class="row" style="display:;opacity:0.8"> Label </div>
+    <div id="plot-range-label" class="row" style="display:;opacity:0.8">
+	<label><span id="plot-range-label-string"></span></label>
+    </div>
 </div>
 
 <!-- modal list -->
