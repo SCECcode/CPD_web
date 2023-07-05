@@ -21,13 +21,14 @@ window.console.log("calling showing key");
     $("#CPD_plot").prepend($("#plot-range-key-container").html());
     $("#plot-range-key span.min").html(min);
     $("#plot-range-key span.max").html(max);
+    $('#plot-range-label').css("display", "");
 }
 
 function removeKey() {
 window.console.log("calling removing key");
     if(showing_key) {
       $("#CPD_plot #plot-range-key").remove();
-      $("#CPD_plot #plot-range-label").remove();
+      $('#plot-range-label').css("display", "none");
       showing_key = false;
     }
 }
