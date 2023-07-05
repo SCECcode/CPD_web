@@ -40,11 +40,24 @@ function isObject(objV) {
 }
 
 // color from blue to red
+//                     red, green, blue
+// Orig: red to blue (255,0,0) -> (0,0,255)
+// new :  (R1,G1,B1) -> (R2,G2,B2)
+
 function makeRGB(val, maxV, minV) {
+    // blue
+    let R2=0;
+    let G2=110;
+    let B2=144;
+    // light orange
+    let R1=255;
+    let G1=80;
+    let B1=26;
+
     let v= (val-minV) / (maxV-minV);
-    let blue = Math.round(255 * v);
-    let green = 0;
-    let red = Math.round((1-v)*255);
+    let red = Math.round(R1+ (v * (R2-R1)));
+    let green = Math.round(G1+ (v * (G2-G1)));
+    let blue = Math.round(B1+ (v * (B2-B1)));
     let color="RGB(" + red + "," + green + "," + blue + ")";
     return color;
 }

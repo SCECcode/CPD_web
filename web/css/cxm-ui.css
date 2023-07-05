@@ -1,6 +1,6 @@
 /* cpd */
 .ui-slider-range {
-    background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 0, 255));
+    background: linear-gradient(to right, rgb(255, 80, 26), rgb(0, 110, 144));
 }
 
 #min-minrate-handle, #max-minrate-handle, #min-maxrate-handle, #max-maxrate-handle {
@@ -17,9 +17,9 @@
 #plot-range-label {
     z-index: 8000;
     position: absolute;
-    right: 80px;
+    right: 50px;
     top: 25px;
-    background-color: #F2F2F2;
+    background-color: transparent;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -29,14 +29,14 @@
     position: absolute;
     right: 30px;
     top: 10px;
-    background-color: #F2F2F2;
+    background-color: transparent;
     padding-left: 5px;
     padding-right: 5px;
 }
 
 #plot-range-key .ui-slider-range {
     display: inline-flex;
-    background: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 0, 255));
+    background: linear-gradient(to right, rgb(255, 80, 26), rgb(0, 110, 144));
 }
 
 #plot-range-key div {
