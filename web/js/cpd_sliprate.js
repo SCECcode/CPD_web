@@ -342,7 +342,10 @@ window.console.log("toggleSiteSlected from tables");
     this.hoverSiteSelectedByGid = function(gid) {
         let layer = this.getLayerByGid(gid);
         layer.setRadius(site_marker_style.hover.radius);
-        setTimeout(_resetRadius, 500, layer);
+    };
+    this.unhoverSiteSelectedByGid = function(gid) {
+        let layer = this.getLayerByGid(gid);
+        setTimeout(_resetRadius, 1000, layer);
 
     };
 
@@ -777,7 +780,7 @@ reference
 
         html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
 
-        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}") onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("${layer.scec_properties.gid}") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
         html += `<td class="meta-data">${layer.scec_properties.cpd_id}</td>`;
         html += `<td class="meta-data">${layer.scec_properties.fault_name} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.site_name}</td>`;
@@ -1101,7 +1104,7 @@ window.console.log(" ==> here in replace color");
            var s=json[i];
            var gid=parseInt(s.gid);
            var name=s.faultname + " | " +s.sitename;
-           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+") onhoover=CPD.hooverSiteSlectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+") onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("+gid+") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("+gid+ ")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
            tmp=tmp+t;
         }
         html=html+ tmp + "</tbody>";
