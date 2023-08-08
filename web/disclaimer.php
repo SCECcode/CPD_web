@@ -12,8 +12,7 @@ $header = getHeader("Disclaimer");
     <link rel="stylesheet" href="css/vendor/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/vendor/jquery-ui.css">
     <link rel="stylesheet" href="css/vendor/glyphicons.css">
-    <link rel="stylesheet" href="css/cpd-ui.css">
-    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/cxm-ui.css">
 
     <script type='text/javascript' src='js/vendor/popper.min.js'></script>
     <script type='text/javascript' src='js/vendor/jquery.min.js'></script>

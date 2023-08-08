@@ -8,7 +8,8 @@ var init_map_zoom_level = 10;
 var init_map_coordinates =  [37.73, -119.9];
 var drawing_rectangle = false;
 
-var scecAttribution ='<a href="https://www.scec.org">SCEC</a><button id="bigMapBtn" class="btn cxm-small-btn" title="Expand into a larger map" style="color:black;padding: 0rem 0rem 0rem 0.5rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span></button>';
+var scecAttribution ='<a href="https://www.scec.org">SCEC</a>';
+
 
 var rectangle_options = {
        showArea: false,
@@ -191,6 +192,13 @@ function setup_viewer()
     }
   });
 
+// enable the expand view key
+$("#CPD_plot").prepend($("#expand-view-key-container").html());
+let tmp=$(".leaflet-control-attribution");
+// should  only have 1, adjust the attribution's location
+let v= document.getElementsByClassName("leaflet-control-attribution")[0];
+v.style.right="1.5rem";
+v.style.height="1.4rem";
 
 // finally,
   return mymap;

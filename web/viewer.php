@@ -409,6 +409,15 @@ The sites of the <a href="https://www.scec.org/research/cpd">SCEC Community Pale
     </div>
 </div>
 
+
+<div id="expand-view-key-container" style="display:none;">
+  <div id="expand-view-key" class="row" style="opacity:0.8; height:1.4rem;">
+    <button id="bigMapBtn" class="btn cfm-small-btn" title="Expand into a larger map" style="color:black;background-color:rgb(255,255,255);padding: 0rem 0.3rem 0rem 0.3rem" onclick="toggleBigMap()"><span class="fas fa-expand"></span>
+    </button>
+  </div>
+</div>
+
+
 <!-- modal list -->
 <!--Modal: Model (modalkmlselect) -->
 <div class="modal" id="modalkmlselect" tabindex="-1" style="z-index:9999" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,4 +1,12 @@
 /* cpd */
+#expand-view-key {
+    z-index: 8000;
+    position: absolute;
+    background-color: rgb(255,255,255);
+    right: 15px;
+    bottom: 1px;
+}
+
 .ui-slider-range {
     background: linear-gradient(to right, rgb(255, 80, 26), rgb(0, 110, 144));
 }

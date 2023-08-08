@@ -1138,6 +1138,7 @@ window.console.log(" ==> here in replace color");
 
 /********************** zip utilities functions *************************/
     this.downloadURLsAsZip = function(ftype) {
+window.console.log("calling download..");
         var nzip=new JSZip();
         var layers=CPD_SLIPRATE.cpd_active_layers.getLayers();
         let timestamp=$.now();
