@@ -339,6 +339,13 @@ window.console.log("toggleSiteSlected from tables");
         return this.toggleSiteSelected(layer, false);
     };
 
+    this.hoverSiteSelectedByGid = function(gid) {
+        let layer = this.getLayerByGid(gid);
+        layer.setRadius(site_marker_style.hover.radius);
+        setTimeout(_resetRadius, 500, layer);
+
+    };
+
     this.selectSiteByLayer = function (layer, moveTableRow=false) {
         layer.scec_properties.selected = true;
         layer.setStyle(site_marker_style.selected);
@@ -1094,7 +1101,7 @@ window.console.log(" ==> here in replace color");
            var s=json[i];
            var gid=parseInt(s.gid);
            var name=s.faultname + " | " +s.sitename;
-           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+") onhoover=CPD.hooverSiteSlectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
            tmp=tmp+t;
         }
         html=html+ tmp + "</tbody>";
