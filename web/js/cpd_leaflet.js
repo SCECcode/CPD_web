@@ -240,7 +240,9 @@ function bindPopupEachFeature(feature, layer) {
         mouseover: function(e) {
           layer.setStyle({weight: 5});
           if (feature.properties != undefined) {
-            popupContent = feature.properties.name;
+//XXX         popupContent = feature.properties.name;
+popupContent='<a href="https://www.scec.org">'+feature.properties.name+'</a>';
+		  window.console.log("HERE...",popupContent);
           }
           layer.bindPopup(popupContent);
         },
@@ -248,8 +250,12 @@ function bindPopupEachFeature(feature, layer) {
           layer.setStyle({weight: 1});
         },
         click: function(e) {
+window.console.log("HERE..");
           if (feature.properties != undefined) {
-            popupContent = feature.properties.name;
+//            popupContent = feature.properties.name;
+popupContent='<a href="https://www.scec.org">'+feature.properties.name+'</a>';
+              } else { 
+window.console.log("HERE 2");
           }
           layer.bindPopup(popupContent);
         },

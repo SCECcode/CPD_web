@@ -143,7 +143,10 @@ window.console.log( "generate the initial cpd_layers");
                 let marker = L.circleMarker([latitude, longitude], site_marker_style.normal);
 
                 let site_info = `${fault_name}`;
-                marker.bindTooltip(site_info).openTooltip();
+
+marker.bindTooltip(site_info).openTooltip();
+//https://stackoverflow.com/questions/23874561/leafletjs-marker-bindpopup-with-options
+marker.bindPopup("<strong>"+site_info+"</strong><br>I am a popup.", {maxWidth: 500});
 
                 marker.scec_properties = {
                     idx: index,
@@ -345,7 +348,7 @@ window.console.log("toggleSiteSlected from tables");
     };
     this.unhoverSiteSelectedByGid = function(gid) {
         let layer = this.getLayerByGid(gid);
-        setTimeout(_resetRadius, 1000, layer);
+        setTimeout(_resetRadius, 100, layer);
 
     };
 
@@ -780,9 +783,9 @@ reference
 
         html += `<tr sliprate-metadata-gid="${layer.scec_properties.gid}">`;
 
-        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}") onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("${layer.scec_properties.gid}") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("${layer.scec_properties.gid}");><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
+        html += `<td><button class=\"btn btn-sm cxm-small-btn\" id=\"button_meta_${layer.scec_properties.gid}\" title=\"remove the site\" onclick=CPD_SLIPRATE.unselectSiteByGid("${layer.scec_properties.gid}") onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("${layer.scec_properties.gid}") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("${layer.scec_properties.gid}") ><span id=\"sliprate_metadata_${layer.scec_properties.gid}\" class=\"glyphicon glyphicon-trash\"></span></button></td>`;
         html += `<td class="meta-data">${layer.scec_properties.cpd_id}</td>`;
-        html += `<td class="meta-data">${layer.scec_properties.fault_name} </td>`;
+        html += `<td class="meta-data" onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("${layer.scec_properties.gid}") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("${layer.scec_properties.gid}")>${layer.scec_properties.fault_name} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.site_name}</td>`;
         html += `<td class="meta-data">${layer.scec_properties.latitude} </td>`;
         html += `<td class="meta-data">${layer.scec_properties.longitude} </td>`;
@@ -1099,12 +1102,13 @@ window.console.log(" ==> here in replace color");
         var html="<tbody id=\"result-table-body\">";
         var sz=json.length;
 
+//onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("+gid+") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("+gid+ ")
         var tmp="";
         for( var i=0; i< sz; i++) {
            var s=json[i];
            var gid=parseInt(s.gid);
            var name=s.faultname + " | " +s.sitename;
-           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+") onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("+gid+") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("+gid+ ")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\">" + name + "</label></td></tr>";
+           var t="<tr id=\"row_"+gid+"\"><td style=\"width:25px\"><button class=\"btn btn-sm cxm-small-btn\" id=\"button_"+gid+"\" title=\"highlight the fault\" onclick=CPD_SLIPRATE.toggleSiteSelectedByGid("+gid+")><span id=\"sliprate-result-gid_"+gid+"\" class=\"glyphicon glyphicon-unchecked\"></span></button></td><td><label for=\"button_"+gid+"\" onmouseover=CPD_SLIPRATE.hoverSiteSelectedByGid("+gid+") onmouseout=CPD_SLIPRATE.unhoverSiteSelectedByGid("+gid+ ")>" + name + "</label></td></tr>";
            tmp=tmp+t;
         }
         html=html+ tmp + "</tbody>";
